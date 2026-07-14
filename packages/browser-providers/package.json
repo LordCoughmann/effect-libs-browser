@@ -1,0 +1,86 @@
+{
+  "name": "@effect-libs/browser-providers",
+  "version": "0.0.0",
+  "description": "Browser providers (Steel, Browserbase, Cloudflare Browser Run) for @effect-libs/browser.",
+  "homepage": "https://github.com/LordCoughmann/effect-libs-browser#readme",
+  "bugs": {
+    "url": "https://github.com/LordCoughmann/effect-libs-browser/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LordCoughmann/effect-libs-browser.git",
+    "directory": "packages/browser-providers"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./steel": {
+      "types": "./dist/steel/index.d.ts",
+      "import": "./dist/steel/index.js",
+      "source": "./src/steel/index.ts"
+    },
+    "./browserbase": {
+      "types": "./dist/browserbase/index.d.ts",
+      "import": "./dist/browserbase/index.js",
+      "source": "./src/browserbase/index.ts"
+    },
+    "./cf-browser-run": {
+      "types": "./dist/cf-browser-run/index.d.ts",
+      "import": "./dist/cf-browser-run/index.js",
+      "source": "./src/cf-browser-run/index.ts"
+    },
+    "./cf-browser-run/CfBrowserRunSdk": {
+      "types": "./dist/cf-browser-run/CfBrowserRunSdk.d.ts",
+      "import": "./dist/cf-browser-run/CfBrowserRunSdk.js",
+      "source": "./src/cf-browser-run/CfBrowserRunSdk.ts"
+    },
+    "./cf-browser-run-binding": {
+      "types": "./dist/cf-browser-run-binding/index.d.ts",
+      "import": "./dist/cf-browser-run-binding/index.js",
+      "source": "./src/cf-browser-run-binding/index.ts"
+    },
+    "./cf-browser-run-binding/CfBrowserRunBindingSdk": {
+      "types": "./dist/cf-browser-run-binding/CfBrowserRunBindingSdk.d.ts",
+      "import": "./dist/cf-browser-run-binding/CfBrowserRunBindingSdk.js",
+      "source": "./src/cf-browser-run-binding/CfBrowserRunBindingSdk.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@effect-libs/browser": "workspace:*"
+  },
+  "peerDependencies": {
+    "@browserbasehq/sdk": "^2.15.0",
+    "@effect-libs/browser-playwright": "workspace:*",
+    "@effect-libs/cloudflare-playwright": "^0.2.0",
+    "cloudflare": "^7.0.0",
+    "effect": "catalog:",
+    "steel-sdk": "^0.18.0"
+  },
+  "peerDependenciesMeta": {
+    "steel-sdk": {
+      "optional": true
+    },
+    "@browserbasehq/sdk": {
+      "optional": true
+    },
+    "cloudflare": {
+      "optional": true
+    },
+    "@effect-libs/browser-playwright": {
+      "optional": true
+    },
+    "@effect-libs/cloudflare-playwright": {
+      "optional": true
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# CDP URL for browser connection
+CDP_URL=ws://localhost:9222
+
+# LLM configuration for Stagehand AI-powered operations
+LLM_MODEL=mistral/mistral-medium-2508
+LLM_API_KEY=your-llm-api-key

@@ -1,0 +1,24 @@
+{
+  "name": "hackernews-cdp-wsurl-alchemy",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "alchemy dev",
+    "deploy": "alchemy deploy",
+    "destroy": "alchemy destroy",
+    "logs": "alchemy logs",
+    "tail": "alchemy tail",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@effect-libs/browser": "workspace:*",
+    "@effect-libs/browser-cdp": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "@effect/platform-node": "catalog:",
+    "alchemy": "2.0.0-beta.61",
+    "effect": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:"
+  }
+}

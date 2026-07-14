@@ -1,0 +1,61 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// Deno Configuration for Integration Tests
+// ═══════════════════════════════════════════════════════════════════════════════
+//
+// This file provides Deno-specific configuration for running integration tests.
+// The primary runtime for this project is Node.js (see package.json).
+//
+// Scope:
+//   - Only affects tests in tests/integration/runtime/deno/
+//   - Provides type definitions for Deno-specific APIs
+//   - Resolves npm dependencies for source files during type-checking
+//
+// Usage:
+//   deno task test              - Run Deno integration tests
+//   deno task check             - Type-check Deno test files
+//
+// ═══════════════════════════════════════════════════════════════════════════════
+{
+  // Only include Deno test directory - prevents affecting other parts of repo
+  "test": {
+    "include": [
+      "tests/integration/runtime/deno"
+    ]
+  },
+  // Compiler options for Deno-specific and DOM types
+  "compilerOptions": {
+    "lib": [
+      "deno.ns",
+      "dom"
+    ],
+    // Match the project tsconfig: node tsgo doesn't enable noImplicitOverride,
+    // so the Schema.Class service definitions (Playwright/Stagehand/providers)
+    // override a Shape member without `override`. Deno enables it by default
+    // and errors (TS4114). Disable here to keep deno's typecheck consistent
+    // with node's. This is a pre-existing divergence, not a real defect.
+    "noImplicitOverride": false,
+    // Match tsconfig: skipLibCheck: true. The vendored
+    // @effect-libs/cloudflare-playwright package contains .d.ts files with
+    // TS issues (top-level `const` without `declare`/`export`, ambiguous
+    // `electron` references) that tsgo skips but Deno catches. tsdown and
+    // tsgo treat these as "we don't own this" — Deno should too.
+    "skipLibCheck": true
+  },
+  // Import maps for resolving npm packages in source files during type-checking
+  "imports": {
+    "effect": "npm:effect@^4.0.0-beta.70",
+    "devtools-protocol": "npm:devtools-protocol@^0.0.1464554",
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/testing/bdd": "jsr:@std/testing@1/bdd",
+    "@effect-libs/browser": "./packages/browser/src/index.ts",
+    "@effect-libs/browser-cdp": "./packages/browser-cdp/src/index.ts",
+    "@effect-libs/browser-playwright": "./packages/browser-playwright/src/index.ts",
+    "@effect-libs/browser-stagehand": "./packages/browser-stagehand/src/index.ts",
+    "@effect-libs/browser-providers/": "./packages/browser-providers/src/"
+  },
+  // Tasks for running tests
+  "tasks": {
+    "test": "deno test --allow-all --sloppy-imports tests/integration/runtime/deno",
+    "check": "deno check --sloppy-imports tests/integration/runtime/deno/"
+  }
+}

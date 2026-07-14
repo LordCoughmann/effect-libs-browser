@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    "repos/**",
+    "packages/cloudflare-playwright/**",
+    "**/CHANGELOG.md"
+  ],
+  "embeddedLanguageFormatting": "off",
+  "sortImports": {
+    "groups": [
+      ["type-builtin", "type-external"],
+      ["type-internal", "type-subpath"],
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-builtin", "value-external"],
+      ["value-internal", "value-subpath"],
+      ["value-parent", "value-sibling", "value-index"],
+      "style",
+      "unknown"
+    ],
+    "internalPattern": ["@effect-libs/browser"],
+    "newlinesBetween": true
+  }
+}

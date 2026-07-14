@@ -1,0 +1,5 @@
+# Cloudflare Browser Run binding provider credentials
+# Optional: only needed if you extend this example to use the
+# CfBrowserRunSdk .use() SDK operations (screenshot, pdf, etc.).
+# The MYBROWSER binding (configured in wrangler.jsonc) does not
+# require any of these.

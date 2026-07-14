@@ -1,0 +1,9 @@
+# CDP WebSocket URL
+# Can be a local browser, VPS, or provider URL (e.g., ws://steel.dev/...?apikey=...)
+CDP_URL=ws://localhost:9222
+
+# LLM Model with provider prefix
+LLM_MODEL=mistral/mistral-medium-2508
+
+# LLM API key
+LLM_API_KEY=your-llm-api-key

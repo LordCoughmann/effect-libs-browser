@@ -1,0 +1,127 @@
+# @effect-libs/browser
+
+> Browser automation for Cloudflare Workers and other edge runtimes, built on
+> [Effect](https://effect.website) v4. Connect to any browser that supports
+> Chrome DevTools Protocol — Steel, Browserbase, Cloudflare Browser Run,
+> local Chrome — and get auto-cleanup on success, error, timeout, or
+> cancellation.
+
+This file indexes every doc page, every source tree (the authoritative API
+reference, in JSDoc), and every runnable example. Give it to an LLM as a
+single-shot orientation when working with the library.
+
+In-repo links are relative; source-tree directory links and external links
+are absolute (raw fetches cannot resolve a directory, and external pages
+have no relative base).
+
+The full API surface is documented as JSDoc on `src/`. Each package's source
+tree is the authoritative reference; the markdown docs are narrative,
+concepts, recipes, and matrices.
+
+## Source (authoritative API reference, in JSDoc)
+
+- [@effect-libs/browser](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser/src): core — `BrowserProvider` interface, shared types, `FetchSchemas`, error helpers
+- [@effect-libs/browser-playwright](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-playwright/src): full Playwright API on edge runtimes; **stable**
+- [@effect-libs/browser-stagehand](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand/src): AI-powered browser automation (Stagehand v3); **stable**
+- [@effect-libs/browser-cdp](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-cdp/src): zero-dependency, native-WebSocket CDP client; **experimental**
+- [@effect-libs/browser-providers](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-providers/src): Steel, Browserbase, Cloudflare Browser Run (HTTP and binding) providers
+
+## Start here
+
+- [Documentation](docs/README.md): full docs index
+- [Overview](docs/overview.md): primary use case, three modules at a glance
+- [Getting started](docs/getting-started.md): install and run a first session
+- [Choosing a module](docs/modules/choosing-a-module.md): stability / runtime / dependencies matrix
+- [Examples index](examples/README.md): runnable Cloudflare Workers apps
+
+## Concepts
+
+- [Client + Provider](docs/concepts/client-and-provider.md): the two-track architecture (client + provider) and why the driver/provider separation exists
+- [Scoped Resources](docs/concepts/scoped-resources.md): `withSession` / `withConnection` lifetime semantics
+- [Managing resources](docs/concepts/managing-resources.md): pooling patterns, owned-scope patterns, durable objects
+- [Errors are Typed](docs/concepts/errors.md): typed error hierarchies, `catchTag`, `catchReason`, `isRetryable`
+- [Composing with effects](docs/concepts/composing-with-effects.md): combining browser ops with retries, timeouts, streams
+- [Why Effect?](docs/concepts/why-effect.md): what Effect gives you and why this library leans on it
+
+## Modules
+
+### `@effect-libs/browser-playwright` (stable)
+
+- [browser-playwright](docs/modules/playwright/index.md): landing page, install, runtime compatibility, when to use
+- [browser-playwright — Context API](docs/modules/playwright/context.md): `BrowserContext` wrapper, context vs page vs connection
+- [browser-playwright — Input Devices](docs/modules/playwright/input.md): keyboard / mouse / touchscreen, choosing the right input, abort-signal caveat
+- [browser-playwright — Added APIs](docs/modules/playwright/added-apis.md): `page.fetch`, `page.httpClient`, `page.context()`, lazy getters
+- [browser-playwright — Errors](docs/modules/playwright/errors.md): typed reason hierarchy, module-field table
+- [browser-playwright — Comparison & Alternatives](docs/modules/playwright/comparison.md): vs other libraries
+
+### Stagehand (stable)
+
+- [browser-stagehand](docs/modules/stagehand/index.md): landing, install, `ws` polyfill for Workers, schema conversion errors
+- [browser-stagehand — Errors](docs/modules/stagehand/errors.md): 3-reason table, `SchemaConversionError`, `agent` discussion
+- [browser-stagehand — Comparison & Alternatives](docs/modules/stagehand/comparison.md): vs other libraries, design rationale
+
+### `@effect-libs/browser-cdp` (experimental)
+
+- [browser-cdp](docs/modules/cdp/index.md): landing, capabilities matrix, AI / LLM usage disclosure
+- [browser-cdp — Locators](docs/modules/cdp/locators.md): `CdpLocator` deep dive
+- [browser-cdp — Network](docs/modules/cdp/network.md): network interception, fetch, cookies, storage
+- [browser-cdp — Context API](docs/modules/cdp/context.md): context vs page, `withContext` vs `withPage` tradeoffs
+- [browser-cdp — Event Streams](docs/modules/cdp/streams.md): event streams (console, network, page events)
+- [browser-cdp — Frames](docs/modules/cdp/frames.md): frames, `CdpFrame`, `CdpFrameLocator`, frame selectors
+- [browser-cdp — Evaluate](docs/modules/cdp/evaluate.md): `page.evaluate`, no-imports payload constraint, return-value serialization
+- [browser-cdp — Handles](docs/modules/cdp/handles.md): `CdpHandle`, `evaluateHandle`, `callFunctionOn`
+- [browser-cdp — Errors](docs/modules/cdp/errors.md): 14-reason table, module-field table
+- [browser-cdp — Comparison & Alternatives](docs/modules/cdp/comparison.md): vs other libraries, design rationale
+
+## Providers
+
+- [Providers](docs/providers/index.md): provider index, install commands, shared patterns (swapping, direct session access)
+- [Steel Provider](docs/providers/steel.md): Steel.dev — session options, `use()` SDK access (profiles, health)
+- [Browserbase Provider](docs/providers/browserbase.md): Browserbase — session options, persistent contexts, `use()` SDK access
+- [Cloudflare Browser Run](docs/providers/cf-browser-run.md): HTTP and binding providers, wrangler config, session options
+- [Adding a Provider](docs/providers/adding-a-provider.md): write your own — `BrowserProviderService` interface, layer factory patterns
+
+## Cookbook
+
+- [Managing Sessions](docs/cookbook/managing-sessions.md): session → connection → context → page, pooling, fan-out
+- [Retries and Timeouts](docs/cookbook/retries-and-timeouts.md): `Effect.retry` + `Schedule` patterns
+- [Reusing Auth](docs/cookbook/reusing-auth.md): cookies, storage state, persistent profiles
+- [Swapping Providers](docs/cookbook/swapping-providers.md): same program, different layer
+- [Working with Pages](docs/cookbook/working-with-pages.md): common page operations, escape hatches, multiple pages
+
+## Reference
+
+- [Runtime & Browser Support](docs/reference/runtime-and-browser-support.md): edge-runtime compatibility matrix (Workers, Node, Bun, Deno, Vercel, Fastly)
+- [`browser-cdp` — Feature Parity with Upstream Playwright](docs/reference/cdp-feature-parity.md): `browser-cdp` deviations from upstream Playwright
+- [FAQ](docs/faq.md): common questions
+
+## Migrations
+
+- [Migrating from Playwright](docs/migrations/from-playwright.md): coming from `@cloudflare/playwright` or upstream `playwright`
+
+## Comparisons
+
+- [Side-by-side rewrites](docs/comparisons/side-by-side.md): provider docs rewritten with this library
+
+## Guides
+
+- [Cloudflare Workers guide](docs/guides/cloudflare-workers.md): Workers-specific setup, limitations, workarounds
+
+## Examples (runnable Cloudflare Workers apps)
+
+- [Playwright + Cloudflare Browser Run binding](examples/cf-workers/hackernews-playwright-cfBrowserRunBinding/)
+- [Playwright + Steel](examples/cf-workers/hackernews-playwright-steel/)
+- [Playwright + Browserbase](examples/cf-workers/hackernews-playwright-browserbase/)
+- [Playwright + raw CDP WebSocket URL](examples/cf-workers/hackernews-playwright-wsUrl/)
+- [Stagehand + Playwright session](examples/cf-workers/hackernews-stagehand-playwright/)
+- [Stagehand + CDP session](examples/cf-workers/hackernews-stagehand-cdp/)
+- [CDP + Cloudflare Browser Run HTTP](examples/cf-workers/hackernews-cdp-cfBrowserRun/)
+- [CDP + Steel](examples/cf-workers/hackernews-cdp-steel/)
+- [CDP + Browserbase](examples/cf-workers/hackernews-cdp-browserbase/)
+- [CDP + raw CDP WebSocket URL](examples/cf-workers/hackernews-cdp-wsUrl/)
+- [Alchemy: CDP + raw CDP WebSocket URL](examples/cf-workers-alchemy/hackernews-cdp-wsUrl/): same as the Workers version, deployed via Alchemy
+- [Alchemy: Playwright + raw CDP WebSocket URL](examples/cf-workers-alchemy/hackernews-playwright-wsUrl/): same as the Workers version, deployed via Alchemy
+
+## AI / LLM usage disclosure
+
+The library's architecture (client and provider abstractions, scopes, errors) is designed and coded by the maintainer. The `@effect-libs/browser-cdp` internals — `packages/browser-cdp/src/internal/` — are coded by frontier LLMs under the maintainer's supervision, with over 1,000 integration tests ported directly from upstream Playwright specs and run against live Chrome on every supported runtime. See [the AI / LLM usage disclosure section in the `browser-cdp` landing page](docs/modules/cdp/index.md#ai--llm-usage-disclosure) for the full disclosure, the TDD methodology, and the parity-coverage caveat.

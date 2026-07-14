@@ -1,0 +1,73 @@
+{
+  "$schema": "./node_modules/fallow/schema.json",
+  "entry": [
+    "vitest.*.config.ts",
+    "packages/*/tsdown.config.ts"
+  ],
+  "ignorePatterns": [
+    "benchmark/**",
+    "tmp/**",
+    "repos/**",
+    "examples/**",
+    "scripts/**",
+    "tests/setup/**",
+    "tests/integration/setup.ts",
+    "tests/integration/runtime/bun/**",
+    "tests/integration/runtime/deno/**",
+    "tests/integration/runtime/node/setup.ts",
+    "tests/integration/runtime/workerd/setup.ts",
+    "tests/integration/runtime/workerd/dummy.ts",
+    "tests/integration/runtime/workerd/stagehand/test-worker/**",
+    "tests/utils/effect-test/**",
+    "tests/utils/config/**",
+    "packages/browser-cdp/src/internal/Page/Evaluate/serialization/**",
+    "packages/cloudflare-playwright/**"
+  ],
+  "ignoreExportsUsedInFile": true,
+  "ignoreDependencies": [
+    "@effect/platform-node",
+    "@dotenvx/dotenvx",
+    "@effect-libs/browser",
+    "@effect-libs/browser-cdp",
+    "@effect-libs/browser-playwright",
+    "@effect-libs/browser-providers",
+    "@effect-libs/browser-stagehand",
+    "@effect-libs/cloudflare-playwright",
+    "@effect/docgen",
+    "@test/setup",
+    "@test/utils",
+    "github-slugger",
+    "mdast-util-to-string",
+    "remark-gfm",
+    "remark-parse",
+    "unified",
+    "unist-util-visit"
+  ],
+  "usedClassMembers": [
+    "layer",
+    "layerConfig",
+    "layerTest",
+    "layerCustom",
+    "message",
+    "errorName",
+    "fromCdpError",
+    "of",
+    "isRetryable",
+    // FrameManager.ts - accessed via ctx.frameManager in Frame.ts
+    "getFrameMetadata",
+    "getAllFrameIds",
+    "getChildFrameIds",
+    "getMainFrameId",
+    "isFrameDetached",
+    "getUrl",
+    "getMainContextId"
+  ],
+  "rules": {
+    "duplicate-exports": "off",
+    "coverage-gaps": "off",
+    "unused-catalog-entries": "off"
+  },
+  "resolve": {
+    "conditions": ["source"]
+  }
+}

@@ -1,0 +1,36 @@
+version: 2
+# Dependabot cadence: monthly.
+#
+# Rationale (see CONTRIBUTING.md "Dependency Updates"): this is a
+# library, not an app. Internal dev deps (vitest, dotenvx, tsx, lint-
+# staged, fallow, oxlint, oxfmt) have zero user-visible impact; bumping
+# them continuously creates PR noise without value. We bundle every
+# monthly update into a single PR per ecosystem, review once, ship.
+#
+# Security alerts are NOT configured here — they're enabled by default
+# at the repo level (Settings → Code security and analysis → Dependabot
+# alerts) and run continuously on every advisory publish.
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    # Monthly cadence already produces ≤ 1 PR; cap at 3 so a backlog
+    # of unmerged PRs can't pile up across cycles.
+    open-pull-requests-limit: 3
+    # Bundle every npm bump into one PR per cycle, regardless of which
+    # package moved. Library consumers don't care that dotenvx 2.6 → 2.7.3
+    # landed on the same day as @browserbasehq/stagehand 3.6 → 3.7.
+    groups:
+      all:
+        patterns: ["*"]
+    ignore:
+      # Vendored into packages/cloudflare-playwright (fork of
+      # @cloudflare/playwright@1.3.0); upgrades require re-vendoring
+      # and re-applying the four local patches.
+      - dependency-name: "playwright"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

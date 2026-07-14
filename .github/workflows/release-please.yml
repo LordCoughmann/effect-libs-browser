@@ -1,0 +1,23 @@
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+
+# `contents: write` and `pull-requests: write` are required for release-please to
+# open PRs, push to its scratch branches, and create tags. `id-token: write`
+# enables npm provenance attestation on the published packages — see
+# npm publishing credentials are configured in repo Settings → Secrets and variables → Actions. Repo-level setting
+# "Allow GitHub Actions to create and approve pull requests" must also be
+# enabled in repo Settings → Actions → General.
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v5
+        id: release

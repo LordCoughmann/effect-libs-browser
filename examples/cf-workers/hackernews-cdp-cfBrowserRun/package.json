@@ -1,0 +1,26 @@
+{
+  "name": "cf-workers-hackernews-cdp-cfbrowserrun",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy --secrets-file .dev.vars",
+    "destroy": "wrangler delete",
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "test": "vitest",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@effect-libs/browser": "workspace:*",
+    "effect": "catalog:",
+    "@effect-libs/browser-cdp": "workspace:*",
+    "@effect-libs/browser-providers": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "wrangler": "catalog:"
+  }
+}
