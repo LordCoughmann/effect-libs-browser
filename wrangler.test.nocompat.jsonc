@@ -1,0 +1,42 @@
+/**
+ * Wrangler config for vitest-pool-workers, **without `nodejs_compat`**.
+ *
+ * WHY THIS FILE EXISTS:
+ * - The CDP module is documented as zero-dependency and runtime-agnostic
+ *   ("works on workerd without `nodejs_compat`")
+ * - The main `wrangler.test.jsonc` has `nodejs_compat` enabled, so any
+ *   accidental Node-API usage in the CDP module is hidden from CI
+ * - This config is the regression gate: any future commit that pulls in
+ *   `Buffer`, `process`, `__dirname`, `node:`, `require()`, etc. will fail
+ *   the workerd-nocompat integration suite at import or runtime
+ *
+ * WHAT IS REMOVED vs `wrangler.test.jsonc`:
+ * - `compatibility_flags: ["nodejs_compat"]` — the whole point
+ * - The `browser` binding (Cloudflare Browser Run) — uses Node APIs in
+ *   the SDK; provider tests are out of scope for the no-compat gate
+ *
+ * WHAT STAYS THE SAME:
+ * - `ws` alias (CDP itself doesn't import `ws`, but transitive deps in
+ *   the workerd test pool occasionally do — keep parity with the main
+ *   config so the only delta is the compat flag)
+ * - Compatibility date (lock the runtime behavior)
+ * - Dummy main entry point (wrangler requirement)
+ *
+ * USAGE:
+ * - `vitest.integration.workerd.nocompat.config.ts` reads this file
+ * - Test entry points: `tests/integration/runtime/workerd/cdp/CdpNoCompat.smoke.test.ts`
+ *   and the shared `tests/integration/runtime/workerd/cdp/Cdp.integration.test.ts`
+ *
+ * @see wrangler.test.jsonc - The main test config (with nodejs_compat)
+ * @see vitest.integration.workerd.nocompat.config.ts - Vitest config that uses this
+ * @see vitest.integration.workerd.config.ts - Main vitest config (with nodejs_compat)
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "integration-tests-workerd-nocompat",
+  "main": "tests/integration/runtime/workerd/dummy.ts",
+  "compatibility_date": "2026-05-23",
+  "alias": {
+    "ws": "./packages/browser-stagehand/src/polyfills/ws.ts"
+  }
+}

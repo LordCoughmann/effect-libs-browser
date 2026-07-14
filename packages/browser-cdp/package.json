@@ -1,0 +1,50 @@
+{
+  "name": "@effect-libs/browser-cdp",
+  "version": "0.0.0",
+  "description": "Experimental zero-dependency CDP client for @effect-libs/browser.",
+  "homepage": "https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-cdp#readme",
+  "bugs": {
+    "url": "https://github.com/LordCoughmann/effect-libs-browser/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LordCoughmann/effect-libs-browser.git",
+    "directory": "packages/browser-cdp"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "source": "./src/index.ts"
+    },
+    "./serialization": {
+      "types": "./dist/internal/Page/Evaluate/serialization/index.d.ts",
+      "import": "./dist/internal/Page/Evaluate/serialization/index.js",
+      "source": "./src/internal/Page/Evaluate/serialization/index.ts"
+    },
+    "./WaitForNetworkIdle": {
+      "types": "./dist/internal/Page/WaitForNetworkIdle.d.ts",
+      "import": "./dist/internal/Page/WaitForNetworkIdle.js",
+      "source": "./src/internal/Page/WaitForNetworkIdle.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@effect-libs/browser": "workspace:*",
+    "devtools-protocol": "^0.0.1660672"
+  },
+  "peerDependencies": {
+    "effect": "catalog:"
+  }
+}

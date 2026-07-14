@@ -1,0 +1,24 @@
+/**
+ * Wrangler config for Stagehand + CDP test worker.
+ *
+ * WORKAROUND for: https://github.com/cloudflare/workers-sdk/issues/13037
+ * Fix in progress: https://github.com/cloudflare/workers-sdk/pull/13062
+ *
+ * This worker is tested via `wrangler dev` (not vitest-pool-workers) because
+ * vitest-pool-workers has a module resolution bug with @smithy/* packages.
+ *
+ * NOTE: The ws alias path must be relative to this file's location.
+ * This file is at: tests/integration/runtime/workerd/stagehand/test-worker/
+ * So the path needs 6 `../` to reach project root, then
+ * packages/browser-stagehand/src/polyfills/ws.ts
+ */
+{
+  "$schema": "../../../../../../node_modules/wrangler/config-schema.json",
+  "name": "stagehand-cdp-test",
+  "main": "./worker.ts",
+  "compatibility_date": "2026-05-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "alias": {
+    "ws": "../../../../../../packages/browser-stagehand/src/polyfills/ws.ts",
+  },
+}

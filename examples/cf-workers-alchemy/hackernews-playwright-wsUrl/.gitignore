@@ -1,0 +1,10 @@
+node_modules/
+.alchemy/
+
+# Alchemy state
+.dev.vars*
+!.dev.vars.example
+
+# Environment
+.env*
+!.env.example

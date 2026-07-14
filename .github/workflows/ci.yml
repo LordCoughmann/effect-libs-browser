@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Check (format + lint + typecheck)
+        run: pnpm check
+
+      - name: Code health (fallow)
+        # Dead-code is the strict fail-gate. Dupes + complexity are
+        # reported (see fallow docs) but not failing — the codebase has
+        # acknowledged duplication in test boilerplate and large generated
+        # CDP internals that are out of scope to refactor before publish.
+        # See docs/contributing/fallow.md for the policy.
+        run: npx fallow dead-code --fail-on-issues
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Unit tests
+        run: pnpm test:unit
+
+  # Integration tests require external services (Steel, Chrome CDP).
+  # PR authors are responsible for running them locally when relevant.
+  # See CONTRIBUTING.md for details.

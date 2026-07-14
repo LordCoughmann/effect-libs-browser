@@ -1,0 +1,89 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["es2023", "dom"],
+    "moduleDetection": "force",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "customConditions": ["source"],
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@test/*": ["./tests/*"],
+      // Map workspace package names → source so tsgo resolves package imports and
+      // white-box relative imports (tests reaching into packages/*/src) to the
+      // SAME files. Without these, the workspace symlink + `source` condition can
+      // create a second module instance and break type identity for tests that
+      // mix both resolution styles. Mirrors the pre-split tsconfig.
+      "@effect-libs/browser": ["./packages/browser/src/index.ts"],
+      "@effect-libs/browser-cdp/serialization": [
+        "./packages/browser-cdp/src/internal/Page/Evaluate/serialization/index.ts"
+      ],
+      "@effect-libs/browser-cdp/WaitForNetworkIdle": [
+        "./packages/browser-cdp/src/internal/Page/WaitForNetworkIdle.ts"
+      ],
+      "@effect-libs/browser-cdp": ["./packages/browser-cdp/src/index.ts"],
+      "@effect-libs/browser-playwright": ["./packages/browser-playwright/src/index.ts"],
+      "@effect-libs/browser-stagehand/ws": ["./packages/browser-stagehand/src/polyfills/ws.ts"],
+      "@effect-libs/browser-stagehand": ["./packages/browser-stagehand/src/index.ts"],
+      "@effect-libs/browser-providers/cf-browser-run/CfBrowserRunSdk": [
+        "./packages/browser-providers/src/cf-browser-run/CfBrowserRunSdk.ts"
+      ],
+      "@effect-libs/browser-providers/cf-browser-run-binding/CfBrowserRunBindingSdk": [
+        "./packages/browser-providers/src/cf-browser-run-binding/CfBrowserRunBindingSdk.ts"
+      ],
+      "@effect-libs/browser-providers/steel": ["./packages/browser-providers/src/steel/index.ts"],
+      "@effect-libs/browser-providers/browserbase": [
+        "./packages/browser-providers/src/browserbase/index.ts"
+      ],
+      "@effect-libs/browser-providers/cf-browser-run": [
+        "./packages/browser-providers/src/cf-browser-run/index.ts"
+      ],
+      "@effect-libs/browser-providers/cf-browser-run-binding": [
+        "./packages/browser-providers/src/cf-browser-run-binding/index.ts"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "@effect/language-service",
+        "diagnosticSeverity": {
+          "unnecessaryEffectGen": "off",
+          "lazyEffect": "off",
+          "returnEffectInGen": "off"
+        }
+      }
+    ]
+  },
+  "include": [
+    "packages",
+    "tests",
+    "scripts",
+    "vitest.shared.config.ts",
+    "vitest.integration.node.config.ts",
+    "vitest.providers.config.ts",
+    "vitest.unit.config.ts"
+  ],
+  "exclude": [
+    "repos/**",
+    "tests/integration/runtime/bun/**",
+    "tests/integration/runtime/deno/**",
+    "tests/integration/shared/cdp/_parityNotPlanned.ts",
+    // Stub re-exports emitted by tsdown + rolldown-plugin-dts into src/
+    // during a multi-package build (typescript@7 + tsgo generator paths;
+    // deferred — see `.local/PRE_RELEASE_TODO.md` "Last priority —
+    // research offline"). The dist/*.d.ts bundles are the source of
+    // truth. Excluding these keeps `tsgo --noEmit` and `oxlint` clean
+    // for the actual source tree.
+    "packages/*/src/**/*.d.ts"
+  ]
+}

@@ -1,0 +1,104 @@
+name: Publish
+
+# Per-package npm publish. Triggers on the per-package tags that release-please
+# creates on release-please PR merge (e.g. `@effect-libs/browser@v0.1.0`),
+# or via manual dispatch for the first publish before release-please has
+# run a cycle.
+#
+# Pair with `.github/workflows/release-please.yml` (which produces the tags
+# and GitHub releases). Repo-level setting
+# publishing-credentials checklist).
+
+on:
+  push:
+    tags:
+      - "@effect-libs/browser@v*"
+      - "@effect-libs/browser-cdp@v*"
+      - "@effect-libs/browser-playwright@v*"
+      - "@effect-libs/browser-stagehand@v*"
+      - "@effect-libs/browser-providers@v*"
+      - "@effect-libs/cloudflare-playwright@v*"
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package to publish (manual first-publish escape hatch)"
+        required: true
+        type: choice
+        options:
+          - "@effect-libs/browser"
+          - "@effect-libs/browser-cdp"
+          - "@effect-libs/browser-playwright"
+          - "@effect-libs/browser-stagehand"
+          - "@effect-libs/browser-providers"
+          - "@effect-libs/cloudflare-playwright"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # `id-token: write` enables npm provenance attestation.
+    # `contents: read` is all publish needs.
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Resolve package directory from trigger
+        id: resolve
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PKG="${{ inputs.package }}"
+          else
+            # Tag shape: "@effect-libs/browser@v0.1.0" → "@effect-libs/browser"
+            PKG="${GITHUB_REF_NAME%@*}"
+          fi
+          case "$PKG" in
+            "@effect-libs/browser")               echo "dir=packages/browser"                       >  "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-cdp")          echo "dir=packages/browser-cdp"                        >  "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-playwright")   echo "dir=packages/browser-playwright"                 >  "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-stagehand")    echo "dir=packages/browser-stagehand"                  >  "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-providers")    echo "dir=packages/browser-providers"                  >  "$GITHUB_OUTPUT" ;;
+            "@effect-libs/cloudflare-playwright") echo "dir=packages/cloudflare-playwright"     >  "$GITHUB_OUTPUT" ;;
+            *) echo "::error::Unknown package for trigger: $PKG"; exit 1 ;;
+          esac
+
+      - name: Verify package.json version matches tag
+        if: github.event_name != 'workflow_dispatch'
+        run: |
+          DIR="${{ steps.resolve.outputs.dir }}"
+          PKG_VERSION=$(node -p "require('./$DIR/package.json').version")
+          # Strip leading "v" from tag version: "@effect-libs/browser@v0.1.0" → "0.1.0"
+          TAG_VERSION="${GITHUB_REF_NAME##*@v}"
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::Version mismatch: package.json=$PKG_VERSION, tag=v$TAG_VERSION"
+            exit 1
+          fi
+          echo "Version OK: $PKG_VERSION"
+
+      - name: Build
+        run: pnpm --filter "${{ steps.resolve.outputs.dir }}" build
+
+      - name: Publish
+        run: |
+          cd "${{ steps.resolve.outputs.dir }}"
+          # --provenance: requires `id-token: write` (set above) for OIDC attestation.
+          # --no-git-checks: the workspace may have unrelated files touched in CI
+          #   (the verify gate's docs formatter, etc.) — we don't want that to block
+          #   the publish from a clean tag.
+          pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

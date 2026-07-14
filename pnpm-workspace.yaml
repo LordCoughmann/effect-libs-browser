@@ -1,0 +1,62 @@
+packages:
+  - "packages/*"
+  - "examples/**"
+# The fork is a workspace package, but pnpm tries to auto-install peer deps
+# from the npm registry by default. Until the fork is published, force the
+# workspace package to satisfy every reference (including peer deps in
+# packages/browser-playwright and packages/browser-providers). Drop this override once the
+# fork is on npm.
+overrides:
+  "@effect-libs/cloudflare-playwright": "workspace:*"
+  # tsdown@0.22.1 + rolldown-plugin-dts@0.25.1 don't yet support
+  # typescript@7 (used for effect-tsgo's native backend). Pin to the
+  # versions that added TS7 support so the build doesn't break.
+  tsdown: ^0.22.5
+  rolldown-plugin-dts: ^0.27.6
+catalog:
+  alchemy: 2.0.0-beta.61
+  effect: ">=4.0.0-beta.97 || >=4.0.0"
+  "@effect/platform-node": ">=4.0.0-beta.97 || >=4.0.0"
+  "@effect/platform-bun": ">=4.0.0-beta.97 || >=4.0.0"
+  "@effect/vitest": ">=4.0.0-beta.97 || >=4.0.0"
+  "@cloudflare/vitest-pool-workers": "^0.18.4"
+  "@types/node": "^24.12.4"
+  typescript: "^7.0.0-dev.20260707.2"
+  vitest: "^4.1.10"
+  wrangler: "^4.110.0"
+allowBuilds:
+  bufferutil: false
+  esbuild: true
+  simple-git-hooks: true
+  workerd: true
+  "@google/genai": false
+  msgpackr-extract: false
+  protobufjs: false
+  sharp: false
+minimumReleaseAgeExclude:
+  - '@distilled.cloud/aws@0.22.4'
+  - '@distilled.cloud/axiom@0.22.4'
+  - '@distilled.cloud/cloudflare-rolldown-plugin@0.10.2'
+  - '@distilled.cloud/cloudflare-runtime@0.10.2'
+  - '@distilled.cloud/cloudflare-vite-plugin@0.10.2'
+  - '@distilled.cloud/cloudflare@0.22.4'
+  - '@distilled.cloud/core@0.22.4'
+  - '@distilled.cloud/neon@0.22.4'
+  - '@distilled.cloud/planetscale@0.22.4'
+  - alchemy@2.0.0-beta.61
+  - '@effect/platform-bun@4.0.0-beta.97'
+  - '@effect/platform-node-shared@4.0.0-beta.97'
+  - '@effect/platform-node@4.0.0-beta.97'
+  - '@effect/vitest@4.0.0-beta.97'
+  - effect@4.0.0-beta.97
+  - tsdown@0.22.5
+  - '@fallow-cli/darwin-arm64@3.4.2'
+  - '@fallow-cli/darwin-x64@3.4.2'
+  - '@fallow-cli/linux-arm64-gnu@3.4.2'
+  - '@fallow-cli/linux-arm64-musl@3.4.2'
+  - '@fallow-cli/linux-x64-gnu@3.4.2'
+  - '@fallow-cli/linux-x64-musl@3.4.2'
+  - '@fallow-cli/win32-arm64-msvc@3.4.2'
+  - '@fallow-cli/win32-x64-msvc@3.4.2'
+  - fallow@3.4.2
+  - tsx@4.23.1

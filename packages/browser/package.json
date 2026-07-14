@@ -1,0 +1,36 @@
+{
+  "name": "@effect-libs/browser",
+  "version": "0.0.0",
+  "description": "Browser automation for Effect on edge runtimes — the core interface package. Start here, then pick a module (@effect-libs/browser-playwright / -cdp / -stagehand).",
+  "homepage": "https://github.com/LordCoughmann/effect-libs-browser#readme",
+  "bugs": {
+    "url": "https://github.com/LordCoughmann/effect-libs-browser/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LordCoughmann/effect-libs-browser.git",
+    "directory": "packages/browser"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "source": "./src/index.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "peerDependencies": {
+    "effect": "catalog:"
+  }
+}

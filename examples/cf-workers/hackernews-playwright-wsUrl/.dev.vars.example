@@ -1,0 +1,3 @@
+# CDP WebSocket URL
+# Can be a local browser, VPS, or provider URL (e.g., ws://steel.dev/...?apikey=...)
+CDP_URL=ws://localhost:9222

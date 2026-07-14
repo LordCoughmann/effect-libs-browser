@@ -1,0 +1,3 @@
+# Cloudflare Browser Run credentials
+CF_ACCOUNT_ID=your_account_id_here
+CF_API_TOKEN=your_api_token_here

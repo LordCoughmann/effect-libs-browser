@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@effect-libs/browser": ["../../../../packages/browser/src/index.ts"],
+      "@effect-libs/browser-cdp": ["../../../../packages/browser-cdp/src/index.ts"],
+      "@effect-libs/browser-playwright": ["../../../../packages/browser-playwright/src/index.ts"],
+      "@effect-libs/browser-stagehand": ["../../../../packages/browser-stagehand/src/index.ts"],
+      "@effect-libs/browser-providers/*": ["../../../../packages/browser-providers/src/*"],
+      "@test/*": ["../../../*"]
+    }
+  }
+}

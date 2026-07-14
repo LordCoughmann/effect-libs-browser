@@ -1,0 +1,16 @@
+{
+  "name": "@tests/integration-bun",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "bun x tsc --noEmit"
+  },
+  "dependencies": {
+    "effect": "^4.0.0-beta.70"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

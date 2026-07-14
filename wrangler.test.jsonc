@@ -1,0 +1,31 @@
+/**
+ * Wrangler config for vitest-pool-workers (used by vitest.integration.workerd.config.ts).
+ *
+ * WHY THIS FILE EXISTS:
+ * - vitest-pool-workers requires a wrangler config for compatibility flags, aliases, and bindings
+ * - Wrangler requires a "main" entry point, satisfied by a no-op dummy file
+ * - The actual tests are run by vitest, not wrangler
+ *
+ * USAGE:
+ * - vitest-pool-workers reads this config for workerd compatibility settings
+ * - The real tests are in tests/integration/runtime/workerd/cdp/ and playwright/
+ * - The "browser" binding enables CfBrowserRunBindingProvider integration tests
+ *
+ * @see tests/integration/runtime/workerd/dummy.ts - No-op entry point for wrangler's "main" requirement
+ * @see vitest.integration.workerd.config.ts - Vitest config that uses this wrangler config
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "integration-tests-workerd",
+  "main": "tests/integration/runtime/workerd/dummy.ts",
+  "compatibility_date": "2026-05-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "alias": {
+    "ws": "./packages/browser-stagehand/src/polyfills/ws.ts"
+  },
+  // Browser Run binding for CfBrowserRunBindingProvider integration tests.
+  // Requires local Chromium. Tests are skipped if binding is unavailable.
+  "browser": {
+    "binding": "MYBROWSER"
+  }
+}

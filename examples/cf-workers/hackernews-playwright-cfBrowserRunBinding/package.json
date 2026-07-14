@@ -1,0 +1,26 @@
+{
+  "name": "cf-workers-hackernews-playwright-cfbrowserrunbinding",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "destroy": "wrangler delete",
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "test": "vitest",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@effect-libs/browser": "workspace:*",
+    "effect": "catalog:",
+    "@effect-libs/browser-playwright": "workspace:*",
+    "@effect-libs/browser-providers": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "wrangler": "catalog:"
+  }
+}

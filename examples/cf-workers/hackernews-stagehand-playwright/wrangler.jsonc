@@ -1,0 +1,24 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ *
+ * `compatibility_date` pins the Worker runtime to a specific date; set it
+ * to the date you first deploy. Bump it when you want to opt into newer
+ * runtime behavior.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-workers-hackernews-stagehand-playwright",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-23",
+  "observability": {
+    "enabled": true,
+  },
+  "upload_source_maps": true,
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "alias": {
+    "ws": "./node_modules/@effect-libs/browser-stagehand/dist/polyfills/ws.js",
+  },
+}
