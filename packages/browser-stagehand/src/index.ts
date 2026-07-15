@@ -2,9 +2,9 @@
  * `browser-stagehand` — AI-powered browser automation (Stagehand v3)
  * on Cloudflare Workers.
  *
- * **AI / LLM usage.** This module is a thin wrapper around upstream
+ * **AI / LLM usage.** This package is a thin wrapper around upstream
  * `@browserbasehq/stagehand`. The wrapper code is LLM-assisted but small in
- * volume and human-reviewed. The module calls an LLM at runtime for
+ * volume and human-reviewed. The package calls an LLM at runtime for
  * `act` / `extract` / `observe` — every call costs money and adds latency.
  *
  * Install:
