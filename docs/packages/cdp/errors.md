@@ -14,7 +14,7 @@ parent error wrapping a discriminated union of reasons.
 
 ## The shape
 
-`CdpError` carries `module` (the source wrapper), `method` (the call), `reason` (the discriminated union of 14 reason classes), `isRetryable` (delegates to the reason), `cause === reason` (so the typed reason is visible in stack traces as `Caused by: ...`), and `message` (derived from `module` + `method` + `reason._tag` + `reason.description`). The `_tag` on `CdpError` itself is always `"effect-libs/browser/CdpError"`. Match on `reason._tag` (or use `Effect.catchReason`) for the specific reason (or use the `isXxxError` class guards exported from the module).
+`CdpError` carries `module` (the source wrapper), `method` (the call), `reason` (the discriminated union of 14 reason classes), `isRetryable` (delegates to the reason), `cause === reason` (so the typed reason is visible in stack traces as `Caused by: ...`), and `message` (derived from `module` + `method` + `reason._tag` + `reason.description`). The `_tag` on `CdpError` itself is always `"effect-libs/browser/CdpError"`. Match on `reason._tag` (or use `Effect.catchReason`) for the specific reason (or use the `isXxxError` class guards exported from the package).
 
 ## Reason classes
 

@@ -16,7 +16,7 @@ pnpm add @effect-libs/browser effect@beta
 ## Documentation
 
 - [Module index →](../../docs/README.md)
-- [Choosing a client →](../../docs/concepts/client-and-provider.md#choosing-a-client)
-- [Concepts → client + provider](../../docs/concepts/client-and-provider.md)
+- [Choosing a client →](../../docs/overview.md#choosing-a-client)
+- [Concepts → Client & Provider](../../docs/overview.md)
 
 MIT.

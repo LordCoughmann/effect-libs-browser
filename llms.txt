@@ -36,7 +36,7 @@ concepts, recipes, and matrices.
 
 ## Concepts
 
-- [Client + Provider](docs/concepts/client-and-provider.md): the two-track architecture (client + provider) and why the driver/provider separation exists
+- [Client & Provider](docs/overview.md): the two-track architecture (Client & Provider) and why the driver/provider separation exists
 - [Scoped Resources](docs/concepts/scoped-resources.md): `withSession` / `withConnection` lifetime semantics
 - [Managing resources](docs/concepts/managing-resources.md): pooling patterns, owned-scope patterns, durable objects
 - [Errors are Typed](docs/concepts/errors.md): typed error hierarchies, `catchTag`, `catchReason`, `isRetryable`
@@ -49,7 +49,6 @@ concepts, recipes, and matrices.
 
 - [browser-playwright](docs/modules/playwright/index.md): landing page, install, runtime compatibility, when to use
 - [browser-playwright — Context API](docs/modules/playwright/context.md): `BrowserContext` wrapper, context vs page vs connection
-- [browser-playwright — Input Devices](docs/modules/playwright/input.md): keyboard / mouse / touchscreen, choosing the right input, abort-signal caveat
 - [browser-playwright — Added APIs](docs/modules/playwright/added-apis.md): `page.fetch`, `page.httpClient`, `page.context()`, lazy getters
 - [browser-playwright — Errors](docs/modules/playwright/errors.md): typed reason hierarchy, module-field table
 - [browser-playwright — Comparison & Alternatives](docs/modules/playwright/comparison.md): vs other libraries

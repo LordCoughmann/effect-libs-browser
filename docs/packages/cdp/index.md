@@ -74,22 +74,22 @@ The endpoint is a `ws://` or `wss://` URL — the Chrome DevTools Protocol trans
 | ----------------------------- | ------ | ------------------------------------------------------------------- |
 | Cloudflare Workers            | ✅     | no `nodejs_compat` needed                                           |
 | Vercel Edge / Fastly / Akamai | 🟡     | untested but expected to work (any runtime with native `WebSocket`) |
-| Node.js / Deno / Bun          | 🟠     | works — but original `playwright` is the better default             |
+| Node.js / Deno / Bun          | 🟠     | works — but upstream Playwright is the better default             |
 
-For per-module runtime details, see [Runtime & Browser Support](../../reference/runtime-and-browser-support.md).
+For per-client runtime details, see [Runtime & Browser Support](../../reference/runtime-and-browser-support.md).
 
 ## When to use
 
-**Use this module when:**
+**Use this package when:**
 
 - You need a zero-dependency client (no `nodejs_compat` required)
 - You're on a runtime without Node.js compat
-- You need raw Chrome DevTools Protocol access alongside a Playwright-style API
+- You need raw Chrome DevTools Protocol access alongside a Playwright-style API (the same shape as upstream Playwright)
 
 **Use [`@effect-libs/browser-playwright`](./../playwright/index.md) instead when:**
 
 - You want the full, stable upstream Playwright API on edge runtimes
-- You want a battle-tested, human-reviewed implementation
+- You want a stable, human-reviewed implementation on a published dependency graph
 
 **Use a different CDP client when:**
 
@@ -102,13 +102,13 @@ For the design rationale behind `@effect-libs/browser-cdp`'s deviations from ups
 - [`@effect-libs/browser-playwright`](./../playwright/index.md) — the full-API sibling on edge runtimes
 - [`browser-stagehand`](./../stagehand/index.md) — AI-powered browser automation on top of upstream `Playwright`
 - [`browser-cdp` — Feature Parity with Upstream Playwright](../../reference/cdp-feature-parity.md) — `browser-cdp`'s deviations from upstream Playwright
-- [Migrating from Playwright](../../migrations/from-playwright.md) — coming from vanilla upstream Playwright
-- [Concepts](../../concepts/client-and-provider.md) — client + provider, scoped resources, errors
+- [Migrating from upstream Playwright](../../migrations/from-playwright.md) — coming from vanilla upstream Playwright
+- [Concepts](../../overview.md) — Client & Provider, scoped resources, errors
 - [Source on GitHub](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-cdp/src) — full API in JSDoc
 
 ## AI / LLM usage disclosure
 
-While the [client and provider abstractions](../../concepts/client-and-provider.md) is designed and coded by the maintainer, the `@effect-libs/browser-cdp` internals (i.e. [`packages/browser-cdp/src/internal/`](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-cdp/src/internal)) is coded by frontier LLMs and the maintainer has not conducted a line-by-line review of the generated code.
+While the [client and provider abstractions](../../overview.md) is designed and coded by the maintainer, the `@effect-libs/browser-cdp` internals (i.e. [`packages/browser-cdp/src/internal/`](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-cdp/src/internal)) is coded by frontier LLMs and the maintainer has not conducted a line-by-line review of the generated code.
 
 Nonetheless, the maintainer maintains the following practices to ensure code quality:
 

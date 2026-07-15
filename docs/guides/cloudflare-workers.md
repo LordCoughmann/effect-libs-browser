@@ -8,7 +8,7 @@
 
 ## Part 1: New project from scratch
 
-This walks through a production-ready Worker: `browser-playwright` + `SteelProvider`. Swap Steel for Browserbase or Browser Run by changing one layer — nothing else moves.
+This walks through a production-ready Cloudflare Worker: `browser-playwright` + `SteelProvider`. Swap Steel for Browserbase or Browser Run by changing one layer — nothing else moves.
 
 ### 1. Create the project
 
@@ -68,7 +68,7 @@ pnpm add -D wrangler typescript @types/node
 STEEL_API_KEY=your-steel-api-key
 ```
 
-### 6. Write the Worker
+### 6. Write the Cloudflare Worker
 
 <!-- verify:ignore -->
 
@@ -118,12 +118,12 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-That's the whole Worker. Here's what's happening:
+That's the whole Cloudflare Worker. Here's what's happening:
 
 1. **`Playwright.layer`** provides the Playwright client — the API you call
 2. **`SteelProvider.layer({ apiKey })`** provides the Steel provider — where the browser lives. Uses `layer` (not `layerConfig`) because `layerConfig` reads from Node.js `process.env`, which doesn't exist in Cloudflare Workers
 3. **`playwright.withSession({ provider }, ...)`** opens a browser session on Steel's infrastructure, gives you a Playwright `Page`, and cleans up when the callback returns — even on errors or timeouts
-4. Inside the callback, `page` is a standard Playwright Page — `goto`, `title`, `click`, `fill`, `evaluate`, everything
+4. Inside the callback, `page` is a standard upstream Playwright `Page` — `goto`, `title`, `click`, `fill`, `evaluate`, everything
 
 ### 7. Run it
 
@@ -202,16 +202,16 @@ Each provider has its own setup — see the provider reference docs:
 | ------------------------------------------------------------------------ | ------------------------------------- | ------------------------------------------------------ |
 | [Steel](../providers/steel.md)                                           | API key in `.dev.vars`                | Anti-bot bypass, CAPTCHA solving, persistent profiles  |
 | [Browserbase](../providers/browserbase.md)                               | API key in `.dev.vars`                | Enterprise proxies, persistent contexts                |
-| [Browser Run (HTTP)](../providers/cf-browser-run.md)                     | Account ID + API token                | Cloudflare-native, works with CDP and Stagehand        |
-| [Browser Run (binding)](../providers/cf-browser-run.md#binding-provider) | `browser.binding` in `wrangler.jsonc` | Cloudflare Workers-only, fastest path, Playwright only |
+| [Browser Run (HTTP)](../providers/cf-browser-run.md)                     | Account ID + API token                | Cloudflare-native, works with `browser-cdp` and `browser-stagehand`        |
+| [Browser Run (binding)](../providers/cf-browser-run.md#binding-provider) | `browser.binding` in `wrangler.jsonc` | Cloudflare Workers-only, no HTTP roundtrip, `browser-playwright` only |
 
 > **Important:** All external providers on Cloudflare Workers use `layer({ apiKey: Redacted.make(...) })`, NOT `layerConfig(...)`. `layerConfig` reads from Node.js `process.env` via Effect's `Config` system, which doesn't exist in Cloudflare Workers. Always pass values explicitly from `env`.
 
 ---
 
-## Part 3: Adding to an existing Worker
+## Part 3: Adding to an existing Cloudflare Worker
 
-Already have a Worker? Add browser automation in three steps:
+Already have a Cloudflare Worker? Add browser automation in three steps:
 
 **1. Add dependencies:**
 
@@ -287,18 +287,17 @@ export default {
 
 ## Part 4: Going further
 
-Now that you have a working browser automation Worker, the rest of the docs are reference material for specific needs:
+Now that you have a working browser automation Cloudflare Worker, the rest of the docs are reference material for specific needs:
 
 | When you need to...                    | Read this                                                                                                                                                                                                |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Understand the architecture            | **[Concepts](../concepts/client-and-provider.md)** — client + provider, scoped resources (Session → Connection → Context → Page), typed errors                                                           |
-| Handle errors properly                 | **[Playwright — Errors](../packages/playwright/errors.md)** — 4 typed reason classes with pattern matching                                                                                               |
+| Understand the architecture            | **[Concepts](../overview.md)** — Client & Provider, scoped resources (Session → Connection → Context → Page), typed errors                                                           |
+| Handle errors properly                 | **[`browser-playwright` — Errors](../packages/playwright/errors.md)** — 4 typed reason classes with pattern matching                                                                                               |
 | Add retries and timeouts               | **[Concepts → Composing with effects](../concepts/effect.md)** — `Effect.retry`, `Effect.timeout`, `Effect.withSpan`                                                                     |
 | Pool sessions across requests          | **[Managing Resources](../concepts/resources.md)** — `withX` vs `acquireX`, session/connection/context/page tradeoffs                                                                           |
 | Persist login state across sessions    | **[Managing Resources → Persisting auth](../concepts/resources.md#persisting-auth-across-sessions)** — save & restore vs keep alive                                                             |
 | Use Page API beyond `goto`/`title`     | **[`browser-playwright` → Page API](../packages/playwright/index.md#added-apis)** — click, fill, evaluate, locators, and the `page.use()` escape hatch                                                 |
 | Set geolocation, cookies, user agent   | **[`browser-playwright` — Context API](../packages/playwright/context.md)** — `setGeolocation`, `grantPermissions`, `addCookies`, `storageState`                                                         |
-| Use keyboard, mouse, touchscreen       | **[`browser-playwright` — Input](../packages/playwright/input.md)** — `keyboard.type`, `mouse.drag`, `touchscreen.tap`                                                                                   |
 | Make HTTP requests through the browser | **[`browser-playwright` — Added APIs](../packages/playwright/added-apis.md)** — `page.fetch`, `page.httpClient`                                                                                          |
 | Use AI-powered automation              | **[`browser-stagehand`](../packages/stagehand/index.md)** — `act`/`extract`/`observe` primitives on Cloudflare Workers                                                                                   |
 | Go lightweight (no `nodejs_compat`)    | **[`browser-cdp`](../packages/cdp/index.md)** — zero-dependency client, same API shape                                                                                                                   |
@@ -313,22 +312,22 @@ Now that you have a working browser automation Worker, the rest of the docs are 
 
 - Chrome only — no Firefox or WebKit
 - No `browserType.launch` — use `withSession` or `withConnection` instead
-- No Playwright Test runner
+- No upstream Playwright Test runner
 - Some APIs not implemented — see [`browser-playwright` → Not supported](../packages/playwright/index.md#not-supported)
 
 ### Provider-specific
 
 - **Steel, Browserbase:** require API keys. `layerConfig()` doesn't work in Cloudflare Workers — use `layer({ apiKey: Redacted.make(...) })` with values from `env`
 - **Browser Run:** [session duration and concurrency limits](https://developers.cloudflare.com/browser-run/platform/limits/); no persistent state between sessions
-- **Browser Run binding:** Playwright only — no CDP or Stagehand
+- **Browser Run binding:** `browser-playwright` only — no `browser-cdp` or `browser-stagehand`
 - **All providers:** sessions are isolated billing units — save cookies/localStorage yourself if you need state across sessions
 
 ---
 
 ## See also
 
-- [Getting started](../getting-started.md) — architecture overview, pick a module and provider
-- [Concepts](../concepts/client-and-provider.md) — client + provider, scoped resources, typed errors
+- [Getting started](../getting-started.md) — architecture overview, pick a client and provider
+- [Concepts](../overview.md) — Client & Provider, scoped resources, typed errors
 - [Managing Resources](../concepts/resources.md) — sessions, connections, contexts, pages, pooling
 - [`browser-playwright`](../packages/playwright/index.md) — full upstream Playwright API
 - [Examples](../../examples/README.md) — runnable Hacker News scrapers

@@ -48,9 +48,9 @@ const withCfBrowserRun = scrape.pipe(
 
 Use the `BrowserProvider` tag when the provider choice is a deployment decision (Steel in prod, local Chrome in dev). Use a concrete provider tag when the code is provider-specific (persistent contexts, profiles).
 
-> **See also:** [Concepts → Client + provider](../concepts/client-and-provider.md), [Cloudflare Workers Guide](../guides/cloudflare-workers.md#part-2-swap-providers--one-line-nothing-else-changes)
+> **See also:** [Concepts → Client & Provider](../overview.md), [Cloudflare Workers Guide](../guides/cloudflare-workers.md#part-2-swap-providers--one-line-nothing-else-changes)
 
 ## See also
 
-- [Concepts → Client + provider](../concepts/client-and-provider.md) — the architecture that makes this work
+- [Concepts → Client & Provider](../overview.md) — the architecture that makes this work
 - [Providers](../providers/steel.md) — what each provider gives you

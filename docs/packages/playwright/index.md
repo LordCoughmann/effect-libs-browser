@@ -2,7 +2,7 @@
 
 Full upstream Playwright API on Cloudflare Workers and other edge runtimes. Chrome only. Based on `@cloudflare/playwright` with patches for external Chrome DevTools Protocol browser support.
 
-> **Stable.** The recommended default for production browser automation on edge runtimes. For lightweight scraping or non-Worker runtimes, see [`browser-cdp`](./../cdp/index.md) (which is LLM-assisted — see its [AI / LLM usage disclosure →](./../cdp/index.md#ai--llm-usage-disclosure)).
+> **Stable.** The recommended default for production browser automation on edge runtimes. For lightweight scraping or Node.js / Bun / Deno (no Cloudflare Worker), see [`browser-cdp`](./../cdp/index.md) (which is LLM-assisted — see its [AI / LLM usage disclosure](./../cdp/index.md#ai--llm-usage-disclosure)).
 
 ## Install
 
@@ -33,7 +33,7 @@ Three methods added on top of the upstream `Page` API:
 | `page.httpClient`           | `HttpClient.HttpClient` (Effect)         | Effect-native HTTP client                                                                                                    |
 | `page.context()`            | `PlaywrightBrowserContext`               | Page-level context accessor — `setGeolocation`, `grantPermissions`, etc. without going through `connection.withContext(...)` |
 
-Details: [Playwright — Added APIs](./added-apis.md).
+Details: [`browser-playwright` — Added APIs](./added-apis.md).
 
 ## Not supported
 
@@ -62,16 +62,16 @@ Inherited from `@cloudflare/playwright`:
 | Runtime              | Status | Notes                                               |
 | -------------------- | ------ | --------------------------------------------------- |
 | Cloudflare Workers   | ✅     | needs `nodejs_compat`                               |
-| Node.js / Deno / Bun | 🟠     | works — original `playwright` is the better default |
+| Node.js / Deno / Bun | 🟠     | works — upstream Playwright is the better default |
 
 Other edge runtimes (Fastly, Akamai, etc.) are not supported — use [`@effect-libs/browser-cdp`](./../cdp/index.md) instead.
 
 ## When to use
 
-**Use this module when:**
+**Use this package when:**
 
-- Cloudflare Workers / edge runtime — original `playwright` doesn't run here
-- You need the full Playwright API with external providers (Steel, Browserbase)
+- Cloudflare Workers / edge runtime — upstream Playwright doesn't run here
+- You need the full upstream Playwright API with external providers (Steel, Browserbase)
 
 **Use something else when:**
 
@@ -84,9 +84,8 @@ Full comparison: [Playwright — Comparison & Alternatives](./comparison.md).
 
 - [Migrating from Playwright](../../migrations/from-playwright.md) — coming from vanilla Playwright
 - [Playwright — Context API](./context.md) — `BrowserContext` wrapper
-- [Playwright — Input](./input.md) — keyboard / mouse / touchscreen
 - [Playwright — Errors](./errors.md) — typed reason hierarchy
 - [Playwright — Added APIs](./added-apis.md) — `page.fetch` / `page.httpClient` / lazy getters
-- [Concepts](../../concepts/client-and-provider.md) — client + provider, scoped resources, errors
+- [Concepts](../../overview.md) — Client & Provider, scoped resources, errors
 - [`browser-cdp` — Feature Parity with Upstream Playwright](../../reference/cdp-feature-parity.md) — `browser-cdp`'s deviations from upstream Playwright
 - [Source on GitHub](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-playwright/src) — full API in JSDoc

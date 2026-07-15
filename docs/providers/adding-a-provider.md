@@ -215,7 +215,7 @@ The `BrowserProviderError` class already provides:
 
 ## Using with CDP (experimental)
 
-Custom providers work with both `@effect-libs/browser-playwright` and `@effect-libs/browser-cdp`. The shape is identical to the Complete Example above — just swap `Playwright` for `Cdp` (and use `Cdp.layer` instead of `Playwright.layer` in the `Effect.provide` chain). The provider interface is module-agnostic.
+Custom providers work with both `@effect-libs/browser-playwright` and `@effect-libs/browser-cdp`. The shape is identical to the Complete Example above — just swap `Playwright` for `Cdp` (and use `Cdp.layer` instead of `Playwright.layer` in the `Effect.provide` chain). The provider interface is client-agnostic.
 
 ## Reference
 

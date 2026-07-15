@@ -28,17 +28,17 @@ The upstream fork. Only connects to Cloudflare Browser Run's internal endpoint.
 
 We apply four patches: external CDP URLs, lazy module loading, ESM type resolution, and a graceful skip for CDP targets without `browserContextId`. See the [fork's README](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/cloudflare-playwright/README.md) for details.
 
-**Pick `@effect-libs/browser-playwright` for:** any browser provider (Steel, Browserbase, local Chrome), works outside Workers for testing.
+**Pick `@effect-libs/browser-playwright` for:** any browser provider (Steel, Browserbase, local Chrome), works outside Cloudflare Workers for testing.
 
 **Pick @cloudflare/playwright for:** Browser Run only, no patches needed.
 
-`@cloudflare/playwright` only works with Cloudflare Browser Run and crashes on import outside Workers. We patch it to accept any `ws://` or `wss://` CDP URL and lazily load the `cloudflare:workers` module so it works in Node.js too (useful for testing).
+`@cloudflare/playwright` only works with Cloudflare Browser Run and crashes on import outside Cloudflare Workers. We patch it to accept any `ws://` or `wss://` CDP URL and lazily load the `cloudflare:workers` module so it works in Node.js too (useful for testing).
 
 ---
 
-## vs playwright (original)
+## vs upstream Playwright (original)
 
-The original Microsoft `playwright` package. Full API, all browsers, all platforms.
+The original Microsoft Playwright package. Full API, all browsers, all platforms.
 
 |                       | `@effect-libs/browser-playwright` | playwright |
 | --------------------- | --------------------------------- | ---------- |
@@ -62,11 +62,11 @@ The original Microsoft `playwright` package. Full API, all browsers, all platfor
 | Playwright Test       | ❌                                | ✅         |
 | Videos / Traces       | ❌                                | ✅         |
 
-**Pick `@effect-libs/browser-playwright` for:** edge runtimes where original playwright can't run.
+**Pick `@effect-libs/browser-playwright` for:** edge runtimes where upstream Playwright can't run.
 
-**Pick playwright for:** Node.js/Deno/Bun — full browser support, `launch()`, Playwright Test, simpler setup.
+**Pick upstream Playwright for:** Node.js/Deno/Bun — full browser support, `launch()`, Playwright Test, simpler setup.
 
-**On Node.js, Deno, or Bun — use original `playwright`.** Full browser support, `launch()`, simpler API. This module exists for constrained runtimes that can't run the original.
+**On Node.js, Deno, or Bun — use upstream Playwright.** Full browser support, `launch()`, simpler API. This package exists for constrained runtimes that can't run upstream Playwright.
 
 ---
 
@@ -105,7 +105,7 @@ The original Microsoft `playwright` package. Full API, all browsers, all platfor
 
 See [Effect](../../concepts/effect.md) for concrete before/after patterns — guaranteed resource cleanup, typed errors, provider swapping, and composability.
 
-**Don't want Effect?** The Playwright patches work independently — see [using without Effect](../../faq.md#can-i-use-this-library-without-effect).
+**Don't want Effect?** The `browser-playwright` patches work independently — see [using without Effect](../../faq.md#do-i-need-to-learn-effect-to-use-this).
 
 ## See also
 

@@ -4,7 +4,7 @@ Once you have a `page` (from any `withX` / `acquirePage`), what do you do with i
 
 ## Fill and submit a form
 
-Locate fields by selector, fill them, submit. The Playwright locator API works identically through this library.
+Locate fields by selector, fill them, submit. The locator API from upstream Playwright works identically through this library.
 
 <!-- verify:stubs -->
 
@@ -50,7 +50,7 @@ const fillForm = (apiKey: string) =>
   );
 ```
 
-> **See also:** [`@effect-libs/browser-playwright` → Page API](../packages/playwright/index.md#added-apis), [Playwright — Input](../packages/playwright/input.md)
+> **See also:** [`@effect-libs/browser-playwright` → Page API](../packages/playwright/index.md#added-apis)
 
 ---
 
@@ -116,9 +116,9 @@ The `Schema.decodeUnknownEffect` step gives you a typed `Story[]` or a parse err
 
 ---
 
-## Navigate and extract with Stagehand
+## Navigate and extract with `browser-stagehand`
 
-Stagehand uses natural language instructions instead of selectors. Good for pages with dynamic layouts, generated class names, or complex interactions.
+`browser-stagehand` uses natural language instructions instead of selectors. Good for pages with dynamic layouts, generated class names, or complex interactions.
 
 ```typescript
 import { Effect, Config } from "effect";
@@ -162,7 +162,7 @@ const extractWithAI = Effect.gen(function* () {
 
 Combine with `browser-playwright` for deterministic control + AI extraction on the same session — see the [`browser-stagehand` docs](../packages/stagehand/index.md).
 
-> **Note:** Stagehand calls an LLM at runtime. Every `act`/`extract`/`observe` call costs money and adds latency.
+> **Note:** `browser-stagehand` calls an LLM at runtime. Every `act`/`extract`/`observe` call costs money and adds latency.
 
 > **See also:** [`browser-stagehand`](../packages/stagehand/index.md)
 

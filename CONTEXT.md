@@ -2,7 +2,7 @@
 
 > Source-of-truth for writers, AI agents, and maintainers. **Read this before
 > writing user-facing copy, adding a module, or claiming a feature.** User-facing
-> explanations live in [`docs/concepts/client-and-provider.md`](./docs/concepts/client-and-provider.md).
+> explanations live in [`docs/overview.md`](./docs/overview.md).
 
 ## Positioning
 
@@ -122,7 +122,7 @@ all want to mean different things.
 | Our **Client** Effect service (the consumer-facing API) | `Playwright`, `Cdp`, `Stagehand` (PascalCase, the export name)                                                                                                                                                                    |
 | Upstream Playwright (Microsoft's library)               | `Playwright` (PascalCase); say "upstream Playwright" or "original Playwright" first mention                                                                                                                                       |
 | The wire protocol                                       | "Chrome DevTools Protocol" — spell it out at first mention; `CDP` is acceptable as an adjective (`CDP endpoint`, `CDP command`, `CDP message`, `CDP client`) but never alone to mean "the protocol" and never to mean our package |
-| The conceptual feature slice                            | lowercase, no scope: `playwright`, `cdp`, `stagehand`, `providers`, `core` (used in `docs/packages/{name}/index.md` paths and the choosing-client table inside [`docs/concepts/client-and-provider.md`](./docs/concepts/client-and-provider.md#choosing-a-client))                                                                      |
+| The conceptual feature slice                            | lowercase, no scope: `playwright`, `cdp`, `stagehand`, `providers`, `core` (used in `docs/packages/{name}/index.md` paths and the choosing-client table inside [`docs/overview.md`](./docs/overview.md#pick-a-client))                                                                      |
 
 **Rules of thumb**:
 
@@ -190,6 +190,6 @@ and what the code actually does.
 
 ## References
 
-- User-facing concepts: [`docs/concepts/client-and-provider.md`](./docs/concepts/client-and-provider.md).
+- User-facing concepts: [`docs/overview.md`](./docs/overview.md).
 - Per-module docs: [`docs/packages/`](./docs/packages/).
 - Architecture decisions: [`docs/contributing/cdp/decisions/`](./docs/contributing/cdp/decisions/), [`docs/contributing/stagehand/decisions/`](./docs/contributing/stagehand/decisions/) (per-module ADRs; a general `docs/adr/` is lazily created when a real cross-module trade-off is recorded).

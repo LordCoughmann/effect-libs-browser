@@ -1,6 +1,6 @@
 # browser-playwright — Added APIs
 
-The `@effect-libs/browser-playwright` module adds three categories of API on top of the
+The `@effect-libs/browser-playwright` package adds three categories of API on top of the
 upstream `Page` API:
 
 1. **HTTP helpers** — `page.fetch(url, options?)` and `page.httpClient`
@@ -85,11 +85,11 @@ inspect the resulting `ArrayBuffer` directly.
 - Timeouts (the request exceeded `options.timeout`).
 - Browser-side evaluation failures (the `fetch()` call couldn't be dispatched).
 
-See [Playwright — Errors](./errors.md) for the full hierarchy.
+See [`browser-playwright` — Errors](./errors.md) for the full hierarchy.
 
 ### Body handling notes
 
-The body normalization happens at the host-module boundary
+The body normalization happens at the host-package boundary
 (`packages/browser-playwright/src/internal/PlaywrightFetch.ts`), not in the browser-side
 `fetch()`. This keeps the browser-side code minimal — it only handles
 `string | Uint8Array<ArrayBuffer>`, both of which are valid `BodyInit`
@@ -188,7 +188,7 @@ standalone factory and the handle returned from `withContext` share an
 identical method set
 (cookies, storageState, setGeolocation, grantPermissions, setOffline,
 setDefaultTimeout, etc.). See
-[Playwright — Context API](./context.md) for the full
+[`browser-playwright` — Context API](./context.md) for the full
 method list.
 
 ```typescript
@@ -217,8 +217,11 @@ empty array.
 
 ### `page.keyboard` / `page.mouse` / `page.touchscreen`
 
-The input-device namespaces. See [Input](./input.md) for the
-full method list, the `AbortSignal` caveat, and example workflows.
+The input-device namespaces (`page.keyboard`, `page.mouse`, `page.touchscreen`) are lazy
+getters that return cached handles — same handle for the lifetime of the
+`PlaywrightPage`. See [upstream Playwright][pw-input] for the method list on each.
+
+[pw-input]: https://playwright.dev/docs/api/class-keyboard
 
 ## Synchronous setters
 
@@ -238,11 +241,9 @@ equivalent.
 
 ## See also
 
-- [`@effect-libs/browser-playwright` module](./index.md) — the module landing page
-- [Playwright — Context API](./context.md) — `page.context()`
+- [`@effect-libs/browser-playwright`](./index.md) — the package landing page
+- [`browser-playwright` — Context API](./context.md) — `page.context()`
   returns the same handle
-- [Playwright — Input](./input.md) — the input-device
-  namespaces
-- [Playwright — Errors](./errors.md) — for the typed error
+- [`browser-playwright` — Errors](./errors.md) — for the typed error
   hierarchy used by `page.fetch`
 - [Source on GitHub](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-playwright/src) — full API in JSDoc

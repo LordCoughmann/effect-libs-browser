@@ -179,15 +179,14 @@ We chose not to mirror that for `@effect-libs/browser-cdp` for three reasons:
    same event source without re-registering. A callback registered twice
    on the same event runs twice.
 
-If you do need the callback shape, use the `use()` escape hatch on either
-module — see [`browser-cdp` — Feature Parity with Upstream Playwright](../../reference/cdp-feature-parity.md#browser-automation-additions).
+If you do need the callback shape, use the `use()` escape hatch — see [`browser-cdp` — Feature Parity with Upstream Playwright](../../reference/cdp-feature-parity.md#browser-automation-additions).
 
 ## Stream alternative for `waitForRequest` / `waitForResponse` / `waitForRequestFailed`
 
 The first-class `waitForRequest` / `waitForResponse` /
 `waitForRequestFailed` methods are **not deprecated** — they're the
 idiomatic one-shot wait. Use them when you just need "wait for the next
-matching X". Reach for the `on*` stream when you need filtering,
+matching X". Use the `on*` stream when you need filtering,
 broadcasting, multi-consumer, or race-free composition with other event
 flows:
 

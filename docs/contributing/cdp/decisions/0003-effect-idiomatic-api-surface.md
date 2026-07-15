@@ -16,7 +16,7 @@
 | Event    | `page.on('console', (msg) => ...);` | `Stream.runForEach(page.onConsole, msg => ...)` |
 | Method   | `await page.click(sel);`            | `yield* page.click(sel);`                       |
 
-`@effect-libs/browser-cdp` is a single-process implementation with full access to the `effect` package. Choosing Effect-idiomatic shapes (over mirroring upstream Playwright 1:1) is the value-add that distinguishes the module from `@effect-libs/browser-playwright`. Without these deviations, why ship `@effect-libs/browser-cdp` at all?
+`@effect-libs/browser-cdp` is a single-process implementation with full access to the `effect` package. Choosing Effect-idiomatic shapes (over mirroring upstream Playwright 1:1) is the value-add that distinguishes the package from `@effect-libs/browser-playwright`. Without these deviations, why ship `@effect-libs/browser-cdp` at all?
 
 ## Decision
 
@@ -113,7 +113,7 @@ Source: Q1 in the original coverage-parity doc (archived to git history). Implem
 
 ## Alternatives considered
 
-- **Mirror upstream Playwright 1:1.** Rejected. `@effect-libs/browser-cdp`'s value-add over `@effect-libs/browser-playwright` is zero-dependency + Effect-native. If signatures match exactly, why ship a separate module?
+- **Mirror upstream Playwright 1:1.** Rejected. `@effect-libs/browser-cdp`'s value-add over `@effect-libs/browser-playwright` is zero-dependency + Effect-native. If signatures match exactly, why ship a separate package?
 - **Effect-idiomatic only on the public methods, keep events as callbacks.** Rejected. Callbacks are not Effect-idiomatic. Multi-consumer / cancellation / filtering all become awkward.
 - **Mirror only the property-as-`Effect<T>` deviation, leave events as callbacks and methods as promises.** Rejected. Inconsistent — half Effect-native, half not. Loses the multi-consumer advantage.
 

@@ -227,7 +227,7 @@ the typed reason visible in error logs.
 ## Not wrapped by design
 
 The `agent` primitive is upstream Stagehand v3 but is **not wrapped by
-design** by this module. The upstream `V3.agent({...}).execute(...)` is
+design** by this package. The upstream `V3.agent({...}).execute(...)` is
 exposed through the `instance.use` escape hatch, which already wires
 Effect cancellation and error wrapping to the raw V3 — a wrapper would
 be a thin pass-through over a configuration-heavy

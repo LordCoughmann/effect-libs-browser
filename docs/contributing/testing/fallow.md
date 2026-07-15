@@ -114,7 +114,7 @@ This causes most "untested" exports to be false positives — they ARE tested, j
 
 ### `unused-catalog-entries` — Disabled
 
-**Why:** the pnpm catalog is intentionally over-provisioned to make new package additions frictionless. fallow flags unused catalog entries, but the entries are pre-staged for the next package that needs them.
+**Why:** the pnpm catalog is intentionally over-provisioned so new package additions don't need a catalog edit. fallow flags unused catalog entries, but the entries are pre-staged for the next package that needs them.
 
 **Resolution:** `unused-catalog-entries` set to `"off"` in `.fallowrc.json`.
 

@@ -2,9 +2,9 @@
 
 AI-powered browser automation with natural-language instructions. Stagehand v3 on Cloudflare Workers.
 
-> **Stable.** Runs upstream Stagehand v3 on Workers via runtime polyfills (`ws`, `AsyncLocalStorage.enterWith`). For Node/Bun/Deno, use the original `@browserbasehq/stagehand`.
+> **Stable.** Runs upstream Stagehand v3 on Cloudflare Workers via runtime polyfills (`ws`, `AsyncLocalStorage.enterWith`). For Node/Bun/Deno, use the original `@browserbasehq/stagehand`.
 >
-> **AI / LLM usage.** This package is a thin wrapper around upstream `@browserbasehq/stagehand`. The wrapper code is LLM-assisted but small in volume and human-reviewed — there is no large LLM-generated surface area to disclose the way `browser-cdp` does. Note that this package calls an LLM at runtime for `act` / `extract` / `observe` — every call costs money and adds latency. See the [`browser-cdp` AI / LLM usage disclosure →](./../cdp/index.md#ai--llm-usage-disclosure) for the broader project disclosure.
+> **AI / LLM usage.** This package is a thin wrapper around upstream `@browserbasehq/stagehand`. The wrapper code is LLM-assisted but small in volume and human-reviewed — there is no large LLM-generated surface area to disclose the way `browser-cdp` does. Note that this package calls an LLM at runtime for `act` / `extract` / `observe` — every call costs money and adds latency. See the [`browser-cdp` AI / LLM usage disclosure](./../cdp/index.md#ai--llm-usage-disclosure) for the broader project disclosure.
 
 ## Install
 
@@ -81,7 +81,7 @@ In practice, `SchemaConversionError` is rare for common patterns (`Schema.Struct
 
 Two runtime shims are needed on Cloudflare Workers. Both ship with the package and only require configuration (no code changes).
 
-- **`ws` → native WebSocket.** Stagehand v3 imports Node.js's `ws` package internally to talk to CDP endpoints. Workers doesn't have Node `net`/`tls`, so the npm `ws` package fails. Add a wrangler alias that points `ws` at our Workers-compatible shim:
+- **`ws` → native WebSocket.** Stagehand v3 imports Node.js's `ws` package internally to talk to CDP endpoints. Cloudflare Workers doesn't have Node `net`/`tls`, so the npm `ws` package fails. Add a wrangler alias that points `ws` at our Cloudflare Workers-compatible shim:
 
   ```jsonc
   // wrangler.jsonc
@@ -92,11 +92,11 @@ Two runtime shims are needed on Cloudflare Workers. Both ship with the package a
   }
   ```
 
-  See the polyfill's [`top-level JSDoc`](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand/src/polyfills/ws.ts) for the full `wrangler.jsonc` alias, what the polyfill does and does not support (notably: no custom headers, text frames only), and the rationale for Workers-only targeting.
+  See the polyfill's [`top-level JSDoc`](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand/src/polyfills/ws.ts) for the full `wrangler.jsonc` alias, what the polyfill does and does not support (notably: no custom headers, text frames only), and the rationale for Cloudflare Workers-only targeting.
 
-- **`AsyncLocalStorage.enterWith()` → patched for Workers.** Stagehand v3 calls `enterWith()` from `node:async_hooks`; Workers' implementation intentionally throws because `enterWith()` mutates context for the remaining async chain, which is unsafe across concurrent requests. The polyfill ([source](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand/src/polyfills/asyncLocalStorage.ts)) makes `enterWith()` a no-op. Stagehand uses `run()` for actual context propagation, which works natively on Workers, so the no-op is enough. Remove the polyfill once upstream [PR #2062](https://github.com/browserbase/stagehand/pull/2062) lands.
+- **`AsyncLocalStorage.enterWith()` → patched for Cloudflare Workers.** Stagehand v3 calls `enterWith()` from `node:async_hooks`; Cloudflare Workers' implementation intentionally throws because `enterWith()` mutates context for the remaining async chain, which is unsafe across concurrent requests. The polyfill ([source](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand/src/polyfills/asyncLocalStorage.ts)) makes `enterWith()` a no-op. Stagehand uses `run()` for actual context propagation, which works natively on Cloudflare Workers, so the no-op is enough. Remove the polyfill once upstream [PR #2062](https://github.com/browserbase/stagehand/pull/2062) lands.
 
-These polyfills are imported automatically when the `Stagehand` service is constructed. Non-Worker runtimes (Node.js, Deno, Bun) do not need them — use the upstream `@browserbasehq/stagehand` package instead.
+These polyfills are imported automatically when the `Stagehand` service is constructed. Node.js, Deno, and Bun do not need them — use the upstream `@browserbasehq/stagehand` package instead.
 
 ## Errors
 
@@ -109,7 +109,7 @@ Every Effect can fail with `StagehandError`, a single parent error with a `reaso
 | Feature                               | Status | Notes                                                               |
 | ------------------------------------- | ------ | ------------------------------------------------------------------- |
 | Firefox / WebKit                      | ❌     | Stagehand v3 is Chromium-only                                       |
-| Non-Worker runtimes without polyfills | ❌     | Node.js / Deno / Bun should use original `@browserbasehq/stagehand` |
+| Node.js / Deno / Bun without polyfills | ❌     | Use original `@browserbasehq/stagehand` instead                |
 
 ## Not wrapped by design
 
@@ -135,8 +135,8 @@ These are deliberate omissions, not gaps. They live on the raw V3 instance, whic
 
 **Use this package when:**
 
-- Cloudflare Workers — original Stagehand needs `ws` + `AsyncLocalStorage.enterWith()`, Workers doesn't have either
-- You need Stagehand v3 on Workers (polyfills are applied automatically)
+- Cloudflare Workers — original Stagehand needs `ws` + `AsyncLocalStorage.enterWith()`, Cloudflare Workers doesn't have either
+- You need Stagehand v3 on Cloudflare Workers (polyfills are applied automatically)
 
 **Use something else when:**
 
@@ -150,5 +150,5 @@ Full comparison: [Stagehand — Comparison & Alternatives](./comparison.md).
 - [Effect Schema → Zod](./errors.md#schema-conversion-errors) — convert Effect Schema to Zod for Stagehand
 - [Stagehand — Comparison & Alternatives](./comparison.md) — vs `@browserbasehq/stagehand`, vs v2.5
 - [Stagehand upstream docs](https://docs.stagehand.dev/)
-- [Concepts](../../concepts/client-and-provider.md) — client + provider, scoped resources, errors
+- [Concepts](../../overview.md) — Client & Provider, scoped resources, errors
 - [Source on GitHub](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand/src) — full API in JSDoc
