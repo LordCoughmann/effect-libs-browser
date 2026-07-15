@@ -452,7 +452,7 @@ const makeRouteHandle = (
     if (resolved) {
       return Effect.fail(
         new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "Route",
           reason: new EvaluationError({ description: "Route is already handled!" }),
         }),
@@ -472,7 +472,7 @@ const makeRouteHandle = (
         Effect.mapError(
           (cause) =>
             new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: `route.${method}`,
               reason: new CommandError({ method: `Fetch.${method}`, description: String(cause) }),
             }),
@@ -522,7 +522,7 @@ const makeRouteHandle = (
         const errorReason = errorReasons[errorCode];
         if (!errorReason) {
           return yield* new CdpErrorClass({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "route.abort",
             reason: new CommandError({
               method: "Fetch.failRequest",
@@ -813,7 +813,7 @@ export const makeRouteManager = (
           Effect.mapError(
             (cause) =>
               new CdpErrorClass({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "route",
                 reason: new CommandError({ method: "Fetch.enable", description: String(cause) }),
               }),

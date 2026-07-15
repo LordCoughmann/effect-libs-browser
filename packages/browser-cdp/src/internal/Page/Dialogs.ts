@@ -80,7 +80,7 @@ export const makeDialogFromCdp = (
           Effect.mapError(
             (cause) =>
               new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "dialog.accept",
                 reason: new CommandError({
                   method: "Page.handleJavaScriptDialog",
@@ -98,7 +98,7 @@ export const makeDialogFromCdp = (
           Effect.mapError(
             (cause) =>
               new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "dialog.dismiss",
                 reason: new CommandError({
                   method: "Page.handleJavaScriptDialog",

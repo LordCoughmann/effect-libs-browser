@@ -89,10 +89,10 @@ const resolveConnectionSource = (
 ): string => ("url" in source ? source.url : Redacted.value(source.session.cdpUrl));
 
 const wrapError =
-  (module: string, method: string) =>
+  (source: string, method: string) =>
   (cause: unknown): StagehandError =>
     new StagehandError({
-      module,
+      source,
       method,
       reason: new OperationReason({
         action: method,
@@ -188,7 +188,7 @@ const make = Effect.gen(function* () {
           onNone: () =>
             Effect.fail(
               new StagehandError({
-                module: "Stagehand",
+                source: "Stagehand",
                 method: "acquireSession",
                 reason: new ConnectionReason({
                   description:

@@ -20,7 +20,7 @@ import { type PageState } from "./PageState.js";
 const mapNavigationError = Effect.mapError(
   (cause: unknown) =>
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "setContent",
       reason: new NavigationError({
         url: "setContent",
@@ -77,7 +77,7 @@ export const setContentPage = Effect.fn("CdpPage.setContent")(
       const contextId = yield* frameManager.getUtilityContextId(frameId);
       if (contextId === null) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "setContent",
           reason: new NavigationError({
             url: "setContent",
@@ -125,7 +125,7 @@ export const setContentPage = Effect.fn("CdpPage.setContent")(
           Effect.mapError(
             () =>
               new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "setContent",
                 reason: new NavigationError({
                   url: "setContent",

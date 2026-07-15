@@ -14,7 +14,7 @@ one parent error wrapping a discriminated union of reasons.
 
 ## The shape
 
-`StagehandError` carries `module` (always `"Stagehand"`), `method` (the call), `reason` (the discriminated union of 3 reason classes), `isRetryable` (delegates to the reason), `cause === reason`, and `message` (derived). The `_tag` on `StagehandError` itself is always `"effect-libs/browser/StagehandError"`. Match on `reason._tag` for the specific reason (or use the `isXxxError` class guards).
+`StagehandError` carries `source` (always `"Stagehand"`), `method` (the call), `reason` (the discriminated union of 3 reason classes), `isRetryable` (delegates to the reason), `cause === reason`, and `message` (derived). The `_tag` on `StagehandError` itself is always `"effect-libs/browser/StagehandError"`. Match on `reason._tag` for the specific reason (or use the `isXxxError` class guards).
 
 ## Reason classes
 
@@ -203,18 +203,18 @@ const example = (
 > narrows on `StagehandError` directly) will land in a future Effect
 > release.
 
-## Module field
+## Source field
 
-`StagehandError.module` identifies the wrapper that produced the error.
+`StagehandError.source` identifies the wrapper class that produced the error.
 `browser-stagehand` currently uses a single value:
 
-| `module` value | Source                                                                |
+| `source` value | Source                                                                |
 | -------------- | --------------------------------------------------------------------- |
 | `"Stagehand"`  | The `Stagehand` service (`withSession` / `withConnection` lifecycle). |
 
 `method` is the operation name (`acquireSession`, `act`, `extract`,
 `observe`, etc.). The error message is derived as
-`${module}.${method}: ${reason._tag}`.
+`${source}.${method}: ${reason._tag}`.
 
 ## `cause === reason`
 

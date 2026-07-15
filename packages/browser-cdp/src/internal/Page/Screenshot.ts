@@ -27,7 +27,7 @@ export interface ScreenshotOptions {
 const failScreenshot = (description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "screenshot",
       reason: new ScreenshotError({ description }),
     }),
@@ -98,7 +98,7 @@ export const captureScreenshot = Effect.fn("CdpPage.screenshot")(
         },
         catch: (cause) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "screenshot",
             reason: new ScreenshotError({
               description: `Failed to decode screenshot: ${String(cause)}`,

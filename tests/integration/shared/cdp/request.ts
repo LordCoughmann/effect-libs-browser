@@ -68,7 +68,7 @@ const setCookies = (
       Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "test",
+            source: "test",
             method: "setCookies",
             reason: new ConnectionError({
               description: getErrorMessage(cause),
@@ -87,7 +87,7 @@ const clearCookies = (page: CdpPageService) =>
       Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "test",
+            source: "test",
             method: "clearCookies",
             reason: new ConnectionError({
               description: getErrorMessage(cause),

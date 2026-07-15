@@ -125,14 +125,14 @@ const DEFAULT_TIMEOUT = Duration.seconds(30);
 
 export const makeTimeoutError = (method: string, timeout: Duration.Duration): CdpError =>
   new CdpErrorClass({
-    module: "CdpPage",
+    source: "CdpPage",
     method,
     reason: new PageTimeoutError({ timeout }),
   });
 
 const makeFrameNotFoundError = (method: string, frameId: string): CdpError =>
   new CdpErrorClass({
-    module: "CdpPage",
+    source: "CdpPage",
     method,
     reason: new NavError({ url: "frame", description: `Frame ${frameId} not found` }),
   });
@@ -287,7 +287,7 @@ export class FrameManager {
       Effect.catchTag("TimeoutError", () =>
         Effect.fail(
           new CdpErrorClass({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "waitForExecutionContext",
             reason: new PageTimeoutError({ timeout }),
           }),
@@ -730,7 +730,7 @@ export const waitForNavEpoch = (
       yield* Fiber.interrupt(subscriptionFiber).pipe(Effect.ignore);
       if (Option.isSome(currentState.lastError)) {
         return yield* new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method,
           reason: new NavError({
             url: "frame",
@@ -817,7 +817,7 @@ export const waitForLoadStateFrame = (
   if (!VALID_STATES.has(waitUntil)) {
     return Effect.fail(
       new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "waitForLoadState",
         reason: new CommandError({
           method: "waitForLoadState",

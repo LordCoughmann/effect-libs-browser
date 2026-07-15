@@ -27,7 +27,7 @@ export interface ViewportSize {
 const failViewport = (description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "setViewportSize",
       reason: new ViewportError({ description }),
     }),

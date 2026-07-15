@@ -20,7 +20,7 @@ import { type UserAgentOverride } from "./UserAgent.js";
 const failCommand = (method: string, description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method,
       reason: new CommandError({ method, description }),
     }),

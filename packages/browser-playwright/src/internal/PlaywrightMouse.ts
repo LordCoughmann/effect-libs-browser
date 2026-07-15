@@ -19,7 +19,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightMouse",
+      source: "PlaywrightMouse",
       method,
       reason: new OperationError({
         method,

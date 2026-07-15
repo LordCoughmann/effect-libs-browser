@@ -26,7 +26,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightBrowserContext",
+      source: "PlaywrightBrowserContext",
       method,
       reason: new OperationError({
         method,
@@ -218,7 +218,7 @@ export const makeBrowserContext = (context: BrowserContext): PlaywrightBrowserCo
       try: () => context.newPage(),
       catch: (cause) =>
         new PlaywrightError({
-          module: "PlaywrightBrowserContext",
+          source: "PlaywrightBrowserContext",
           method: "withPage",
           reason: new ContextError({
             description: getErrorMessage(cause),
@@ -232,7 +232,7 @@ export const makeBrowserContext = (context: BrowserContext): PlaywrightBrowserCo
       try: () => page.close(),
       catch: (cause) =>
         new PlaywrightError({
-          module: "PlaywrightBrowserContext",
+          source: "PlaywrightBrowserContext",
           method: "withPage",
           reason: new ContextError({
             description: getErrorMessage(cause),
@@ -269,7 +269,7 @@ export const makeBrowserContext = (context: BrowserContext): PlaywrightBrowserCo
         try: () => context.newCDPSession(target),
         catch: (cause) =>
           new PlaywrightError({
-            module: "PlaywrightBrowserContext",
+            source: "PlaywrightBrowserContext",
             method: "newCDPSession",
             reason: new OperationError({
               method: "newCDPSession",

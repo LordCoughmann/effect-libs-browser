@@ -35,7 +35,7 @@ const mapTouchscreenError = (method: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: `touchscreen.${method}`,
         reason: new CommandError({
           method: `touchscreen.${method}`,

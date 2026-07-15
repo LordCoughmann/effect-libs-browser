@@ -517,7 +517,7 @@ function __cdpSerializeInner(v, seen) {
 const failEvaluation = (description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "evaluateHandle",
       reason: new EvaluationError({ description }),
     }),
@@ -949,7 +949,7 @@ export const evaluateHandlePage = (
       try: () => (arg !== undefined ? serializeForBrowser(arg) : ""),
       catch: (e) =>
         new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "evaluateHandle",
           reason: new EvaluationError({ description: getErrorMessage(e) }),
         }),
@@ -1027,7 +1027,7 @@ export const evaluateHandleFrame = (
       try: () => (arg !== undefined ? serializeForBrowser(arg) : ""),
       catch: (e) =>
         new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "evaluateHandle",
           reason: new EvaluationError({ description: getErrorMessage(e) }),
         }),

@@ -26,7 +26,7 @@ import { makeResponse } from "./Response.js";
 const mapNavigationError = Effect.mapError(
   (cause: unknown) =>
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "reload",
       reason: new NavigationError({
         url: "reload",
@@ -70,7 +70,7 @@ export const reloadPage = Effect.fn("CdpPage.reload")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "reload",
               reason: new NavigationError({ url: "reload", description: String(cause) }),
             }),

@@ -31,7 +31,7 @@ const mapSelectorError = (selector: string, method = "dblclick") =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method,
         reason: new SelectorError({
           selector,

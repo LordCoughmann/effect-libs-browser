@@ -110,7 +110,7 @@ describe("StagehandError delegation", () => {
   it("delegates message to module.method: reasonTag — description", () => {
     const reason = new ConnectionError({ description: "WS failed" });
     const error = new StagehandError({
-      module: "Stagehand",
+      source: "Stagehand",
       method: "withConnection",
       reason,
     });
@@ -123,7 +123,7 @@ describe("StagehandError delegation", () => {
 
   it("includes description for OperationError", () => {
     const reason = new OperationError({ action: "act", description: "Action timed out" });
-    const error = new StagehandError({ module: "Stagehand", method: "act", reason });
+    const error = new StagehandError({ source: "Stagehand", method: "act", reason });
 
     assert.strictEqual(
       error.message,
@@ -133,7 +133,7 @@ describe("StagehandError delegation", () => {
 
   it("includes description for AgentError", () => {
     const reason = new AgentError({ description: "LLM API error" });
-    const error = new StagehandError({ module: "Stagehand", method: "observe", reason });
+    const error = new StagehandError({ source: "Stagehand", method: "observe", reason });
 
     assert.strictEqual(
       error.message,
@@ -143,7 +143,7 @@ describe("StagehandError delegation", () => {
 
   it("delegates cause to reason", () => {
     const reason = new ConnectionError({ description: "boom" });
-    const error = new StagehandError({ module: "Stagehand", method: "test", reason });
+    const error = new StagehandError({ source: "Stagehand", method: "test", reason });
 
     assert.strictEqual(error.cause, reason);
   });
@@ -151,7 +151,7 @@ describe("StagehandError delegation", () => {
   it("delegates isRetryable to reason", () => {
     for (const reasonCase of reasonCases) {
       const error = new StagehandError({
-        module: "Stagehand",
+        source: "Stagehand",
         method: "test",
         reason: reasonCase.make(),
       });
@@ -162,18 +162,18 @@ describe("StagehandError delegation", () => {
 
   it("exposes module and method fields", () => {
     const error = new StagehandError({
-      module: "StagehandInstance",
+      source: "StagehandInstance",
       method: "use",
       reason: new OperationError({ action: "act", description: "failed" }),
     });
 
-    assert.strictEqual(error.module, "StagehandInstance");
+    assert.strictEqual(error.source, "StagehandInstance");
     assert.strictEqual(error.method, "use");
   });
 
   it("has correct _tag", () => {
     const error = new StagehandError({
-      module: "Stagehand",
+      source: "Stagehand",
       method: "test",
       reason: new ConnectionError({ description: "failed" }),
     });
@@ -191,7 +191,7 @@ describe("StagehandError schema roundtrip", () => {
       () =>
         Effect.gen(function* () {
           const error = new StagehandError({
-            module: "Stagehand",
+            source: "Stagehand",
             method: "test",
             reason: reasonCase.make(),
           });
@@ -201,7 +201,7 @@ describe("StagehandError schema roundtrip", () => {
 
           assert.strictEqual(decoded._tag, "effect-libs/browser/StagehandError");
           assert.strictEqual(decoded.reason._tag, reasonCase.tag);
-          assert.strictEqual(decoded.module, "Stagehand");
+          assert.strictEqual(decoded.source, "Stagehand");
           assert.strictEqual(decoded.method, "test");
           assert.strictEqual(decoded.isRetryable, reasonCase.isRetryable);
           assert.strictEqual(decoded.cause, decoded.reason);

@@ -84,7 +84,7 @@ const getMainContextIdOrFail = (
     const contextId = yield* frameManager.getMainContextId(frameId);
     if (contextId === null) {
       return yield* new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "frame",
         reason: {
           _tag: "EvaluationError",
@@ -447,7 +447,7 @@ export const buildFrameExtensionMethods = (params: {
     Effect.gen(function* () {
       if (!options.url && !options.content) {
         return yield* new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "frame.addScriptTag",
           reason: {
             _tag: "EvaluationError",
@@ -457,7 +457,7 @@ export const buildFrameExtensionMethods = (params: {
       }
       if (options.url && options.content) {
         return yield* new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "frame.addScriptTag",
           reason: {
             _tag: "EvaluationError",
@@ -507,7 +507,7 @@ export const buildFrameExtensionMethods = (params: {
     Effect.gen(function* () {
       if (!options.url && !options.content) {
         return yield* new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "frame.addStyleTag",
           reason: {
             _tag: "EvaluationError",
@@ -517,7 +517,7 @@ export const buildFrameExtensionMethods = (params: {
       }
       if (options.url && options.content) {
         return yield* new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "frame.addStyleTag",
           reason: {
             _tag: "EvaluationError",

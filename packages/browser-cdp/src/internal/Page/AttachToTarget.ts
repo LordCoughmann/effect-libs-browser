@@ -30,7 +30,7 @@ export const attachToTarget = Effect.fn("CdpPage.attachToTarget")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "attachToTarget",
               reason: new ConnectionError({
                 description: `Failed to attach to target: ${getErrorMessage(cause)}`,
@@ -42,7 +42,7 @@ export const attachToTarget = Effect.fn("CdpPage.attachToTarget")(
 
       if (!result.sessionId) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "attachToTarget",
           reason: new ConnectionError({
             description: "Target.attachToTarget returned no sessionId",
@@ -56,7 +56,7 @@ export const attachToTarget = Effect.fn("CdpPage.attachToTarget")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "attachToTarget",
               reason: new ConnectionError({
                 description: `Failed to enable Page domain: ${getErrorMessage(cause)}`,
@@ -72,7 +72,7 @@ export const attachToTarget = Effect.fn("CdpPage.attachToTarget")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "attachToTarget",
               reason: new ConnectionError({
                 description: `Failed to enable lifecycle events: ${getErrorMessage(cause)}`,
@@ -89,7 +89,7 @@ export const attachToTarget = Effect.fn("CdpPage.attachToTarget")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "attachToTarget",
               reason: new ConnectionError({
                 description: `Failed to enable Runtime domain: ${getErrorMessage(cause)}`,

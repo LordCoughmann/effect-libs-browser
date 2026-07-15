@@ -19,7 +19,7 @@ export const ensureSession = Effect.fn("CdpPage.ensureSession")(
           ? Effect.succeed(sid)
           : Effect.fail(
               new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "ensureSession",
                 reason: new EvaluationError({ description: "Page not attached to session" }),
               }),

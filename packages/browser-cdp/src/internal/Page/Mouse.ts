@@ -71,7 +71,7 @@ const mapMouseError = (method: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: `mouse.${method}`,
         reason: new CommandError({
           method: `mouse.${method}`,

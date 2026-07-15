@@ -157,7 +157,7 @@ const withPage = <A, E, R>(wsUrl: string, fn: (page: CdpPageService) => Effect.E
 /** Extract error message from CdpError for assertion. */
 const getErrorMsg = (cause: unknown): string => {
   if (cause instanceof CdpError) {
-    // Use the message getter which includes module, method, and description
+    // Use the message getter which includes source, method, and description
     return cause.message;
   }
   return String(cause);

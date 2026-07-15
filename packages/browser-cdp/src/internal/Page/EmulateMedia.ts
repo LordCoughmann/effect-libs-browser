@@ -42,7 +42,7 @@ const VALID_MEDIA = new Set(["screen", "print", "null"]);
 
 const failEmulateMedia = (description: string): CdpError =>
   new CdpError({
-    module: "CdpPage",
+    source: "CdpPage",
     method: "emulateMedia",
     reason: new CommandError({
       method: "Emulation.setEmulatedMedia",

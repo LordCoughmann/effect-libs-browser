@@ -115,7 +115,7 @@ describe("CfBrowserRunBindingProvider Error Handling", () => {
       withSession: () =>
         Effect.fail(
           new PlaywrightError({
-            module: "CfBrowserRunBindingProvider",
+            source: "CfBrowserRunBindingProvider",
             method: "withSession",
             reason: new PlaywrightConnectionError({
               description: "Endpoint not available",

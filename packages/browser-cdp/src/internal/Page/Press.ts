@@ -120,7 +120,7 @@ export const pressKey = Effect.fn("CdpPage.press")(
       const mapInteractionError = Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "press",
             reason: new SelectorError({
               selector,
@@ -138,7 +138,7 @@ export const pressKey = Effect.fn("CdpPage.press")(
       const resolved = resolveKeyDescription(mainKeyName);
       if (!resolved) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "press",
           reason: new SelectorError({
             selector,
@@ -171,7 +171,7 @@ export const pressKey = Effect.fn("CdpPage.press")(
             const modDesc = resolveKeyDescription(modName);
             if (!modDesc) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "press",
                 reason: new SelectorError({
                   selector,
@@ -238,7 +238,7 @@ export const pressKey = Effect.fn("CdpPage.press")(
             const modDesc = resolveKeyDescription(modName);
             if (!modDesc) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "press",
                 reason: new SelectorError({
                   selector,
@@ -290,7 +290,7 @@ export const keyboardPress = Effect.fn("CdpPage.keyboard.press")(
       const mapError = Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "keyboard.press",
             reason: new SelectorError({
               selector: "",
@@ -307,7 +307,7 @@ export const keyboardPress = Effect.fn("CdpPage.keyboard.press")(
       const resolved = resolveKeyDescription(mainKeyName);
       if (!resolved) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "keyboard.press",
           reason: new SelectorError({
             selector: "",
@@ -333,7 +333,7 @@ export const keyboardPress = Effect.fn("CdpPage.keyboard.press")(
             const modDesc = resolveKeyDescription(modName);
             if (!modDesc) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "keyboard.press",
                 reason: new SelectorError({
                   selector: "",
@@ -433,7 +433,7 @@ export const keyboardDown = Effect.fn("CdpPage.keyboardDown")(
       const resolved = resolveKeyDescription(key);
       if (!resolved) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "keyboardDown",
           reason: new SelectorError({
             selector: "",
@@ -492,7 +492,7 @@ export const keyboardDown = Effect.fn("CdpPage.keyboardDown")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "keyboardDown",
               reason: new SelectorError({
                 selector: "",
@@ -527,7 +527,7 @@ export const keyboardUp = Effect.fn("CdpPage.keyboardUp")(
       const resolved = resolveKeyDescription(key);
       if (!resolved) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "keyboardUp",
           reason: new SelectorError({
             selector: "",
@@ -570,7 +570,7 @@ export const keyboardUp = Effect.fn("CdpPage.keyboardUp")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "keyboardUp",
               reason: new SelectorError({
                 selector: "",
@@ -615,7 +615,7 @@ export const keyboardType = Effect.fn("CdpPage.keyboardType")(
       const mapInteractionError = Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "keyboardType",
             reason: new SelectorError({
               selector: "",
@@ -705,7 +705,7 @@ export const insertText = Effect.fn("CdpPage.insertText")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "insertText",
               reason: new SelectorError({
                 selector: "",

@@ -51,7 +51,7 @@ export const fillElement = Effect.fn("CdpPage.fill")(
       // Runtime validation for non-string values (TypeScript prevents at compile time)
       if (!P.isString(value)) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "fill",
           reason: new EvaluationError({
             description: `value: expected string, got ${typeof value}`,

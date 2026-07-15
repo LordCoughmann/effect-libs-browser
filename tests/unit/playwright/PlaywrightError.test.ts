@@ -119,7 +119,7 @@ describe("PlaywrightError delegation", () => {
   it("delegates message to module.method: reasonTag", () => {
     const reason = new ConnectionError({ description: "WS failed" });
     const error = new PlaywrightError({
-      module: "Playwright",
+      source: "Playwright",
       method: "connect",
       reason,
     });
@@ -132,7 +132,7 @@ describe("PlaywrightError delegation", () => {
 
   it("delegates cause to reason", () => {
     const reason = new ConnectionError({ description: "boom" });
-    const error = new PlaywrightError({ module: "Playwright", method: "test", reason });
+    const error = new PlaywrightError({ source: "Playwright", method: "test", reason });
 
     assert.strictEqual(error.cause, reason);
   });
@@ -140,7 +140,7 @@ describe("PlaywrightError delegation", () => {
   it("delegates isRetryable to reason", () => {
     for (const reasonCase of reasonCases) {
       const error = new PlaywrightError({
-        module: "Playwright",
+        source: "Playwright",
         method: "test",
         reason: reasonCase.make(),
       });
@@ -149,20 +149,20 @@ describe("PlaywrightError delegation", () => {
     }
   });
 
-  it("exposes module and method fields", () => {
+  it("exposes source and method fields", () => {
     const error = new PlaywrightError({
-      module: "PlaywrightConnectionHandle",
+      source: "PlaywrightConnectionHandle",
       method: "withContext",
       reason: new ContextError({ description: "failed" }),
     });
 
-    assert.strictEqual(error.module, "PlaywrightConnectionHandle");
+    assert.strictEqual(error.source, "PlaywrightConnectionHandle");
     assert.strictEqual(error.method, "withContext");
   });
 
   it("has correct _tag", () => {
     const error = new PlaywrightError({
-      module: "Playwright",
+      source: "Playwright",
       method: "test",
       reason: new ConnectionError({ description: "failed" }),
     });
@@ -180,7 +180,7 @@ describe("PlaywrightError schema roundtrip", () => {
       () =>
         Effect.gen(function* () {
           const error = new PlaywrightError({
-            module: "Playwright",
+            source: "Playwright",
             method: "test",
             reason: reasonCase.make(),
           });
@@ -190,7 +190,7 @@ describe("PlaywrightError schema roundtrip", () => {
 
           assert.strictEqual(decoded._tag, "effect-libs/browser/PlaywrightError");
           assert.strictEqual(decoded.reason._tag, reasonCase.tag);
-          assert.strictEqual(decoded.module, "Playwright");
+          assert.strictEqual(decoded.source, "Playwright");
           assert.strictEqual(decoded.method, "test");
           assert.strictEqual(decoded.isRetryable, reasonCase.isRetryable);
           assert.strictEqual(decoded.cause, decoded.reason);

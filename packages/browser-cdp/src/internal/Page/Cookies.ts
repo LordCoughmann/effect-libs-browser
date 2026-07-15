@@ -57,7 +57,7 @@ export const cookiesToString = (cookies: CdpCookie[], domainFilter?: string): st
 export const failCookie = (method: string, description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method,
       reason: new CookieError({ description }),
     }),

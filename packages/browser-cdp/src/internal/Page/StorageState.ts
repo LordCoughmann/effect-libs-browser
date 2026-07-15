@@ -55,7 +55,7 @@ export interface StorageState {
 const failStorage = (method: string, description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpContextHandle",
+      source: "CdpContextHandle",
       method,
       reason: new StorageError({ description }),
     }),
@@ -93,7 +93,7 @@ const listPageTargets = (
       Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "CdpContextHandle",
+            source: "CdpContextHandle",
             method: "storageState",
             reason: new StorageError({
               description: `Failed to list targets: ${getErrorMessage(cause)}`,

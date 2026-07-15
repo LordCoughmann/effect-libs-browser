@@ -17,7 +17,7 @@ import { type PageState } from "./PageState.js";
 const failCommand = (method: string, description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method,
       reason: new CommandError({ method, description }),
     }),

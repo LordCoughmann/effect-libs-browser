@@ -24,7 +24,7 @@ const mapInteractionError = (selector: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "hover",
         reason: new SelectorError({
           selector,

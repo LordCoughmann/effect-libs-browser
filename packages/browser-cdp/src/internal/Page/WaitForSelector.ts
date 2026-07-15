@@ -174,7 +174,7 @@ export const waitForSelectorElement = Effect.fn("CdpPage.waitForSelector")(
 
                 if (description.includes("Invalid selector")) {
                   return yield* new CdpError({
-                    module: "CdpPage",
+                    source: "CdpPage",
                     method: "waitForSelector",
                     reason: new SelectorError({
                       selector,
@@ -185,7 +185,7 @@ export const waitForSelectorElement = Effect.fn("CdpPage.waitForSelector")(
 
                 if (description.includes("Timeout waiting for selector")) {
                   return yield* new CdpError({
-                    module: "CdpPage",
+                    source: "CdpPage",
                     method: "waitForSelector",
                     reason: new PageTimeoutError({
                       selector,
@@ -197,7 +197,7 @@ export const waitForSelectorElement = Effect.fn("CdpPage.waitForSelector")(
 
                 // Non-selector/timeout EvaluationError — re-wrap to surface from waitForSelector.
                 return yield* new CdpError({
-                  module: "CdpPage",
+                  source: "CdpPage",
                   method: "waitForSelector",
                   reason,
                 });
@@ -226,7 +226,7 @@ const waitForSelectorInFrame = (
     const metadata = frameManager.getFrameMetadata(frameId);
     if (!metadata) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "waitForSelector",
         reason: new NavigationError({
           url: "frame",
@@ -237,7 +237,7 @@ const waitForSelectorInFrame = (
 
     if (metadata.isDetached) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "waitForSelector",
         reason: new NavigationError({
           url: "frame",
@@ -253,7 +253,7 @@ const waitForSelectorInFrame = (
     const contextId = yield* frameManager.getMainContextId(frameId);
     if (contextId === null) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "waitForSelector",
         reason: new EvaluationError({
           description: `No execution context for frame ${frameId}`,
@@ -272,7 +272,7 @@ const waitForSelectorInFrame = (
 
             if (description.includes("Invalid selector")) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "waitForSelector",
                 reason: new SelectorError({
                   selector,
@@ -283,7 +283,7 @@ const waitForSelectorInFrame = (
 
             if (description.includes("Timeout waiting for selector")) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "waitForSelector",
                 reason: new PageTimeoutError({
                   selector,
@@ -295,7 +295,7 @@ const waitForSelectorInFrame = (
 
             // Non-selector/timeout EvaluationError — re-wrap to surface from waitForSelector.
             return yield* new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "waitForSelector",
               reason,
             });

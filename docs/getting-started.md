@@ -49,6 +49,7 @@ Open a session on Steel, navigate to example.com, read the title:
 
 ```typescript
 import { Effect, Layer, Config } from "effect";
+
 import { Playwright } from "@effect-libs/browser-playwright";
 import { SteelProvider } from "@effect-libs/browser-providers/steel";
 

@@ -33,7 +33,7 @@ const mapNavigationError = (url: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "goto",
         reason: new NavigationError({
           url,
@@ -94,7 +94,7 @@ export const gotoPage = Effect.fn("CdpPage.goto")(
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "goto",
               reason: new NavigationError({ url, description: String(cause) }),
             }),
@@ -110,7 +110,7 @@ export const gotoPage = Effect.fn("CdpPage.goto")(
           Object.keys(existingHeaders).some((key) => key.toLowerCase() === "referer");
         if (hasExistingReferer) {
           return yield* new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "goto",
             reason: new CommandError({
               method: "goto",
@@ -160,7 +160,7 @@ export const gotoPage = Effect.fn("CdpPage.goto")(
         // CDP returns errorText when navigation fails (e.g., net::ERR_CONNECTION_REFUSED)
         if (navResult.errorText) {
           return yield* new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "goto",
             reason: new NavigationError({ url, description: navResult.errorText }),
           });
@@ -208,7 +208,7 @@ export const gotoPage = Effect.fn("CdpPage.goto")(
         Effect.catchTag("TimeoutError", () =>
           Effect.fail(
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "goto",
               reason: new PageTimeoutError({ timeout }),
             }),

@@ -159,7 +159,7 @@ export const PlaywrightErrorReason: Schema.Union<
 export class PlaywrightError extends Schema.TaggedErrorClass<PlaywrightError>()(
   "effect-libs/browser/PlaywrightError",
   {
-    module: Schema.String,
+    source: Schema.String,
     method: Schema.String,
     reason: PlaywrightErrorReason,
   },
@@ -175,7 +175,7 @@ export class PlaywrightError extends Schema.TaggedErrorClass<PlaywrightError>()(
    */
   override get message(): string {
     const exactMethod = "method" in this.reason ? this.reason.method : this.method;
-    return `[${this.module}.${exactMethod}] ${this.reason._tag}: ${this.reason.description}`;
+    return `[${this.source}.${exactMethod}] ${this.reason._tag}: ${this.reason.description}`;
   }
 
   /**

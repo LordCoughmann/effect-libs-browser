@@ -48,7 +48,7 @@ concepts, recipes, and matrices.
 - [browser-playwright](docs/packages/playwright/index.md): landing page, install, runtime compatibility, when to use
 - [browser-playwright — Context API](docs/packages/playwright/context.md): `BrowserContext` wrapper, context vs page vs connection
 - [browser-playwright — Added APIs](docs/packages/playwright/added-apis.md): `page.fetch`, `page.httpClient`, `page.context()`, lazy getters
-- [browser-playwright — Errors](docs/packages/playwright/errors.md): typed reason hierarchy, module-field table
+- [browser-playwright — Errors](docs/packages/playwright/errors.md): typed reason hierarchy, source-field table
 - [browser-playwright — Comparison & Alternatives](docs/packages/playwright/comparison.md): vs other libraries
 
 ### `@effect-libs/browser-stagehand` (stable)
@@ -67,7 +67,7 @@ concepts, recipes, and matrices.
 - [browser-cdp — Frames](docs/packages/cdp/frames.md): frames, `CdpFrame`, `CdpFrameLocator`, frame selectors
 - [browser-cdp — Evaluate](docs/packages/cdp/evaluate.md): `page.evaluate`, no-imports payload constraint, return-value serialization
 - [browser-cdp — Handles](docs/packages/cdp/handles.md): `CdpHandle`, `evaluateHandle`, `callFunctionOn`
-- [browser-cdp — Errors](docs/packages/cdp/errors.md): 14-reason table, module-field table
+- [browser-cdp — Errors](docs/packages/cdp/errors.md): 14-reason table, source-field table
 - [browser-cdp — Comparison & Alternatives](docs/packages/cdp/comparison.md): vs other libraries, design rationale
 
 ## Providers
