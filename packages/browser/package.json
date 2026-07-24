@@ -1,6 +1,6 @@
 {
   "name": "@effect-libs/browser",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "Browser automation for Effect on edge runtimes — the core interface package. Start here, then pick a module (@effect-libs/browser-playwright / -cdp / -stagehand).",
   "homepage": "https://github.com/LordCoughmann/effect-libs-browser#readme",
   "bugs": {
