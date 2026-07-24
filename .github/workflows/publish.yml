@@ -92,14 +92,24 @@ jobs:
       - name: Build
         run: pnpm --filter "${{ steps.resolve.outputs.name }}" build
 
-      - name: Verify dist exists before publish
+      - name: Verify build output exists before publish
         run: |
           DIR="${{ steps.resolve.outputs.dir }}"
-          if [ ! -d "$DIR/dist" ]; then
-            echo "::error::dist/ directory missing in $DIR — build step produced no output"
-            exit 1
+          PKG="${{ steps.resolve.outputs.name }}"
+          # cloudflare-playwright is pre-built (lib/ + types/), others use dist/
+          if [ "$PKG" = "@effect-libs/cloudflare-playwright" ]; then
+            if [ ! -d "$DIR/lib" ]; then
+              echo "::error::lib/ directory missing in $DIR — pre-built artifacts not found"
+              exit 1
+            fi
+            echo "lib/ OK ($(find $DIR/lib -type f | wc -l) files)"
+          else
+            if [ ! -d "$DIR/dist" ]; then
+              echo "::error::dist/ directory missing in $DIR — build step produced no output"
+              exit 1
+            fi
+            echo "dist/ OK ($(find $DIR/dist -type f | wc -l) files)"
           fi
-          echo "dist/ OK ($(find $DIR/dist -type f | wc -l) files)"
 
       - name: Publish
         run: |
