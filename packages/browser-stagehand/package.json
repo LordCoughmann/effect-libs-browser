@@ -1,6 +1,6 @@
 {
   "name": "@effect-libs/browser-stagehand",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "AI-powered browser automation (Stagehand v3) module for @effect-libs/browser. Wraps act/extract/observe on edge runtimes.",
   "homepage": "https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-stagehand#readme",
   "bugs": {
