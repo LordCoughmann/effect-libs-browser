@@ -8,32 +8,32 @@
     "packages/browser": {
       "component": "@effect-libs/browser",
       "packageName": "@effect-libs/browser",
-      "release-as": "0.1.0"
+      "release-as": "0.1.1"
     },
     "packages/browser-cdp": {
       "component": "@effect-libs/browser-cdp",
       "packageName": "@effect-libs/browser-cdp",
-      "release-as": "0.1.0"
+      "release-as": "0.1.1"
     },
     "packages/browser-playwright": {
       "component": "@effect-libs/browser-playwright",
       "packageName": "@effect-libs/browser-playwright",
-      "release-as": "0.1.0"
+      "release-as": "0.1.1"
     },
     "packages/browser-stagehand": {
       "component": "@effect-libs/browser-stagehand",
       "packageName": "@effect-libs/browser-stagehand",
-      "release-as": "0.1.0"
+      "release-as": "0.1.1"
     },
     "packages/browser-providers": {
       "component": "@effect-libs/browser-providers",
       "packageName": "@effect-libs/browser-providers",
-      "release-as": "0.1.0"
+      "release-as": "0.1.1"
     },
     "packages/cloudflare-playwright": {
       "component": "@effect-libs/cloudflare-playwright",
       "packageName": "@effect-libs/cloudflare-playwright",
-      "release-as": "0.1.0"
+      "release-as": "0.1.1"
     }
   }
 }
