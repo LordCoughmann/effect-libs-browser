@@ -15,10 +15,10 @@ overrides:
   rolldown-plugin-dts: ^0.27.6
 catalog:
   alchemy: 2.0.0-beta.61
-  effect: ">=4.0.0-beta.97 || >=4.0.0"
-  "@effect/platform-node": ">=4.0.0-beta.97 || >=4.0.0"
-  "@effect/platform-bun": ">=4.0.0-beta.97 || >=4.0.0"
-  "@effect/vitest": ">=4.0.0-beta.97 || >=4.0.0"
+  effect: ">=4.0.0-beta.101 || >=4.0.0"
+  "@effect/platform-node": ">=4.0.0-beta.101 || >=4.0.0"
+  "@effect/platform-bun": ">=4.0.0-beta.101 || >=4.0.0"
+  "@effect/vitest": ">=4.0.0-beta.101 || >=4.0.0"
   "@cloudflare/vitest-pool-workers": "^0.18.4"
   "@types/node": "^24.12.4"
   typescript: "^7.0.0-dev.20260707.2"
@@ -48,7 +48,11 @@ minimumReleaseAgeExclude:
   - '@effect/platform-node-shared@4.0.0-beta.97'
   - '@effect/platform-node@4.0.0-beta.97'
   - '@effect/vitest@4.0.0-beta.97'
-  - effect@4.0.0-beta.97
+  - effect@4.0.0-beta.101
+  - '@effect/platform-bun@4.0.0-beta.101'
+  - '@effect/platform-node-shared@4.0.0-beta.101'
+  - '@effect/platform-node@4.0.0-beta.101'
+  - '@effect/vitest@4.0.0-beta.101'
   - tsdown@0.22.5
   - '@fallow-cli/darwin-arm64@3.4.2'
   - '@fallow-cli/darwin-x64@3.4.2'
