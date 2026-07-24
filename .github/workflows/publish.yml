@@ -99,6 +99,4 @@ jobs:
           # --no-git-checks: the workspace may have unrelated files touched in CI
           #   (the verify gate's docs formatter, etc.) — we don't want that to block
           #   the publish from a clean tag.
-          pnpm publish --access public --no-git-checks --no-provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          pnpm publish --access public --no-git-checks
