@@ -20,7 +20,7 @@ pnpm add @effect-libs/browser-providers cloudflare effect@beta
 pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`).
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
 
 Don't want a provider? Connect to any Chrome DevTools Protocol URL with `playwright.withConnection({ url: "wss://…" })` — no provider package needed.
 

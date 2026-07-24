@@ -12,7 +12,7 @@ AI-powered browser automation with natural-language instructions. Stagehand v3 o
 pnpm add @effect-libs/browser-stagehand @browserbasehq/stagehand effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`).
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
 
 ## Resource acquisition
 

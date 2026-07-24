@@ -23,10 +23,10 @@ pnpm add @effect-libs/browser-providers cloudflare effect@beta
 pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`).
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
 
 ## Documentation
 
-→ [Providers index](../../docs/providers/index.md)
+[Providers index](../../docs/providers/index.md)
 
 MIT.

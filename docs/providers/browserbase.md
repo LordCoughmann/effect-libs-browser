@@ -8,7 +8,7 @@ Managed browser sessions with persistent contexts, proxies, and enterprise featu
 pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`). No additional dependencies. Browserbase uses the HTTP API.
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta. No additional dependencies. Browserbase uses the HTTP API.
 
 ## Configuration
 

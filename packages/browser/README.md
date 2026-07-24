@@ -12,12 +12,12 @@ packages depend on it.
 pnpm add @effect-libs/browser effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`).
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
 
 ## Documentation
 
-- [Documentation index →](../../docs/README.md)
-- [Choosing a client →](../../docs/overview.md#choosing-a-client)
-- [Concepts → Client & Provider](../../docs/overview.md)
+- [Documentation index](../../docs/README.md)
+- [Choosing a client](../../docs/overview.md#choosing-a-client)
+- [Concepts: Client & Provider](../../docs/overview.md)
 
 MIT.
