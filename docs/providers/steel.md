@@ -8,7 +8,7 @@ Managed browser sessions with anti-bot bypass, CAPTCHA solving, and persistent c
 pnpm add @effect-libs/browser-providers steel-sdk effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`).
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
 
 ## Configuration
 

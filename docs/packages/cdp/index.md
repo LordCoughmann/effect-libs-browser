@@ -10,7 +10,7 @@ A zero-dependency, native-WebSocket `@effect-libs/browser-cdp` client with a Pla
 pnpm add @effect-libs/browser-cdp effect@beta
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`). No additional runtime dependencies required.
+`effect` is a peer dependency — `effect@beta` installs the latest v4 beta. No additional runtime dependencies required.
 
 ## Resource acquisition
 

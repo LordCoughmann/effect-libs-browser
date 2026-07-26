@@ -1,7 +1,7 @@
 # Examples
 
 Runnable Cloudflare Workers apps that scrape Hacker News using every module
-and provider combination. See [Getting started →](../docs/getting-started.md)
+and provider combination. See [Getting started](../docs/getting-started.md)
 to install the library first.
 
 ## Cloudflare Workers
@@ -82,6 +82,6 @@ the root catalog, so no separate sync step is needed.
 
 ## See also
 
-- [Client & Provider → Choosing a client](../docs/overview.md#choosing-a-client) — which client to pick
-- [Providers →](../docs/providers/index.md) — provider install + swap patterns
-- [Cloudflare Workers guide →](../docs/guides/cloudflare-workers.md) — `wrangler.toml`, `nodejs_compat`, runtime gotchas
+- [Client & Provider: Choosing a client](../docs/overview.md#choosing-a-client) — which client to pick
+- [Providers](../docs/providers/index.md) — provider install + swap patterns
+- [Cloudflare Workers guide](../docs/guides/cloudflare-workers.md) — `wrangler.toml`, `nodejs_compat`, runtime gotchas

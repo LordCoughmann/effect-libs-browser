@@ -7,10 +7,10 @@ A fork of `@cloudflare/playwright` that connects to any browser that supports CD
 ## Install
 
 ```bash
-pnpm add @effect-libs/cloudflare-playwright @cloudflare/playwright@1.3.0
+pnpm add @effect-libs/cloudflare-playwright
 ```
 
-Both packages are required (this fork depends on the upstream `1.3.0`).
+No upstream `@cloudflare/playwright` dependency needed — the fork vendors the patched source directly.
 
 ## Why this fork exists
 
@@ -22,7 +22,7 @@ The full list of patches and why each is needed lives in [`patches/CHECKLIST.md`
 
 Forked from `@cloudflare/playwright@1.3.0`. Resynced on each upstream release via [`scripts/sync-upstream.sh`](./scripts/sync-upstream.sh). Versioned on its own `0.x` series; the upstream version it tracks is documented in this README and the changelog, not encoded in the package version.
 
-Three of the four patches have corresponding upstream PRs:
+Two of the four patches have corresponding upstream PRs:
 
 - [PR #193 — lazy-load `cloudflare:workers`](https://github.com/cloudflare/playwright/pull/193)
 - [PR #194 — `.d.ts` extensions for NodeNext](https://github.com/cloudflare/playwright/pull/194)

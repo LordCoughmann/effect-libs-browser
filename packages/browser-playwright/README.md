@@ -13,10 +13,10 @@ based on our fork of `@cloudflare/playwright` ([`@effect-libs/cloudflare-playwri
 pnpm add @effect-libs/browser-playwright effect@beta
 ```
 
-The Playwright runtime comes from `@effect-libs/cloudflare-playwright` (our maintained fork of `@cloudflare/playwright@1.3.0`). It's a direct dependency, so it installs transitively — no second `pnpm add` needed. `effect` is also a peer dependency — `effect@beta` installs the latest v4 beta (currently `4.0.0-beta.94`).
+The Playwright runtime comes from `@effect-libs/cloudflare-playwright` (our maintained fork of `@cloudflare/playwright@1.3.0`). It's a direct dependency, so it installs transitively — no second `pnpm add` needed. `effect` is also a peer dependency — `effect@beta` installs the latest v4 beta.
 
 ## Documentation
 
-→ [browser-playwright reference](../../docs/packages/playwright/index.md)
+[browser-playwright reference](../../docs/packages/playwright/index.md)
 
 MIT.
