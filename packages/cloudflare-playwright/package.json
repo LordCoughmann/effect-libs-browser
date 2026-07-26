@@ -8,7 +8,7 @@
   },
   "license": "Apache-2.0",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/LordCoughmann/effect-libs-browser.git",
