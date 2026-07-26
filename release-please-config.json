@@ -4,6 +4,7 @@
   "include-component-in-tag": true,
   "include-v-in-tag": true,
   "tag-separator": "@",
+  "versioning": "always-bump-patch",
   "group": "all",
   "packages": {
     "packages/browser": {
