@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-stagehand@v0.1.3...@effect-libs/browser-stagehand@v0.1.4) (2026-07-26)
+
+
+### Miscellaneous Chores
+
+* **@effect-libs/browser-stagehand:** Synchronize effect-libs-browser versions
+
 ## [0.1.3](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-stagehand@v0.1.2...@effect-libs/browser-stagehand@v0.1.3) (2026-07-26)
 
 Version-alignment release; all `@effect-libs` packages now share this version.
