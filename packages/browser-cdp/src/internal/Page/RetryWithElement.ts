@@ -90,7 +90,7 @@ export const retryWithElement = Effect.fn("CdpPage.retryWithElement")(function <
   const failTimeout = (): Effect.Effect<never, CdpError> =>
     Effect.fail(
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "retryWithElement",
         reason: new PageTimeoutError({
           selector,
@@ -191,7 +191,7 @@ export function retryElementLoop<A>(
     const failTimeout = (): Effect.Effect<never, CdpError> =>
       Effect.fail(
         new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: methodName,
           reason: new PageTimeoutError({
             selector,

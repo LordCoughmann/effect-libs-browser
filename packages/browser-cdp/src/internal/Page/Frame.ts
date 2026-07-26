@@ -127,7 +127,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const state = SubscriptionRef.getUnsafe(frameState);
         if (!state.lifecycleEvents.has("domcontentloaded") && !state.lifecycleEvents.has("load")) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "content",
             reason: new ContentUnavailableError({
               description:
@@ -145,7 +145,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const mainContextId = yield* ctx.frameManager.getMainContextId(frameId);
         if (mainContextId === null) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "content",
             reason: new EvaluationError({
               description: "No execution context for frame",
@@ -169,7 +169,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const currentMetadata = ctx.frameManager.getFrameMetadata(frameId);
         if (currentMetadata?.isDetached) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "evaluate",
             reason: new NavigationError({
               url: "frame",
@@ -185,7 +185,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const contextId = yield* ctx.frameManager.getMainContextId(frameId);
         if (contextId === null) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "evaluate",
             reason: new EvaluationError({
               description: "No execution context for frame",
@@ -318,7 +318,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const currentMetadata = ctx.frameManager.getFrameMetadata(frameId);
         if (currentMetadata?.isDetached) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "waitForFunction",
             reason: new NavigationError({
               url: "frame",
@@ -334,7 +334,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const contextId = yield* ctx.frameManager.getMainContextId(frameId);
         if (contextId === null) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "waitForFunction",
             reason: new EvaluationError({
               description: "No execution context for frame",
@@ -363,7 +363,7 @@ export const makeCdpFrame = (frameId: string, ctx: FrameContext): CdpFrame | nul
         const currentMetadata = ctx.frameManager.getFrameMetadata(frameId);
         if (currentMetadata?.isDetached) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "waitForSelector",
             reason: new NavigationError({
               url: "frame",
@@ -445,7 +445,7 @@ export const makeMainFrame = (mainId: string, ctx: FrameContext): CdpFrame => {
         const state = SubscriptionRef.getUnsafe(frameState);
         if (!state.lifecycleEvents.has("domcontentloaded") && !state.lifecycleEvents.has("load")) {
           return yield* new CdpErrorClass({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "content",
             reason: new ContentUnavailableError({
               description:

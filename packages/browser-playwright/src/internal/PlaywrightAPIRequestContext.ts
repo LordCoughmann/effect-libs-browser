@@ -20,7 +20,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightAPIRequestContext",
+      source: "PlaywrightAPIRequestContext",
       method,
       reason: new OperationError({
         method,

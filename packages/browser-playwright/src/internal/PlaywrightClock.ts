@@ -18,7 +18,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightClock",
+      source: "PlaywrightClock",
       method,
       reason: new OperationError({
         method,

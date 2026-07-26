@@ -19,7 +19,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightKeyboard",
+      source: "PlaywrightKeyboard",
       method,
       reason: new OperationError({
         method,

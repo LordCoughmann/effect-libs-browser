@@ -142,7 +142,7 @@ const TypeId = "~effect-libs/browser/StagehandError" as const;
 export class StagehandError extends Schema.TaggedErrorClass<StagehandError>()(
   "effect-libs/browser/StagehandError",
   {
-    module: Schema.String,
+    source: Schema.String,
     method: Schema.String,
     reason: StagehandErrorReason,
   },
@@ -155,10 +155,10 @@ export class StagehandError extends Schema.TaggedErrorClass<StagehandError>()(
   override readonly cause = this.reason;
 
   /**
-   * Human-readable message derived from module, method, and reason.
+   * Human-readable message derived from source, method, and reason.
    *
    * Mirrors the format used by {@link CdpError} and {@link PlaywrightError}:
-   * `${module}.${method}: ${reason._tag} — ${description}`. All three
+   * `${source}.${method}: ${reason._tag} — ${description}`. All three
    * Stagehand reason classes (`ConnectionError`, `OperationError`,
    * `AgentError`) carry a required `description` field, so the "no
    * description" branch is defensive (handles future reason types that
@@ -170,8 +170,8 @@ export class StagehandError extends Schema.TaggedErrorClass<StagehandError>()(
         ? (this.reason as { readonly description: string }).description
         : undefined;
     return desc
-      ? `${this.module}.${this.method}: ${this.reason._tag} — ${desc}`
-      : `${this.module}.${this.method}: ${this.reason._tag}`;
+      ? `${this.source}.${this.method}: ${this.reason._tag} — ${desc}`
+      : `${this.source}.${this.method}: ${this.reason._tag}`;
   }
 
   /**

@@ -124,7 +124,7 @@ const wrapCdpError =
     isCdpError(cause)
       ? cause
       : new CdpErrorClass({
-          module: "CdpPage",
+          source: "CdpPage",
           method,
           reason: new EvaluationError({ description: getErrorMessage(cause) }),
         });
@@ -161,7 +161,7 @@ const resolveIframeFrameId = (
     const ctxId = yield* ctx.frameManager.getMainContextId(parentFrameId);
     if (ctxId === null) {
       return yield* new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "frameLocator",
         reason: new EvaluationError({
           description: `No execution context for parent frame ${parentFrameId}`,
@@ -213,7 +213,7 @@ const resolveIframeFrameId = (
         { tag },
       ).pipe(Effect.ignore);
       return yield* new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "frameLocator",
         reason: new SelectorError({
           selector: iframeSelector,
@@ -299,7 +299,7 @@ const resolveLink = (
   if (ctx.frameManager.isFrameDetached(parentFrameId)) {
     return Effect.fail(
       new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "frameLocator",
         reason: new EvaluationError({
           description: `Parent frame ${parentFrameId} is detached`,
@@ -319,7 +319,7 @@ const resolveLink = (
             // Tag with a sentinel so retry skips it; resolves to a
             // user-visible error after `retryWhile`.
             new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "frameLocator",
               reason: new SelectorError({
                 selector: sel,
@@ -345,7 +345,7 @@ const resolveLink = (
       orElse: () =>
         Effect.fail(
           new CdpErrorClass({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "frameLocator",
             reason: new EvaluationError({
               description: `Frame for selector "${sel}" not found after ${timeoutMs}ms`,
@@ -468,7 +468,7 @@ const runInFrame = <A, V>(
     const ctxId = yield* ctx.frameManager.getMainContextId(contentFrameId);
     if (ctxId === null) {
       return yield* new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "frameLocator",
         reason: new EvaluationError({
           description: `No execution context for frame ${contentFrameId}`,
@@ -509,7 +509,7 @@ const runInFrame = <A, V>(
 
         if (!tagged.ok && options.index !== undefined) {
           return yield* new CdpErrorClass({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "frameLocator",
             reason: new SelectorError({
               selector: innerSelector,
@@ -567,7 +567,7 @@ const mapActionError =
     const desc = getErrorMessage(cause);
     if (desc.includes("not attached") || desc.includes("detached")) {
       return new CdpErrorClass({
-        module: "CdpPage",
+        source: "CdpPage",
         method: `frameLocator.${method}`,
         reason: new EvaluationError({
           description: `Frame or element detached during ${method}: ${desc}`,
@@ -575,7 +575,7 @@ const mapActionError =
       });
     }
     return new CdpErrorClass({
-      module: "CdpPage",
+      source: "CdpPage",
       method: `frameLocator.${method}`,
       reason: new EvaluationError({ description: desc }),
     });

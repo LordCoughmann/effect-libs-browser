@@ -34,7 +34,7 @@ const mapError = (selector: string) =>
       description = cause.reason.description;
     }
     return new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "dispatchEvent",
       reason: new SelectorError({ selector, description }),
     });

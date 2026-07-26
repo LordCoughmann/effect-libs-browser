@@ -38,7 +38,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightPage",
+      source: "PlaywrightPage",
       method,
       reason: new OperationError({
         method,
@@ -51,7 +51,7 @@ const wrapNavigationError =
   (url: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightPage",
+      source: "PlaywrightPage",
       method: "goto",
       reason: new NavigationError({
         method: "goto",

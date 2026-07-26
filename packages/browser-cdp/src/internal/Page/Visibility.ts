@@ -20,7 +20,7 @@ const mapError = (method: string, selector: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method,
         reason: new SelectorError({
           selector,

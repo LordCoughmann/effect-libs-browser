@@ -592,7 +592,7 @@ const dispatchToPage = (
       Effect.mapError(
         (e) =>
           new CdpErrorClass({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "RouteWebSocket",
             reason: new CommandError({ method: "Runtime.evaluate", description: String(e) }),
           }),
@@ -1083,7 +1083,7 @@ const makeWebSocketRouteHandle = (
           const state = yield* updateState((s) => s);
           if (!state) {
             return yield* new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "routeWebSocket.connectToServer",
               reason: new EvaluationError({
                 description: "WebSocket route has been disposed",
@@ -1092,7 +1092,7 @@ const makeWebSocketRouteHandle = (
           }
           if (state.connected) {
             return yield* new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "routeWebSocket.connectToServer",
               reason: new EvaluationError({
                 description: "Already connected to the server",

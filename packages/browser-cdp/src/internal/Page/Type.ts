@@ -63,7 +63,7 @@ export const typeIntoElement = Effect.fn("CdpPage.type")(
       const mapInteractionError = Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "type",
             reason: new SelectorError({
               selector,

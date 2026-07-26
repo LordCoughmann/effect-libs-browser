@@ -33,7 +33,7 @@ const wrapError =
   (method: string) =>
   (cause: unknown): PlaywrightError =>
     new PlaywrightError({
-      module: "PlaywrightLocator",
+      source: "PlaywrightLocator",
       method,
       reason: new OperationError({
         method,

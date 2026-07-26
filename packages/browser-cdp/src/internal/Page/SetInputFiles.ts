@@ -36,7 +36,7 @@ const mapError = (selector: string) =>
       description = cause.reason.description;
     }
     return new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "setInputFiles",
       reason: new SelectorError({ selector, description }),
     });
@@ -86,7 +86,7 @@ export const setInputFiles = Effect.fn("CdpPage.setInputFiles")(function (
 
     if (!result.ok) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "setInputFiles",
         reason: new SelectorError({
           selector,
@@ -105,7 +105,7 @@ export const setInputFiles = Effect.fn("CdpPage.setInputFiles")(function (
       Effect.mapError(
         (cause) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "setInputFiles",
             reason: new SelectorError({
               selector,
@@ -119,7 +119,7 @@ export const setInputFiles = Effect.fn("CdpPage.setInputFiles")(function (
       Effect.mapError(
         (cause) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "setInputFiles",
             reason: new SelectorError({
               selector,
@@ -136,7 +136,7 @@ export const setInputFiles = Effect.fn("CdpPage.setInputFiles")(function (
       Effect.mapError(
         (cause) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "setInputFiles",
             reason: new SelectorError({
               selector,
@@ -154,7 +154,7 @@ export const setInputFiles = Effect.fn("CdpPage.setInputFiles")(function (
       Effect.mapError(
         (cause) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "setInputFiles",
             reason: new SelectorError({
               selector,

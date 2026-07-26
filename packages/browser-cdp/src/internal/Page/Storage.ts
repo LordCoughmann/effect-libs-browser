@@ -20,7 +20,7 @@ import { type PageState } from "./PageState.js";
 
 const failStorage = (description: string): CdpError =>
   new CdpError({
-    module: "CdpPage",
+    source: "CdpPage",
     method: "storage",
     reason: new EvaluationError({ description }),
   });

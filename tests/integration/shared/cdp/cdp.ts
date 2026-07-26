@@ -73,7 +73,7 @@ const getContextId = (page: CdpPageService): Effect.Effect<string | undefined, C
       Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "test",
+            source: "test",
             method: "getContextId",
             reason: new ConnectionError({
               description: getErrorMessage(cause),
@@ -103,7 +103,7 @@ const countTargets = (page: CdpPageService, contextId?: string): Effect.Effect<n
       Effect.mapError(
         (cause: unknown) =>
           new CdpError({
-            module: "test",
+            source: "test",
             method: "countTargets",
             reason: new ConnectionError({
               description: getErrorMessage(cause),

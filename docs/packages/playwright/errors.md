@@ -13,7 +13,7 @@ error wrapping a discriminated union of reasons.
 
 ## The shape
 
-`PlaywrightError` carries `module` (the source wrapper), `method` (the call), `reason` (the discriminated union of 4 reason classes), `isRetryable` (delegates to the reason), `cause === reason` (so the typed reason is visible in stack traces as `Caused by: ...`), and `message` (derived from `module` + `method` + `reason._tag` + `reason.description`). The `_tag` on `PlaywrightError` itself is always `"effect-libs/browser/PlaywrightError"`. Match on `reason._tag` (or use `Effect.catchReason`) for the specific reason.
+`PlaywrightError` carries `source` (the wrapper class that produced the error), `method` (the call), `reason` (the discriminated union of 4 reason classes), `isRetryable` (delegates to the reason), `cause === reason` (so the typed reason is visible in stack traces as `Caused by: ...`), and `message` (derived from `source` + `method` + `reason._tag` + `reason.description`). The `_tag` on `PlaywrightError` itself is always `"effect-libs/browser/PlaywrightError"`. Match on `reason._tag` (or use `Effect.catchReason`) for the specific reason.
 
 ## Reason classes
 
@@ -142,13 +142,13 @@ const example = (page: import("@effect-libs/browser-playwright").PlaywrightPage)
 > narrows on `PlaywrightError` directly) will land in a future Effect
 > release.
 
-## Module field
+## Source field
 
-`PlaywrightError.module` identifies the wrapper that produced the error.
+`PlaywrightError.source` identifies the wrapper class that produced the error.
 Useful when the same program uses multiple wrappers and you want to log
 or branch on the source.
 
-| `module` value               | Source                                                          |
+| `source` value               | Source                                                          |
 | ---------------------------- | --------------------------------------------------------------- |
 | `"Playwright"`               | The `Playwright` service (`connectOverCDP`, lifecycle).         |
 | `"PlaywrightPage"`           | `page.*` operations (navigation, evaluate, screenshot, ...).    |

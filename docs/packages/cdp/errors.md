@@ -14,7 +14,7 @@ parent error wrapping a discriminated union of reasons.
 
 ## The shape
 
-`CdpError` carries `module` (the source wrapper), `method` (the call), `reason` (the discriminated union of 14 reason classes), `isRetryable` (delegates to the reason), `cause === reason` (so the typed reason is visible in stack traces as `Caused by: ...`), and `message` (derived from `module` + `method` + `reason._tag` + `reason.description`). The `_tag` on `CdpError` itself is always `"effect-libs/browser/CdpError"`. Match on `reason._tag` (or use `Effect.catchReason`) for the specific reason (or use the `isXxxError` class guards exported from the package).
+`CdpError` carries `source` (the wrapper class that produced the error), `method` (the call), `reason` (the discriminated union of 14 reason classes), `isRetryable` (delegates to the reason), `cause === reason` (so the typed reason is visible in stack traces as `Caused by: ...`), and `message` (derived from `source` + `method` + `reason._tag` + `reason.description`). The `_tag` on `CdpError` itself is always `"effect-libs/browser/CdpError"`. Match on `reason._tag` (or use `Effect.catchReason`) for the specific reason (or use the `isXxxError` class guards exported from the package).
 
 ## Reason classes
 
@@ -146,19 +146,19 @@ const example = (page: import("@effect-libs/browser-cdp").CdpPageService) =>
 > errors. The pre-typed `Effect.retry` predicate (one that narrows on
 > `CdpError` directly) will land in a future Effect release.
 
-## Module field
+## Source field
 
-`CdpError.module` identifies the wrapper that produced the error.
+`CdpError.source` identifies the wrapper class that produced the error.
 Useful when the same program uses multiple `@effect-libs/browser-cdp` services and you want
 to log or branch on the source.
 
-| `module` value          | Source                                                                |
-| ----------------------- | --------------------------------------------------------------------- |
-| `"Cdp"`                 | The `Cdp` service (`acquireSession` / `acquireConnection` lifecycle). |
-| `"CdpPage"`             | `page.*` operations (navigation, click, evaluate, screenshot, ...).   |
-| `"CdpFrame"`            | `frame.*` operations (goto, waitForNavigation, content, ...).         |
-| `"CdpLocator"`          | `locator.*` operations that fail inside the locator resolver.         |
-| `"CdpContextHandle"`    | `context.*` operations (cookies, setGeolocation, storageState).       |
+| `source` value         | Source                                                                |
+| ---------------------- | --------------------------------------------------------------------- |
+| `"Cdp"`                | The `Cdp` service (`acquireSession` / `acquireConnection` lifecycle). |
+| `"CdpPage"`            | `page.*` operations (navigation, click, evaluate, screenshot, ...).   |
+| `"CdpFrame"`           | `frame.*` operations (goto, waitForNavigation, content, ...).         |
+| `"CdpLocator"`         | `locator.*` operations that fail inside the locator resolver.         |
+| `"CdpContextHandle"`   | `context.*` operations (cookies, setGeolocation, storageState).       |
 | `"CdpConnectionHandle"` | `connection.withContext` failures (e.g. `ContextNotSupportedError`).  |
 
 ## Migration from upstream `playwright`

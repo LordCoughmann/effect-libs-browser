@@ -55,7 +55,7 @@ const mapInteractionError = (selector: string, method = "tap") =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method,
         reason: new SelectorError({
           selector,
@@ -75,7 +75,7 @@ const ensureCdpError = (err: DeepLocatorError): CdpError => {
   if (isCdpError(err)) return err;
   const message = err instanceof Error ? err.message : String(err);
   return new CdpError({
-    module: "CdpPage",
+    source: "CdpPage",
     method: "tap",
     reason: new ConnectionError({ description: message }),
   });
@@ -156,7 +156,7 @@ export const tapElement = Effect.fn("CdpPage.tap")((
       );
       if (!point) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "tap",
           reason: new SelectorError({
             selector,

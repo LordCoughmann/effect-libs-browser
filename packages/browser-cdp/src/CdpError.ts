@@ -404,7 +404,7 @@ const TypeId = "~effect-libs/browser/CdpError" as const;
  * ```
  */
 export class CdpError extends Schema.TaggedErrorClass<CdpError>()("effect-libs/browser/CdpError", {
-  module: Schema.String,
+  source: Schema.String,
   method: Schema.String,
   reason: CdpErrorReason,
 }) {
@@ -416,14 +416,14 @@ export class CdpError extends Schema.TaggedErrorClass<CdpError>()("effect-libs/b
   override readonly cause = this.reason;
 
   /**
-   * Human-readable message derived from module, method, and reason.
+   * Human-readable message derived from source, method, and reason.
    */
   override get message(): string {
     const tag = shortTag(this.reason._tag);
     const desc = this.reasonDescription;
     return desc
-      ? `${this.module}.${this.method}: ${tag} — ${desc}`
-      : `${this.module}.${this.method}: ${tag}`;
+      ? `${this.source}.${this.method}: ${tag} — ${desc}`
+      : `${this.source}.${this.method}: ${tag}`;
   }
 
   /** Extract a human-readable description from the reason. */

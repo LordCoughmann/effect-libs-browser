@@ -77,7 +77,7 @@ const makeDownloadFromCdp = (
         const f = yield* Ref.get(failure);
         if (f !== null) {
           return yield* new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "download.path",
             reason: new CommandError({
               method: "Browser.downloadProgress",
@@ -88,7 +88,7 @@ const makeDownloadFromCdp = (
         const p = yield* Ref.get(finalPath);
         if (p === null) {
           return yield* new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "download.path",
             reason: new CommandError({
               method: "Browser.downloadProgress",
@@ -106,7 +106,7 @@ const makeDownloadFromCdp = (
           Effect.mapError(
             (cause) =>
               new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "download.cancel",
                 reason: new CommandError({
                   method: "Browser.cancelDownload",
@@ -161,7 +161,7 @@ export const configureDownloads = (
     Effect.mapError(
       (cause) =>
         new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "configureDownloads",
           reason: new CommandError({
             method: "Browser.setDownloadBehavior",

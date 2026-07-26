@@ -35,7 +35,7 @@ export interface AddScriptTagOptions {
 const failAddScriptTag = (description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "addScriptTag",
       reason: new EvaluationError({ description }),
     }),
@@ -124,7 +124,7 @@ export const addScriptTag = Effect.fn("CdpPage.addScriptTag")(function (
       Effect.mapError(
         (cause) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "addScriptTag",
             reason: new EvaluationError({
               description: getErrorMessage(cause),

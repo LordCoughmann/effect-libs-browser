@@ -125,7 +125,7 @@ export interface PdfOptions {
 const failPdf = (description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "pdf",
       reason: new PdfError({ description }),
     }),

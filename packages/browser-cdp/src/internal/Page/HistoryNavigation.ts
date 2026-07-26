@@ -25,7 +25,7 @@ const mapNavigationError = (method: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method,
         reason: new NavigationError({
           url: method,
@@ -71,7 +71,7 @@ const goDelta = (
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method,
               reason: new NavigationError({ url: method, description: String(cause) }),
             }),

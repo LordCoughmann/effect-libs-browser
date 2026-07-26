@@ -2227,7 +2227,7 @@ export interface CdpPageService {
    * @deprecated Prefer the {@link onPageError} stream. The snapshot
    *   accessor exists for historical parity with Playwright's
    *   `page.pageErrors()`, but it is inconsistent with the rest of the
-   *   module: there is no `consoleMessages()` snapshot — `consoleMessages`
+   *   API surface: there is no `consoleMessages()` snapshot — `consoleMessages`
    *   parity is `❌ use the onConsole stream`. To preserve consistency,
    *   collect errors from the stream and accumulate them yourself:
    *   ```typescript
@@ -3376,7 +3376,7 @@ export const make = (
         const metadata = frameManager.getFrameMetadata(mainId);
         if (!metadata) {
           return yield* new CdpErrorClass({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "mainFrame",
             reason: new NavigationError({ url: "frame", description: `Frame ${mainId} not found` }),
           });
@@ -3565,7 +3565,7 @@ export const make = (
         ? Effect.succeed(contextHandle)
         : Effect.fail(
             new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "context",
               reason: new EvaluationError({
                 description: "Page was created without a context handle",
@@ -4117,7 +4117,7 @@ export const make = (
           const utilityContextId = yield* frameManager.getUtilityContextId(frameId);
           if (utilityContextId === null) {
             return yield* new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "selectOption",
               reason: new EvaluationError({ description: "Utility context not available" }),
             });
@@ -4206,7 +4206,7 @@ export const make = (
             Effect.mapError(
               (cause) =>
                 new CdpErrorClass({
-                  module: "CdpPage",
+                  source: "CdpPage",
                   method: "addInitScript",
                   reason: new EvaluationError({ description: String(cause) }),
                 }),

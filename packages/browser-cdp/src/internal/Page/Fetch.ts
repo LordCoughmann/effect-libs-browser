@@ -24,7 +24,7 @@ export { FetchResponse, type FetchOptions } from "@effect-libs/browser";
 const failFetch = (url: string, description: string, status?: number) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "fetch",
       reason: new FetchError({ url, status, description }),
     }),
@@ -139,7 +139,7 @@ export const fetchPage = Effect.fn("CdpPage.fetch")(
         Effect.mapError(
           (issue) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "fetch",
               reason: new FetchError({
                 url,

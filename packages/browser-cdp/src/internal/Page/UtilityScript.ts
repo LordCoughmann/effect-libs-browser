@@ -110,7 +110,7 @@ export const getOrCreateMainWorldUtilityScript = (
       Effect.mapError((cause) => {
         const msg = getErrorMessage(cause);
         return new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "injectMainWorldUtilityScript",
           reason: new EvaluationError({
             description: `Failed to inject main-world utility script: ${msg}`,
@@ -121,7 +121,7 @@ export const getOrCreateMainWorldUtilityScript = (
 
     if (result.exceptionDetails) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "injectMainWorldUtilityScript",
         reason: new EvaluationError({
           description: `Main-world utility script threw: ${
@@ -136,7 +136,7 @@ export const getOrCreateMainWorldUtilityScript = (
     const objectId = result.result?.objectId;
     if (!objectId) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "injectMainWorldUtilityScript",
         reason: new EvaluationError({
           description:

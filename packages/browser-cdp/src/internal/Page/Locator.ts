@@ -944,7 +944,7 @@ const withIndexedElement = <A>(
 
 const selectorError = (method: string, selector: string, description: string): CdpError =>
   new CdpError({
-    module: "CdpLocator",
+    source: "CdpLocator",
     method,
     reason: new SelectorError({ selector, description }),
   });
@@ -1266,7 +1266,7 @@ export const makeCdpLocator = (ctx: LocatorContext, initialSelector: string): Cd
             );
             if (count === 0) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "locator.evaluate",
                 reason: new SelectorError({
                   selector: state.selector,
@@ -1276,7 +1276,7 @@ export const makeCdpLocator = (ctx: LocatorContext, initialSelector: string): Cd
             }
             if (count > 1) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "locator.evaluate",
                 reason: new SelectorError({
                   selector: state.selector,
@@ -1356,7 +1356,7 @@ export const makeCdpLocator = (ctx: LocatorContext, initialSelector: string): Cd
             );
             if (count === 0) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "locator.evaluateHandle",
                 reason: new SelectorError({
                   selector: state.selector,
@@ -1366,7 +1366,7 @@ export const makeCdpLocator = (ctx: LocatorContext, initialSelector: string): Cd
             }
             if (count > 1) {
               return yield* new CdpError({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "locator.evaluateHandle",
                 reason: new SelectorError({
                   selector: state.selector,

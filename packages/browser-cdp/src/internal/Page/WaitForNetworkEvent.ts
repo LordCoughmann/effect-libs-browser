@@ -232,7 +232,7 @@ export const waitForRequestPage = (
     const timeout = options?.timeout ?? Duration.seconds(30);
 
     const timeoutError = new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "waitForRequest",
       reason: new PageTimeoutError({ timeout }),
     });
@@ -291,7 +291,7 @@ export const waitForResponsePage = (
     const timeout = options?.timeout ?? Duration.seconds(30);
 
     const timeoutError = new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "waitForResponse",
       reason: new PageTimeoutError({ timeout }),
     });
@@ -342,7 +342,7 @@ export const waitForRequestFailed = (
     const timeout = options?.timeout ?? Duration.seconds(30);
 
     const timeoutError = new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "waitForRequestFailed",
       reason: new PageTimeoutError({ timeout }),
     });

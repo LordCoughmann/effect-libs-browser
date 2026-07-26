@@ -266,7 +266,7 @@ export const registerBinding = Effect.fn("CdpPage.registerBinding")(
       const existing = yield* Ref.get(state.bindings);
       if (existing.has(binding.name)) {
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "exposeFunction",
           reason: new EvaluationError({
             description: `page.exposeFunction: Function "${binding.name}" has been already registered`,
@@ -351,7 +351,7 @@ export const handleBindingCall = Effect.fn("CdpPage.handleBindingCall")(
         try: () => JSON.parse(payload) as BindingPayload,
         catch: (e) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "binding",
             reason: new EvaluationError({
               description: `binding payload parse error: ${getErrorMessage(e)}`,
@@ -481,7 +481,7 @@ export const handleBindingCall = Effect.fn("CdpPage.handleBindingCall")(
         try: () => serializeForBrowser(invoked.value),
         catch: (e) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "binding",
             reason: new EvaluationError({
               description: `binding result serialise error: ${getErrorMessage(e)}`,
@@ -541,7 +541,7 @@ const evaluateInContext = <T>(
       Effect.mapError(
         (e) =>
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "evaluateInContext",
             reason: new EvaluationError({ description: e.message }),
           }),
@@ -550,7 +550,7 @@ const evaluateInContext = <T>(
     if (result.exceptionDetails) {
       const text = result.exceptionDetails.exception?.description ?? result.exceptionDetails.text;
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "evaluateInContext",
         reason: new EvaluationError({ description: text }),
       });

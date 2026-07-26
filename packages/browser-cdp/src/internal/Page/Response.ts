@@ -161,7 +161,7 @@ export const makeResponse = (
         Effect.mapError(
           (cause) =>
             new CdpErrorClass({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "Response.text",
               reason: new FetchError({
                 url: data.url,
@@ -209,7 +209,7 @@ export const makeResponse = (
             try: () => JSON.parse(body) as T,
             catch: (cause) =>
               new CdpErrorClass({
-                module: "CdpPage",
+                source: "CdpPage",
                 method: "Response.json",
                 reason: new FetchError({
                   url: data.url,

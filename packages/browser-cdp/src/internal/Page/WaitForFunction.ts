@@ -57,7 +57,7 @@ const validatePolling = (polling: PollingOption): Effect.Effect<void, CdpError> 
     if (polling !== "raf") {
       return Effect.fail(
         new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "waitForFunction",
           reason: new EvaluationError({
             description: `Unknown polling option: ${polling}`,
@@ -69,7 +69,7 @@ const validatePolling = (polling: PollingOption): Effect.Effect<void, CdpError> 
     if (polling <= 0) {
       return Effect.fail(
         new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "waitForFunction",
           reason: new EvaluationError({
             description: `Cannot poll with non-positive interval: ${polling}`,
@@ -353,14 +353,14 @@ export const waitForFunctionPage = Effect.fn("CdpPage.waitForFunction")(function
           isPollTimeoutEvalReason(reason)
             ? Effect.fail(
                 new CdpError({
-                  module: "CdpPage",
+                  source: "CdpPage",
                   method: "waitForFunction",
                   reason: new PageTimeoutError({ timeout }),
                 }),
               )
             : isRecoverableEvalReason(reason)
               ? Effect.succeed(false as Awaited<T>)
-              : Effect.fail(new CdpError({ module: "CdpPage", method: "waitForFunction", reason })),
+              : Effect.fail(new CdpError({ source: "CdpPage", method: "waitForFunction", reason })),
       ),
 
       // Retry on falsy results (navigation recovery returns false).
@@ -373,7 +373,7 @@ export const waitForFunctionPage = Effect.fn("CdpPage.waitForFunction")(function
       Effect.catchTag("TimeoutError", () =>
         Effect.fail(
           new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "waitForFunction",
             reason: new PageTimeoutError({ timeout }),
           }),
@@ -475,7 +475,7 @@ export const waitForFunctionFrame = Effect.fn("CdpFrame.waitForFunction")(functi
     // Create error for frame detachment
     const makeDetachedError = () =>
       new CdpError({
-        module: "CdpFrame",
+        source: "CdpFrame",
         method: "waitForFunction",
         reason: new NavigationError({
           url: "frame",
@@ -536,7 +536,7 @@ export const waitForFunctionFrame = Effect.fn("CdpFrame.waitForFunction")(functi
           if (isPollTimeoutEvalReason(reason)) {
             return Effect.fail(
               new CdpError({
-                module: "CdpFrame",
+                source: "CdpFrame",
                 method: "waitForFunction",
                 reason: new PageTimeoutError({ timeout }),
               }),
@@ -547,7 +547,7 @@ export const waitForFunctionFrame = Effect.fn("CdpFrame.waitForFunction")(functi
             return Effect.succeed(false as Awaited<T>);
           }
           return Effect.fail(
-            new CdpError({ module: "CdpFrame", method: "waitForFunction", reason }),
+            new CdpError({ source: "CdpFrame", method: "waitForFunction", reason }),
           );
         },
       }),
@@ -574,7 +574,7 @@ export const waitForFunctionFrame = Effect.fn("CdpFrame.waitForFunction")(functi
       Effect.catchTag("TimeoutError", () =>
         Effect.fail(
           new CdpError({
-            module: "CdpFrame",
+            source: "CdpFrame",
             method: "waitForFunction",
             reason: new PageTimeoutError({ timeout }),
           }),

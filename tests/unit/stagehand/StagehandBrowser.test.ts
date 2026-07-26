@@ -20,7 +20,7 @@ import {
 describe("StagehandError (new model)", () => {
   it("wraps ConnectionError reason", () => {
     const error = new StagehandError({
-      module: "Stagehand",
+      source: "Stagehand",
       method: "withConnection",
       reason: new ConnectionError({
         description: "Connection failed",
@@ -34,7 +34,7 @@ describe("StagehandError (new model)", () => {
 
   it("wraps OperationError reason", () => {
     const error = new StagehandError({
-      module: "StagehandInstance",
+      source: "StagehandInstance",
       method: "use",
       reason: new OperationError({
         action: "act",
@@ -48,7 +48,7 @@ describe("StagehandError (new model)", () => {
 
   it("message includes module and method", () => {
     const error = new StagehandError({
-      module: "Stagehand",
+      source: "Stagehand",
       method: "withConnection",
       reason: new ConnectionError({
         description: "test",
@@ -63,7 +63,7 @@ describe("StagehandError (new model)", () => {
     Effect.gen(function* () {
       const result = yield* Effect.fail(
         new StagehandError({
-          module: "test",
+          source: "test",
           method: "test",
           reason: new ConnectionError({ description: "test" }),
         }),
@@ -79,7 +79,7 @@ describe("StagehandError (new model)", () => {
     Effect.gen(function* () {
       const result = yield* Effect.fail(
         new StagehandError({
-          module: "test",
+          source: "test",
           method: "test",
           reason: new OperationError({ action: "act", description: "op failed" }),
         }),
@@ -141,7 +141,7 @@ describe("Stagehand error propagation", () => {
         const program = service.withConnection({ url: "ws://localhost:9222" }, () =>
           Effect.fail(
             new StagehandError({
-              module: "test",
+              source: "test",
               method: "test",
               reason: new ConnectionError({ description: "User error" }),
             }),

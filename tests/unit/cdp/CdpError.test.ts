@@ -185,7 +185,7 @@ describe("CdpError delegation", () => {
   it("delegates message to module.method: reasonTag — description", () => {
     const reason = new ConnectionError({ description: "WS failed" });
     const error = new CdpError({
-      module: "Cdp",
+      source: "Cdp",
       method: "connect",
       reason,
     });
@@ -195,7 +195,7 @@ describe("CdpError delegation", () => {
 
   it("delegates cause to reason", () => {
     const reason = new ConnectionError({ description: "boom" });
-    const error = new CdpError({ module: "Cdp", method: "test", reason });
+    const error = new CdpError({ source: "Cdp", method: "test", reason });
 
     assert.strictEqual(error.cause, reason);
   });
@@ -203,7 +203,7 @@ describe("CdpError delegation", () => {
   it("delegates isRetryable to reason", () => {
     for (const reasonCase of reasonCases) {
       const error = new CdpError({
-        module: "Cdp",
+        source: "Cdp",
         method: "test",
         reason: reasonCase.make(),
       });
@@ -214,18 +214,18 @@ describe("CdpError delegation", () => {
 
   it("exposes module and method fields", () => {
     const error = new CdpError({
-      module: "CdpConnectionHandle",
+      source: "CdpConnectionHandle",
       method: "withContext",
       reason: new ConnectionError({ description: "failed" }),
     });
 
-    assert.strictEqual(error.module, "CdpConnectionHandle");
+    assert.strictEqual(error.source, "CdpConnectionHandle");
     assert.strictEqual(error.method, "withContext");
   });
 
   it("has correct _tag", () => {
     const error = new CdpError({
-      module: "Cdp",
+      source: "Cdp",
       method: "test",
       reason: new ConnectionError({ description: "failed" }),
     });
@@ -241,7 +241,7 @@ describe("CdpError schema roundtrip", () => {
     it.effect(`schema roundtrip for CdpError wrapping ${reasonCase.tag.split("/").pop()}`, () =>
       Effect.gen(function* () {
         const error = new CdpError({
-          module: "Cdp",
+          source: "Cdp",
           method: "test",
           reason: reasonCase.make(),
         });
@@ -251,7 +251,7 @@ describe("CdpError schema roundtrip", () => {
 
         assert.strictEqual(decoded._tag, "effect-libs/browser/CdpError");
         assert.strictEqual(decoded.reason._tag, reasonCase.tag);
-        assert.strictEqual(decoded.module, "Cdp");
+        assert.strictEqual(decoded.source, "Cdp");
         assert.strictEqual(decoded.method, "test");
         assert.strictEqual(decoded.isRetryable, reasonCase.isRetryable);
         assert.strictEqual(decoded.cause, decoded.reason);

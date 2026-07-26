@@ -30,7 +30,7 @@ const mapError = (source: string, target: string) =>
       description = cause.reason.description;
     }
     return new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "dragAndDrop",
       reason: new SelectorError({
         selector: `${source} -> ${target}`,
@@ -47,7 +47,7 @@ interface ElementCenter {
 const failDragAndDrop = (selector: string, role: "source" | "target", description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "dragAndDrop",
       reason: new SelectorError({
         selector: role === "source" ? selector : `(target) ${selector}`,
@@ -143,7 +143,7 @@ export const dragAndDrop = Effect.fn("CdpPage.dragAndDrop")(function (
         Effect.mapError(
           (cause) =>
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "dragAndDrop",
               reason: new SelectorError({
                 selector: `${source} -> ${target}`,

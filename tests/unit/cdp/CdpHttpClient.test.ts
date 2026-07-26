@@ -94,7 +94,7 @@ describe("makePageHttpClient", () => {
   it.effect("converts FetchError to HttpClientError", () =>
     Effect.gen(function* () {
       const fetchError = new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "fetch",
         reason: new FetchError({
           url: "https://example.com/fail",

@@ -176,9 +176,9 @@ export interface CfBrowserRunBindingProviderService extends BrowserProviderServi
 
 // ── Error Helper ──────────────────────────────────────────────────────────────
 
-const MODULE = "CfBrowserRunBindingProvider";
+const SOURCE = "CfBrowserRunBindingProvider";
 const wrapError = (method: string, reason: PlaywrightError["reason"]) =>
-  new PlaywrightError({ module: MODULE, method, reason });
+  new PlaywrightError({ source: SOURCE, method, reason });
 
 // ── Implementation ────────────────────────────────────────────────────────────
 

@@ -17,7 +17,7 @@ import { PlaywrightError, OperationError } from "../PlaywrightError.js";
 
 const wrapError = (cause: unknown): PlaywrightError =>
   new PlaywrightError({
-    module: "PlaywrightTouchscreen",
+    source: "PlaywrightTouchscreen",
     method: "tap",
     reason: new OperationError({
       method: "tap",

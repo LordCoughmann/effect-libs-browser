@@ -47,7 +47,7 @@ const connectOverCDP = (wsEndpoint: string): Effect.Effect<Browser, PlaywrightEr
       try: () => playwright.chromium.connectOverCDP(wsEndpoint),
       catch: (cause) =>
         new PlaywrightError({
-          module: "Playwright",
+          source: "Playwright",
           method: "connectOverCDP",
           reason: new ConnectionError({
             description: getErrorMessage(cause),
@@ -64,7 +64,7 @@ const createNewContext = (browser: Browser): Effect.Effect<BrowserContext, Playw
       try: () => browser.newContext(),
       catch: (cause) =>
         new PlaywrightError({
-          module: "Playwright",
+          source: "Playwright",
           method: "createNewContext",
           reason: new ContextError({
             description: getErrorMessage(cause),
@@ -79,7 +79,7 @@ const createNewPage = (context: BrowserContext): Effect.Effect<Page, PlaywrightE
     try: () => context.newPage(),
     catch: (cause) =>
       new PlaywrightError({
-        module: "Playwright",
+        source: "Playwright",
         method: "createNewPage",
         reason: new ContextError({
           description: getErrorMessage(cause),
@@ -96,7 +96,7 @@ const closeBrowser = (browser: Browser): Effect.Effect<void, PlaywrightError> =>
     try: () => browser.close(),
     catch: (cause) =>
       new PlaywrightError({
-        module: "Playwright",
+        source: "Playwright",
         method: "closeBrowser",
         reason: new ConnectionError({
           description: getErrorMessage(cause),
@@ -110,7 +110,7 @@ const closeContext = (context: BrowserContext): Effect.Effect<void, PlaywrightEr
     try: () => context.close(),
     catch: (cause) =>
       new PlaywrightError({
-        module: "Playwright",
+        source: "Playwright",
         method: "closeContext",
         reason: new ContextError({
           description: getErrorMessage(cause),
@@ -123,7 +123,7 @@ const closePage = (page: Page): Effect.Effect<void, PlaywrightError> =>
     try: () => page.close(),
     catch: (cause) =>
       new PlaywrightError({
-        module: "Playwright",
+        source: "Playwright",
         method: "closePage",
         reason: new ContextError({
           description: getErrorMessage(cause),
@@ -240,7 +240,7 @@ const make = Effect.sync(() => {
           onNone: () =>
             Effect.fail(
               new PlaywrightError({
-                module: "Playwright",
+                source: "Playwright",
                 method: "acquireSession",
                 reason: new ConnectionError({
                   description: "Provider does not support active CDP network handovers.",

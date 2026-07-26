@@ -37,7 +37,7 @@ import { CdpError, CommandError } from "../../CdpError.js";
 const failCommand = (method: string, description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method,
       reason: new CommandError({ method, description }),
     }),

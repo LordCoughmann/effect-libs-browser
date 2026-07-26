@@ -24,7 +24,7 @@ export { FetchResponse, type FetchOptions } from "@effect-libs/browser";
 const failFetch = (url: string, description: string) =>
   Effect.fail(
     new PlaywrightError({
-      module: "PlaywrightPage",
+      source: "PlaywrightPage",
       method: "fetch",
       reason: new OperationError({
         method: "fetch",
@@ -155,7 +155,7 @@ export const fetchPage = (
         }),
       catch: (cause) =>
         new PlaywrightError({
-          module: "PlaywrightPage",
+          source: "PlaywrightPage",
           method: "fetch",
           reason: new OperationError({
             method: "fetch",
@@ -170,7 +170,7 @@ export const fetchPage = (
       Effect.mapError(
         (issue) =>
           new PlaywrightError({
-            module: "PlaywrightPage",
+            source: "PlaywrightPage",
             method: "fetch",
             reason: new OperationError({
               method: "fetch",

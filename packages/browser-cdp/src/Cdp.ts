@@ -95,11 +95,11 @@ const resolveConnectionSource = (source: ConnectionSource): string =>
 /**
  * Map low-level CDP errors into CdpError with ConnectionError reason.
  */
-const mapCdpError = (module: string, method: string) =>
+const mapCdpError = (source: string, method: string) =>
   Effect.mapError(
     (cause: unknown) =>
       new CdpError({
-        module,
+        source,
         method,
         reason: new ConnectionError({
           description: getErrorMessage(cause),
@@ -121,7 +121,7 @@ const isContextNotSupportedError = (description: string): boolean =>
  * Map CDP errors from `Target.createBrowserContext` into CdpError
  * with context-aware reason detection.
  */
-const mapContextError = (module: string, method: string) =>
+const mapContextError = (source: string, method: string) =>
   Effect.mapError((cause: unknown) => {
     const description = getErrorMessage(cause);
 
@@ -129,7 +129,7 @@ const mapContextError = (module: string, method: string) =>
       Predicate.isString(description) && isContextNotSupportedError(description);
 
     return new CdpError({
-      module,
+      source,
       method,
       reason: isNotSupported
         ? new ContextNotSupportedError({
@@ -653,7 +653,7 @@ const createTarget = (
     const targetId = result.targetId;
     if (!targetId) {
       return yield* new CdpError({
-        module: "Cdp",
+        source: "Cdp",
         method: "createTarget",
         reason: new ConnectionError({
           description: "Target.createTarget returned no targetId",
@@ -706,7 +706,7 @@ const makeSessionGetterFromRef =
         onNone: () =>
           Effect.fail(
             new CdpError({
-              module: "Cdp",
+              source: "Cdp",
               method: "makeContextHandle",
               reason: new EvaluationError({
                 description: "Page reference not set",
@@ -891,7 +891,7 @@ const makeContextHandle = (
               const cdpType = toCdpPermissionType(name);
               if (cdpType === undefined) {
                 return yield* new CdpError({
-                  module: "CdpContextHandle",
+                  source: "CdpContextHandle",
                   method: "grantPermissions",
                   reason: new ConnectionError({
                     description: `Unknown permission: ${name}`,
@@ -1331,7 +1331,7 @@ const makeConnectionHandle = (
       const contextId = ctxResult.browserContextId;
       if (!contextId) {
         return yield* new CdpError({
-          module: "CdpConnectionHandle",
+          source: "CdpConnectionHandle",
           method: "withContext",
           reason: new ConnectionError({
             description: "Target.createBrowserContext returned no browserContextId",
@@ -1451,7 +1451,7 @@ const make = Effect.gen(function* () {
           onNone: () =>
             Effect.fail(
               new CdpError({
-                module: "Cdp",
+                source: "Cdp",
                 method: "acquireSession",
                 reason: new ConnectionError({
                   description:

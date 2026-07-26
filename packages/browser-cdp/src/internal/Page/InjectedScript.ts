@@ -252,7 +252,7 @@ export const getOrCreateInjectedScript = (
       Effect.mapError((cause) => {
         const msg = getErrorMessage(cause);
         return new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "injectScript",
           reason: new EvaluationError({
             description: `Failed to inject script: ${msg}`,
@@ -263,7 +263,7 @@ export const getOrCreateInjectedScript = (
 
     if (result.exceptionDetails) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "injectScript",
         reason: new EvaluationError({
           description: `Injected script threw: ${
@@ -278,7 +278,7 @@ export const getOrCreateInjectedScript = (
     const objectId = result.result?.objectId;
     if (!objectId) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "injectScript",
         reason: new EvaluationError({
           description: "Injected script did not return a remote object (missing objectId)",
@@ -422,7 +422,7 @@ export const callInjectedScript = <T>(
           }
           return Effect.fail(
             new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "callInjectedScript",
               reason: new EvaluationError({
                 description: `CDP Runtime.callFunctionOn failed: ${msg}`,
@@ -446,7 +446,7 @@ export const callInjectedScript = <T>(
       const details = callResult.exceptionDetails;
       const text = details.exception?.description ?? details.text ?? "unknown error";
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "callInjectedScript",
         reason: new EvaluationError({ description: text }),
       });
@@ -455,7 +455,7 @@ export const callInjectedScript = <T>(
     const remoteObj = callResult.result;
     if (!remoteObj || remoteObj.value === undefined) {
       return yield* new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "callInjectedScript",
         reason: new EvaluationError({ description: "Missing result from injected script call" }),
       });
@@ -530,7 +530,7 @@ export const selectOptionViaInjectedScript = Effect.fn("CdpPage.selectOption")(
               ? cause.reason.description
               : getErrorMessage(cause);
           return new CdpError({
-            module: "CdpPage",
+            source: "CdpPage",
             method: "selectOption",
             reason: new SelectorError({ selector, description: desc }),
           });
@@ -559,7 +559,7 @@ export const selectOptionViaInjectedScript = Effect.fn("CdpPage.selectOption")(
           optionnotenabled: "Option being selected is not enabled",
         };
         return yield* new CdpError({
-          module: "CdpPage",
+          source: "CdpPage",
           method: "selectOption",
           reason: new SelectorError({
             selector,

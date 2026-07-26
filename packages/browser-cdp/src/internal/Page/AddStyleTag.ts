@@ -27,7 +27,7 @@ export interface AddStyleTagOptions {
 
 const failAddStyleTag = (description: string): CdpError =>
   new CdpError({
-    module: "CdpPage",
+    source: "CdpPage",
     method: "addStyleTag",
     reason: new EvaluationError({ description }),
   });

@@ -97,7 +97,7 @@ export const normalizeEvaluationExpression = (expression: string, isFunction: bo
 const failEvaluation = (description: string) =>
   Effect.fail(
     new CdpError({
-      module: "CdpPage",
+      source: "CdpPage",
       method: "evaluate",
       reason: new EvaluationError({ description }),
     }),
@@ -206,7 +206,7 @@ const inlineHandles = (
             .join("")}"`,
       });
       throw new CdpError({
-        module: "CdpPage",
+        source: "CdpPage",
         method: "evaluate",
         reason: new EvaluationError({
           description: `page.evaluate: failed to serialize arg${pathStr}. Functions are not serializable.`,
@@ -344,7 +344,7 @@ export const evaluatePage = <T>(
         isCdpError(e)
           ? e
           : new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "evaluate",
               reason: new EvaluationError({ description: getErrorMessage(e) }),
             }),
@@ -434,7 +434,7 @@ export const evaluateUtilityWorld = <T>(
         isCdpError(e)
           ? e
           : new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "evaluate",
               reason: new EvaluationError({ description: getErrorMessage(e) }),
             }),
@@ -518,7 +518,7 @@ export const evaluateFrame = <T>(
         isCdpError(e)
           ? e
           : new CdpError({
-              module: "CdpPage",
+              source: "CdpPage",
               method: "evaluate",
               reason: new EvaluationError({ description: getErrorMessage(e) }),
             }),
