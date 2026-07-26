@@ -1,10 +1,20 @@
 # Overview
 
-`@effect-libs/browser` is browser automation for Cloudflare Workers and other edge runtimes, built on [Effect](https://effect.website) v4. Three clients, each built on the same shape. Each runs against any browser that supports Chrome DevTools Protocol. Start with [Client + provider →](./concepts/client-and-provider.md) for the architecture.
+`@effect-libs/browser` runs browser automation on [Cloudflare Workers](https://workers.cloudflare.com/) and other edge runtimes, in the [Effect](https://effect.website) ecosystem.
+
+The library wraps [upstream Playwright](https://playwright.dev), [upstream Stagehand](https://stagehand.dev), and raw [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) for use in edge environments. The same code runs on a Cloudflare Worker, on Bun, on Deno, or on Node, and points at Steel, Browserbase, Cloudflare Browser Run, or your own Chrome.
+
+## How they compose
+
+A **client** (`browser-playwright`, `browser-cdp`, or `browser-stagehand`) is the API surface you call. A **provider** is where the browser runs — a managed service or any Chrome DevTools Protocol endpoint. They're composed in the same Effect program:
 
 <!-- verify:ignore -->
 
 ```typescript
+import { Effect, Layer, Config } from "effect";
+import { Playwright } from "@effect-libs/browser-playwright";
+import { SteelProvider } from "@effect-libs/browser-providers/steel";
+
 const program = Effect.gen(function* () {
   const playwright = yield* Playwright;
   const provider = yield* SteelProvider;
@@ -16,33 +26,56 @@ const program = Effect.gen(function* () {
     }),
   );
 });
+
+Effect.runPromise(
+  program.pipe(
+    Effect.provide(
+      Layer.merge(
+        Playwright.layer,
+        SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") }),
+      ),
+    ),
+  ),
+);
 ```
 
-## What you can do
+The program is the same regardless of provider. To switch providers, replace `SteelProvider` with `BrowserbaseProvider`, `CfBrowserRunProvider`, or pass a raw Chrome DevTools Protocol URL to `withConnection({ url })` — the program itself doesn't change.
 
-- **Scrape JavaScript-heavy pages.** Get the rendered HTML, screenshot, or PDF of any page — even single-page apps and auth-walled content.
-- **Extract data with AI.** Describe what you want in natural language. The AI finds the elements, even when the layout changes.
-- **Hand off to a human.** Some sites need a real person for login, CAPTCHA, or 2FA. Share a live view, wait for the human, then continue.
-- **Run multiple accounts on one browser.** Open separate cookie and storage spaces without paying for a new session per identity.
+## Choosing a client
 
-## Pick a client
+### Coming from `@cloudflare/playwright` or `stagehand`?
 
-A **client** is the browser-automation framework API you call — `Playwright`, `Cdp`, or `Stagehand`. Pick by what your Cloudflare Worker needs. See [Choosing a client →](./concepts/client-and-provider.md#choosing-a-client).
+Most users land here migrating from one of these — start there.
 
-## Pick a provider
+- **`@cloudflare/playwright`** (or vanilla `playwright` with `chromium.connectOverCDP`) → use `browser-playwright`. The API is familiar; the lifecycle moves from manual `try/finally` to scoped `withSession` / `withConnection`, and the browser comes from a provider instead of a CDP URL. See [Migrating from Playwright](./migrations/from-playwright.md).
+- **`stagehand`** → use `browser-stagehand`. Same `act` / `extract` / `observe` API, polyfilled for Cloudflare Workers. Or port the orchestration to `browser-playwright` if you'd rather drop the per-call LLM cost.
 
-A **provider** is the browser that runs your code — Steel, Browserbase, Cloudflare Browser Run, or your own hosted Chrome. Pick where it should run. See [Choosing a provider →](./concepts/client-and-provider.md#choosing-a-provider).
+### Starting fresh?
 
-## What you get
+Start with `browser-playwright`. It is the most stable, has the full upstream Playwright API, and runs on every runtime this library supports (Node, Bun, Deno, Cloudflare Workers). Move on only when a specific constraint pushes you:
 
-- **Automatic cleanup.** Browser sessions close themselves when your code is done — even on errors, timeouts, or request cancellation.
-- **Swap providers with one line.** The same scraper runs against Steel, Browserbase, Cloudflare Browser Run, or your own hosted Chrome.
-- **Typed errors.** Every failure is a specific, named error. Pattern-match them and the compiler checks you've handled every case.
-- **Standard retries, timeouts, tracing.** Add them to any browser operation — they work just like they do for HTTP, databases, and queues.
+- **Selectors are fragile and you'd rather describe intent?** Use `browser-stagehand`. Stagehand v3 (`act` / `extract` / `observe`), polyfilled for Cloudflare Workers. The LLM calls cost money and add latency.
+- **`nodejs_compat` isn't an option, or every KB of bundle matters?** Use `browser-cdp` (experimental). It is the only client that doesn't polyfill Node.js builtins, at the cost of API surface — no locators, no upstream Playwright ergonomics, no `page.fetch`.
+
+For per-runtime + per-browser compatibility, see [Runtime & Browser Support](./reference/runtime-and-browser-support.md).
+
+## Choosing a provider
+
+Choose according to your needs — pricing, capabilities, runtime constraints, regional availability, and whether you need things like anti-bot bypass or session replay. Each provider's own page has the details:
+
+- [Steel](./providers/steel.md)
+- [Browserbase](./providers/browserbase.md)
+- [Cloudflare Browser Run](./providers/cf-browser-run.md)
+
+The library is provider-agnostic: pick a different one, change one line, the program stays the same. Or skip the provider entirely and pass a Chrome DevTools Protocol URL to `withConnection({ url: "ws://localhost:9222" })` if you already operate Chrome (locally, on a VPS, in a container) — no API key, no third-party billing.
+
+See [Providers](./providers/index.md) for per-provider installation (env vars, account IDs, layer args).
+
+**Cloudflare Browser Run** has two `BrowserProvider` implementations: the **HTTP** implementation works everywhere (Node, Bun, Deno, Cloudflare Workers) with your Cloudflare account ID + API token; the **binding** implementation is Cloudflare Workers-only, uses `browser.binding` in `wrangler.jsonc`, and skips the HTTP roundtrip. See [Browser Run provider](./providers/cf-browser-run.md) for the full setup.
 
 ## Next steps
 
-- [Getting started →](./getting-started.md) — install + first session on Cloudflare Workers.
-- [Client + provider →](./concepts/client-and-provider.md) — definitions, how to compose, and how to pick.
-- [Cloudflare Workers guide →](./guides/cloudflare-workers.md) — configuration, runtime gotchas.
-- [Migrating from Playwright →](./migrations/from-playwright.md) — coming from `@cloudflare/playwright` or upstream Playwright.
+- [Getting started](./getting-started.md) — install + first session
+- [Migrating from upstream Playwright](./migrations/from-playwright.md) — coming from `@cloudflare/playwright` or vanilla upstream Playwright
+- [Cookbook — Managing sessions](./cookbook/managing-sessions.md) — copy-paste recipes
+- [Cloudflare Workers guide](./guides/cloudflare-workers.md) — `wrangler.toml`, `nodejs_compat`, runtime gotchas

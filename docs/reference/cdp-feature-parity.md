@@ -15,7 +15,7 @@ Three deliberate deviations:
 2. **Scraping-focused surface** — Test-only APIs (`ElementHandle`, video, trace, HAR replay, `pause`, ...) are omitted.
 3. **Browser-automation additions** — New APIs not in upstream Playwright (`page.fetch`, `page.httpClient`, `page.localStorage()`, `context.addStorageState`, ...).
 
-The rest of this page covers each. For per-method documentation, see the [per-module docs](#method-level-coverage). For deep design rationale, see the [ADR directory](../contributing/cdp/decisions/).
+The rest of this page covers each. For per-method documentation, see the [per-method docs](#method-level-coverage). For deep design rationale, see the [ADR directory](../contributing/cdp/decisions/).
 
 ## Effect-idiomatic shapes
 
@@ -110,13 +110,13 @@ See [ADR-0002](../contributing/cdp/decisions/0002-single-process-architecture.md
 
 ## Runtime / browser coverage
 
-For runtime and browser support, see [Runtime & Browser Support](./runtime-and-browser-support.md). For the `browser-cdp` vs upstream Playwright comparison (browser coverage, API surface), see [browser-cdp — Comparison & Alternatives → vs playwright (original)](../packages/cdp/comparison.md#vs-playwright-original).
+For runtime and browser support, see [Runtime & Browser Support](./runtime-and-browser-support.md). For the `browser-cdp` vs upstream Playwright comparison (browser coverage, API surface), see [browser-cdp — Comparison & Alternatives → vs playwright (original)](../packages/cdp/comparison.md#vs-upstream-playwright-original).
 
 ## Method-level coverage
 
-Per-method signatures, options, and behavior live in the [per-module docs](../packages/cdp/index.md):
+Per-method signatures, options, and behavior live in the [per-method docs](../packages/cdp/index.md):
 
-- [browser-cdp — Index](../packages/cdp/index.md) — module overview, install, quickstart
+- [browser-cdp — Index](../packages/cdp/index.md) — package overview, install, quickstart
 - [browser-cdp — Locators](../packages/cdp/locators.md) — full Locator API
 - [browser-cdp — Frames](../packages/cdp/frames.md) — full Frame and FrameLocator API
 - [browser-cdp — Context](../packages/cdp/context.md) — full Context API and page-level mirrors
@@ -128,7 +128,7 @@ Per-method signatures, options, and behavior live in the [per-module docs](../pa
 
 ## See also
 
-- [Choosing a client →](../concepts/client-and-provider.md#choosing-a-client) — when to pick `browser-cdp` vs `browser-playwright`
+- [Choosing a client](../overview.md#choosing-a-client) — when to pick `browser-cdp` vs `browser-playwright`
 - [browser-cdp — Comparison & Alternatives](../packages/cdp/comparison.md) — vs raw Chrome DevTools Protocol clients and `@effect-libs/browser-playwright`
 - [ADR directory](../contributing/cdp/decisions/) — design decisions behind these patterns
 - [ADR-0001: Scraping-vs-testing scope](../contributing/cdp/decisions/0001-scraping-vs-testing-scope.md) — the `🚫` philosophy

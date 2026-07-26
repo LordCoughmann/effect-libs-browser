@@ -29,49 +29,46 @@ concepts, recipes, and matrices.
 ## Start here
 
 - [Documentation](docs/README.md): full docs index
-- [Overview](docs/overview.md): primary use case, three modules at a glance
+- [Overview](docs/overview.md): primary use case, the three client packages at a glance
 - [Getting started](docs/getting-started.md): install and run a first session
-- [Choosing a module](docs/modules/choosing-a-module.md): stability / runtime / dependencies matrix
+- [Choosing a client](docs/overview.md#choosing-a-client): stability / runtime / dependencies matrix
 - [Examples index](examples/README.md): runnable Cloudflare Workers apps
 
 ## Concepts
 
-- [Client + Provider](docs/concepts/client-and-provider.md): the two-track architecture (client + provider) and why the driver/provider separation exists
-- [Scoped Resources](docs/concepts/scoped-resources.md): `withSession` / `withConnection` lifetime semantics
-- [Managing resources](docs/concepts/managing-resources.md): pooling patterns, owned-scope patterns, durable objects
-- [Errors are Typed](docs/concepts/errors.md): typed error hierarchies, `catchTag`, `catchReason`, `isRetryable`
-- [Composing with effects](docs/concepts/composing-with-effects.md): combining browser ops with retries, timeouts, streams
-- [Why Effect?](docs/concepts/why-effect.md): what Effect gives you and why this library leans on it
+- [Client & Provider](docs/overview.md#how-they-compose): the two-track architecture (client + provider) and why the separation exists
+- [Resources](docs/concepts/resources.md): `Session` → `Connection` → `Context` → `Page` hierarchy, scoping, pooling, auth persistence
+- [Effect](docs/concepts/effect.md): why the library uses Effect v4, how to compose with it
+- [Errors](docs/concepts/errors.md): typed error hierarchies, `catchTag`, `catchReason`, `isRetryable`
 
-## Modules
+## Packages
 
 ### `@effect-libs/browser-playwright` (stable)
 
-- [browser-playwright](docs/modules/playwright/index.md): landing page, install, runtime compatibility, when to use
-- [browser-playwright — Context API](docs/modules/playwright/context.md): `BrowserContext` wrapper, context vs page vs connection
-- [browser-playwright — Input Devices](docs/modules/playwright/input.md): keyboard / mouse / touchscreen, choosing the right input, abort-signal caveat
-- [browser-playwright — Added APIs](docs/modules/playwright/added-apis.md): `page.fetch`, `page.httpClient`, `page.context()`, lazy getters
-- [browser-playwright — Errors](docs/modules/playwright/errors.md): typed reason hierarchy, module-field table
-- [browser-playwright — Comparison & Alternatives](docs/modules/playwright/comparison.md): vs other libraries
+- [browser-playwright](docs/packages/playwright/index.md): landing page, install, runtime compatibility, when to use
+- [browser-playwright — Context API](docs/packages/playwright/context.md): `BrowserContext` wrapper, context vs page vs connection
+- [browser-playwright — Added APIs](docs/packages/playwright/added-apis.md): `page.fetch`, `page.httpClient`, `page.context()`, lazy getters
+- [browser-playwright — Errors](docs/packages/playwright/errors.md): typed reason hierarchy, module-field table
+- [browser-playwright — Comparison & Alternatives](docs/packages/playwright/comparison.md): vs other libraries
 
-### Stagehand (stable)
+### `@effect-libs/browser-stagehand` (stable)
 
-- [browser-stagehand](docs/modules/stagehand/index.md): landing, install, `ws` polyfill for Workers, schema conversion errors
-- [browser-stagehand — Errors](docs/modules/stagehand/errors.md): 3-reason table, `SchemaConversionError`, `agent` discussion
-- [browser-stagehand — Comparison & Alternatives](docs/modules/stagehand/comparison.md): vs other libraries, design rationale
+- [browser-stagehand](docs/packages/stagehand/index.md): landing, install, `ws` polyfill for Workers, schema conversion errors
+- [browser-stagehand — Errors](docs/packages/stagehand/errors.md): 3-reason table, `SchemaConversionError`, `agent` discussion
+- [browser-stagehand — Comparison & Alternatives](docs/packages/stagehand/comparison.md): vs other libraries, design rationale
 
 ### `@effect-libs/browser-cdp` (experimental)
 
-- [browser-cdp](docs/modules/cdp/index.md): landing, capabilities matrix, AI / LLM usage disclosure
-- [browser-cdp — Locators](docs/modules/cdp/locators.md): `CdpLocator` deep dive
-- [browser-cdp — Network](docs/modules/cdp/network.md): network interception, fetch, cookies, storage
-- [browser-cdp — Context API](docs/modules/cdp/context.md): context vs page, `withContext` vs `withPage` tradeoffs
-- [browser-cdp — Event Streams](docs/modules/cdp/streams.md): event streams (console, network, page events)
-- [browser-cdp — Frames](docs/modules/cdp/frames.md): frames, `CdpFrame`, `CdpFrameLocator`, frame selectors
-- [browser-cdp — Evaluate](docs/modules/cdp/evaluate.md): `page.evaluate`, no-imports payload constraint, return-value serialization
-- [browser-cdp — Handles](docs/modules/cdp/handles.md): `CdpHandle`, `evaluateHandle`, `callFunctionOn`
-- [browser-cdp — Errors](docs/modules/cdp/errors.md): 14-reason table, module-field table
-- [browser-cdp — Comparison & Alternatives](docs/modules/cdp/comparison.md): vs other libraries, design rationale
+- [browser-cdp](docs/packages/cdp/index.md): landing, capabilities matrix, AI / LLM usage disclosure
+- [browser-cdp — Locators](docs/packages/cdp/locators.md): `CdpLocator` deep dive
+- [browser-cdp — Network](docs/packages/cdp/network.md): network interception, fetch, cookies, storage
+- [browser-cdp — Context API](docs/packages/cdp/context.md): context vs page, `withContext` vs `withPage` tradeoffs
+- [browser-cdp — Event Streams](docs/packages/cdp/streams.md): event streams (console, network, page events)
+- [browser-cdp — Frames](docs/packages/cdp/frames.md): frames, `CdpFrame`, `CdpFrameLocator`, frame selectors
+- [browser-cdp — Evaluate](docs/packages/cdp/evaluate.md): `page.evaluate`, no-imports payload constraint, return-value serialization
+- [browser-cdp — Handles](docs/packages/cdp/handles.md): `CdpHandle`, `evaluateHandle`, `callFunctionOn`
+- [browser-cdp — Errors](docs/packages/cdp/errors.md): 14-reason table, module-field table
+- [browser-cdp — Comparison & Alternatives](docs/packages/cdp/comparison.md): vs other libraries, design rationale
 
 ## Providers
 
@@ -124,4 +121,4 @@ concepts, recipes, and matrices.
 
 ## AI / LLM usage disclosure
 
-The library's architecture (client and provider abstractions, scopes, errors) is designed and coded by the maintainer. The `@effect-libs/browser-cdp` internals — `packages/browser-cdp/src/internal/` — are coded by frontier LLMs under the maintainer's supervision, with over 1,000 integration tests ported directly from upstream Playwright specs and run against live Chrome on every supported runtime. See [the AI / LLM usage disclosure section in the `browser-cdp` landing page](docs/modules/cdp/index.md#ai--llm-usage-disclosure) for the full disclosure, the TDD methodology, and the parity-coverage caveat.
+The library's architecture (client and provider abstractions, scopes, errors) is designed and coded by the maintainer. The `@effect-libs/browser-cdp` internals — `packages/browser-cdp/src/internal/` — are coded by frontier LLMs under the maintainer's supervision, with over 1,000 integration tests ported directly from upstream Playwright specs and run against live Chrome on every supported runtime. See [the AI / LLM usage disclosure section in the `browser-cdp` landing page](docs/packages/cdp/index.md#ai--llm-usage-disclosure) for the full disclosure, the TDD methodology, and the parity-coverage caveat.

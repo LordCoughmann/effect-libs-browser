@@ -71,7 +71,7 @@ For **isolated** tabs (no shared cookies / storage), use `connection.withContext
 
 ## See also
 
-- [`@effect-libs/browser-playwright` module](./index.md) — the module landing page
+- [`@effect-libs/browser-playwright`](./index.md) — the package landing page
 - [Playwright — Added APIs](./added-apis.md) — `page.fetch` / `page.httpClient` and lazy page-level getters
 - [Playwright — Errors](./errors.md) — typed error hierarchy used by every method on this handle
 - [Managing Resources](../../concepts/resources.md) — `withContext` vs `withPage` decision tree

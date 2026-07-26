@@ -54,11 +54,11 @@ Each `🚫` row in the parity doc carries a one-line rationale. The omissions ta
 
 - **Implement everything in `@effect-libs/browser-cdp`.** Rejected. Actionability auto-waiting alone is ~1000 LOC of state-machine plumbing. `@effect-libs/browser-playwright` already implements it; the marginal cost to `@effect-libs/browser-cdp` is high and the marginal value to scrapers is zero.
 - **Implement testing-only features behind a flag.** Rejected. We'd maintain two code paths, neither well-tested.
-- **Strip `@effect-libs/browser-playwright` and ship a single combined module.** Rejected. It would either bloat the API surface for scrapers (including the testing APIs) or strip features from test users.
+- **Strip `@effect-libs/browser-playwright` and ship a single combined package.** Rejected. It would either bloat the API surface for scrapers (including the testing APIs) or strip features from test users.
 
 ## See also
 
 - [`docs/reference/cdp-feature-parity.md`](../../../reference/cdp-feature-parity.md) — omissions table with `🚫` rows and per-row rationale.
-- [`docs/packages/cdp/index.md`](../../../packages/cdp/index.md) — module entry point.
+- [`docs/packages/cdp/index.md`](../../../packages/cdp/index.md) — package entry point.
 - [`docs/packages/cdp/comparison.md`](../../../packages/cdp/comparison.md) — side-by-side with `@effect-libs/browser-playwright`.
 - ADR-0003 (Effect-idiomatic API surface) — the sibling source of "we diverge from upstream Playwright on purpose."

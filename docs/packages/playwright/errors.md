@@ -1,6 +1,6 @@
 # browser-playwright — Errors
 
-The `@effect-libs/browser-playwright` module exposes a single `PlaywrightError` parent error
+The `@effect-libs/browser-playwright` package exposes a single `PlaywrightError` parent error
 with a structured `reason` union of 4 typed reason classes. Pattern
 matching is via `Effect.catchTag("effect-libs/browser/PlaywrightError", ...)`
 and the `isRetryable` getter, which delegates to the underlying reason.
@@ -203,7 +203,7 @@ handling.
 ## See also
 
 - [browser-cdp — Errors](./../cdp/errors.md) — the parallel shape for `browser-cdp` (14 reason classes)
-- [`@effect-libs/browser-playwright` module](./index.md) — the module landing page
+- [`@effect-libs/browser-playwright`](./index.md) — the package landing page
 - [Why Effect?](../../concepts/effect.md) — typed errors as a first-class
   language feature
 - [Effect Reason Pattern](https://effect.website/docs/error-management/reason-based-errors) —

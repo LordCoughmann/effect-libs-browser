@@ -8,8 +8,8 @@ Every operation returns an `Effect` with tagged errors. The result composes with
 
 Two places this changes your code:
 
-- **Error handling.** Errors are tagged — `Effect.catchTag` gives compiler-checked exhaustiveness on every reason. See [Errors →](./errors.md) for the type hierarchy, and the per-module error reference ([Playwright](../packages/playwright/errors.md), [`browser-cdp`](../packages/cdp/errors.md), [Stagehand](../packages/stagehand/errors.md)) for the reason-specific patterns.
-- **Retries and timeouts.** `Effect.retry` / `Effect.timeout` work on the program directly — no per-call config. See [Cookbook → Retries and timeouts →](../cookbook/retries-and-timeouts.md).
+- **Error handling.** Errors are tagged — `Effect.catchTag` gives compiler-checked exhaustiveness on every reason. See [Errors](./errors.md) for the type hierarchy, and the per-client error reference ([`browser-playwright`](../packages/playwright/errors.md), [`browser-cdp`](../packages/cdp/errors.md), [`browser-stagehand`](../packages/stagehand/errors.md)) for the reason-specific patterns.
+- **Retries and timeouts.** `Effect.retry` / `Effect.timeout` work on the program directly — no per-call config. See [Cookbook → Retries and timeouts](../cookbook/retries-and-timeouts.md).
 
 ## If you're new to Effect
 
@@ -61,7 +61,7 @@ Effect is a toolkit. You can take pieces as you need them:
 - **Start with `Effect.gen` / `yield*`** as a replacement for `async` / `await`. Run the program with `Effect.runPromise(program)` and you're done.
 - **Add `Effect.catchTag`** for typed errors when you need to recover from specific failures.
 - **Add retries, timeouts, and tracing** (`Effect.retry` / `Effect.timeout` / `Effect.withSpan`) once you need them.
-- **Reach for layers and services** when you want to swap implementations.
+- **Use layers and services** when you want to swap implementations.
 
 ### Where to go next
 
@@ -79,6 +79,6 @@ For community help: [Effect Discord](https://discord.gg/effect-ts), [Effect GitH
 
 ## See also
 
-- [Client + provider](./client-and-provider.md) — the architecture that makes clients and providers interchangeable
+- [Overview — How they compose](../overview.md#how-they-compose) — the architecture that makes clients and providers interchangeable
 - [Resources](./resources.md) — scoped cleanup, the Session / Connection / Context / Page hierarchy
 - [Errors](./errors.md) — typed error hierarchies and `Effect.catchTag`

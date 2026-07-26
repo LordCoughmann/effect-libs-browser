@@ -16,7 +16,7 @@ Sister directories:
 
 ## How to read these
 
-If you're new to `@effect-libs/browser-stagehand`, read [`CONTEXT.md`](../../../../CONTEXT.md) first — it captures the language, anti-claims, and module scope. The ADRs in this directory are the deep dives into specific decisions that don't fit on a single bullet in `CONTEXT.md`.
+If you're new to `@effect-libs/browser-stagehand`, read [`CONTEXT.md`](../../../../CONTEXT.md) first — it captures the language, anti-claims, and package scope. The ADRs in this directory are the deep dives into specific decisions that don't fit on a single bullet in `CONTEXT.md`.
 
 ## ADR format
 

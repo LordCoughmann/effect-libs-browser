@@ -36,7 +36,7 @@ Combinators stack: retry on transient failures, timeout for runaway operations, 
 
 Top-level `Effect.retry(schedule)` retries on every failure. To retry only on transient errors and give up immediately on permanent ones (e.g. selector not found, evaluate syntax error), pair the schedule with an `isRetryable` predicate.
 
-Every module error (`PlaywrightError`, `CdpError`, `StagehandError`) exposes an `isRetryable` getter that delegates to the underlying reason. The pattern is the same for all three — here it is for Playwright:
+Every client error (`PlaywrightError`, `CdpError`, `StagehandError`) exposes an `isRetryable` getter that delegates to the underlying reason. The pattern is the same for all three — here it is for Playwright:
 
 ```typescript
 import type { PlaywrightError } from "@effect-libs/browser-playwright";
@@ -63,7 +63,7 @@ const navigate = (page: import("@effect-libs/browser-playwright").PlaywrightPage
   );
 ```
 
-For CDP and Stagehand the same pattern applies with `CdpError` / `StagehandError` instead — see each module's error reference for the exact `_tag` and `isRetryable` semantics.
+For CDP and Stagehand the same pattern applies with `CdpError` / `StagehandError` instead — see each client's error reference for the exact `_tag` and `isRetryable` semantics.
 
 ## See also
 

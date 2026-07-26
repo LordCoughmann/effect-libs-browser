@@ -30,7 +30,7 @@
 
 **Pick simple-cdp for:** Thin wire client only — send/receive Chrome DevTools Protocol commands, no convenience methods.
 
-simple-cdp is a thin Chrome DevTools Protocol wire client. `@effect-libs/browser-cdp` adds a Playwright-compatible convenience API on top (`goto`, `click`, `fill`, `evaluate`, `screenshot`, cookies, etc.) plus full raw Chrome DevTools Protocol access underneath. If you just need to send Chrome DevTools Protocol commands and handle responses, simple-cdp is lighter. If you want higher-level page interaction without reaching for the full upstream Playwright, use our module.
+simple-cdp is a thin Chrome DevTools Protocol wire client. `@effect-libs/browser-cdp` adds a Playwright-compatible convenience API on top (`goto`, `click`, `fill`, `evaluate`, `screenshot`, cookies, etc.) plus full raw Chrome DevTools Protocol access underneath. If you just need to send Chrome DevTools Protocol commands and handle responses, simple-cdp is lighter. If you want higher-level page interaction without reaching for the full upstream Playwright, use our package.
 
 ---
 
@@ -62,13 +62,13 @@ simple-cdp is a thin Chrome DevTools Protocol wire client. `@effect-libs/browser
 
 **Pick CRI for:** Node.js + mature Chrome DevTools Protocol client, don't need Playwright API or Effect integration.
 
-CRI is mature and well-documented, but tied to Node.js via the `ws` dependency. If you're on Node.js and already using CRI, there's no reason to switch. If you need edge runtime support, use our module.
+CRI is mature and well-documented, but tied to Node.js via the `ws` dependency. If you're on Node.js and already using CRI, there's no reason to switch. If you need edge runtime support, use our package.
 
 ---
 
-## vs playwright (original)
+## vs upstream Playwright (original)
 
-The original Microsoft `playwright` package. Full API, all browsers. Bundles `ws` and Node.js APIs — Node.js only.
+The original Microsoft Playwright package. Full API, all browsers. Bundles `ws` and Node.js APIs — Node.js only.
 
 |                       | `@effect-libs/browser-cdp` | playwright      |
 | --------------------- | -------------------------- | --------------- |
@@ -92,15 +92,15 @@ The original Microsoft `playwright` package. Full API, all browsers. Bundles `ws
 
 **Pick `@effect-libs/browser-cdp` for:** edge runtimes, lightweight, raw Chrome DevTools Protocol access.
 
-**Pick upstream playwright for:** Node.js/Deno/Bun + full Playwright API + all browsers + Playwright Test.
+**Pick upstream Playwright for:** Node.js/Deno/Bun + full Playwright API + all browsers + Playwright Test.
 
-On Node.js, Deno, or Bun — use original `playwright` if you need the full API. Use `@effect-libs/browser-cdp` if you want lightweight, zero-dependency automation.
+On Node.js, Deno, or Bun — use upstream Playwright if you need the full API. Use `@effect-libs/browser-cdp` if you want lightweight, zero-dependency automation.
 
 ---
 
 ## vs @cloudflare/playwright
 
-Cloudflare's Playwright fork. Works on Workers but only with Browser Run.
+Cloudflare's upstream Playwright fork. Works on Cloudflare Workers but only with Browser Run.
 
 |                       | `@effect-libs/browser-cdp` | @cloudflare/playwright |
 | --------------------- | -------------------------- | ---------------------- |
@@ -126,7 +126,7 @@ Cloudflare's Playwright fork. Works on Workers but only with Browser Run.
 
 **Pick @cloudflare/playwright for:** Cloudflare Browser Run only + full Playwright API (use via `@effect-libs/browser-playwright`).
 
-`@cloudflare/playwright` only connects to Cloudflare Browser Run. `@effect-libs/browser-cdp` connects to any `ws://` endpoint — Steel, Browserbase, local Chrome, anything. Use `@effect-libs/browser-cdp` for lightweight scraping on Workers with any provider. Use `@cloudflare/playwright` (via `@effect-libs/browser-playwright`) if you need the full Playwright API.
+`@cloudflare/playwright` only connects to Cloudflare Browser Run. `@effect-libs/browser-cdp` connects to any `ws://` endpoint — Steel, Browserbase, local Chrome, anything. Use `@effect-libs/browser-cdp` for lightweight scraping on Cloudflare Workers with any provider. Use `@cloudflare/playwright` (via `@effect-libs/browser-playwright`) if you need the full Playwright API.
 
 ---
 

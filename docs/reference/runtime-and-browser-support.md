@@ -64,7 +64,7 @@ Compatibility matrix for the `browser-*` packages.
 **Polyfills provided:**
 
 - `ws` → native WebSocket (add alias in wrangler)
-- `AsyncLocalStorage.enterWith()` → patched for Workers
+- `AsyncLocalStorage.enterWith()` → patched for Cloudflare Workers
 
 ## `browser-cdp`
 

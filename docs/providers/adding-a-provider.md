@@ -215,7 +215,7 @@ The `BrowserProviderError` class already provides:
 
 ## Using with CDP (experimental)
 
-Custom providers work with both `@effect-libs/browser-playwright` and `@effect-libs/browser-cdp`. The shape is identical to the Complete Example above — just swap `Playwright` for `Cdp` (and use `Cdp.layer` instead of `Playwright.layer` in the `Effect.provide` chain). The provider interface is module-agnostic.
+Custom providers work with both `@effect-libs/browser-playwright` and `@effect-libs/browser-cdp`. The shape is identical to the Complete Example above — just swap `Playwright` for `Cdp` (and use `Cdp.layer` instead of `Playwright.layer` in the `Effect.provide` chain). The provider interface is client-agnostic.
 
 ## Reference
 
@@ -235,7 +235,7 @@ Custom providers work with both `@effect-libs/browser-playwright` and `@effect-l
 
 ## See Also
 
-- [FAQ](../faq.md) — Module selection, custom CDP URLs, using without Effect
+- [FAQ](../faq.md) — Package selection, custom CDP URLs, using without Effect
 - [Cloudflare Workers Guide](../guides/cloudflare-workers.md) — Setup for Cloudflare Workers
 - [Fork README](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/cloudflare-playwright/README.md) — why `@effect-libs/cloudflare-playwright` exists and what it patches
 - [Source on GitHub](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-providers/src) — full API in JSDoc (use `SteelProvider`, `BrowserbaseProvider`, or `CfBrowserRunProvider` as implementation references)

@@ -17,7 +17,7 @@ Chrome DevTools Protocol and get automatic browser session cleanup on success, e
 
 ## Documentation
 
-- [Documentation →](docs/README.md) — concepts, modules, providers, cookbook, reference
+- [Documentation](docs/README.md) — concepts, cookbook, guides, reference, comparisons
 
 ## License
 

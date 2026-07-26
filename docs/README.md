@@ -1,21 +1,21 @@
 # Documentation
 
-> **New here?** Start with [Getting started →](./getting-started.md) for install + first session, then explore from here. The [root README](../README.md) is the project overview.
+> **New here?** Start with [Getting started](./getting-started.md) for install + first session, then explore from here.
 
 ## Start here
 
-- [Overview →](./overview.md) — what the library does and who it's for
-- [Getting started →](./getting-started.md) — install + run your first session
-- [Migrating from Playwright →](./migrations/from-playwright.md) — if you're coming from vanilla Playwright
+- [Overview](./overview.md) — what the library does and who it's for
+- [Getting started](./getting-started.md) — install + run your first session
+- [Migrating from upstream Playwright](./migrations/from-playwright.md) — if you're coming from vanilla upstream Playwright
 
-For runnable patterns after the basics, see the [Cookbook →](./cookbook/managing-sessions.md).
+For runnable patterns after the basics, see the [Cookbook](./cookbook/managing-sessions.md).
 
 ## Concepts
 
-- [Client + provider →](./concepts/client-and-provider.md) — the client + provider architecture, how they compose, choosing a client and a provider
-- [Resources →](./concepts/resources.md) — Session → Connection → Context → Page hierarchy, lifecycle, pooling, auth persistence
-- [Effect →](./concepts/effect.md) — why the library uses Effect, how to compose with it, escape hatch for non-Effect use
-- [Errors →](./concepts/errors.md) — typed error hierarchies, `catchTag`, `isRetryable`
+- [Client & Provider](./overview.md) — the Client & Provider architecture, how they compose, choosing a client and a provider
+- [Resources](./concepts/resources.md) — Session → Connection → Context → Page hierarchy, lifecycle, pooling, auth persistence
+- [Effect](./concepts/effect.md) — why the library uses Effect, how to compose with it, escape hatch for non-Effect use
+- [Errors](./concepts/errors.md) — typed error hierarchies, `catchTag`, `isRetryable`
 
 ## Cookbook
 
@@ -27,7 +27,7 @@ For runnable patterns after the basics, see the [Cookbook →](./cookbook/managi
 
 ## Guides
 
-- [Cloudflare Workers](./guides/cloudflare-workers.md) — Workers-specific setup, limitations, workarounds
+- [Cloudflare Workers](./guides/cloudflare-workers.md) — Cloudflare Workers-specific setup, limitations, workarounds
 
 ## Reference
 
@@ -40,9 +40,9 @@ For runnable patterns after the basics, see the [Cookbook →](./cookbook/managi
 
 How this library stacks up against alternatives:
 
-- [`browser-playwright` — alternatives](./packages/playwright/comparison.md) — vs upstream Playwright, `@cloudflare/playwright`, `browser-cdp`
-- [`browser-stagehand` — alternatives](./packages/stagehand/comparison.md) — vs `@browserbasehq/stagehand`, Stagehand v2.5
-- [`browser-cdp` — alternatives](./packages/cdp/comparison.md) — vs upstream Playwright, simple-cdp, CRI, `@cloudflare/playwright`
+- [`browser-playwright` alternatives](./packages/playwright/comparison.md) — vs upstream Playwright, `@cloudflare/playwright`, `browser-cdp`
+- [`browser-stagehand` alternatives](./packages/stagehand/comparison.md) — vs `@browserbasehq/stagehand` v2.5
+- [`browser-cdp` alternatives](./packages/cdp/comparison.md) — vs upstream Playwright, simple-cdp, CRI, `@cloudflare/playwright`
 - [Side-by-side rewrites](./comparisons/side-by-side.md) — provider docs rewritten with this library
 
 ## Contributing

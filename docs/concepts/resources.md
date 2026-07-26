@@ -38,7 +38,7 @@ Each level has **two entry points** with the same shape:
 | `withX(source, fn)` | scope = the callback | default — used 90% of the time        |
 | `acquireX(source)`  | you own the scope    | pooling, fan-out, long-lived sessions |
 
-Use `withX` 90% of the time; reach for `acquireX` only when the resource needs to outlive a single callback (pools, durable objects, fan-out). See [Owned scopes](#owned-scopes-when-withx-isnt-enough) below for the patterns.
+Use `withX` 90% of the time; use `acquireX` only when the resource needs to outlive a single callback (pools, durable objects, fan-out). See [Owned scopes](#owned-scopes-when-withx-isnt-enough) below for the patterns.
 
 ## Session — "Scrape and clean up"
 
@@ -121,7 +121,7 @@ const program = (cdpUrl: string) =>
 
 **API**: `connection.withContext(fn)` → `{ context, page }`
 
-A browser context is an **isolated sandbox** within a connection. Each context has its own cookies, localStorage, and cache — completely separate from other contexts. Perfect for **different identities on the same browser** without paying for separate sessions.
+A browser context is an **isolated sandbox** within a connection. Each context has its own cookies, localStorage, and cache — completely separate from other contexts. Use it for **different identities on the same browser** without paying for separate sessions.
 
 > Contexts and pages are nested operations on a connection handle — callback-only. No `acquireContext`; if you need a context to outlive a callback, acquire the parent connection.
 
@@ -177,7 +177,7 @@ const comparePrices = Effect.gen(function* () {
 **API**: `connection.withPage(fn)` or `context.withPage(fn)` → bare `page`
 **Shortcut**: `playwright.withPage(source, fn)` → bare `page`
 
-A page is one browser page within a context. Pages in the same context share cookies and localStorage — perfect for **multi-page workflows**.
+A page is one browser page within a context. Pages in the same context share cookies and localStorage — use it for **multi-page workflows**.
 
 ### When to use
 
@@ -350,6 +350,6 @@ See provider docs for details: [Steel](../providers/steel.md), [Browserbase](../
 
 ## See also
 
-- [Client + provider](./client-and-provider.md) — the architecture that makes all three clients interchangeable at the layer level
+- [Overview — How they compose](../overview.md#how-they-compose) — the architecture that makes all three clients interchangeable at the layer level
 - [Cookbook: Managing sessions](../cookbook/managing-sessions.md) — runnable recipes for the common cases
 - [Effect](./effect.md) — how Effect guarantees cleanup on success, error, or interruption

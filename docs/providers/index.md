@@ -2,7 +2,7 @@
 
 The `@effect-libs/browser-providers` package wraps managed browser providers — [Steel](./steel.md), [Browserbase](./browserbase.md), [Cloudflare Browser Run](./cf-browser-run.md). Each provider has its own install + configuration page; this page covers the patterns shared across all of them (swap, direct session access, Cloudflare Workers).
 
-For help **picking** a provider (which one for what), see [Client + provider → Choosing a provider](../concepts/client-and-provider.md#choosing-a-provider).
+For help **picking** a provider (which one for what), see [Client & Provider → Choosing a provider](../overview.md#choosing-a-provider).
 
 ## Install
 
@@ -135,6 +135,6 @@ const program = Effect.gen(function* () {
 
 - [Cookbook](../cookbook/managing-sessions.md) — runnable recipes
 - [Adding a provider](./adding-a-provider.md) — write your own
-- [Cloudflare Workers guide](../guides/cloudflare-workers.md) — Workers-specific setup
+- [Cloudflare Workers guide](../guides/cloudflare-workers.md) — Cloudflare Workers-specific setup
 - [Runtime & browser support](../reference/runtime-and-browser-support.md) — runtime compatibility matrix
 - [Source on GitHub](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-providers/src) — full API in JSDoc

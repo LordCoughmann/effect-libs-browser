@@ -11,7 +11,7 @@ docs/
 ├── overview.md              # primary use case, who it's for, what it gives you, three clients
 ├── getting-started.md       # install + run a session (mechanical, code-first)
 ├── faq.md
-├── concepts/                # client + provider, scoped resources, errors, …
+├── concepts/                # Client & Provider, scoped resources, errors, …
 ├── packages/<name>/          # one folder per package, with index.md
 ├── providers/               # one file per provider
 ├── guides/                  # runtime / deployment guides
@@ -53,10 +53,10 @@ then, frontmatter is pure overhead with no consumer.
 Use relative `.md` paths with the fragment for headings:
 
 ```markdown
-See [Concepts → Client + provider](../../concepts/client-and-provider.md)
+See [Concepts → Client & Provider](../../overview.md)
 for the architecture.
 
-For per-module runtime details, see
+For per-client runtime details, see
 [Reference → Runtime & browser support](../../reference/runtime-and-browser-support.md#per-runtime-details).
 ```
 
@@ -80,7 +80,7 @@ let the verifier tell you what it needs.
 ## Style
 
 - **Em-dash** (`—`) for definitions, rephrasings, and subordinate
-  clauses: "the default Playwright page — a browser tab scoped to
+  clauses: "the default upstream Playwright page — a browser tab scoped to
   this session."
 - **Parentheses** for examples and side clarifications: "every
   concrete provider (Steel, Browserbase, …)."
@@ -100,5 +100,5 @@ First Program`.
 - [`../../../CONTEXT.md`](../../../CONTEXT.md) — project vocabulary;
   the **Referencing packages in user-facing copy** section
   is the canonical rule for how to refer to our packages vs upstream
-  Playwright vs the Chrome DevTools Protocol in prose. Read it before
+  upstream Playwright vs the Chrome DevTools Protocol in prose. Read it before
   writing the first sentence of a new doc.

@@ -23,7 +23,7 @@ For raw SDK access — anything not in the typed `BrowserProvider` interface —
 
 ## Binding Provider
 
-Direct browser access via Workers binding — fastest path on Cloudflare Workers, no external HTTP calls.
+Direct browser access via Cloudflare Workers binding. No external HTTP calls — the browser runs in the same Workers runtime as your code.
 
 ### Configure wrangler
 
@@ -80,7 +80,7 @@ The binding provider exposes the raw browser endpoint binding (`env.MYBROWSER`) 
 - [Provider patterns](./index.md) — swapping, direct session access
 - [Steel](./steel.md) — managed browsers with anti-bot bypass
 - [Browserbase](./browserbase.md) — managed browsers with persistent contexts
-- [Cloudflare Workers guide](../guides/cloudflare-workers.md) — Workers-specific setup
+- [Cloudflare Workers guide](../guides/cloudflare-workers.md) — Cloudflare Workers-specific setup
 - [Cookbook](../cookbook/managing-sessions.md) — runnable recipes
 - [Source on GitHub (HTTP)](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-providers/src/cf-browser-run) — full API in JSDoc
 - [Source on GitHub (Binding)](https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-providers/src/cf-browser-run-binding) — full API in JSDoc

@@ -44,7 +44,7 @@ import { ... };
  *
  * **When to use**
  *
- * [Positive case]. [Cross-module comparison to the 2 siblings].
+ * [Positive case]. [Cross-package comparison to the 2 siblings].
  *
  * **Mental model**            ← top-level only
  *
@@ -218,7 +218,7 @@ headings (`## Foo`, `**Foo:**`, `### Bar`).
 | Section             | Used in              | Purpose                                                                                  |
 | ------------------- | -------------------- | ---------------------------------------------------------------------------------------- |
 | **Mental model**    | Top-level            | Conceptual framing of the API surface. **Not used in provider files.**                   |
-| **When to use**     | Class                | Positive case + cross-module / cross-provider comparison.                                |
+| **When to use**     | Class                | Positive case + cross-package / cross-provider comparison.                                |
 | **Common tasks**    | Top-level            | Bullet list of typical uses.                                                             |
 | **Gotchas**         | Top-level + Class    | Real footguns identified by reading the implementation (not best-practice generalities). |
 | **Example** (Title) | Top-level + Class    | One per concrete use case. The parenthetical title is the heading.                       |
@@ -261,7 +261,7 @@ don't invent new ones.
 | `constructors` | Factory methods on a class (e.g. `Layer.layer`, `Context.make`)          | Same `internal/Playwright*.ts` files                                                                                                                                              |
 
 **Why `models` for type-only files.** In effect-smol, `models` is the
-category for the main type of a module (`Ref`, `Fiber`, `Option`,
+category for the main type of a package (`Ref`, `Fiber`, `Option`,
 `Context`). A file that exports only interfaces and type aliases
 gets `@category models` on each root declaration. Methods on a
 service get more specific categories (`constructors`, `getters`,
@@ -518,7 +518,7 @@ available methods"` on a field typed `X`) — the field's type
 | Target         | Syntax                                                                          |
 | -------------- | ------------------------------------------------------------------------------- |
 | Same file      | `@see {@link X}`                                                                |
-| Sibling module | "see the X module" (plain text)                                                 |
+| Sibling package | "see the X package" (plain text)                                                 |
 | External URL   | `[effect docs](https://effect.website)`                                         |
 | Upstream API   | `[Playwright's \`Page\` reference](https://playwright.dev/docs/api/class-page)` |
 

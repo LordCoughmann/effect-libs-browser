@@ -91,7 +91,7 @@ it.effect("URL is correct", () => {
 import { assert, describe, it, layer } from "@effect/vitest";
 import { Effect, Layer, Option } from "effect";
 
-import { YourService } from "@effect-libs/browser-your-module";
+import { YourService } from "@effect-libs/browser-your-package";
 import { YourServiceLayerTest } from "@test/utils/mocks.js";
 
 // ── Section Name ─────────────────────────────────────────────────────
