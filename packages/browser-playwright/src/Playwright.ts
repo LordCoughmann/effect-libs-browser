@@ -25,7 +25,7 @@ import type {
 } from "./PlaywrightTypes.js";
 
 import playwright from "@effect-libs/cloudflare-playwright";
-import { Context, Effect, Layer, Option, Predicate, Redacted } from "effect";
+import { Context, Effect, Layer, Option, Predicate, Redacted, Array as Arr } from "effect";
 
 import { getErrorMessage, UrlString } from "@effect-libs/browser";
 
@@ -132,11 +132,38 @@ const closePage = (page: Page): Effect.Effect<void, PlaywrightError> =>
   });
 
 /**
- * Connect to a CDP endpoint and create a fresh default page.
+ * Resolve the browser context for a CDP connection.
  *
- * Returns connection + page for use in scoped callbacks.
- * Requires Scope from the caller so the connection and page stay alive.
- * All resources are released via `Effect.acquireRelease` against the caller's scope.
+ * Uses an existing context (e.g. the Steel default context with profile cookies)
+ * when available, otherwise creates a new one. Created contexts are cleaned up
+ * on scope exit; pre-existing contexts are left alone.
+ */
+const resolveContext = (
+  browser: Browser,
+): Effect.Effect<BrowserContext, PlaywrightError, Scope.Scope> =>
+  Effect.gen(function* () {
+    const contexts = yield* Effect.sync(() => browser.contexts());
+
+    if (Arr.isArrayNonEmpty(contexts)) {
+      yield* Effect.logDebug("Reusing existing browser context (cookies preserved)");
+      return contexts[0];
+    }
+
+    return yield* Effect.acquireRelease(createNewContext(browser), (c) =>
+      closeContext(c).pipe(Effect.catch(Effect.logError)),
+    );
+  });
+
+/**
+ * Connect to a CDP endpoint and resolve a page.
+ *
+ * Uses the browser's existing context when available (preserving Steel profile
+ * cookies), falling back to a fresh context. The page is always freshly created
+ * in the resolved context so it starts at a known state.
+ *
+ * Requires Scope from the caller so the browser stays alive.
+ * Pre-existing contexts are NOT closed on scope exit — only newly created ones
+ * and the page are cleaned up.
  */
 const connectWithPage = (
   cdpUrl: string,
@@ -150,9 +177,7 @@ const connectWithPage = (
       closeBrowser(b).pipe(Effect.catch(Effect.logError)),
     );
 
-    const defaultContext = yield* Effect.acquireRelease(createNewContext(browser), (ctx) =>
-      closeContext(ctx).pipe(Effect.catch(Effect.logError)),
-    );
+    const defaultContext = yield* resolveContext(browser);
 
     const rawPage = yield* Effect.acquireRelease(createNewPage(defaultContext), (p) =>
       closePage(p).pipe(Effect.catch(Effect.logError)),
