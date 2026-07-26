@@ -100,5 +100,3 @@ jobs:
           #   (the verify gate's docs formatter, etc.) — we don't want that to block
           #   the publish from a clean tag.
           pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
