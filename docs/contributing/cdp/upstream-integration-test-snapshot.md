@@ -15,132 +15,133 @@ history), see [`./upstream-integration-test-coverage.md`](./upstream-integration
 
 ## Summary
 
-| Metric            | Count |
-| ----------------- | ----- |
-| Upstream tests    | 1741 |
-| Covered           | 679 |
-| NOT_PLANNED       | 1062 |
-| TODO              | 0 |
-| BLOCKED           | 0 |
-| Missing           | 0 |
-| CDP-Extensions    | 125 |
+| Metric         | Count |
+| -------------- | ----- |
+| Upstream tests | 1741  |
+| Covered        | 679   |
+| NOT_PLANNED    | 1062  |
+| TODO           | 0     |
+| BLOCKED        | 0     |
+| Missing        | 0     |
+| CDP-Extensions | 125   |
 
 **Intended coverage:** 679/679 (100%)
 
-**Actual coverage:**   679/1741 (39%)
+**Actual coverage:** 679/1741 (39%)
 
 ## Per-spec coverage
 
 Sorted by intended coverage ascending — the lowest rows are the next
 implementation targets.
 
-| Spec | Covered | Effective | % | Status |
-| --- | --- | --- | --- | --- |
-| `elementhandle-bounding-box.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-click.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-content-frame.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-convenience.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-eval-on-selector.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-misc.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-owner-frame.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-query-selector.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-screenshot.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-scroll-into-view.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-select-text.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-type.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-wait-for-element-state.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-boolean.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-matcher-result.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-misc.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-timeout.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-to-have-accessible.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-to-have-text.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `expect-to-have-value.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `interception.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `jshandle-as-element.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `jshandle-evaluate.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `jshandle-json-value.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `jshandle-properties.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `jshandle-to-string.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `locator-element-handle.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `locator-highlight.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `matchers.misc.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-add-locator-handler.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-aria-snapshot-ai.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-aria-snapshot.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-autowaiting-basic.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-autowaiting-no-hang.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-during-navigation.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-react.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-scroll.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-timeout-1.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-timeout-2.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-timeout-3.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-click-timeout-4.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-evaluate-no-stall.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-event-popup.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-leaks.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-listeners.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-network-sizes.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-request-gc.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `page-strict.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `queryselector.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `retarget.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-css.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-frame.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-get-by.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-misc.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-react.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-register.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-role.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-text.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `selectors-vue.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `to-match-aria-snapshot.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `wheel.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `workers.spec.ts` | 0 | 0 | — | all NOT_PLANNED |
-| `elementhandle-press.spec.ts` | 5 | 5 | 100% | ✅ |
-| `eval-on-selector-all.spec.ts` | 7 | 7 | 100% | ✅ |
-| `eval-on-selector.spec.ts` | 14 | 14 | 100% | ✅ |
-| `frame-frame-element.spec.ts` | 2 | 2 | 100% | ✅ |
-| `frame-hierarchy.spec.ts` | 11 | 11 | 100% | ✅ |
-| `locator-click.spec.ts` | 2 | 2 | 100% | ✅ |
-| `locator-convenience.spec.ts` | 18 | 18 | 100% | ✅ |
-| `locator-evaluate.spec.ts` | 5 | 5 | 100% | ✅ |
-| `locator-frame.spec.ts` | 4 | 4 | 100% | ✅ |
-| `locator-list.spec.ts` | 1 | 1 | 100% | ✅ |
-| `locator-misc-1.spec.ts` | 13 | 13 | 100% | ✅ |
-| `locator-misc-2.spec.ts` | 12 | 12 | 100% | ✅ |
-| `locator-query.spec.ts` | 19 | 19 | 100% | ✅ |
-| `page-add-script-tag.spec.ts` | 12 | 12 | 100% | ✅ |
-| `page-add-style-tag.spec.ts` | 8 | 8 | 100% | ✅ |
-| `page-basic.spec.ts` | 7 | 7 | 100% | ✅ |
-| `page-check.spec.ts` | 16 | 16 | 100% | ✅ |
-| `page-click.spec.ts` | 60 | 60 | 100% | ✅ |
-| `page-dialog.spec.ts` | 10 | 10 | 100% | ✅ |
-| `page-dispatchevent.spec.ts` | 17 | 17 | 100% | ✅ |
-| `page-drag.spec.ts` | 3 | 3 | 100% | ✅ |
-| `page-emulate-media.spec.ts` | 11 | 11 | 100% | ✅ |
-| `page-evaluate-handle.spec.ts` | 11 | 11 | 100% | ✅ |
-| `page-evaluate.spec.ts` | 69 | 69 | 100% | ✅ |
-| `page-event-pageerror.spec.ts` | 12 | 12 | 100% | ✅ |
-| `page-expose-function.spec.ts` | 24 | 24 | 100% | ✅ |
-| `page-fill.spec.ts` | 31 | 31 | 100% | ✅ |
-| `page-focus.spec.ts` | 7 | 7 | 100% | ✅ |
-| `page-goto.spec.ts` | 36 | 36 | 100% | ✅ |
-| `page-history.spec.ts` | 9 | 9 | 100% | ✅ |
-| `page-keyboard.spec.ts` | 30 | 30 | 100% | ✅ |
-| `page-mouse.spec.ts` | 13 | 13 | 100% | ✅ |
-| `page-route.spec.ts` | 40 | 40 | 100% | ✅ |
-| `page-select-option.spec.ts` | 22 | 22 | 100% | ✅ |
-| `page-set-content.spec.ts` | 15 | 15 | 100% | ✅ |
-| `page-set-extra-http-headers.spec.ts` | 3 | 3 | 100% | ✅ |
-| `page-set-input-files.spec.ts` | 20 | 20 | 100% | ✅ |
-| `page-wait-for-function.spec.ts` | 25 | 25 | 100% | ✅ |
-| `page-wait-for-load-state.spec.ts` | 9 | 9 | 100% | ✅ |
-| `page-wait-for-navigation.spec.ts` | 14 | 14 | 100% | ✅ |
-| `page-wait-for-selector-1.spec.ts` | 8 | 8 | 100% | ✅ |
-| `page-wait-for-selector-2.spec.ts` | 13 | 13 | 100% | ✅ |
-| `page-wait-for-url.spec.ts` | 11 | 11 | 100% | ✅ |
+| Spec                                           | Covered | Effective | %    | Status          |
+| ---------------------------------------------- | ------- | --------- | ---- | --------------- |
+| `elementhandle-bounding-box.spec.ts`           | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-click.spec.ts`                  | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-content-frame.spec.ts`          | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-convenience.spec.ts`            | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-eval-on-selector.spec.ts`       | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-misc.spec.ts`                   | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-owner-frame.spec.ts`            | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-query-selector.spec.ts`         | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-screenshot.spec.ts`             | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-scroll-into-view.spec.ts`       | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-select-text.spec.ts`            | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-type.spec.ts`                   | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-wait-for-element-state.spec.ts` | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-boolean.spec.ts`                       | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-matcher-result.spec.ts`                | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-misc.spec.ts`                          | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-timeout.spec.ts`                       | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-to-have-accessible.spec.ts`            | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-to-have-text.spec.ts`                  | 0       | 0         | —    | all NOT_PLANNED |
+| `expect-to-have-value.spec.ts`                 | 0       | 0         | —    | all NOT_PLANNED |
+| `interception.spec.ts`                         | 0       | 0         | —    | all NOT_PLANNED |
+| `jshandle-as-element.spec.ts`                  | 0       | 0         | —    | all NOT_PLANNED |
+| `jshandle-evaluate.spec.ts`                    | 0       | 0         | —    | all NOT_PLANNED |
+| `jshandle-json-value.spec.ts`                  | 0       | 0         | —    | all NOT_PLANNED |
+| `jshandle-properties.spec.ts`                  | 0       | 0         | —    | all NOT_PLANNED |
+| `jshandle-to-string.spec.ts`                   | 0       | 0         | —    | all NOT_PLANNED |
+| `locator-element-handle.spec.ts`               | 0       | 0         | —    | all NOT_PLANNED |
+| `locator-highlight.spec.ts`                    | 0       | 0         | —    | all NOT_PLANNED |
+| `matchers.misc.spec.ts`                        | 0       | 0         | —    | all NOT_PLANNED |
+| `page-add-locator-handler.spec.ts`             | 0       | 0         | —    | all NOT_PLANNED |
+| `page-aria-snapshot-ai.spec.ts`                | 0       | 0         | —    | all NOT_PLANNED |
+| `page-aria-snapshot.spec.ts`                   | 0       | 0         | —    | all NOT_PLANNED |
+| `page-autowaiting-basic.spec.ts`               | 0       | 0         | —    | all NOT_PLANNED |
+| `page-autowaiting-no-hang.spec.ts`             | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-during-navigation.spec.ts`         | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-react.spec.ts`                     | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-scroll.spec.ts`                    | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-timeout-1.spec.ts`                 | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-timeout-2.spec.ts`                 | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-timeout-3.spec.ts`                 | 0       | 0         | —    | all NOT_PLANNED |
+| `page-click-timeout-4.spec.ts`                 | 0       | 0         | —    | all NOT_PLANNED |
+| `page-evaluate-no-stall.spec.ts`               | 0       | 0         | —    | all NOT_PLANNED |
+| `page-event-popup.spec.ts`                     | 0       | 0         | —    | all NOT_PLANNED |
+| `page-leaks.spec.ts`                           | 0       | 0         | —    | all NOT_PLANNED |
+| `page-listeners.spec.ts`                       | 0       | 0         | —    | all NOT_PLANNED |
+| `page-network-sizes.spec.ts`                   | 0       | 0         | —    | all NOT_PLANNED |
+| `page-request-gc.spec.ts`                      | 0       | 0         | —    | all NOT_PLANNED |
+| `page-strict.spec.ts`                          | 0       | 0         | —    | all NOT_PLANNED |
+| `queryselector.spec.ts`                        | 0       | 0         | —    | all NOT_PLANNED |
+| `retarget.spec.ts`                             | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-css.spec.ts`                        | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-frame.spec.ts`                      | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-get-by.spec.ts`                     | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-misc.spec.ts`                       | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-react.spec.ts`                      | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-register.spec.ts`                   | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-role.spec.ts`                       | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-text.spec.ts`                       | 0       | 0         | —    | all NOT_PLANNED |
+| `selectors-vue.spec.ts`                        | 0       | 0         | —    | all NOT_PLANNED |
+| `to-match-aria-snapshot.spec.ts`               | 0       | 0         | —    | all NOT_PLANNED |
+| `wheel.spec.ts`                                | 0       | 0         | —    | all NOT_PLANNED |
+| `workers.spec.ts`                              | 0       | 0         | —    | all NOT_PLANNED |
+| `elementhandle-press.spec.ts`                  | 5       | 5         | 100% | ✅              |
+| `eval-on-selector-all.spec.ts`                 | 7       | 7         | 100% | ✅              |
+| `eval-on-selector.spec.ts`                     | 14      | 14        | 100% | ✅              |
+| `frame-frame-element.spec.ts`                  | 2       | 2         | 100% | ✅              |
+| `frame-hierarchy.spec.ts`                      | 11      | 11        | 100% | ✅              |
+| `locator-click.spec.ts`                        | 2       | 2         | 100% | ✅              |
+| `locator-convenience.spec.ts`                  | 18      | 18        | 100% | ✅              |
+| `locator-evaluate.spec.ts`                     | 5       | 5         | 100% | ✅              |
+| `locator-frame.spec.ts`                        | 4       | 4         | 100% | ✅              |
+| `locator-list.spec.ts`                         | 1       | 1         | 100% | ✅              |
+| `locator-misc-1.spec.ts`                       | 13      | 13        | 100% | ✅              |
+| `locator-misc-2.spec.ts`                       | 12      | 12        | 100% | ✅              |
+| `locator-query.spec.ts`                        | 19      | 19        | 100% | ✅              |
+| `page-add-script-tag.spec.ts`                  | 12      | 12        | 100% | ✅              |
+| `page-add-style-tag.spec.ts`                   | 8       | 8         | 100% | ✅              |
+| `page-basic.spec.ts`                           | 7       | 7         | 100% | ✅              |
+| `page-check.spec.ts`                           | 16      | 16        | 100% | ✅              |
+| `page-click.spec.ts`                           | 60      | 60        | 100% | ✅              |
+| `page-dialog.spec.ts`                          | 10      | 10        | 100% | ✅              |
+| `page-dispatchevent.spec.ts`                   | 17      | 17        | 100% | ✅              |
+| `page-drag.spec.ts`                            | 3       | 3         | 100% | ✅              |
+| `page-emulate-media.spec.ts`                   | 11      | 11        | 100% | ✅              |
+| `page-evaluate-handle.spec.ts`                 | 11      | 11        | 100% | ✅              |
+| `page-evaluate.spec.ts`                        | 69      | 69        | 100% | ✅              |
+| `page-event-pageerror.spec.ts`                 | 12      | 12        | 100% | ✅              |
+| `page-expose-function.spec.ts`                 | 24      | 24        | 100% | ✅              |
+| `page-fill.spec.ts`                            | 31      | 31        | 100% | ✅              |
+| `page-focus.spec.ts`                           | 7       | 7         | 100% | ✅              |
+| `page-goto.spec.ts`                            | 36      | 36        | 100% | ✅              |
+| `page-history.spec.ts`                         | 9       | 9         | 100% | ✅              |
+| `page-keyboard.spec.ts`                        | 30      | 30        | 100% | ✅              |
+| `page-mouse.spec.ts`                           | 13      | 13        | 100% | ✅              |
+| `page-route.spec.ts`                           | 40      | 40        | 100% | ✅              |
+| `page-select-option.spec.ts`                   | 22      | 22        | 100% | ✅              |
+| `page-set-content.spec.ts`                     | 15      | 15        | 100% | ✅              |
+| `page-set-extra-http-headers.spec.ts`          | 3       | 3         | 100% | ✅              |
+| `page-set-input-files.spec.ts`                 | 20      | 20        | 100% | ✅              |
+| `page-wait-for-function.spec.ts`               | 25      | 25        | 100% | ✅              |
+| `page-wait-for-load-state.spec.ts`             | 9       | 9         | 100% | ✅              |
+| `page-wait-for-navigation.spec.ts`             | 14      | 14        | 100% | ✅              |
+| `page-wait-for-selector-1.spec.ts`             | 8       | 8         | 100% | ✅              |
+| `page-wait-for-selector-2.spec.ts`             | 13      | 13        | 100% | ✅              |
+| `page-wait-for-url.spec.ts`                    | 11      | 11        | 100% | ✅              |
+
 ## CDP-Extension tests
 
 Tests that exercise CDP-only features with no upstream Playwright
@@ -175,19 +176,19 @@ equivalent. Grouped by source file.
 - frame-frame-element.spec.ts - should work @smoke _(frame.fill — `browser-cdp` exposes .fill(selector, value) on frame)_
 - frame-frame-element.spec.ts - should work @smoke _(frame.press — synthetic KeyboardEvent in frame; upstream uses frame.$)_
 - frame-frame-element.spec.ts - should work @smoke _(frame.hover — `browser-cdp` exposes .hover(selector) on frame)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
-- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
+- frame-frame-element.spec.ts - should work @smoke _(`browser-cdp` frame.\* method — upstream uses frame.$ element-handle API)_
 
 ### `frame.ts` (9)
 
