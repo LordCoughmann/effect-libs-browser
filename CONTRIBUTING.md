@@ -161,11 +161,34 @@ The `@cloudflare/playwright` patches live in the [`@effect-libs/cloudflare-playw
 
 This project uses [conventional commits](https://www.conventionalcommits.org/):
 
-```
-<type>: <description>
+```text
+<type>(<optional scope>)<optional !>: <description>
 ```
 
 **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+Use scopes consistently:
+
+- Use the package name for a package-local change:
+  - `fix(browser-playwright): reuse the existing browser context`
+  - `feat(browser-cdp): add ...`
+  - `fix(browser-providers): handle ...`
+- Use `publish` or `release` for repository automation:
+  - `fix(publish): validate the cloudflare-playwright lib layout`
+  - `chore(release): configure package versioning`
+- Leave the scope out when one atomic change spans multiple packages:
+  - `refactor!: rename the public error field from module to source`
+- Use `!` for a breaking public API change, or add a `BREAKING CHANGE:` footer.
+- Do not use comma-separated package scopes such as
+  `refactor(browser-cdp,browser-playwright): ...`; split the change into
+  package-specific commits only when the pieces are independently meaningful.
+
+Scopes describe the area of a change for reviewers and changelogs. Release-please
+uses the files changed in a commit to determine affected packages, not the scope
+text.
+
+Descriptions should be concise, specific, and written in the imperative mood.
+For example, prefer `chore(deps): bump Effect` over `chore: bump effect`.
 
 ## Releasing
 
