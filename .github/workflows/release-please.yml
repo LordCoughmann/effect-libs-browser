@@ -5,12 +5,10 @@ on:
     branches: [main]
 
 # `contents: write` and `pull-requests: write` are required for release-please to
-# open PRs, push to its scratch branches, and create tags. `id-token: write`
-# enables npm provenance attestation on the published packages — see
-# npm publishing credentials are configured in repo Settings → Secrets and variables → Actions. Repo-level setting
-# "Allow GitHub Actions to create and approve pull requests" must also be
-# enabled in repo Settings → Actions → General.
+# open PRs, push to its scratch branches, and create tags. `actions: write` is
+# required to dispatch the publish workflow after a release is created.
 permissions:
+  actions: write
   contents: write
   pull-requests: write
   id-token: write
@@ -21,3 +19,26 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v5
         id: release
+
+      # Tags created with the default GITHUB_TOKEN do not recursively trigger
+      # another workflow. Dispatch one publish run for every released package.
+      - name: Dispatch package publications
+        if: steps.release.outputs.releases_created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PATHS_RELEASED: ${{ steps.release.outputs.paths_released }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          while IFS= read -r path; do
+            case "$path" in
+              packages/browser)                package="@effect-libs/browser" ;;
+              packages/browser-cdp)            package="@effect-libs/browser-cdp" ;;
+              packages/browser-playwright)     package="@effect-libs/browser-playwright" ;;
+              packages/browser-stagehand)      package="@effect-libs/browser-stagehand" ;;
+              packages/browser-providers)      package="@effect-libs/browser-providers" ;;
+              packages/cloudflare-playwright)  package="@effect-libs/cloudflare-playwright" ;;
+              *) echo "::error::Unknown released package path: $path"; exit 1 ;;
+            esac
+            gh workflow run Publish --repo "$REPOSITORY" --ref main -f "package=$package"
+          done < <(jq -r '.[]' <<< "$PATHS_RELEASED")
