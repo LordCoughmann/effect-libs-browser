@@ -68,5 +68,5 @@ Replaced with ~30 LOC of utility-script bootstrap and the structured `callFuncti
 - [`packages/browser-cdp/src/internal/Page/Evaluate/serialization/utilityScriptSerializers.ts`](../../../../packages/browser-cdp/src/internal/Page/Evaluate/serialization/utilityScriptSerializers.ts) — vendored serializer (do not modify; per AGENTS.md "Boundaries").
 - [`tests/unit/cdp/UtilityCallPayload.test.ts`](../../../../tests/unit/cdp/UtilityCallPayload.test.ts) — wire-format tests.
 - [`tests/integration/shared/cdp/evaluate.ts`](../../../../tests/integration/shared/cdp/evaluate.ts) — cycle-in-arg and identity-preserving integration tests.
-- [`repos/cloudflare-playwright/packages/playwright-core/src/server/chromium/crExecutionContext.ts:59`](../../../../repos/cloudflare-playwright/packages/playwright-core/src/server/chromium/crExecutionContext.ts) — upstream pattern reference.
+- [upstream pattern reference](https://github.com/cloudflare/playwright/blob/main/packages/playwright-core/src/server/chromium/crExecutionContext.ts#L59) — upstream pattern reference.
 - ADR-0002 (single-process architecture) — single-process informed that the wire-boundary encoding was unnecessary.

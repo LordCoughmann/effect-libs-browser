@@ -12,7 +12,7 @@
     "codegen:cdp:snapshot": "pnpm tsx scripts/browser-cdp/generate-parity-snapshot.ts markdown --out docs/contributing/cdp/upstream-integration-test-snapshot.md",
     "codegen:cdp:snapshot:freshness": "if [ ! -d repos/cloudflare-playwright/tests/page ]; then echo 'Skipping CDP snapshot freshness: optional upstream checkout is absent'; else pnpm codegen:cdp:snapshot && pnpm fmt && pnpm exec oxfmt docs/contributing/cdp/upstream-integration-test-snapshot.md && git diff --quiet docs/contributing/cdp/upstream-integration-test-snapshot.md || (echo 'ERROR: docs/contributing/cdp/upstream-integration-test-snapshot.md is stale. Run: pnpm codegen:cdp:snapshot && pnpm fmt and commit' && exit 1); fi",
     "codegen:cdp:parity-not-planned": "pnpm tsx scripts/browser-cdp/generate-parity-not-planned.ts",
-    "codegen:cdp:parity-not-planned:freshness": "pnpm codegen:cdp:parity-not-planned && pnpm fmt && git diff --quiet tests/integration/shared/cdp/_parityNotPlanned.ts || (echo 'ERROR: tests/integration/shared/cdp/_parityNotPlanned.ts is stale. Run: pnpm codegen:cdp:parity-not-planned && pnpm fmt and commit' && exit 1)",
+    "codegen:cdp:parity-not-planned:freshness": "if [ ! -d repos/cloudflare-playwright/tests/page ]; then echo 'Skipping CDP NOT_PLANNED freshness: optional upstream checkout is absent'; else pnpm codegen:cdp:parity-not-planned && pnpm fmt && git diff --quiet tests/integration/shared/cdp/_parityNotPlanned.ts || (echo 'ERROR: tests/integration/shared/cdp/_parityNotPlanned.ts is stale. Run: pnpm codegen:cdp:parity-not-planned && pnpm fmt and commit' && exit 1); fi",
     "prepare": "effect-tsgo patch && simple-git-hooks",
     "postinstall": "simple-git-hooks",
     "examples:prepare": "pnpm examples:copy-env",
