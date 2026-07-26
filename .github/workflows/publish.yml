@@ -67,12 +67,12 @@ jobs:
             PKG="${GITHUB_REF_NAME%@*}"
           fi
           case "$PKG" in
-            "@effect-libs/browser")               echo "dir=packages/browser"                       >  "$GITHUB_OUTPUT" ;;
-            "@effect-libs/browser-cdp")          echo "dir=packages/browser-cdp"                        >  "$GITHUB_OUTPUT" ;;
-            "@effect-libs/browser-playwright")   echo "dir=packages/browser-playwright"                 >  "$GITHUB_OUTPUT" ;;
-            "@effect-libs/browser-stagehand")    echo "dir=packages/browser-stagehand"                  >  "$GITHUB_OUTPUT" ;;
-            "@effect-libs/browser-providers")    echo "dir=packages/browser-providers"                  >  "$GITHUB_OUTPUT" ;;
-            "@effect-libs/cloudflare-playwright") echo "dir=packages/cloudflare-playwright"     >  "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser")               echo "dir=packages/browser"                       >  "$GITHUB_OUTPUT"; echo "name=$PKG"           >> "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-cdp")          echo "dir=packages/browser-cdp"                    >  "$GITHUB_OUTPUT"; echo "name=$PKG"           >> "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-playwright")   echo "dir=packages/browser-playwright"             >  "$GITHUB_OUTPUT"; echo "name=$PKG"           >> "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-stagehand")    echo "dir=packages/browser-stagehand"              >  "$GITHUB_OUTPUT"; echo "name=$PKG"           >> "$GITHUB_OUTPUT" ;;
+            "@effect-libs/browser-providers")    echo "dir=packages/browser-providers"              >  "$GITHUB_OUTPUT"; echo "name=$PKG"           >> "$GITHUB_OUTPUT" ;;
+            "@effect-libs/cloudflare-playwright") echo "dir=packages/cloudflare-playwright"         >  "$GITHUB_OUTPUT"; echo "name=$PKG"           >> "$GITHUB_OUTPUT" ;;
             *) echo "::error::Unknown package for trigger: $PKG"; exit 1 ;;
           esac
 
@@ -90,7 +90,26 @@ jobs:
           echo "Version OK: $PKG_VERSION"
 
       - name: Build
-        run: pnpm --filter "${{ steps.resolve.outputs.dir }}" build
+        run: pnpm --filter "${{ steps.resolve.outputs.name }}" build
+
+      - name: Verify build output exists before publish
+        run: |
+          DIR="${{ steps.resolve.outputs.dir }}"
+          PKG="${{ steps.resolve.outputs.name }}"
+          # cloudflare-playwright is pre-built (lib/ + types/), others use dist/
+          if [ "$PKG" = "@effect-libs/cloudflare-playwright" ]; then
+            if [ ! -d "$DIR/lib" ]; then
+              echo "::error::lib/ directory missing in $DIR — pre-built artifacts not found"
+              exit 1
+            fi
+            echo "lib/ OK ($(find $DIR/lib -type f | wc -l) files)"
+          else
+            if [ ! -d "$DIR/dist" ]; then
+              echo "::error::dist/ directory missing in $DIR — build step produced no output"
+              exit 1
+            fi
+            echo "dist/ OK ($(find $DIR/dist -type f | wc -l) files)"
+          fi
 
       - name: Publish
         run: |
