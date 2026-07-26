@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-playwright@v0.1.2...@effect-libs/browser-playwright@v0.1.3) (2026-07-26)
+
+
+### Bug Fixes
+
+* **browser-playwright:** reuse existing browser context to preserve Steel profile cookies ([6af5476](https://github.com/LordCoughmann/effect-libs-browser/commit/6af54760f3277eda982ead4cc673854eb99921fe))
+
 ## [0.1.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-playwright@v0.1.2...@effect-libs/browser-playwright@v0.1.2) (2026-07-24)
 
 
