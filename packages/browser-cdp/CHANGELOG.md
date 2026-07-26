@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-cdp@v0.1.3...@effect-libs/browser-cdp@v0.1.4) (2026-07-26)
+
+
+### Bug Fixes
+
+* **release:** prepare linked packages for 0.1.4 ([50b49b9](https://github.com/LordCoughmann/effect-libs-browser/commit/50b49b90a84a14b338828401f00e6006fc968148))
+
 ## [0.1.3](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-cdp@v0.1.2...@effect-libs/browser-cdp@v0.1.3) (2026-07-26)
 
 Version-alignment release; all `@effect-libs` packages now share this version.
