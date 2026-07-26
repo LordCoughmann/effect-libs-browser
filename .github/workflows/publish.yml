@@ -79,6 +79,9 @@ jobs:
             echo "dist/ OK ($(find "$DIR/dist" -type f | wc -l) files)"
           fi
 
+      - name: Verify package metadata
+        run: pnpm tsx scripts/package-metadata/check.ts --packed "${{ steps.resolve.outputs.dir }}"
+
       - name: Publish
         run: |
           cd "${{ steps.resolve.outputs.dir }}"

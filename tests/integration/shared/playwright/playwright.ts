@@ -11,12 +11,15 @@
 
 import type { TestApi, TestConfig } from "@test/utils/effect-test/EffectTest.js";
 
+import type { BrowserProviderService } from "@effect-libs/browser";
+
 import { TestServerClient } from "@test/setup/http-server/Client.js";
 import { TestBrowserConfig, hasBrowserConfig } from "@test/utils/config/TestBrowserConfig.js";
 import { assertTrue, assertEqual } from "@test/utils/effect-test/EffectTest.js";
-import { Effect, Fiber, Layer } from "effect";
+import { DateTime, Effect, Fiber, Layer, Option, Redacted } from "effect";
 import * as Str from "effect/String";
 
+import { SessionId, UrlString } from "@effect-libs/browser";
 import { Playwright } from "@effect-libs/browser-playwright";
 
 // Combined layer for tests
@@ -104,6 +107,44 @@ export const definePlaywrightTests = (api: TestApi, _config: TestConfig): void =
             );
 
             yield* Effect.logInfo(`Links: ${JSON.stringify(links)}`);
+          }),
+        );
+      });
+
+      describe("withSession", () => {
+        it.effect("reuses an existing page in the provider session", () =>
+          Effect.gen(function* () {
+            const browserConfig = yield* TestBrowserConfig;
+            const browserWsUrl = yield* browserConfig.getBrowserWsUrl;
+            const playwright = yield* Playwright;
+
+            const provider: BrowserProviderService = {
+              createSession: () =>
+                Effect.succeed({
+                  id: SessionId("playwright-test-session"),
+                  createdAt: DateTime.makeUnsafe(new Date()),
+                }),
+              releaseSession: () => Effect.void,
+              getCdpUrl: () => Option.some(Redacted.make(UrlString(browserWsUrl))),
+            };
+
+            yield* playwright.acquireConnection({ url: browserWsUrl }).pipe(
+              Effect.flatMap(({ page }) =>
+                Effect.gen(function* () {
+                  const pageCountBefore = yield* page.use(
+                    async (rawPage) => rawPage.context().pages().length,
+                  );
+                  const pageCountDuringSession = yield* playwright.withSession(
+                    { provider },
+                    ({ page: sessionPage }) =>
+                      sessionPage.use(async (rawPage) => rawPage.context().pages().length),
+                  );
+
+                  yield* assertEqual(pageCountDuringSession, pageCountBefore);
+                }),
+              ),
+              Effect.scoped,
+            );
           }),
         );
       });

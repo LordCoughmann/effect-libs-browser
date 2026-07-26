@@ -36,6 +36,7 @@ import { PlaywrightError, ConnectionError, ContextError } from "./PlaywrightErro
 // ── Internal Helpers ──────────────────────────────────────────────────────────
 
 type ConnectionSource = { readonly url: string } | { readonly session: BrowserProviderSession };
+type PageStrategy = "new" | "existing";
 
 const resolveConnectionSource = (source: ConnectionSource): string =>
   Predicate.hasProperty(source, "url") ? source.url : Redacted.value(source.session.cdpUrl);
@@ -154,19 +155,38 @@ const resolveContext = (
     );
   });
 
+const resolvePage = (
+  context: BrowserContext,
+  strategy: PageStrategy,
+): Effect.Effect<Page, PlaywrightError, Scope.Scope> =>
+  Effect.gen(function* () {
+    if (strategy === "existing") {
+      const pages = yield* Effect.sync(() => context.pages());
+      if (Arr.isArrayNonEmpty(pages)) {
+        yield* Effect.logDebug("Reusing existing browser page");
+        return pages[0];
+      }
+    }
+
+    return yield* Effect.acquireRelease(createNewPage(context), (p) =>
+      closePage(p).pipe(Effect.catch(Effect.logError)),
+    );
+  });
+
 /**
  * Connect to a CDP endpoint and resolve a page.
  *
  * Uses the browser's existing context when available (preserving Steel profile
- * cookies), falling back to a fresh context. The page is always freshly created
- * in the resolved context so it starts at a known state.
+ * cookies). An `existing` page strategy reuses the first page in that context,
+ * while the `new` strategy creates a fresh page. If no context or page exists,
+ * the missing resource is created and cleaned up on scope exit.
  *
  * Requires Scope from the caller so the browser stays alive.
- * Pre-existing contexts are NOT closed on scope exit — only newly created ones
- * and the page are cleaned up.
+ * Pre-existing contexts and pages are not closed on scope exit.
  */
 const connectWithPage = (
   cdpUrl: string,
+  pageStrategy: PageStrategy,
 ): Effect.Effect<
   { readonly browser: Browser; readonly defaultContext: BrowserContext; readonly page: Page },
   PlaywrightError,
@@ -179,9 +199,7 @@ const connectWithPage = (
 
     const defaultContext = yield* resolveContext(browser);
 
-    const rawPage = yield* Effect.acquireRelease(createNewPage(defaultContext), (p) =>
-      closePage(p).pipe(Effect.catch(Effect.logError)),
-    );
+    const rawPage = yield* resolvePage(defaultContext, pageStrategy);
 
     return { browser, defaultContext, page: rawPage } as const;
   });
@@ -278,7 +296,11 @@ const make = Effect.sync(() => {
         const sessionWithCdp = { ...session, cdpUrl: Redacted.make(UrlString(cdpUrl)) } as T &
           BrowserProviderSession;
 
-        const { browser, defaultContext, page: rawPage } = yield* connectWithPage(cdpUrl);
+        const {
+          browser,
+          defaultContext,
+          page: rawPage,
+        } = yield* connectWithPage(cdpUrl, "existing");
         const connection = makeConnectionHandle(browser, defaultContext);
         const page = makePage(rawPage);
         const context = makeContextHandle(defaultContext);
@@ -293,7 +315,7 @@ const make = Effect.sync(() => {
     ): Effect.Effect<PlaywrightConnectionScope, PlaywrightError, Scope.Scope> =>
       Effect.gen(function* () {
         const cdpUrl = resolveConnectionSource(source);
-        const { browser, defaultContext, page: rawPage } = yield* connectWithPage(cdpUrl);
+        const { browser, defaultContext, page: rawPage } = yield* connectWithPage(cdpUrl, "new");
         const connection = makeConnectionHandle(browser, defaultContext);
         const page = makePage(rawPage);
         const context = makeContextHandle(defaultContext);
@@ -305,7 +327,7 @@ const make = Effect.sync(() => {
     (source: ConnectionSource): Effect.Effect<PlaywrightPage, PlaywrightError, Scope.Scope> =>
       Effect.gen(function* () {
         const cdpUrl = resolveConnectionSource(source);
-        const { page: rawPage } = yield* connectWithPage(cdpUrl);
+        const { page: rawPage } = yield* connectWithPage(cdpUrl, "new");
         return makePage(rawPage);
       }),
   );

@@ -28,6 +28,8 @@
  *
  */
 
+import type { Protocol } from "devtools-protocol";
+
 import type { CdpConnection } from "../CdpConnection.js";
 
 import { Duration, Effect, Ref } from "effect";
@@ -283,8 +285,10 @@ const computeClickPointFromNode = (
     const viewportHeight = metricsResult.cssLayoutViewport.clientHeight;
 
     const clippedQuads = quadsResult.quads
-      .map((quad) => intersectQuadWithViewport(quad, viewportWidth, viewportHeight))
-      .filter((quad) => computeQuadArea(quad) > 0.99);
+      .map((quad: Protocol.DOM.Quad) =>
+        intersectQuadWithViewport(quad, viewportWidth, viewportHeight),
+      )
+      .filter((quad: number[]) => computeQuadArea(quad) > 0.99);
 
     return yield* Arr.match(clippedQuads, {
       onEmpty: () => Effect.succeed(null),

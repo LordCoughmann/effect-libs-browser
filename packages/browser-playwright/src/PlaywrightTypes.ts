@@ -147,12 +147,14 @@ export interface PlaywrightSessionScope<S extends BrowserProviderSession = Brows
    */
   readonly context: PlaywrightContextHandle;
   /**
-   * The default Playwright page — a browser tab scoped to this session.
+   * The default Playwright page — the provider session's first browser tab when
+   * one already exists, or a newly created tab when the session has no pages.
    * Use it to navigate, click, read content, and capture state. See
    * [Playwright's `Page` reference](https://playwright.dev/docs/api/class-page)
    * for the full API.
    *
-   * Cleaned up automatically when the callback returns.
+   * Cleaned up automatically when the session ends; a pre-existing provider
+   * page is left open until the provider releases the session.
    */
   readonly page: PlaywrightPage;
 }

@@ -876,7 +876,9 @@ return __cdpHandleSerialize(this);
         if (propsResult.exceptionDetails) {
           return yield* failEvaluation(extractExceptionText(propsResult.exceptionDetails));
         }
-        const prop = propsResult.result.find((p) => p.name === name);
+        const prop = propsResult.result.find(
+          (p: Protocol.Runtime.PropertyDescriptor) => p.name === name,
+        );
         if (!prop || !prop.value) {
           return yield* failEvaluation(`Handle has no property "${name}"`);
         }

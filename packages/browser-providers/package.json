@@ -61,7 +61,7 @@
   "peerDependencies": {
     "@browserbasehq/sdk": "^2.15.0",
     "@effect-libs/browser-playwright": "workspace:*",
-    "@effect-libs/cloudflare-playwright": "^0.2.0",
+    "@effect-libs/cloudflare-playwright": "workspace:*",
     "cloudflare": "^7.0.0",
     "effect": "catalog:",
     "steel-sdk": "^0.18.0"

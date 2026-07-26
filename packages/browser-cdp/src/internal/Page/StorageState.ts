@@ -15,6 +15,8 @@
  * browser may rewrite).
  */
 
+import type { Protocol } from "devtools-protocol";
+
 import type { CdpConnectionService } from "../CdpConnection.js";
 
 import { Effect } from "effect";
@@ -102,7 +104,7 @@ const listPageTargets = (
       ),
     );
 
-    const pageTargets = (result.targetInfos ?? []).filter((t) => {
+    const pageTargets = (result.targetInfos ?? []).filter((t: Protocol.Target.TargetInfo) => {
       if (t.type !== "page") return false;
       // Default context has no explicit browserContextId from us, but Chrome
       // assigns one. For the default context we include ALL pages; for
@@ -111,7 +113,10 @@ const listPageTargets = (
       return t.browserContextId === contextId;
     });
 
-    return pageTargets.map((t) => ({ url: t.url, origin: extractOrigin(t.url) }));
+    return pageTargets.map((t: Protocol.Target.TargetInfo) => ({
+      url: t.url,
+      origin: extractOrigin(t.url),
+    }));
   });
 
 /**

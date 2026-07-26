@@ -37,7 +37,7 @@
     "fmt:check": "oxfmt --check packages/ tests/ scripts/",
     "lint": "oxlint packages/ tests/ scripts/",
     "check": "pnpm check:package-versions && pnpm lint && pnpm exec fallow dead-code --fail-on-issues && tsgo --noEmit && pnpm fmt:check",
-    "check:package-versions": "node -e \"const fs=require('node:fs'); const versions=fs.readdirSync('packages',{withFileTypes:true}).filter((entry)=>entry.isDirectory()).map((entry)=>JSON.parse(fs.readFileSync('packages/'+entry.name+'/package.json','utf8')).version); if(new Set(versions).size!==1){console.error('Package versions are not synchronized:',versions);process.exit(1)} console.log('Package versions synchronized:',versions[0])\"",
+    "check:package-versions": "pnpm tsx scripts/package-metadata/check.ts",
     "check:fix": "pnpm fmt && pnpm lint --fix && tsgo --noEmit && pnpm exec fallow dead-code --fail-on-issues",
     "verify": "pnpm codegen:cdp:protocol:freshness && pnpm codegen:cdp:snapshot:freshness && pnpm codegen:cdp:parity-not-planned:freshness && pnpm check && pnpm build && pnpm run test:unit && pnpm test:smoke && pnpm examples:typecheck && pnpm run docs",
     "verify:release": "pnpm run verify && pnpm tsx scripts/test-runner/TestRunner.ts integration --runtime workerd"
