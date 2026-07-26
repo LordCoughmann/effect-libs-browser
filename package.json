@@ -1,6 +1,6 @@
 {
   "name": "@effect-libs/browser-monorepo",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "description": "Monorepo root for @effect-libs/browser-* packages. Source lives in packages/*; this package is the build/test/docs orchestrator.",
   "license": "MIT",
