@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.3](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-providers@v0.1.2...@effect-libs/browser-providers@v0.1.3) (2026-07-26)
+
+Version-alignment release; all `@effect-libs` packages now share this version.
+
 ## [0.1.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-providers@v0.1.2...@effect-libs/browser-providers@v0.1.2) (2026-07-24)
 
 
