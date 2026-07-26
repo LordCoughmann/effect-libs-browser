@@ -1,6 +1,6 @@
 {
   "name": "@effect-libs/cloudflare-playwright",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Patched fork of @cloudflare/playwright@1.3.0 with external CDP support, lazy cloudflare:workers import, ESM type resolution, and graceful orphaned-session handling. Vendored from upstream Cloudflare, maintained inside the @effect-libs/browser monorepo.",
   "homepage": "https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/cloudflare-playwright#readme",
   "bugs": {

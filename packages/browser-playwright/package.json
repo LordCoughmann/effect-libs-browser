@@ -1,6 +1,6 @@
 {
   "name": "@effect-libs/browser-playwright",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Effect-friendly Playwright API for edge runtimes, for @effect-libs/browser.",
   "homepage": "https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-playwright#readme",
   "bugs": {

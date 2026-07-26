@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser@v0.1.3...@effect-libs/browser@v1.0.0) (2026-07-26)
+
+
+### Features
+
+* first public release ([ab7d7cf](https://github.com/LordCoughmann/effect-libs-browser/commit/ab7d7cf546f3998f9a2946a7a05335510c552567))
+
 ## [0.1.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser@v0.1.2...@effect-libs/browser@v0.1.2) (2026-07-24)
 
 

@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.0.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-playwright@v0.1.3...@effect-libs/browser-playwright@v1.0.0) (2026-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename the public error field from module to source
+
+### Features
+
+* first public release ([ab7d7cf](https://github.com/LordCoughmann/effect-libs-browser/commit/ab7d7cf546f3998f9a2946a7a05335510c552567))
+
+
+### Bug Fixes
+
+* **browser-playwright:** preserve the provider browser context ([15ed5a5](https://github.com/LordCoughmann/effect-libs-browser/commit/15ed5a5917ee7c202c3ab1204d1170b00641f6b8))
+
+
+### Code Refactoring
+
+* rename the public error field from module to source ([386cdd3](https://github.com/LordCoughmann/effect-libs-browser/commit/386cdd3c9d80e8fd37fa17f7bde75b5a6ea3b223))
+
 ## [0.1.3](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-playwright@v0.1.2...@effect-libs/browser-playwright@v0.1.3) (2026-07-26)
 
 

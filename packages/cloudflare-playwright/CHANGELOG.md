@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.1.3...@effect-libs/cloudflare-playwright@v1.0.0) (2026-07-26)
+
+
+### Features
+
+* first public release ([ab7d7cf](https://github.com/LordCoughmann/effect-libs-browser/commit/ab7d7cf546f3998f9a2946a7a05335510c552567))
+
+
+### Bug Fixes
+
+* **cloudflare-playwright:** preserve validator side effects ([78b2196](https://github.com/LordCoughmann/effect-libs-browser/commit/78b2196f43ac47aebdd0a843718542ca2e75ecf4))
+
 ## [0.1.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.1.2...@effect-libs/cloudflare-playwright@v0.1.2) (2026-07-24)
 
 
