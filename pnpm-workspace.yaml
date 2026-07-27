@@ -14,7 +14,7 @@ overrides:
   tsdown: ^0.22.5
   rolldown-plugin-dts: ^0.27.6
 catalog:
-  alchemy: 2.0.0-beta.61
+  alchemy: 2.0.0-beta.65
   effect: ">=4.0.0-beta.101 || >=4.0.0"
   "@effect/platform-node": ">=4.0.0-beta.101 || >=4.0.0"
   "@effect/platform-bun": ">=4.0.0-beta.101 || >=4.0.0"
@@ -43,7 +43,6 @@ minimumReleaseAgeExclude:
   - '@distilled.cloud/core@0.22.4'
   - '@distilled.cloud/neon@0.22.4'
   - '@distilled.cloud/planetscale@0.22.4'
-  - alchemy@2.0.0-beta.61
   - '@effect/platform-bun@4.0.0-beta.97'
   - '@effect/platform-node-shared@4.0.0-beta.97'
   - '@effect/platform-node@4.0.0-beta.97'
@@ -64,3 +63,10 @@ minimumReleaseAgeExclude:
   - '@fallow-cli/win32-x64-msvc@3.4.2'
   - fallow@3.4.2
   - tsx@4.23.1
+  - '@distilled.cloud/aws@0.30.2'
+  - '@distilled.cloud/axiom@0.30.2'
+  - '@distilled.cloud/cloudflare@0.30.2'
+  - '@distilled.cloud/core@0.30.2'
+  - '@distilled.cloud/neon@0.30.2'
+  - '@distilled.cloud/planetscale@0.30.2'
+  - alchemy@2.0.0-beta.65
