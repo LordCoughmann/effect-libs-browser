@@ -33,7 +33,8 @@ wrapClientApis();
 const HTTP_FAKE_HOST = "http://fake.host";
 const WS_FAKE_HOST = "ws://fake.host";
 const originalConnectOverCDP = playwright.chromium.connectOverCDP;
-playwright.chromium.connectOverCDP = (endpointURLOrOptions) => {
+playwright.chromium.connectOverCDP = (endpointURLOrOptions, options) => {
+  const connectOptions = typeof endpointURLOrOptions === "string" ? options : endpointURLOrOptions;
   const wsEndpoint = typeof endpointURLOrOptions === "string" ? endpointURLOrOptions : endpointURLOrOptions.wsEndpoint ?? endpointURLOrOptions.endpointURL;
   if (!wsEndpoint)
     throw new Error("No wsEndpoint provided");
@@ -41,7 +42,7 @@ playwright.chromium.connectOverCDP = (endpointURLOrOptions) => {
   // Support external WebSocket endpoints (Steel, Browserbase, local browser)
   // These bypass Cloudflare browser binding entirely
   if (wsEndpoint.startsWith("ws://") || wsEndpoint.startsWith("wss://")) {
-    return connectToExternalWebSocket(wsEndpoint);
+    return connectToExternalWebSocket(wsEndpoint, connectOptions);
   }
 
   const wsUrl = new URL(wsEndpoint);
@@ -51,16 +52,53 @@ playwright.chromium.connectOverCDP = (endpointURLOrOptions) => {
 };
 
 // Connect to external CDP endpoint via standard WebSocket (no browser binding needed)
-async function connectToExternalWebSocket(wsEndpoint) {
+async function connectToExternalWebSocket(wsEndpoint, options) {
   resetMonotonicTime();
   const webSocket = new WebSocket(wsEndpoint);
-  await new Promise((resolve, reject) => {
-    webSocket.addEventListener("open", () => resolve());
-    webSocket.addEventListener("error", (error) => reject(error));
-  });
+  await waitForExternalWebSocketOpen(webSocket, options?.timeout ?? 30_000);
   const sessionId = new URL(wsEndpoint).searchParams.get("browser_session") ?? "";
   const transport = new WebSocketTransport(webSocket, sessionId);
-  return await createBrowser(transport, { persistent: true });
+  const browserOptions = options && {
+    isLocal: options.isLocal,
+    logger: options.logger,
+    slowMo: options.slowMo,
+    timeout: options.timeout
+  };
+  return await createBrowser(transport, { persistent: true }, browserOptions);
+}
+function waitForExternalWebSocketOpen(webSocket, timeout) {
+  return new Promise((resolve, reject) => {
+    let timeoutId;
+    const cleanup = () => {
+      if (timeoutId)
+        clearTimeout(timeoutId);
+      webSocket.removeEventListener("open", onOpen);
+      webSocket.removeEventListener("error", onError);
+      webSocket.removeEventListener("close", onClose);
+    };
+    const onOpen = () => {
+      cleanup();
+      resolve();
+    };
+    const onError = () => {
+      cleanup();
+      reject(new Error("External CDP WebSocket connection failed"));
+    };
+    const onClose = () => {
+      cleanup();
+      reject(new Error("External CDP WebSocket closed before opening"));
+    };
+    webSocket.addEventListener("open", onOpen);
+    webSocket.addEventListener("error", onError);
+    webSocket.addEventListener("close", onClose);
+    if (timeout > 0) {
+      timeoutId = setTimeout(() => {
+        cleanup();
+        webSocket.close();
+        reject(new Error(`Timed out after ${timeout}ms while connecting to external CDP endpoint`));
+      }, timeout);
+    }
+  });
 }
 async function connectDevtools(endpoint, options) {
   resetMonotonicTime();
@@ -102,12 +140,12 @@ function endpointURLString(binding, options) {
     url.searchParams.set("keep_alive", options.keepAlive.toString());
   return url.toString();
 }
-async function createBrowser(transport, options) {
+async function createBrowser(transport, options, connectOptions) {
   return await transportZone.run(transport, async () => {
     const url = new URL(WS_FAKE_HOST);
     if (options?.persistent)
       url.searchParams.set("persistent", "true");
-    const browser = await originalConnectOverCDP.call(playwright.chromium, url.toString(), {});
+    const browser = await originalConnectOverCDP.call(playwright.chromium, url.toString(), connectOptions ?? {});
     browser.sessionId = () => transport.sessionId;
     return browser;
   });

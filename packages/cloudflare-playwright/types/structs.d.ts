@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { JSHandle, ElementHandle, Frame, Page, BrowserContext } from './types';
+import { JSHandle, ElementHandle, Frame, Page, BrowserContext } from './types.js';
 
 /**
  * Can be converted to JSON
