@@ -155,61 +155,87 @@ longer needed — drop it.
 
 ## 3. ESM type resolution
 
-**Files:** `index.d.ts`, `internal.d.ts`, `test.d.ts`
+**Files:** `index.d.ts`, `internal.d.ts`, `test.d.ts`, `types/*.d.ts`, `package.json`
 
 **Why:** Upstream's type files use extension-less imports
 (`from './types/types'`). With `moduleResolution: NodeNext` /
 `moduleResolution: Node16` these fail to resolve, breaking type-checking
-for downstream consumers. Add `.d.ts` extensions to every relative
-import / export / module declaration.
+for downstream consumers. Use `.js` specifiers for relative ESM imports;
+TypeScript resolves them to the corresponding declaration files while
+`.d.ts` specifiers are rejected for value imports and exports.
 
 **What:**
 
-In `index.d.ts`:
+In the hand-written declaration files, use `.js` for every relative
+specifier:
 
 ```diff
 -import type { Browser } from './types/types';
 -import { chromium, request, selectors, devices } from './types/types';
-+import type { Browser } from './types/types.d.ts';
-+import { chromium, request, selectors, devices } from './types/types.d.ts';
++import type { Browser } from './types/types.js';
++import { chromium, request, selectors, devices } from './types/types.js';
 
 -export * from './types/types';
-+export * from './types/types.d.ts';
++export * from './types/types.js';
 
 -declare module './types/types' {
-+declare module './types/types.d.ts' {
++declare module './types/types.js' {
 ```
 
-In `internal.d.ts`:
+Apply the same conversion in `internal.d.ts` and `test.d.ts`:
 
 ```diff
 -import { BrowserBindingName } from './tests/src/utils';
-+import { BrowserBindingName } from './tests/src/utils.d.ts';
++import { BrowserBindingName } from './tests/src/utils.js';
 
 -export * from './tests';
 -export { expect, _baseTest, Fixtures, mergeTests } from './types/test';
-+export * from './tests.d.ts';
-+export { expect, _baseTest, Fixtures, mergeTests } from './types/test.d.ts';
-```
++export * from './tests.js';
++export { expect, _baseTest, Fixtures, mergeTests } from './types/test.js';
 
-In `test.d.ts`:
-
-```diff
 -export * from './index';
 -export { expect, mergeExpects } from './types/test';
-+export * from './index.d.ts';
-+export { expect, mergeExpects } from './types/test.d.ts';
++export * from './index.js';
++export { expect, mergeExpects } from './types/test.js';
 ```
+
+Update generated declarations to use `.js` for their relative imports and
+exports as well, including `types/structs.d.ts`, `types/types.d.ts`, and
+`types/test.d.ts`. Do not rewrite relative paths in documentation examples.
+
+The hand-written default export must be declared as an ambient value rather
+than initialized at the top level of a declaration file:
+
+```diff
+-const playwright = { ... };
++declare const playwright: {
++  chromium: typeof chromium;
++  selectors: typeof selectors;
++  request: typeof request;
++  devices: typeof devices;
++  endpointURLString: typeof endpointURLString;
++  connect: typeof connect;
++  launch: typeof launch;
++  limits: typeof limits;
++  sessions: typeof sessions;
++  history: typeof history;
++  acquire: typeof acquire;
++};
+```
+
+Remove the unnecessary `./types/types` package export; package-root and
+`@cloudflare/playwright/test` consumers resolve their declarations through
+their existing public exports.
 
 **Verify:**
 
 ```sh
-# Should print 0 — every relative .d.ts import has its extension.
-grep -E "from '\./[^']+'" index.d.ts internal.d.ts test.d.ts | grep -v '\.d\.ts'
+# Should print no extension-less relative declarations in executable specifiers.
+rg "(from|declare module) ['\"]\./" index.d.ts internal.d.ts test.d.ts types/structs.d.ts types/types.d.ts | grep -vE "\.(js|mjs|cjs|json)['\"]"
 ```
 
-If upstream added `.d.ts` extensions itself, this patch is no longer
-needed — drop it.
+If upstream adds equivalent ESM specifiers and declaration fixes itself, this
+patch is no longer needed — drop it.
 
 ---
 
