@@ -95,60 +95,58 @@ needed — drop it from this checklist.
 
 **Why:** Upstream's `connectOverCDP()` only handles Cloudflare's internal
 browser-binding endpoints. Detect `ws://` / `wss://` URLs (Steel,
-Browserbase, local Chrome, anything) and connect via a standard
-WebSocket instead, bypassing the browser-binding machinery.
+Browserbase, local Chrome, anything) and connect via a standard WebSocket
+instead, bypassing the browser-binding machinery.
 
 **What:**
 
-Find this line (inside the body of
-`playwright.chromium.connectOverCDP = (endpointURLOrOptions) => { ... }`):
+In `playwright.chromium.connectOverCDP`, preserve the optional connection
+options and route external WebSocket URLs before the existing Browser Run
+URL handling:
 
 ```js
-  const wsUrl = new URL(wsEndpoint);
-  if (!wsUrl.searchParams.has("persistent"))
-    wsUrl.searchParams.set("persistent", "true");
+playwright.chromium.connectOverCDP = (endpointURLOrOptions, options) => {
+  const connectOptions = typeof endpointURLOrOptions === 'string' ? options : endpointURLOrOptions;
+  const wsEndpoint = typeof endpointURLOrOptions === 'string'
+    ? endpointURLOrOptions
+    : endpointURLOrOptions.wsEndpoint ?? endpointURLOrOptions.endpointURL;
+  if (!wsEndpoint)
+    throw new Error('No wsEndpoint provided');
+
+  if (wsEndpoint.startsWith('ws://') || wsEndpoint.startsWith('wss://'))
+    return connectToExternalWebSocket(wsEndpoint, connectOptions);
+
+  // Existing Cloudflare Browser Run handling remains unchanged.
+};
 ```
 
-Insert this block **immediately before** it:
+The external helper should:
 
-```js
-  // Support external WebSocket endpoints (Steel, Browserbase, local browser)
-  // These bypass Cloudflare browser binding entirely
-  if (wsEndpoint.startsWith("ws://") || wsEndpoint.startsWith("wss://")) {
-    return connectToExternalWebSocket(wsEndpoint);
-  }
-```
+- Open the endpoint with the standard WebSocket API.
+- Use a 30-second opening timeout by default; `timeout: 0` disables it.
+- Reject and clean up on socket error, early close, or timeout.
+- Preserve `browser_session` as the browser session ID.
+- Forward `slowMo`, `isLocal`, `logger`, and `timeout` into browser creation.
+- Use the existing raw-JSON `WebSocketTransport`; do not reintroduce the
+  obsolete chunking toggle from PR `#59`.
 
-Then add this helper function near the other top-level helpers in the
-same file (a good spot is right after the existing `connectDevtools`
-function):
-
-```js
-// Connect to external CDP endpoint via standard WebSocket (no browser binding needed)
-async function connectToExternalWebSocket(wsEndpoint) {
-  resetMonotonicTime();
-  const webSocket = new WebSocket(wsEndpoint);
-  await new Promise((resolve, reject) => {
-    webSocket.addEventListener("open", () => resolve());
-    webSocket.addEventListener("error", (error) => reject(error));
-  });
-  const sessionId = new URL(wsEndpoint).searchParams.get("browser_session") ?? "";
-  const transport = new WebSocketTransport(webSocket, sessionId);
-  return await createBrowser(transport, { persistent: true });
-}
-```
+The standard Worker WebSocket constructor does not support arbitrary request
+headers. `ConnectOverCDPOptions.headers` is therefore not applied on this
+external path; providers should use credentials in the connection URL.
 
 **Verify:**
 
 ```sh
-# Should print 2 (the if-check + the helper definition).
+# Should print 2 (the route call + helper definition).
 grep -c 'connectToExternalWebSocket' lib/index.js
+# Should print 2 (the helper call + definition).
+grep -c 'waitForExternalWebSocketOpen' lib/index.js
 # Smoke-test that the package loads in Node.js:
 node -e "import('./lib/index.js').then(m => console.log(typeof m.chromium))"
 # Should print: function
 ```
 
-If upstream merged equivalent external-CDP support, this patch is no
+If upstream merges equivalent external-CDP support, this patch is no
 longer needed — drop it.
 
 ---
