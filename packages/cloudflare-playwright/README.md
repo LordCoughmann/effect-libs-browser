@@ -22,10 +22,11 @@ The full list of patches and why each is needed lives in [`patches/CHECKLIST.md`
 
 Forked from `@cloudflare/playwright@1.3.0`. Resynced on each upstream release via [`scripts/sync-upstream.sh`](./scripts/sync-upstream.sh). Versioned on its own `0.x` series; the upstream version it tracks is documented in this README and the changelog, not encoded in the package version.
 
-Two of the four patches have corresponding upstream PRs:
+Three of the four patches have corresponding upstream PRs:
 
 - [PR #193 — lazy-load `cloudflare:workers`](https://github.com/cloudflare/playwright/pull/193)
 - [PR #194 — ESM specifiers for NodeNext](https://github.com/cloudflare/playwright/pull/194)
+- [PR #221 — external WebSocket CDP endpoints](https://github.com/cloudflare/playwright/pull/221)
 
 ## Used by
 
