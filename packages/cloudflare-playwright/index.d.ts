@@ -1,9 +1,30 @@
 import * as FS from 'fs';
 import type { Browser } from './types/types.js';
 import { chromium, request, selectors, devices } from './types/types.js';
-import { env } from 'cloudflare:workers';
+
+// Resolve cloudflare:workers env lazily so the module can load in
+// non-Worker runtimes (Node.js, Deno, Bun). Uses createRequire for
+// ESM compliance. Falls back to empty object when not in Workers.
+let _env = null;
+const getEnv = () => {
+  if (_env === null) {
+    try {
+      const { createRequire } = require('node:module');
+      const cjsRequire = createRequire(import.meta.url);
+      _env = cjsRequire('cloudflare:workers').env ?? {};
+    } catch {
+      _env = {};
+    }
+  }
+  return _env;
+};
 
 export * from './types/types.js';
+
+// Re-export the Cloudflare.* CDP command types and pull in their augmentation
+// of Protocol.CommandParameters / CommandReturnValues so that
+// cdpSession.send('Cloudflare.*', ...) is typed.
+export * from './cloudflare-cdp';
 
 declare module './types/types.js' {
   interface Browser {
@@ -14,6 +35,16 @@ declare module './types/types.js' {
      */
     sessionId(): string;
   }
+}
+
+/**
+ * Returned by `launch()` when `browser: 'kitesurf'` is passed, since in that case no
+ * session is acquired and the connection is made straight to the devtools endpoint.
+ *
+ * @public
+ */
+export interface SessionlessBrowser extends Omit<Browser, 'sessionId'> {
+  sessionId(): undefined;
 }
 
 /**
@@ -88,6 +119,7 @@ export interface WorkersLaunchOptions {
   keep_alive?: number; // milliseconds to keep browser alive even if it has no activity (from 10_000ms to 600_000ms, default is 60_000)
   recording?: boolean;
   lab?: boolean;
+  browser?: 'kitesurf'; // when set to 'kitesurf', no session is acquired and the connection is made directly to /v1/devtools/browser
 }
 
 /**
@@ -102,13 +134,14 @@ type KeysByValueType<T, ValueType> = {
   [K in keyof T]: T[K] extends ValueType ? K : never;
 }[keyof T];
 
-export type BrowserBindingKey = KeysByValueType<typeof env, BrowserWorker>;
+export type BrowserBindingKey = KeysByValueType<ReturnType<typeof getEnv>, BrowserWorker>;
 
 export function endpointURLString(binding: BrowserWorker | BrowserBindingKey, options?: WorkersLaunchOptions | WorkersConnectOptions): string;
 
 export function connect(endpoint: string | URL): Promise<Browser>;
 export function connect(endpoint: BrowserWorker, sessionIdOrOptions: string | WorkersConnectOptions): Promise<Browser>;
 
+export function launch(endpoint: BrowserEndpoint, options: WorkersLaunchOptions & { browser: 'kitesurf' }): Promise<SessionlessBrowser>;
 export function launch(endpoint: BrowserEndpoint, options?: WorkersLaunchOptions): Promise<Browser>;
 
 export function acquire(endpoint: BrowserEndpoint, options?: WorkersLaunchOptions): Promise<AcquireResponse>;

@@ -33,8 +33,8 @@ wrapClientApis();
 const HTTP_FAKE_HOST = "http://fake.host";
 const WS_FAKE_HOST = "ws://fake.host";
 const originalConnectOverCDP = playwright.chromium.connectOverCDP;
-playwright.chromium.connectOverCDP = (endpointURLOrOptions, options) => {
-  const connectOptions = typeof endpointURLOrOptions === "string" ? options : endpointURLOrOptions;
+playwright.chromium.connectOverCDP = (endpointURLOrOptions) => {
+  const connectOptions = typeof endpointURLOrOptions !== 'string' ? endpointURLOrOptions : undefined;
   const wsEndpoint = typeof endpointURLOrOptions === "string" ? endpointURLOrOptions : endpointURLOrOptions.wsEndpoint ?? endpointURLOrOptions.endpointURL;
   if (!wsEndpoint)
     throw new Error("No wsEndpoint provided");
@@ -102,9 +102,11 @@ function waitForExternalWebSocketOpen(webSocket, timeout) {
 }
 async function connectDevtools(endpoint, options) {
   resetMonotonicTime();
-  const url = new URL(`${HTTP_FAKE_HOST}/v1/devtools/browser/${options.sessionId}`);
+  const url = new URL(`${HTTP_FAKE_HOST}/v1/devtools/browser${options.sessionId ? `/${options.sessionId}` : ""}`);
   if (options.persistent)
     url.searchParams.set("persistent", "true");
+  if (options.browser)
+    url.searchParams.set("browser", options.browser);
   const response = await getBrowserBinding(endpoint).fetch(url, {
     headers: {
       "Upgrade": "websocket",
@@ -122,7 +124,8 @@ function extractOptions(endpoint) {
     const sessionId = pathMatch?.[1] ?? url.searchParams.get("browser_session") ?? void 0;
     const keepAlive = url.searchParams.has("keep_alive") ? parseInt(url.searchParams.get("keep_alive"), 10) : void 0;
     const persistent = url.searchParams.has("persistent");
-    return { sessionId, keep_alive: keepAlive, persistent };
+    const browser = url.searchParams.get("browser") ?? void 0;
+    return { sessionId, keep_alive: keepAlive, persistent, browser };
   }
   return {};
 }
@@ -134,6 +137,8 @@ function endpointURLString(binding, options) {
   const sessionPath = options?.sessionId ? `/${options.sessionId}` : "";
   const url = new URL(`${HTTP_FAKE_HOST}/v1/devtools/browser${sessionPath}`);
   url.searchParams.set("browser_binding", bindingKey);
+  if (options?.browser)
+    url.searchParams.set("browser", options.browser);
   if (options?.persistent)
     url.searchParams.set("persistent", "true");
   if (options?.keepAlive)
@@ -171,9 +176,9 @@ async function connect(endpoint, sessionIdOrOptions) {
   return await createBrowser(transport, options);
 }
 async function launch(endpoint, launchOptions) {
-  const { sessionId } = await acquire(endpoint, launchOptions);
-  const options = { ...extractOptions(endpoint), ...launchOptions, sessionId };
-  const webSocket = await connectDevtools(getBrowserBinding(endpoint), options);
+  const options = { ...extractOptions(endpoint), ...launchOptions };
+  const sessionId = options.browser === "kitesurf" ? void 0 : (await acquire(endpoint, launchOptions)).sessionId;
+  const webSocket = await connectDevtools(getBrowserBinding(endpoint), { ...options, sessionId });
   const transport = new WebSocketTransport(webSocket, sessionId);
   const browser = await createBrowser(transport, options);
   const browserImpl = browser._connection.toImpl(browser);

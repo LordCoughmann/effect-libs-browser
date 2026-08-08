@@ -20,7 +20,7 @@ The full list of patches and why each is needed lives in [`patches/CHECKLIST.md`
 
 ## Upstream tracking
 
-Forked from `@cloudflare/playwright@1.3.0`. Resynced on each upstream release via [`scripts/sync-upstream.sh`](./scripts/sync-upstream.sh). Versioned on its own `0.x` series; the upstream version it tracks is documented in this README and the changelog, not encoded in the package version.
+Forked from `@cloudflare/playwright@1.3.5`. Resynced on each upstream release via [`scripts/sync-upstream.sh`](./scripts/sync-upstream.sh). Versioned on its own `0.x` series; the upstream version it tracks is documented in this README and the changelog, not encoded in the package version.
 
 Three of the four patches have corresponding upstream PRs:
 

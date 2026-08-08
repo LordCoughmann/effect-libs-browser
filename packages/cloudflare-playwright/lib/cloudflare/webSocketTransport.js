@@ -18,7 +18,7 @@ class WebSocketTransport {
       this.onclose?.();
     });
     this._ws.addEventListener("error", (e) => {
-      console.error(`Websocket error: SessionID: ${sessionId}`, e);
+      console.error(`Websocket error${sessionId ? `: SessionID: ${sessionId}` : ""}`, e);
     });
   }
   send(message) {
@@ -34,7 +34,7 @@ class WebSocketTransport {
     this.close();
   }
   toString() {
-    return this.sessionId;
+    return this.sessionId ?? "";
   }
 }
 
