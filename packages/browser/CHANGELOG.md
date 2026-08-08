@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser@v0.1.4...@effect-libs/browser@v0.1.5) (2026-08-08)
+
+
+### Miscellaneous Chores
+
+* **@effect-libs/browser:** Synchronize effect-libs-browser versions
+
 ## [0.1.4](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser@v0.1.3...@effect-libs/browser@v0.1.4) (2026-07-26)
 
 
