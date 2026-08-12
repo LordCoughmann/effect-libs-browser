@@ -222,7 +222,9 @@ export const assertIsNumber = (value: unknown): Effect.Effect<number, AssertionE
 /**
  * Assert that a value is an array.
  */
-export const assertIsArray = <T>(value: unknown): Effect.Effect<ReadonlyArray<T>, AssertionError> =>
+export const assertIsArray = <T>(
+  value: unknown,
+): Effect.Effect<ReadonlyArray<T>, AssertionError> =>
   Array.isArray(value)
     ? Effect.succeed(value)
     : Effect.fail(new AssertionError(`Expected array, got ${typeof value}`));

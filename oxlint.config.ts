@@ -92,8 +92,8 @@ export default defineConfig({
     // Additional disables per project preference
     "effect/prefer-namespace-imports": "off",
 
-    // Wrongly triggers when using Schema.Struct within Schema.TaggedError or Schema.Class
-    "effect/prefer-schema-class": "off",
+    // Removed in @mpsuesser/oxlint-plugin-effect@0.4.x — no longer needed.
+    // "effect/prefer-schema-class": "off",
   },
 
   // Per-directory rule overrides
@@ -164,7 +164,7 @@ export default defineConfig({
         // Test fixtures often use non-null assertions for brevity
         "effect/avoid-non-null-assertion": "off",
         // Test data schemas don't need Schema.Class overhead
-        "effect/prefer-schema-class": "off",
+        // Removed in @mpsuesser/oxlint-plugin-effect@0.4.x
         // Test schemas often describe domain types, not Effect schemas
         "effect/avoid-schema-suffix": "off",
         // Module load tests want failures as defects, not typed errors
