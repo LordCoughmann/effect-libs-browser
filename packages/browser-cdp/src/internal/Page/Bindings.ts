@@ -66,7 +66,7 @@ class BindingArgError extends Error {
  * with a `message` field to preserve the original failure info without
  * collapsing into the untagged `Error` global type.
  */
-class CallbackThrownError extends Schema.TaggedErrorClass<CallbackThrownError>()(
+class CallbackThrownError extends Schema.TaggedError<CallbackThrownError>()(
   "effect-libs/browser/CdpPage/CallbackThrownError",
   { message: Schema.String },
 ) {}

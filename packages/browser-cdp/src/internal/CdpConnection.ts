@@ -244,7 +244,9 @@ const setupWsOnMessage = (state: ConnectionState, debug: boolean) => (event: Mes
   // Parse and validate using Effect primitives
   const parseAndHandle = Effect.gen(function* () {
     // Use Schema for JSON parsing (Effect-aware API)
-    const rawData = yield* Schema.decodeUnknownEffect(Schema.UnknownFromJsonString)(data).pipe(
+    const rawData = yield* Schema.decodeUnknownEffect(Schema.fromJsonString(Schema.Unknown))(
+      data,
+    ).pipe(
       Effect.mapError(
         (issue) =>
           new CdpMessageParseError({
@@ -355,7 +357,7 @@ const sendCdpCommand = Effect.fn("sendCdpCommand")(function* (
   yield* Ref.update(state.pending, (map) => new Map(map).set(id, { deferred, method }));
 
   const msg = { id, method, params, ...(sessionId && { sessionId }) };
-  const json = yield* Schema.encodeUnknownEffect(Schema.UnknownFromJsonString)(msg).pipe(
+  const json = yield* Schema.encodeUnknownEffect(Schema.fromJsonString(Schema.Unknown))(msg).pipe(
     Effect.orDie,
   );
 

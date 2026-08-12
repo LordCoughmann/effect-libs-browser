@@ -57,7 +57,7 @@ export type ZodSchema<T> = z.ZodType<T>;
  * @category errors
  * @since 0.1.0
  */
-export class SchemaConversionError extends Schema.TaggedErrorClass<SchemaConversionError>()(
+export class SchemaConversionError extends Schema.TaggedError<SchemaConversionError>()(
   "effect-libs/browser/SchemaConversionError",
   Schema.Struct({
     /** The error that occurred during conversion */

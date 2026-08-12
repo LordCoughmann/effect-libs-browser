@@ -23,7 +23,7 @@ import { walkEntries } from "../shared/FileWalker.js";
 /**
  * Error when the .env file is not found at project root.
  */
-class EnvFileNotFoundError extends Schema.TaggedErrorClass<EnvFileNotFoundError>()(
+class EnvFileNotFoundError extends Schema.TaggedError<EnvFileNotFoundError>()(
   "scripts/EnvFileNotFoundError",
   { path: Schema.String },
 ) {

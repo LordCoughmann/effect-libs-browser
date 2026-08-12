@@ -62,7 +62,7 @@ export interface TestBrowserConfigService {
 /**
  * Error thrown when browser test configuration is invalid.
  */
-export class TestBrowserConfigError extends Schema.TaggedErrorClass<TestBrowserConfigError>()(
+export class TestBrowserConfigError extends Schema.TaggedError<TestBrowserConfigError>()(
   "TestBrowserConfigError",
   {
     message: Schema.String,

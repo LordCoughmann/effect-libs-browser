@@ -52,13 +52,10 @@ export const HTTPS_CROSS_PROCESS_PREFIX = `https://127.0.0.1:${HTTPS_PORT}`;
 
 // ── Client Error ────────────────────────────────────────────────────────────
 
-class TestServerError extends Schema.TaggedErrorClass<TestServerError>()(
-  "tests/setup/TestServerError",
-  {
-    operation: Schema.String,
-    cause: Schema.Defect(),
-  },
-) {
+class TestServerError extends Schema.TaggedError<TestServerError>()("tests/setup/TestServerError", {
+  operation: Schema.String,
+  cause: Schema.Defect(),
+}) {
   override get message(): string {
     return `${this.operation} failed`;
   }

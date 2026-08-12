@@ -34,7 +34,7 @@ describe("effect-libs/browser/CdpConnectionError", () => {
     assert.strictEqual(error.cause, cause);
   });
 
-  it("is a Schema.TaggedErrorClass", () => {
+  it("is a Schema.TaggedError", () => {
     const error = new CdpConnectionError({ reason: "test" });
 
     // Schema tagged errors have _tag property

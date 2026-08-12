@@ -67,7 +67,7 @@ import { execAndCapture } from "../shared/ProcessSpawner.js";
 // =============================================================================
 
 /** Thrown when a markdown file cannot be read or the verify directory cannot be created. */
-class ExtractionError extends Schema.TaggedErrorClass<ExtractionError>()(
+class ExtractionError extends Schema.TaggedError<ExtractionError>()(
   "scripts/ExtractionError",
   Schema.Struct({
     file: Schema.String,
@@ -76,7 +76,7 @@ class ExtractionError extends Schema.TaggedErrorClass<ExtractionError>()(
 ) {}
 
 /** Thrown when `tsgo --noEmit` reports diagnostics. */
-class TypecheckError extends Schema.TaggedErrorClass<TypecheckError>()(
+class TypecheckError extends Schema.TaggedError<TypecheckError>()(
   "scripts/TypecheckError",
   Schema.Struct({
     output: Schema.String,
@@ -84,7 +84,7 @@ class TypecheckError extends Schema.TaggedErrorClass<TypecheckError>()(
 ) {}
 
 /** Thrown when one or more code blocks fail type-checking. */
-class VerificationFailedError extends Schema.TaggedErrorClass<VerificationFailedError>()(
+class VerificationFailedError extends Schema.TaggedError<VerificationFailedError>()(
   "scripts/VerificationFailedError",
   Schema.Struct({
     count: Schema.Finite,
@@ -93,7 +93,7 @@ class VerificationFailedError extends Schema.TaggedErrorClass<VerificationFailed
 ) {}
 
 /** Thrown when the formatter (`oxfmt`) fails. */
-class FormatError extends Schema.TaggedErrorClass<FormatError>()(
+class FormatError extends Schema.TaggedError<FormatError>()(
   "scripts/FormatError",
   Schema.Struct({
     output: Schema.String,

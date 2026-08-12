@@ -57,7 +57,7 @@ import { walkEntries } from "../shared/FileWalker.js";
 // =============================================================================
 
 /** Thrown when one or more links fail validation. */
-class LinkVerificationError extends Schema.TaggedErrorClass<LinkVerificationError>()(
+class LinkVerificationError extends Schema.TaggedError<LinkVerificationError>()(
   "scripts/LinkVerificationError",
   Schema.Struct({
     count: Schema.Finite,

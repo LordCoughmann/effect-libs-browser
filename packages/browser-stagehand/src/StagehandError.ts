@@ -22,7 +22,7 @@ const ReasonTypeId = "~effect-libs/browser/StagehandError/Reason" as const;
  * @category errors
  * @since 0.1.0
  */
-export class ConnectionError extends Schema.TaggedErrorClass<ConnectionError>()(
+export class ConnectionError extends Schema.TaggedError<ConnectionError>()(
   "effect-libs/browser/StagehandError/ConnectionError",
   {
     description: Schema.String,
@@ -41,7 +41,7 @@ export class ConnectionError extends Schema.TaggedErrorClass<ConnectionError>()(
  * @category errors
  * @since 0.1.0
  */
-export class OperationError extends Schema.TaggedErrorClass<OperationError>()(
+export class OperationError extends Schema.TaggedError<OperationError>()(
   "effect-libs/browser/StagehandError/OperationError",
   {
     action: Schema.String,
@@ -61,7 +61,7 @@ export class OperationError extends Schema.TaggedErrorClass<OperationError>()(
  * @category errors
  * @since 0.1.0
  */
-export class AgentError extends Schema.TaggedErrorClass<AgentError>()(
+export class AgentError extends Schema.TaggedError<AgentError>()(
   "effect-libs/browser/StagehandError/AgentError",
   {
     description: Schema.String,
@@ -139,7 +139,7 @@ const TypeId = "~effect-libs/browser/StagehandError" as const;
  * );
  * ```
  */
-export class StagehandError extends Schema.TaggedErrorClass<StagehandError>()(
+export class StagehandError extends Schema.TaggedError<StagehandError>()(
   "effect-libs/browser/StagehandError",
   {
     source: Schema.String,

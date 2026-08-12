@@ -23,7 +23,7 @@ import { execAndCapture, execInherit } from "../shared/ProcessSpawner.js";
 /**
  * Error when a typecheck command fails.
  */
-class TypecheckError extends Schema.TaggedErrorClass<TypecheckError>()(
+class TypecheckError extends Schema.TaggedError<TypecheckError>()(
   "scripts/examples/TypecheckError",
   {
     example: Schema.String,
@@ -39,7 +39,7 @@ class TypecheckError extends Schema.TaggedErrorClass<TypecheckError>()(
 /**
  * Error when typechecking examples fails at the CLI level.
  */
-class TypecheckFailedError extends Schema.TaggedErrorClass<TypecheckFailedError>()(
+class TypecheckFailedError extends Schema.TaggedError<TypecheckFailedError>()(
   "scripts/examples/TypecheckFailedError",
   {
     count: Schema.Finite,

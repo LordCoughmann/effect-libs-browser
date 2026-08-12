@@ -233,7 +233,7 @@ export const isFailureExit = Predicate.not(Equal.equals(ExitSuccess));
 // =============================================================================
 
 /** Error for failed shell commands. */
-export class CommandFailure extends Schema.TaggedErrorClass<CommandFailure>()("CommandFailure", {
+export class CommandFailure extends Schema.TaggedError<CommandFailure>()("CommandFailure", {
   exitCode: Schema.Finite,
 }) {
   override get message(): string {
@@ -242,12 +242,9 @@ export class CommandFailure extends Schema.TaggedErrorClass<CommandFailure>()("C
 }
 
 /** Error for smoke test failures (wraps underlying CommandFailure). */
-export class SmokeTestFailure extends Schema.TaggedErrorClass<SmokeTestFailure>()(
-  "SmokeTestFailure",
-  {
-    cause: CommandFailure,
-  },
-) {
+export class SmokeTestFailure extends Schema.TaggedError<SmokeTestFailure>()("SmokeTestFailure", {
+  cause: CommandFailure,
+}) {
   override get message(): string {
     return `Smoke test failed: ${this.cause.message}`;
   }

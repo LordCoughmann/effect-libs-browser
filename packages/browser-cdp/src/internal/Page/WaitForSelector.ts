@@ -142,7 +142,7 @@ export const waitForSelectorElement = Effect.fn("CdpPage.waitForSelector")(
       const timeoutMs = Duration.toMillis(timeout);
 
       // Embed selector directly in the expression
-      const selJson = yield* Schema.encodeUnknownEffect(Schema.UnknownFromJsonString)(
+      const selJson = yield* Schema.encodeUnknownEffect(Schema.fromJsonString(Schema.Unknown))(
         selector,
       ).pipe(Effect.orDie);
 

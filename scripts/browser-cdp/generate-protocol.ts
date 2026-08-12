@@ -19,7 +19,7 @@ import * as Arr from "effect/Array";
 // Errors
 // =============================================================================
 
-class ProtocolReadError extends Schema.TaggedErrorClass<ProtocolReadError>()(
+class ProtocolReadError extends Schema.TaggedError<ProtocolReadError>()(
   "scripts/ProtocolReadError",
   Schema.Struct({
     file: Schema.String,
@@ -31,7 +31,7 @@ class ProtocolReadError extends Schema.TaggedErrorClass<ProtocolReadError>()(
   }
 }
 
-class ProtocolParseError extends Schema.TaggedErrorClass<ProtocolParseError>()(
+class ProtocolParseError extends Schema.TaggedError<ProtocolParseError>()(
   "scripts/ProtocolParseError",
   Schema.Struct({ file: Schema.String, cause: Schema.Defect() }),
 ) {
@@ -40,7 +40,7 @@ class ProtocolParseError extends Schema.TaggedErrorClass<ProtocolParseError>()(
   }
 }
 
-class ProtocolWriteError extends Schema.TaggedErrorClass<ProtocolWriteError>()(
+class ProtocolWriteError extends Schema.TaggedError<ProtocolWriteError>()(
   "scripts/ProtocolWriteError",
   Schema.Struct({ path: Schema.String, cause: Schema.Defect() }),
 ) {

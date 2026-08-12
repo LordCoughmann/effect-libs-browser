@@ -24,7 +24,7 @@ import { getErrorMessage } from "@effect-libs/browser";
  * );
  * ```
  */
-export class CdpConnectionError extends Schema.TaggedErrorClass<CdpConnectionError>()(
+export class CdpConnectionError extends Schema.TaggedError<CdpConnectionError>()(
   "effect-libs/browser/CdpConnectionError",
   {
     reason: Schema.String,
@@ -57,7 +57,7 @@ export class CdpConnectionError extends Schema.TaggedErrorClass<CdpConnectionErr
  * );
  * ```
  */
-export class CdpTimeoutError extends Schema.TaggedErrorClass<CdpTimeoutError>()(
+export class CdpTimeoutError extends Schema.TaggedError<CdpTimeoutError>()(
   "effect-libs/browser/CdpTimeoutError",
   {
     method: Schema.String,
@@ -90,7 +90,7 @@ export class CdpTimeoutError extends Schema.TaggedErrorClass<CdpTimeoutError>()(
  * );
  * ```
  */
-export class CdpCommandError extends Schema.TaggedErrorClass<CdpCommandError>()(
+export class CdpCommandError extends Schema.TaggedError<CdpCommandError>()(
   "effect-libs/browser/CdpCommandError",
   {
     code: Schema.Finite,
@@ -117,7 +117,7 @@ export class CdpCommandError extends Schema.TaggedErrorClass<CdpCommandError>()(
  * Error thrown when CDP message parsing fails
  * Used when JSON.parse or schema validation fails on incoming WebSocket messages
  */
-export class CdpMessageParseError extends Schema.TaggedErrorClass<CdpMessageParseError>()(
+export class CdpMessageParseError extends Schema.TaggedError<CdpMessageParseError>()(
   "effect-libs/browser/CdpMessageParseError",
   Schema.Struct({
     cause: Schema.Defect(),

@@ -23,7 +23,7 @@ const ReasonTypeId = "~effect-libs/browser/CdpError/Reason" as const;
  * @category errors
  * @since 0.1.0
  */
-export class ConnectionError extends Schema.TaggedErrorClass<ConnectionError>()(
+export class ConnectionError extends Schema.TaggedError<ConnectionError>()(
   "effect-libs/browser/CdpError/ConnectionError",
   {
     description: Schema.String,
@@ -45,7 +45,7 @@ export class ConnectionError extends Schema.TaggedErrorClass<ConnectionError>()(
  * @category errors
  * @since 0.1.0
  */
-export class ContextNotSupportedError extends Schema.TaggedErrorClass<ContextNotSupportedError>()(
+export class ContextNotSupportedError extends Schema.TaggedError<ContextNotSupportedError>()(
   "effect-libs/browser/CdpError/ContextNotSupportedError",
   {
     description: Schema.String,
@@ -63,7 +63,7 @@ export class ContextNotSupportedError extends Schema.TaggedErrorClass<ContextNot
  * @category errors
  * @since 0.1.0
  */
-export class NavigationError extends Schema.TaggedErrorClass<NavigationError>()(
+export class NavigationError extends Schema.TaggedError<NavigationError>()(
   "effect-libs/browser/CdpError/NavigationError",
   {
     url: Schema.String,
@@ -82,7 +82,7 @@ export class NavigationError extends Schema.TaggedErrorClass<NavigationError>()(
  * @category errors
  * @since 0.1.0
  */
-export class PageTimeoutError extends Schema.TaggedErrorClass<PageTimeoutError>()(
+export class PageTimeoutError extends Schema.TaggedError<PageTimeoutError>()(
   "effect-libs/browser/CdpError/PageTimeoutError",
   {
     selector: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export class PageTimeoutError extends Schema.TaggedErrorClass<PageTimeoutError>(
  * @category errors
  * @since 0.1.0
  */
-export class CommandError extends Schema.TaggedErrorClass<CommandError>()(
+export class CommandError extends Schema.TaggedError<CommandError>()(
   "effect-libs/browser/CdpError/CommandError",
   {
     method: Schema.String,
@@ -123,7 +123,7 @@ export class CommandError extends Schema.TaggedErrorClass<CommandError>()(
  * @category errors
  * @since 0.1.0
  */
-export class EvaluationError extends Schema.TaggedErrorClass<EvaluationError>()(
+export class EvaluationError extends Schema.TaggedError<EvaluationError>()(
   "effect-libs/browser/CdpError/EvaluationError",
   {
     description: Schema.String,
@@ -141,7 +141,7 @@ export class EvaluationError extends Schema.TaggedErrorClass<EvaluationError>()(
  * @category errors
  * @since 0.1.0
  */
-export class SelectorError extends Schema.TaggedErrorClass<SelectorError>()(
+export class SelectorError extends Schema.TaggedError<SelectorError>()(
   "effect-libs/browser/CdpError/SelectorError",
   {
     selector: Schema.String,
@@ -160,7 +160,7 @@ export class SelectorError extends Schema.TaggedErrorClass<SelectorError>()(
  * @category errors
  * @since 0.1.0
  */
-export class ScreenshotError extends Schema.TaggedErrorClass<ScreenshotError>()(
+export class ScreenshotError extends Schema.TaggedError<ScreenshotError>()(
   "effect-libs/browser/CdpError/ScreenshotError",
   {
     description: Schema.String,
@@ -178,7 +178,7 @@ export class ScreenshotError extends Schema.TaggedErrorClass<ScreenshotError>()(
  * @category errors
  * @since 0.1.0
  */
-export class CookieError extends Schema.TaggedErrorClass<CookieError>()(
+export class CookieError extends Schema.TaggedError<CookieError>()(
   "effect-libs/browser/CdpError/CookieError",
   {
     description: Schema.String,
@@ -196,7 +196,7 @@ export class CookieError extends Schema.TaggedErrorClass<CookieError>()(
  * @category errors
  * @since 0.1.0
  */
-export class StorageError extends Schema.TaggedErrorClass<StorageError>()(
+export class StorageError extends Schema.TaggedError<StorageError>()(
   "effect-libs/browser/CdpError/StorageError",
   {
     description: Schema.String,
@@ -214,7 +214,7 @@ export class StorageError extends Schema.TaggedErrorClass<StorageError>()(
  * @category errors
  * @since 0.1.0
  */
-export class PdfError extends Schema.TaggedErrorClass<PdfError>()(
+export class PdfError extends Schema.TaggedError<PdfError>()(
   "effect-libs/browser/CdpError/PdfError",
   {
     description: Schema.String,
@@ -232,7 +232,7 @@ export class PdfError extends Schema.TaggedErrorClass<PdfError>()(
  * @category errors
  * @since 0.1.0
  */
-export class FetchError extends Schema.TaggedErrorClass<FetchError>()(
+export class FetchError extends Schema.TaggedError<FetchError>()(
   "effect-libs/browser/CdpError/FetchError",
   {
     url: Schema.String,
@@ -252,7 +252,7 @@ export class FetchError extends Schema.TaggedErrorClass<FetchError>()(
  * @category errors
  * @since 0.1.0
  */
-export class ViewportError extends Schema.TaggedErrorClass<ViewportError>()(
+export class ViewportError extends Schema.TaggedError<ViewportError>()(
   "effect-libs/browser/CdpError/ViewportError",
   {
     description: Schema.String,
@@ -273,7 +273,7 @@ export class ViewportError extends Schema.TaggedErrorClass<ViewportError>()(
  * @category errors
  * @since 0.1.0
  */
-export class ContentUnavailableError extends Schema.TaggedErrorClass<ContentUnavailableError>()(
+export class ContentUnavailableError extends Schema.TaggedError<ContentUnavailableError>()(
   "effect-libs/browser/CdpError/ContentUnavailableError",
   {
     description: Schema.String,
@@ -403,7 +403,7 @@ const TypeId = "~effect-libs/browser/CdpError" as const;
  * );
  * ```
  */
-export class CdpError extends Schema.TaggedErrorClass<CdpError>()("effect-libs/browser/CdpError", {
+export class CdpError extends Schema.TaggedError<CdpError>()("effect-libs/browser/CdpError", {
   source: Schema.String,
   method: Schema.String,
   reason: CdpErrorReason,
@@ -472,7 +472,7 @@ export {
 
 // ── Tag-based type guards ────────────────────────────────────────────────────
 //
-// `Schema.TaggedErrorClass` does not auto-generate a `.is()` static method
+// `Schema.TaggedError` does not auto-generate a `.is()` static method
 // (verified against `effect-smol/packages/effect/src/Schema.ts`). For value-
 // side narrowing (e.g., in `Effect.mapError(cause => ...)` handlers or
 // `Effect.try({ catch: e => ... })` blocks), use these one-line guards

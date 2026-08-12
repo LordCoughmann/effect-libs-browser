@@ -18,7 +18,7 @@ import { Schema } from "effect";
  * @category errors
  * @since 0.1.0
  */
-export class ConnectionError extends Schema.TaggedErrorClass<ConnectionError>()(
+export class ConnectionError extends Schema.TaggedError<ConnectionError>()(
   "effect-libs/browser/PlaywrightError/ConnectionError",
   {
     description: Schema.String,
@@ -36,7 +36,7 @@ export class ConnectionError extends Schema.TaggedErrorClass<ConnectionError>()(
  * @category errors
  * @since 0.1.0
  */
-export class ContextError extends Schema.TaggedErrorClass<ContextError>()(
+export class ContextError extends Schema.TaggedError<ContextError>()(
   "effect-libs/browser/PlaywrightError/ContextError",
   {
     description: Schema.String,
@@ -54,7 +54,7 @@ export class ContextError extends Schema.TaggedErrorClass<ContextError>()(
  * @category errors
  * @since 0.1.0
  */
-export class NavigationError extends Schema.TaggedErrorClass<NavigationError>()(
+export class NavigationError extends Schema.TaggedError<NavigationError>()(
   "effect-libs/browser/PlaywrightError/NavigationError",
   {
     method: Schema.String,
@@ -74,7 +74,7 @@ export class NavigationError extends Schema.TaggedErrorClass<NavigationError>()(
  * @category errors
  * @since 0.1.0
  */
-export class OperationError extends Schema.TaggedErrorClass<OperationError>()(
+export class OperationError extends Schema.TaggedError<OperationError>()(
   "effect-libs/browser/PlaywrightError/OperationError",
   {
     method: Schema.String,
@@ -156,7 +156,7 @@ export const PlaywrightErrorReason: Schema.Union<
  * );
  * ```
  */
-export class PlaywrightError extends Schema.TaggedErrorClass<PlaywrightError>()(
+export class PlaywrightError extends Schema.TaggedError<PlaywrightError>()(
   "effect-libs/browser/PlaywrightError",
   {
     source: Schema.String,

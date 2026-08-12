@@ -92,7 +92,7 @@ export default defineConfig({
     // Additional disables per project preference
     "effect/prefer-namespace-imports": "off",
 
-    // Wrongly triggers when using Schema.Struct within Schema.TaggedErrorClass or Schema.Class
+    // Wrongly triggers when using Schema.Struct within Schema.TaggedError or Schema.Class
     "effect/prefer-schema-class": "off",
   },
 

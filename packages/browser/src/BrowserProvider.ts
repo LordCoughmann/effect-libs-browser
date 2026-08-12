@@ -66,7 +66,7 @@ const isRetryableHttpStatus = (status: number): boolean => RETRYABLE_HTTP_STATUS
  * @category errors
  * @since 0.1.0
  */
-export class BrowserProviderError extends Schema.TaggedErrorClass<BrowserProviderError>()(
+export class BrowserProviderError extends Schema.TaggedError<BrowserProviderError>()(
   "effect-libs/browser/BrowserProviderError",
   {
     reason: Schema.String,
