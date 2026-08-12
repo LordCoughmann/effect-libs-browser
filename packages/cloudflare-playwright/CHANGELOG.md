@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.5](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.1.4...@effect-libs/cloudflare-playwright@v0.1.5) (2026-08-08)
+
+
+### Bug Fixes
+
+* **cloudflare-playwright:** harden external CDP connections ([0aeb191](https://github.com/LordCoughmann/effect-libs-browser/commit/0aeb191113aa727e38dda3a28dbe27388c8fa614))
+* **cloudflare-playwright:** use ESM specifiers for NodeNext types ([7db35af](https://github.com/LordCoughmann/effect-libs-browser/commit/7db35af4afe2298fab715ef0173d39f654f9e622))
+
 ## [0.1.4](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.1.3...@effect-libs/cloudflare-playwright@v0.1.4) (2026-07-26)
 
 
