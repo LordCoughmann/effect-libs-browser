@@ -14,16 +14,16 @@ overrides:
   tsdown: ^0.22.5
   rolldown-plugin-dts: ^0.27.6
 catalog:
-  alchemy: 2.0.0-beta.65
+  alchemy: 2.0.0-beta.70
   effect: ">=4.0.0-beta.101 || >=4.0.0"
-  "@effect/platform-node": ">=4.0.0-beta.101 || >=4.0.0"
-  "@effect/platform-bun": ">=4.0.0-beta.101 || >=4.0.0"
-  "@effect/vitest": ">=4.0.0-beta.101 || >=4.0.0"
-  "@cloudflare/vitest-pool-workers": "^0.18.4"
-  "@types/node": "^24.12.4"
+  "@effect/platform-node": ">=4.0.0-beta.106"
+  "@effect/platform-bun": ">=4.0.0-beta.106"
+  "@effect/vitest": ">=4.0.0-beta.106"
+  "@cloudflare/vitest-pool-workers": "^0.20.3"
+  "@types/node": "^26.2.0"
   typescript: "^7.0.0-dev.20260707.2"
   vitest: "^4.1.10"
-  wrangler: "^4.110.0"
+  wrangler: "^4.120.0"
 allowBuilds:
   bufferutil: false
   esbuild: true
