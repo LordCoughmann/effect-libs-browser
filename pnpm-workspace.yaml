@@ -15,10 +15,10 @@ overrides:
   rolldown-plugin-dts: ^0.27.6
 catalog:
   alchemy: 2.0.0-beta.67
-  effect: ">=4.0.0-beta.107 || >=4.0.0"
-  "@effect/platform-node": ">=4.0.0-beta.107 || >=4.0.0"
-  "@effect/platform-bun": ">=4.0.0-beta.107 || >=4.0.0"
-  "@effect/vitest": ">=4.0.0-beta.107 || >=4.0.0"
+  effect: "4.0.0-rc.108"
+  "@effect/platform-node": "4.0.0-rc.108"
+  "@effect/platform-bun": "4.0.0-rc.108"
+  "@effect/vitest": "4.0.0-rc.108"
   "@cloudflare/vitest-pool-workers": "^0.20.2"
   "@types/node": "^26.1.2"
   typescript: "^7.0.0-dev.20260707.2"
@@ -43,15 +43,11 @@ minimumReleaseAgeExclude:
   - '@distilled.cloud/core@0.22.4'
   - '@distilled.cloud/neon@0.22.4'
   - '@distilled.cloud/planetscale@0.22.4'
-  - '@effect/platform-bun@4.0.0-beta.97'
-  - '@effect/platform-node-shared@4.0.0-beta.97'
-  - '@effect/platform-node@4.0.0-beta.97'
-  - '@effect/vitest@4.0.0-beta.97'
-  - effect@4.0.0-beta.107
-  - '@effect/platform-bun@4.0.0-beta.107'
-  - '@effect/platform-node-shared@4.0.0-beta.107'
-  - '@effect/platform-node@4.0.0-beta.107'
-  - '@effect/vitest@4.0.0-beta.107'
+  - '@effect/platform-bun@4.0.0-rc.108'
+  - '@effect/platform-node-shared@4.0.0-rc.108'
+  - '@effect/platform-node@4.0.0-rc.108'
+  - '@effect/vitest@4.0.0-rc.108'
+  - effect@4.0.0-rc.108
   - tsdown@0.22.5
   - '@fallow-cli/darwin-arm64@3.4.2'
   - '@fallow-cli/darwin-x64@3.4.2'
