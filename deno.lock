@@ -87,7 +87,7 @@
         "npm:@typescript/native-preview@7.0.0-dev.20260707.2",
         "npm:@vitest/coverage-v8@^4.1.10",
         "npm:cloudflare@latest",
-        "npm:devtools-protocol@^0.0.1673900",
+        "npm:devtools-protocol@^0.0.1676105",
         "npm:fallow@^3.14.0",
         "npm:github-slugger@2",
         "npm:lint-staged@^17.3.0",
@@ -100,10 +100,10 @@
         "npm:simple-git-hooks@^2.13.1",
         "npm:steel-sdk@0.18",
         "npm:tsdown@~0.22.1",
-        "npm:tsx@^4.23.8",
+        "npm:tsx@^4.23.11",
         "npm:unified@^11.0.5",
         "npm:unist-util-visit@^5.1.0",
-        "npm:vite@^8.2.0",
+        "npm:vite@^8.2.1",
         "npm:zod@^4.4.3"
       ]
     }

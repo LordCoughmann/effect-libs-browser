@@ -26,7 +26,7 @@ pnpm tsx scripts/docs/verify-examples.ts --format docs/guides/my-guide.md
 
 1. The verifier scans markdown files for ` ```typescript ` and ` ```ts ` fenced code blocks.
 2. Each block is extracted and may be transformed based on its **mode** (see below).
-3. Blocks are written as individual `.ts` files under `.tmp/docs-verify/` alongside a generated `tsconfig.json`.
+3. Blocks are written as individual `.ts` files under `docs-verify/` alongside a generated `tsconfig.json`.
 4. `tsgo --noEmit` is run against the directory.
 5. Results are reported per-block. The temp directory is cleaned up automatically.
 
@@ -226,4 +226,4 @@ scripts/docs/verify-examples.ts
   └─ program()                — Orchestrate + report results
 ```
 
-The temp directory (`.tmp/docs-verify/`) is created fresh each run and removed on completion or failure via `Effect.acquireRelease`.
+The temp directory (`docs-verify/`) is created fresh each run and removed on completion or failure via `Effect.acquireRelease`.

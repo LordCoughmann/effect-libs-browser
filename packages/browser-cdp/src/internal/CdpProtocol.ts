@@ -427,16 +427,6 @@ export interface CdpBrowserApi {
     params: Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest,
     sessionId?: string,
   ) => Effect.Effect<void, CdpProtocolError>;
-  /**
-   * Configures encryption keys used with a given privacy sandbox API to talk
-   * to a trusted coordinator.  Since this is intended for test automation only,
-   * coordinatorOrigin must be a .test domain. No existing coordinator
-   * configuration for the origin may exist.
-   */
-  readonly addPrivacySandboxCoordinatorKeyConfig: (
-    params: Protocol.Browser.AddPrivacySandboxCoordinatorKeyConfigRequest,
-    sessionId?: string,
-  ) => Effect.Effect<void, CdpProtocolError>;
 }
 
 export interface CdpCacheStorageApi {
@@ -1402,6 +1392,14 @@ export interface CdpDOMApi {
     params: Protocol.DOM.ForceShowPopoverRequest,
     sessionId?: string,
   ) => Effect.Effect<Protocol.DOM.ForceShowPopoverResponse, CdpProtocolError>;
+  /**
+   * When enabling, this API forces an element to gain interest in its target,
+   * keeping interest active until disabled.
+   */
+  readonly forceShowInterest: (
+    params: Protocol.DOM.ForceShowInterestRequest,
+    sessionId?: string,
+  ) => Effect.Effect<void, CdpProtocolError>;
 }
 
 export interface CdpDOMDebuggerApi {
@@ -2441,17 +2439,6 @@ export interface CdpNetworkApi {
     params?: Record<string, never>,
     sessionId?: string,
   ) => Effect.Effect<void, CdpProtocolError>;
-  /**
-   * Response to Network.requestIntercepted which either modifies the request to continue with any
-   * modifications, or blocks it, or completes it with the provided response bytes. If a network
-   * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
-   * event will be sent with the same InterceptionId.
-   * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
-   */
-  readonly continueInterceptedRequest: (
-    params: Protocol.Network.ContinueInterceptedRequestRequest,
-    sessionId?: string,
-  ) => Effect.Effect<void, CdpProtocolError>;
   /** Deletes browser cookies with matching name and url or domain/path/partitionKey pair. */
   readonly deleteCookies: (
     params: Protocol.Network.DeleteCookiesRequest,
@@ -2530,24 +2517,6 @@ export interface CdpNetworkApi {
     params: Protocol.Network.GetRequestPostDataRequest,
     sessionId?: string,
   ) => Effect.Effect<Protocol.Network.GetRequestPostDataResponse, CdpProtocolError>;
-  /** Returns content served for the given currently intercepted request. */
-  readonly getResponseBodyForInterception: (
-    params: Protocol.Network.GetResponseBodyForInterceptionRequest,
-    sessionId?: string,
-  ) => Effect.Effect<Protocol.Network.GetResponseBodyForInterceptionResponse, CdpProtocolError>;
-  /**
-   * Returns a handle to the stream representing the response body. Note that after this command,
-   * the intercepted request can't be continued as is -- you either need to cancel it or to provide
-   * the response body. The stream only supports sequential read, IO.read will fail if the position
-   * is specified.
-   */
-  readonly takeResponseBodyForInterceptionAsStream: (
-    params: Protocol.Network.TakeResponseBodyForInterceptionAsStreamRequest,
-    sessionId?: string,
-  ) => Effect.Effect<
-    Protocol.Network.TakeResponseBodyForInterceptionAsStreamResponse,
-    CdpProtocolError
-  >;
   /**
    * This method sends a new XMLHttpRequest which is identical to the original one. The following
    * parameters should be identical: method, url, async, request body, extra headers, withCredentials
@@ -2595,14 +2564,6 @@ export interface CdpNetworkApi {
   /** Specifies whether to attach a page script stack id in requests */
   readonly setAttachDebugStack: (
     params: Protocol.Network.SetAttachDebugStackRequest,
-    sessionId?: string,
-  ) => Effect.Effect<void, CdpProtocolError>;
-  /**
-   * Sets the requests to intercept that match the provided patterns and optionally resource types.
-   * Deprecated, please use Fetch.enable instead.
-   */
-  readonly setRequestInterception: (
-    params: Protocol.Network.SetRequestInterceptionRequest,
     sessionId?: string,
   ) => Effect.Effect<void, CdpProtocolError>;
   /** Allows overriding user agent with the given string. */
@@ -3084,6 +3045,16 @@ export interface CdpPageApi {
     params: Protocol.Page.StartScreencastRequest,
     sessionId?: string,
   ) => Effect.Effect<void, CdpProtocolError>;
+  /** Starts screencast video recording. */
+  readonly startScreenRecording: (
+    params: Protocol.Page.StartScreenRecordingRequest,
+    sessionId?: string,
+  ) => Effect.Effect<Protocol.Page.StartScreenRecordingResponse, CdpProtocolError>;
+  /** Stops screencast video recording. */
+  readonly stopScreenRecording: (
+    params?: Record<string, never>,
+    sessionId?: string,
+  ) => Effect.Effect<Protocol.Page.StopScreenRecordingResponse, CdpProtocolError>;
   /** Force the page stop all navigations and pending resource fetches. */
   readonly stopLoading: (
     params?: Record<string, never>,
@@ -3860,24 +3831,6 @@ export interface CdpStorageApi {
     params: Protocol.Storage.ClearTrustTokensRequest,
     sessionId?: string,
   ) => Effect.Effect<Protocol.Storage.ClearTrustTokensResponse, CdpProtocolError>;
-  /** Gets details for a named interest group. */
-  readonly getInterestGroupDetails: (
-    params: Protocol.Storage.GetInterestGroupDetailsRequest,
-    sessionId?: string,
-  ) => Effect.Effect<Protocol.Storage.GetInterestGroupDetailsResponse, CdpProtocolError>;
-  /** Enables/Disables issuing of interestGroupAccessed events. */
-  readonly setInterestGroupTracking: (
-    params: Protocol.Storage.SetInterestGroupTrackingRequest,
-    sessionId?: string,
-  ) => Effect.Effect<void, CdpProtocolError>;
-  /**
-   * Enables/Disables issuing of interestGroupAuctionEventOccurred and
-   * interestGroupAuctionNetworkRequestCreated.
-   */
-  readonly setInterestGroupAuctionTracking: (
-    params: Protocol.Storage.SetInterestGroupAuctionTrackingRequest,
-    sessionId?: string,
-  ) => Effect.Effect<void, CdpProtocolError>;
   /** Gets metadata for an origin's shared storage. */
   readonly getSharedStorageMetadata: (
     params: Protocol.Storage.GetSharedStorageMetadataRequest,
@@ -3936,10 +3889,6 @@ export interface CdpStorageApi {
     params?: Record<string, never>,
     sessionId?: string,
   ) => Effect.Effect<Protocol.Storage.GetRelatedWebsiteSetsResponse, CdpProtocolError>;
-  readonly setProtectedAudienceKAnonymity: (
-    params: Protocol.Storage.SetProtectedAudienceKAnonymityRequest,
-    sessionId?: string,
-  ) => Effect.Effect<void, CdpProtocolError>;
 }
 
 export interface CdpSystemInfoApi {

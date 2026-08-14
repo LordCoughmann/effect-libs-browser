@@ -3,7 +3,7 @@
  *
  * The verifier extracts ` ```typescript ` / ` ```ts ` fenced code blocks from
  * markdown files, writes them as real `.ts` files under a temporary directory
- * (`.tmp/docs-verify`), and runs the project TypeScript checker (`tsgo --noEmit`)
+ * (`docs-verify`), and runs the project TypeScript checker (`tsgo --noEmit`)
  * against a generated `tsconfig.json`. The generated directory is recreated on
  * each run and is safe to delete.
  *
@@ -163,7 +163,7 @@ declare const env: { MYBROWSER: unknown; CF_ACCOUNT_ID: string; CF_API_TOKEN: st
 // =============================================================================
 
 const TYPESCRIPT_CODE_PATTERN = /```(?:typescript|ts)\r?\n([\s\S]*?)```/g;
-const VERIFY_DIR = ".tmp/docs-verify";
+const VERIFY_DIR = "docs-verify";
 const VERIFY_TSCONFIG = `${VERIFY_DIR}/tsconfig.json`;
 
 /**
@@ -427,7 +427,7 @@ const generatedFileName = (block: CodeBlock): string => {
  * Recreate the temporary verify directory and write every code block to its
  * own generated `.ts` file plus a `tsconfig.json` that includes them all.
  *
- * Uses `Effect.acquireRelease` so the `.tmp/docs-verify` directory is removed
+ * Uses `Effect.acquireRelease` so the `docs-verify` directory is removed
  * on success, failure, or interruption — leaving no artifacts behind.
  *
  * @returns The list of {@link WrittenBlock}s pointing to the generated files.
@@ -464,7 +464,7 @@ const prepareVerifyDirectory = (
         VERIFY_TSCONFIG,
         `${JSON.stringify(
           {
-            extends: "../../tsconfig.json",
+            extends: "../tsconfig.json",
             compilerOptions: {
               noEmit: true,
               skipLibCheck: true,

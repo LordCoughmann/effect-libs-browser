@@ -107,8 +107,8 @@ importers:
         specifier: latest
         version: 7.0.0
       devtools-protocol:
-        specifier: ^0.0.1673900
-        version: 0.0.1673900
+        specifier: ^0.0.1676105
+        version: 0.0.1676105
       effect:
         specifier: 'catalog:'
         version: 4.0.0-rc.108
@@ -149,7 +149,7 @@ importers:
         specifier: ^0.22.5
         version: 0.22.14(@typescript/native-preview@7.0.0-dev.20260707.2)(tsx@4.23.12)(typescript@7.0.2)
       tsx:
-        specifier: ^4.23.8
+        specifier: ^4.23.11
         version: 4.23.12
       typescript:
         specifier: 'catalog:'
@@ -161,7 +161,7 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       vite:
-        specifier: ^8.2.0
+        specifier: ^8.2.1
         version: 8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0)
       vitest:
         specifier: 'catalog:'
@@ -542,8 +542,8 @@ importers:
         specifier: workspace:*
         version: link:../browser
       devtools-protocol:
-        specifier: ^0.0.1660672
-        version: 0.0.1660672
+        specifier: ^0.0.1676105
+        version: 0.0.1676105
       effect:
         specifier: 'catalog:'
         version: 4.0.0-rc.108
@@ -3495,11 +3495,8 @@ packages:
   devtools-protocol@0.0.1642743:
     resolution: {integrity: sha512-vTCGze95hGFayPNUXv2H/3cNt/Kqv3J7XqS519j7U8HYhmtD6+eVEPHp6nRHD64dDXJ022TU4reAYhjYyuxm8Q==}
 
-  devtools-protocol@0.0.1660672:
-    resolution: {integrity: sha512-H0AtOUIZr23DbvvjT7C6Bj3dHmSqQKZR7MI+c/7fCcLEPSljNU8OF1IllVZCGdXClcp66X/cRQ5f4d8vbJokNA==}
-
-  devtools-protocol@0.0.1673900:
-    resolution: {integrity: sha512-BlHI0XTUWiTaho18lFOpW/Cj9Gr5eQUJp9tJZSGntpMqgHixQIiEfO481fH9WuamXqrOXVLpLcS+3RNZraCSIg==}
+  devtools-protocol@0.0.1676105:
+    resolution: {integrity: sha512-uTag5eGcXOOlgTbHyRX5HX6JOHRS81DxzwIg4N4Tj5sZDpq00KLWSAAb8gfoJF6eQanznZtd9UJaGxA9ohT0GA==}
 
   dts-resolver@3.0.0:
     resolution: {integrity: sha512-1T1f+z+4tl9XD+m+0HBgWoL/nm0bOIffyWaUuUSBlFg/86IWvfx+wjNaO/ybU0AJzG9/Mi5hBUgGV6zCmWEN7Q==}
@@ -8046,9 +8043,7 @@ snapshots:
 
   devtools-protocol@0.0.1642743: {}
 
-  devtools-protocol@0.0.1660672: {}
-
-  devtools-protocol@0.0.1673900: {}
+  devtools-protocol@0.0.1676105: {}
 
   dts-resolver@3.0.0: {}
 
