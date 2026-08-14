@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-providers@v0.1.5...@effect-libs/browser-providers@v0.2.0) (2026-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Consumers must migrate to Effect 4.0.0-rc.108. Effect v3 and prior Effect v4 beta APIs are incompatible.
+
+### Build System
+
+* **deps:** require Effect 4.0.0-rc.108 ([72de7dc](https://github.com/LordCoughmann/effect-libs-browser/commit/72de7dc2cc991a2a8033a4ba4734b5c98172216f))
+
 ## [0.1.5](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-providers@v0.1.4...@effect-libs/browser-providers@v0.1.5) (2026-08-08)
 
 
