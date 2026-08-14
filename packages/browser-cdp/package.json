@@ -1,6 +1,6 @@
 {
   "name": "@effect-libs/browser-cdp",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Experimental zero-dependency CDP client for @effect-libs/browser.",
   "homepage": "https://github.com/LordCoughmann/effect-libs-browser/tree/main/packages/browser-cdp#readme",
   "bugs": {
