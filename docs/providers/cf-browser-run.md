@@ -10,8 +10,10 @@ Two `BrowserProvider` implementations for [Cloudflare Browser Rendering](https:/
 ### Install
 
 ```bash
-pnpm add @effect-libs/browser-providers cloudflare effect@beta
+pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.108
 ```
+
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 ### Configuration
 
@@ -40,7 +42,7 @@ Direct browser access via Cloudflare Workers binding. No external HTTP calls —
 ### Install
 
 ```bash
-pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@beta
+pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.108
 ```
 
 ### Usage

@@ -5,10 +5,10 @@ Managed browser sessions with persistent contexts, proxies, and enterprise featu
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@beta
+pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.108
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta. No additional dependencies. Browserbase uses the HTTP API.
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs. No additional dependencies. Browserbase uses the HTTP API.
 
 ## Configuration
 

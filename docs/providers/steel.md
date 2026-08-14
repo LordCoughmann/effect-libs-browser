@@ -5,10 +5,10 @@ Managed browser sessions with anti-bot bypass, CAPTCHA solving, and persistent c
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-providers steel-sdk effect@beta
+pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.108
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 ## Configuration
 

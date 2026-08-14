@@ -9,10 +9,10 @@ packages depend on it.
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser effect@beta
+pnpm add @effect-libs/browser effect@4.0.0-rc.108
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 ## Documentation
 

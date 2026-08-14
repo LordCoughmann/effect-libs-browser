@@ -11,19 +11,19 @@ Skip this package and connect to any raw CDP URL with `withConnection({ url: "ws
 
 ```bash
 # Steel
-pnpm add @effect-libs/browser-providers steel-sdk effect@beta
+pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.108
 
 # Browserbase
-pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@beta
+pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.108
 
 # Cloudflare Browser Run (HTTP)
-pnpm add @effect-libs/browser-providers cloudflare effect@beta
+pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.108
 
 # Cloudflare Browser Run (binding, Playwright only)
-pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@beta
+pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.108
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 ## Documentation
 

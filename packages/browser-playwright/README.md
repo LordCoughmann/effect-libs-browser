@@ -10,10 +10,12 @@ based on our fork of `@cloudflare/playwright` ([`@effect-libs/cloudflare-playwri
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-playwright effect@beta
+pnpm add @effect-libs/browser-playwright effect@4.0.0-rc.108
 ```
 
-The Playwright runtime comes from `@effect-libs/cloudflare-playwright` (our maintained fork of `@cloudflare/playwright@1.3.0`). It's a direct dependency, so it installs transitively — no second `pnpm add` needed. `effect` is also a peer dependency — `effect@beta` installs the latest v4 beta.
+The Playwright runtime comes from `@effect-libs/cloudflare-playwright` (our maintained fork of `@cloudflare/playwright@1.3.0`). It's a direct dependency, so it installs transitively — no second `pnpm add` needed.
+
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 ## Documentation
 

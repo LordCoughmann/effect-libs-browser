@@ -8,19 +8,19 @@ For help **picking** a provider (which one for what), see [Client & Provider →
 
 ```bash
 # Steel — needs steel-sdk
-pnpm add @effect-libs/browser-providers steel-sdk effect@beta
+pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.108
 
 # Browserbase — needs @browserbasehq/sdk
-pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@beta
+pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.108
 
 # Cloudflare Browser Run (HTTP) — needs cloudflare
-pnpm add @effect-libs/browser-providers cloudflare effect@beta
+pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.108
 
 # Cloudflare Browser Run (binding) — needs `@effect-libs/cloudflare-playwright`; `browser-playwright` only
-pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@beta
+pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.108
 ```
 
-`effect` is a peer dependency — `effect@beta` installs the latest v4 beta.
+> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 Don't want a provider? Connect to any Chrome DevTools Protocol URL with `playwright.withConnection({ url: "wss://…" })` — no provider package needed.
 
