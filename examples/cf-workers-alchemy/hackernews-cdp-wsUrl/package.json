@@ -16,7 +16,7 @@
     "@effect-libs/browser-cdp": "workspace:*",
     "@effect/platform-bun": "catalog:",
     "@effect/platform-node": "catalog:",
-    "alchemy": "2.0.0-beta.65",
+    "alchemy": "2.0.0-beta.72",
     "effect": "catalog:"
   },
   "devDependencies": {
