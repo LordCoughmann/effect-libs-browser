@@ -9,7 +9,7 @@ Pick the client that matches what you're using now:
 **Coming from `@cloudflare/playwright` or upstream Playwright?**
 
 ```bash
-pnpm add @effect-libs/browser-playwright effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-playwright effect@4.0.0-rc.112
 ```
 
 `@effect-libs/browser-playwright` brings `@effect-libs/cloudflare-playwright` (our maintained fork of `@cloudflare/playwright@1.3.0`) as a transitive direct dependency — no separate install.
@@ -19,13 +19,13 @@ pnpm add @effect-libs/browser-playwright effect@4.0.0-rc.108
 **Coming from `@browserbasehq/stagehand`?**
 
 ```bash
-pnpm add @effect-libs/browser-stagehand @browserbasehq/stagehand effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-stagehand @browserbasehq/stagehand effect@4.0.0-rc.112
 ```
 
 **Want a zero-dependency Chrome DevTools Protocol client without `nodejs_compat`?**
 
 ```bash
-pnpm add @effect-libs/browser-cdp effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-cdp effect@4.0.0-rc.112
 ```
 
 [Choosing a client](./overview.md#choosing-a-client) covers the stability / API surface / dependency trade-offs. For per-client deep-dives (added APIs, errors, comparison with alternatives), see [`browser-playwright`](./packages/playwright/index.md), [`browser-stagehand`](./packages/stagehand/index.md), and [`browser-cdp`](./packages/cdp/index.md).

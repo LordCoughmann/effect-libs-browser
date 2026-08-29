@@ -9,7 +9,7 @@ AI-powered browser automation with natural-language instructions. Stagehand v3 o
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-stagehand @browserbasehq/stagehand effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-stagehand @browserbasehq/stagehand effect@4.0.0-rc.112
 ```
 
 > **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.

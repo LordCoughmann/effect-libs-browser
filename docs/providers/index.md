@@ -8,16 +8,16 @@ For help **picking** a provider (which one for what), see [Client & Provider →
 
 ```bash
 # Steel — needs steel-sdk
-pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.112
 
 # Browserbase — needs @browserbasehq/sdk
-pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.112
 
 # Cloudflare Browser Run (HTTP) — needs cloudflare
-pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.112
 
 # Cloudflare Browser Run (binding) — needs `@effect-libs/cloudflare-playwright`; `browser-playwright` only
-pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.108
+pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.112
 ```
 
 > **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.

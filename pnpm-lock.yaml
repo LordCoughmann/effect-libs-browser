@@ -10,20 +10,20 @@ catalogs:
       specifier: ^0.20.2
       version: 0.20.3
     '@effect/platform-bun':
-      specifier: 4.0.0-rc.108
-      version: 4.0.0-rc.108
+      specifier: 4.0.0-rc.112
+      version: 4.0.0-rc.112
     '@effect/platform-node':
-      specifier: 4.0.0-rc.108
-      version: 4.0.0-rc.108
+      specifier: 4.0.0-rc.112
+      version: 4.0.0-rc.112
     '@effect/vitest':
-      specifier: 4.0.0-rc.108
-      version: 4.0.0-rc.108
+      specifier: 4.0.0-rc.112
+      version: 4.0.0-rc.112
     '@types/node':
       specifier: ^26.1.2
       version: 26.2.0
     effect:
-      specifier: 4.0.0-rc.108
-      version: 4.0.0-rc.108
+      specifier: 4.0.0-rc.112
+      version: 4.0.0-rc.112
     typescript:
       specifier: ^7.0.0-dev.20260707.2
       version: 7.0.2
@@ -81,13 +81,13 @@ importers:
         version: link:packages/cloudflare-playwright
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)
+        version: 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       '@effect/tsgo':
         specifier: latest
-        version: 0.36.4
+        version: 0.38.0
       '@effect/vitest':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)(vitest@4.1.10)
+        version: 4.0.0-rc.112(effect@4.0.0-rc.112)(vitest@4.1.10)
       '@mpsuesser/oxlint-plugin-effect':
         specifier: ^0.4.3
         version: 0.4.3
@@ -105,13 +105,13 @@ importers:
         version: 4.1.10(vitest@4.1.10)
       cloudflare:
         specifier: latest
-        version: 7.0.0
+        version: 7.1.0
       devtools-protocol:
         specifier: ^0.0.1676105
         version: 0.0.1676105
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
       fallow:
         specifier: ^3.14.0
         version: 3.14.0
@@ -183,16 +183,16 @@ importers:
         version: link:../../../packages/browser-cdp
       '@effect/platform-bun':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)
+        version: 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       alchemy:
         specifier: 2.0.0-beta.72
-        version: 2.0.0-beta.72(@effect/platform-bun@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108))(@effect/platform-node@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1))(bufferutil@4.1.0)(effect@4.0.0-rc.108)(mongodb@6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9))(pg@8.22.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)(ws@8.21.1(bufferutil@4.1.0))
+        version: 2.0.0-beta.72(@effect/platform-bun@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0)))(bufferutil@4.1.0)(effect@4.0.0-rc.112)(mongodb@6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9))(pg@8.22.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)(ws@8.21.3(bufferutil@4.1.0))
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       typescript:
         specifier: 'catalog:'
@@ -208,16 +208,16 @@ importers:
         version: link:../../../packages/browser-playwright
       '@effect/platform-bun':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)
+        version: 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       alchemy:
         specifier: 2.0.0-beta.72
-        version: 2.0.0-beta.72(@effect/platform-bun@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108))(@effect/platform-node@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1))(bufferutil@4.1.0)(effect@4.0.0-rc.108)(mongodb@6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9))(pg@8.22.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)(ws@8.21.1(bufferutil@4.1.0))
+        version: 2.0.0-beta.72(@effect/platform-bun@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0)))(bufferutil@4.1.0)(effect@4.0.0-rc.112)(mongodb@6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9))(pg@8.22.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)(ws@8.21.3(bufferutil@4.1.0))
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       typescript:
         specifier: 'catalog:'
@@ -236,7 +236,7 @@ importers:
         version: link:../../../packages/browser-providers
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -267,7 +267,7 @@ importers:
         version: link:../../../packages/browser-providers
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -298,7 +298,7 @@ importers:
         version: link:../../../packages/browser-providers
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -326,14 +326,14 @@ importers:
         version: link:../../../packages/browser-cdp
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
         version: 0.20.3(@vitest/runner@4.1.10)(@vitest/snapshot@4.1.10)(bufferutil@4.1.0)(vitest@4.1.10)
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)
+        version: 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
@@ -360,7 +360,7 @@ importers:
         version: link:../../../packages/browser-providers
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -391,7 +391,7 @@ importers:
         version: link:../../../packages/browser-providers
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -422,7 +422,7 @@ importers:
         version: link:../../../packages/browser-providers
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -450,7 +450,7 @@ importers:
         version: link:../../../packages/browser-playwright
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -478,7 +478,7 @@ importers:
         version: link:../../../packages/browser-stagehand
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -512,7 +512,7 @@ importers:
         version: link:../../../packages/browser-stagehand
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 'catalog:'
@@ -534,7 +534,7 @@ importers:
     dependencies:
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
 
   packages/browser-cdp:
     dependencies:
@@ -546,7 +546,7 @@ importers:
         version: 0.0.1676105
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
 
   packages/browser-playwright:
     dependencies:
@@ -558,7 +558,7 @@ importers:
         version: link:../cloudflare-playwright
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
 
   packages/browser-providers:
     dependencies:
@@ -579,7 +579,7 @@ importers:
         version: 7.0.0
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
       steel-sdk:
         specifier: ^0.18.0
         version: 0.18.0
@@ -594,7 +594,7 @@ importers:
         version: link:../browser
       effect:
         specifier: 'catalog:'
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.112
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -1116,23 +1116,23 @@ packages:
   '@dotenvx/tooling@1.0.3':
     resolution: {integrity: sha512-Gd6qQol/ICb4MPRWpiIH56y+pR9AVB7kPBkbhrLSGLtAiF4Qgy+k651/f2pze0Xbm3H5XewbPfIm4y9K+ic30Q==}
 
-  '@effect/platform-bun@4.0.0-rc.108':
-    resolution: {integrity: sha512-27RoALzmzx6Qp4LrPIE8bYJfHe+8ZaAO3xLhJMEE6mVA8fxcPh4HAGwBv09Nk2qTFVh578SlSCY5ojUlqeSJ4A==}
+  '@effect/platform-bun@4.0.0-rc.112':
+    resolution: {integrity: sha512-Y5n2HhV/vsbrJls9ukX42RL7zqXQxISHegWFsP9njsCyDmGTnq7QYSO82rglwrLPwtTrv5dkSRTuGw4+oXxgMg==}
     peerDependencies:
-      effect: ^4.0.0-rc.108
+      effect: ^4.0.0-rc.112
 
-  '@effect/platform-node-shared@4.0.0-rc.108':
-    resolution: {integrity: sha512-g5dSRR+tHzFcWav5A6zbug78oV8WPJL5BJqgKlKtow0cQ2IpULcLZaP2xCYR3RJDvz5SETREmPCJ+BNONIsalw==}
+  '@effect/platform-node-shared@4.0.0-rc.112':
+    resolution: {integrity: sha512-ttjz0xKamFN7vL8pNDYVwddJLjZvqKePc05djlz2VcdaKbLsnYbtMnL1rbOfHgEnIUSHGh7FkjaN4DM1Ov81sQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-rc.108
+      effect: ^4.0.0-rc.112
 
-  '@effect/platform-node@4.0.0-rc.108':
-    resolution: {integrity: sha512-Nof78154BaHGdSYr4TPQFZ5+Dg+HkpmbI3SQUdwsby5QNs6yahGJPu2AgdIVqdx7pKZ2w7j/bvdnqoMmkG0PbA==}
+  '@effect/platform-node@4.0.0-rc.112':
+    resolution: {integrity: sha512-/BMAcdNGQQskLmI0Zoa95KfTZkr9HV9N4NSxaSrusG6GeW6Ulp9KvZ+Rlaiw8lnOt43CXjFLdfll5/k5rxL4hQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-rc.108
-      ioredis: '>=5.7.0 <6.0.0'
+      effect: ^4.0.0-rc.112
+      redis: '>=5.0.0 <7.0.0'
 
   '@effect/sql-d1@4.0.0-rc.108':
     resolution: {integrity: sha512-2Pef1buqPhYuCHnfxT/N5Pny6lBcZbju13EDxqTBT6wiUc3R0yrICu8ZG45lm4vekqPAzFntUCbZt8yKOcenBg==}
@@ -1144,49 +1144,55 @@ packages:
     peerDependencies:
       effect: ^4.0.0-rc.108
 
-  '@effect/tsgo-darwin-arm64@0.36.4':
-    resolution: {integrity: sha512-oOcWdKQucNch6G4CvidHEzmfgeKEPMvFcz+DXuKGonBLwVHX+i1VYGbZwccEOoiitOg7eWVl4e8S0qKMXg3/gg==}
+  '@effect/tsgo-darwin-arm64@0.38.0':
+    resolution: {integrity: sha512-CDTPKA0qcL+zqtBcZ0Z6BlvYnSW5MI8fOhFTI5zJUEfqSBwC/ddDHscZN4LBzra6EPR+8UwjNdGRr0wwtKiLJA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@effect/tsgo-darwin-x64@0.36.4':
-    resolution: {integrity: sha512-4QZh0n/nUoTI7sp4o7gDEviJ/jXH+IFTVqIyQ2w2fqqPoOvaGl9bVoR/2f9j/67hvY4DHcXKaccpmyoRYhaYsw==}
+  '@effect/tsgo-darwin-x64@0.38.0':
+    resolution: {integrity: sha512-ghx8p8BzrDGgB444+4S0wU2dtPXPP7AncfdBZCu6brwfksJMNuhgec9TamZrYOUwEYy9OkUQEavOyjGw6xJJ8Q==}
     cpu: [x64]
     os: [darwin]
 
-  '@effect/tsgo-linux-arm64@0.36.4':
-    resolution: {integrity: sha512-aOv+wVbZWgBt9PGXPA874qgw151GrzkWqaswe+4TXjhdw/M4i35PCUH5T+uaQj3FnQ1NWiPqHIGfNBRjf3xG6w==}
+  '@effect/tsgo-linux-arm64@0.38.0':
+    resolution: {integrity: sha512-SEKZIa1u22xyWOrISQ9fqHR1suHcxxDJ9m6Y8npx5ywmroKLDy/8/t77LNaxLScBYrbZwSFqASJPZJ4XF0RgKw==}
     cpu: [arm64]
     os: [linux]
 
-  '@effect/tsgo-linux-arm@0.36.4':
-    resolution: {integrity: sha512-10oTUnOK/RCfmTMFvMndNIfk61uviyYBRpbxhDd/SiU6DYCmWlnZ/xhGmgyj5uiysOiFNsp3NKxT0d9y4uAz8g==}
+  '@effect/tsgo-linux-arm@0.38.0':
+    resolution: {integrity: sha512-+zLIdcSuFMDZUCFJGfPgMOcW8wkjrPpVVzM4tf5P+HQgiSS4hshm2aiKoV1N5fn9rsYTTMwGnfxIVBxBMGGE/Q==}
     cpu: [arm]
     os: [linux]
 
-  '@effect/tsgo-linux-x64@0.36.4':
-    resolution: {integrity: sha512-+BuwiG5d8dLNrrN1PB5GA3gRkBwvlUYmMkm/XkttaLnppp9jePFkB8CgAiNV8j290q7BVO2nQjao5aPkVwmluw==}
+  '@effect/tsgo-linux-x64@0.38.0':
+    resolution: {integrity: sha512-6Kx2qqA+FxerWHPjG4eXpm76CB2+/KUpShXGxw+1CkjebhXmkgG3sSKfEUMkQ331PBlmekWRe7Xnnejnwln0Mw==}
     cpu: [x64]
     os: [linux]
 
-  '@effect/tsgo-win32-arm64@0.36.4':
-    resolution: {integrity: sha512-HsW90wbMWOeorUeNMdTqTcMZIDcCXdkeFGXTUkx9K1R21fXSw+QEdPtTmEyKsRMXEH4vqek/HQa0yMkUT0CJzA==}
+  '@effect/tsgo-win32-arm64@0.38.0':
+    resolution: {integrity: sha512-jhGtiSb8bjlJcJqtJ4IVdeqep+AHGhDFN+2vqXHLdOMzmRVxCMhYmIda2nCel5UK5vVwhCYifw2JfcoO3f8Vpw==}
     cpu: [arm64]
     os: [win32]
 
-  '@effect/tsgo-win32-x64@0.36.4':
-    resolution: {integrity: sha512-q4j1q0ESYxxookjA0ECz/84DEH2MsP51K0aZb3uXKfxagHDASPoWDcVu4BJTcwrK5kdZzvw9QrCPjAXe9WZqng==}
+  '@effect/tsgo-win32-x64@0.38.0':
+    resolution: {integrity: sha512-FjbXqAZqxs9WaRp3XCCUa8ndXDeVibAjeE1EdVAouxB36aMUzEV0ue6LLH8zVaqqR+zxf1xvFVOp4D0JL4Ur0g==}
     cpu: [x64]
     os: [win32]
 
-  '@effect/tsgo@0.36.4':
-    resolution: {integrity: sha512-fNmdUV6FgXnvIcG18AVS1SRXt7z9jsyBh5CKuJYmTsE+DgbLaWF0CevKHx7hQPcidDWRVmdJYfU66Jvc/ZEt6w==}
+  '@effect/tsgo@0.38.0':
+    resolution: {integrity: sha512-eazN0kX+WNT1jNjIm/l5esnkpKVfd1wNh2ig0pfaULKuI2PZh0JwjbepDPUr6MWx5cqOiUgwStNf5hGhg2w00g==}
     hasBin: true
 
   '@effect/vitest@4.0.0-rc.108':
     resolution: {integrity: sha512-XD2GP1JATN28wnIeFGsBqYMuQDCHIodKKgFulGyG91GvuHqgf2gz+WxR2LPdyNoKMtr7lsbRzVj07niSYtIKzA==}
     peerDependencies:
       effect: ^4.0.0-rc.108
+      vitest: '>=4.1.0 <5.0.0'
+
+  '@effect/vitest@4.0.0-rc.112':
+    resolution: {integrity: sha512-mEKh/FI64mt8JK1/v9mpOrJYdnp+UFZdRUBMEdZMiKz7klg6NPqVgg/oeAGH6wOOQc2iAPcfc2H9BbAv1KyzMQ==}
+    peerDependencies:
+      effect: ^4.0.0-rc.112
       vitest: '>=4.1.0 <5.0.0'
 
   '@electric-sql/pglite-socket@0.0.20':
@@ -1749,9 +1755,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@ioredis/commands@1.10.0':
-    resolution: {integrity: sha512-UmeW7z4LfctwoQ5wkhVzgq8tXkreED2xZGpX+Bg+zA+WJFZCT6c062AfCK/Dfk81xZnnwdhJCUMkitihRaoC2Q==}
-
   '@jridgewell/resolve-uri@3.1.2':
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
     engines: {node: '>=6.0.0'}
@@ -2278,6 +2281,42 @@ packages:
 
   '@quansync/fs@1.0.0':
     resolution: {integrity: sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ==}
+
+  '@redis/bloom@6.2.1':
+    resolution: {integrity: sha512-huQgNLaCIZfQ9SeLn4q9124uOUd8HbZDYHwwUzNcRgHqCHiHKl2dDxMqJCeWh8cMqZAoWuHR8XnWbDMIf+o7ag==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.2.1
+
+  '@redis/client@6.2.1':
+    resolution: {integrity: sha512-LzxBY7SIBvvJiyCgcaJZZakE3fJrZZ++i24+EDW9fKpCl68D35uJcKFpZZwCfOoG9WZTbyZlMzMeM0gtOAMU9Q==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@node-rs/xxhash': ^1.1.0
+      '@opentelemetry/api': '>=1 <2'
+    peerDependenciesMeta:
+      '@node-rs/xxhash':
+        optional: true
+      '@opentelemetry/api':
+        optional: true
+
+  '@redis/json@6.2.1':
+    resolution: {integrity: sha512-AFIUJ8Gj0DaaSBHYuSt8+O0oYWM+50OK1c0OmodB7XERIA8+BbyV3O4v76f9iccWasd1/7qjfZTpuzexUaZtrQ==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.2.1
+
+  '@redis/search@6.2.1':
+    resolution: {integrity: sha512-2vfOAOyYFE7UUw3sBBlkqqruBtOUS4HRY5MtW4hp83llrwvtrTE4r22CEqXddlV+54zkLxBE4nmsIJ/dpezQrQ==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.2.1
+
+  '@redis/time-series@6.2.1':
+    resolution: {integrity: sha512-kiYniph04dJOole+L359B6C9E+jYS2uDP7hca6Onj0xF38ZIpyxARO0Iq0W4ZRn1e8Q6vqW00QFZVSMRA/2Ijw==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.2.1
 
   '@rolldown/binding-android-arm64@1.1.5':
     resolution: {integrity: sha512-lZg8fqIv2v7FF237bwMgzGZEJvGL79/s5knJ/i6FmsGF4XXlzccZ4jb+TrFIxtSSxFtIpdsgrPZeMk1I9AFcyQ==}
@@ -3341,8 +3380,12 @@ packages:
     resolution: {integrity: sha512-ZU8Yp1biaRRf+i1Hlap/VUwSBeKnOa4kkygIU9naE07JILnHdgLr9Wq/iPEeEf2in0N5m1giTp1ohY+cNQZEGQ==}
     hasBin: true
 
-  cluster-key-slot@1.1.1:
-    resolution: {integrity: sha512-rwHwUfXL40Chm1r08yrhU3qpUvdVlgkKNeyeGPOxnW8/SyVDvgRaed/Uz54AqWNaTCAThlj6QAs3TZcKI0xDEw==}
+  cloudflare@7.1.0:
+    resolution: {integrity: sha512-eb6WtiAbhuqdWmBdVo6fuXQgEBkYjhOeujRDYLEUWEZIECuABvDLz2DUYTwpN/4KyFecM4JtMHgZn5prlFUjLg==}
+    hasBin: true
+
+  cluster-key-slot@1.1.2:
+    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
     engines: {node: '>=0.10.0'}
 
   code-excerpt@4.0.0:
@@ -3469,10 +3512,6 @@ packages:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
 
-  denque@2.1.0:
-    resolution: {integrity: sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw==}
-    engines: {node: '>=0.10'}
-
   depd@2.0.0:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
@@ -3525,8 +3564,8 @@ packages:
   effect@4.0.0-beta.100:
     resolution: {integrity: sha512-K4ed+BS3HyE+NoAZ8pJss2DpuK41mb856IO7ZlPfnwBXbq8oTtAAurrsVnwe2hzPamIuaZp/Pq4/xp9qORYv8Q==}
 
-  effect@4.0.0-rc.108:
-    resolution: {integrity: sha512-KmI3DlKZWPvCL4QQ2FMaPOuxMt/7DrKMENCY/gQ+MkDR5QYw25wgU5Zmh/wVLboNjIci1gNOgNCFe4xqgxli3A==}
+  effect@4.0.0-rc.112:
+    resolution: {integrity: sha512-wXxwuh1Ywnv4cPRM3Wfa0vDwuOHnZ1TsTgHJkG9XgzND6inhBH9n1vBxhg3iIXOia/OrpmvVmd3lrD4vq6bF3A==}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -3953,10 +3992,6 @@ packages:
         optional: true
       react-devtools-core:
         optional: true
-
-  ioredis@5.11.1:
-    resolution: {integrity: sha512-ehuGcf94bQXhfagULNXrJdfnWO38v070jxSx/qE87Kjzmu2fU7ro5EFAb+OPituLqgfyuQaym5DlrNydW2sJ9A==}
-    engines: {node: '>=12.22.0'}
 
   ip-address@10.3.1:
     resolution: {integrity: sha512-1e9d3kb97NHJTIJDZW9rKqW2h6+dFa50Dy0fpPSMQp2ADje5gvKsXmdiK6dwY5t76TaTt5+P5N1Y/LoToIxP6g==}
@@ -4437,6 +4472,9 @@ packages:
   msgpackr@2.0.4:
     resolution: {integrity: sha512-o1C5KRmuRt+apqMr1HuGSqWStZoRBUpEsCsl15uM9VdAF1qHLtvMOU2En747EnTyEl6c4pzPewRMFF31s1CNbA==}
 
+  msgpackr@2.1.0:
+    resolution: {integrity: sha512-p/pBCVO63CsvvpkomUnNNag6+n38rULuDA6HHe70o2gtC8ODI52foF/4ko2qQcp6OiErJXTmrZeXmsGGHsIQNQ==}
+
   multipasta@0.2.8:
     resolution: {integrity: sha512-ZPWuMKyv0cSO29f7hozp+k6+crZbQijV8ipMvxNxRf2SwtYGTX1ZX89Kd20VV4H9Znonx+EQn+iy1wGQsJ+b+Q==}
 
@@ -4776,13 +4814,9 @@ packages:
     resolution: {integrity: sha512-57frrGM/OCTLqLOAh0mhVA9VBMHd+9U7Zb2THMGdBUoZVOtGbJzjxsYGDJ3A9AYYCP4hn6y1TVbaOfzWtm5GFg==}
     engines: {node: '>= 12.13.0'}
 
-  redis-errors@1.2.0:
-    resolution: {integrity: sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w==}
-    engines: {node: '>=4'}
-
-  redis-parser@3.0.0:
-    resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
-    engines: {node: '>=4'}
+  redis@6.2.1:
+    resolution: {integrity: sha512-Z9VHtgYs48PiQC77X9O2Er8Hj4T+5BtFjT91/vi5Is1D04N72cA946ZslM1ImJw8ZctFBZWAVjM7S5wJNeHMpg==}
+    engines: {node: '>= 20.0.0'}
 
   regexp-to-ast@0.5.0:
     resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
@@ -5006,9 +5040,6 @@ packages:
   stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
 
-  standard-as-callback@2.1.0:
-    resolution: {integrity: sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==}
-
   statuses@2.0.2:
     resolution: {integrity: sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==}
     engines: {node: '>= 0.8'}
@@ -5217,8 +5248,8 @@ packages:
     resolution: {integrity: sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==}
     engines: {node: '>=20.18.1'}
 
-  undici@8.9.0:
-    resolution: {integrity: sha512-aWZpUj7XoGonMClx4gdDRfgBjqeA+F473aDmROQQbM9n6PRfK/u1q/a0X4wMTgcHfT8H6fpbt98PFuDUwFg2YA==}
+  undici@8.10.0:
+    resolution: {integrity: sha512-HvltHd7avK13QIw/oLe4qoOLyoVSoafqJ2jYOrtMRBkbYT31eiBQ8O0ehRKZiEZCMEyLFQNIADpgCWC5fALvYQ==}
     engines: {node: '>=22.19.0'}
 
   unenv@2.0.0-rc.24:
@@ -5469,6 +5500,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.21.3:
+    resolution: {integrity: sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   xml-naming@0.3.0:
     resolution: {integrity: sha512-ghig2TBE/H11aOVgmahA3MhimvkBr6JIYknH/Dhdk10nXwdbIqBJsbfMxpvFPG8bAw77gN29aQWvKpmVoPlvPQ==}
     engines: {node: '>=16.0.0'}
@@ -5683,21 +5726,21 @@ snapshots:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
 
-  '@alchemy.run/cloudflare-runtime@2.0.0-beta.72(@distilled.cloud/cloudflare@1.0.0-rc.4(effect@4.0.0-rc.108))(@effect/platform-bun@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108))(@effect/platform-node@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1))(effect@4.0.0-rc.108)(rolldown@1.1.5)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))':
+  '@alchemy.run/cloudflare-runtime@2.0.0-beta.72(@distilled.cloud/cloudflare@1.0.0-rc.4(effect@4.0.0-rc.112))(@effect/platform-bun@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0)))(effect@4.0.0-rc.112)(rolldown@1.1.5)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))':
     dependencies:
       '@alchemy.run/node-utils': 0.0.5
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260704.1)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.4(effect@4.0.0-rc.108)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.4(effect@4.0.0-rc.112)
       '@puppeteer/browsers': 2.13.2
       capnp-es: 0.0.14(typescript@7.0.2)
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
       magic-string: 0.30.21
       sharp: 0.34.5
       unenv: 2.0.0-rc.24
       workerd: 1.20260704.1
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)
-      '@effect/platform-node': 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)
+      '@effect/platform-bun': 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)
+      '@effect/platform-node': 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       rolldown: 1.1.5
       vite: 8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0)
     transitivePeerDependencies:
@@ -6200,43 +6243,43 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@distilled.cloud/aws@1.0.0-rc.4(effect@4.0.0-rc.108)':
+  '@distilled.cloud/aws@1.0.0-rc.4(effect@4.0.0-rc.112)':
     dependencies:
       '@aws-crypto/crc32': 5.2.0
       '@aws-crypto/util': 5.2.0
       '@aws-sdk/credential-providers': 3.1095.0
       '@aws-sdk/types': 3.974.2
-      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.108)
+      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.112)
       '@smithy/shared-ini-file-loader': 4.6.14
       '@smithy/types': 4.16.1
       '@smithy/util-base64': 4.5.14
       aws4fetch: 1.0.20
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
       fast-xml-parser: 5.10.1
 
-  '@distilled.cloud/axiom@1.0.0-rc.4(effect@4.0.0-rc.108)':
+  '@distilled.cloud/axiom@1.0.0-rc.4(effect@4.0.0-rc.112)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
+      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      effect: 4.0.0-rc.112
 
-  '@distilled.cloud/cloudflare@1.0.0-rc.4(effect@4.0.0-rc.108)':
+  '@distilled.cloud/cloudflare@1.0.0-rc.4(effect@4.0.0-rc.112)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
+      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      effect: 4.0.0-rc.112
 
-  '@distilled.cloud/core@1.0.0-rc.4(effect@4.0.0-rc.108)':
+  '@distilled.cloud/core@1.0.0-rc.4(effect@4.0.0-rc.112)':
     dependencies:
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
 
-  '@distilled.cloud/neon@1.0.0-rc.4(effect@4.0.0-rc.108)':
+  '@distilled.cloud/neon@1.0.0-rc.4(effect@4.0.0-rc.112)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
+      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      effect: 4.0.0-rc.112
 
-  '@distilled.cloud/planetscale@1.0.0-rc.4(effect@4.0.0-rc.108)':
+  '@distilled.cloud/planetscale@1.0.0-rc.4(effect@4.0.0-rc.112)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
+      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      effect: 4.0.0-rc.112
 
   '@dotenvx/dotenvx@2.21.0':
     dependencies:
@@ -6248,77 +6291,82 @@ snapshots:
 
   '@dotenvx/tooling@1.0.3': {}
 
-  '@effect/platform-bun@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)':
+  '@effect/platform-bun@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
+      '@effect/platform-node-shared': 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)
+      effect: 4.0.0-rc.112
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node-shared@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)':
+  '@effect/platform-node-shared@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)':
     dependencies:
       '@types/ws': 8.18.1
-      effect: 4.0.0-rc.108
-      ws: 8.21.1(bufferutil@4.1.0)
+      effect: 4.0.0-rc.112
+      ws: 8.21.3(bufferutil@4.1.0)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)':
+  '@effect/platform-node@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
-      ioredis: 5.11.1
+      '@effect/platform-node-shared': 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)
+      effect: 4.0.0-rc.112
       mime: 4.1.0
-      undici: 8.9.0
+      redis: 6.2.1(@opentelemetry/api@1.9.0)
+      undici: 8.10.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/sql-d1@4.0.0-rc.108(effect@4.0.0-rc.108)':
+  '@effect/sql-d1@4.0.0-rc.108(effect@4.0.0-rc.112)':
     dependencies:
       '@cloudflare/workers-types': 5.20260726.1
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
 
-  '@effect/sql-sqlite-do@4.0.0-rc.108(effect@4.0.0-rc.108)':
+  '@effect/sql-sqlite-do@4.0.0-rc.108(effect@4.0.0-rc.112)':
     dependencies:
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
 
-  '@effect/tsgo-darwin-arm64@0.36.4':
+  '@effect/tsgo-darwin-arm64@0.38.0':
     optional: true
 
-  '@effect/tsgo-darwin-x64@0.36.4':
+  '@effect/tsgo-darwin-x64@0.38.0':
     optional: true
 
-  '@effect/tsgo-linux-arm64@0.36.4':
+  '@effect/tsgo-linux-arm64@0.38.0':
     optional: true
 
-  '@effect/tsgo-linux-arm@0.36.4':
+  '@effect/tsgo-linux-arm@0.38.0':
     optional: true
 
-  '@effect/tsgo-linux-x64@0.36.4':
+  '@effect/tsgo-linux-x64@0.38.0':
     optional: true
 
-  '@effect/tsgo-win32-arm64@0.36.4':
+  '@effect/tsgo-win32-arm64@0.38.0':
     optional: true
 
-  '@effect/tsgo-win32-x64@0.36.4':
+  '@effect/tsgo-win32-x64@0.38.0':
     optional: true
 
-  '@effect/tsgo@0.36.4':
+  '@effect/tsgo@0.38.0':
     optionalDependencies:
-      '@effect/tsgo-darwin-arm64': 0.36.4
-      '@effect/tsgo-darwin-x64': 0.36.4
-      '@effect/tsgo-linux-arm': 0.36.4
-      '@effect/tsgo-linux-arm64': 0.36.4
-      '@effect/tsgo-linux-x64': 0.36.4
-      '@effect/tsgo-win32-arm64': 0.36.4
-      '@effect/tsgo-win32-x64': 0.36.4
+      '@effect/tsgo-darwin-arm64': 0.38.0
+      '@effect/tsgo-darwin-x64': 0.38.0
+      '@effect/tsgo-linux-arm': 0.38.0
+      '@effect/tsgo-linux-arm64': 0.38.0
+      '@effect/tsgo-linux-x64': 0.38.0
+      '@effect/tsgo-win32-arm64': 0.38.0
+      '@effect/tsgo-win32-x64': 0.38.0
 
-  '@effect/vitest@4.0.0-rc.108(effect@4.0.0-rc.108)(vitest@4.1.10)':
+  '@effect/vitest@4.0.0-rc.108(effect@4.0.0-rc.112)(vitest@4.1.10)':
     dependencies:
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
+      vitest: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/coverage-v8@4.1.10)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))
+
+  '@effect/vitest@4.0.0-rc.112(effect@4.0.0-rc.112)(vitest@4.1.10)':
+    dependencies:
+      effect: 4.0.0-rc.112
       vitest: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/coverage-v8@4.1.10)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))
 
   '@electric-sql/pglite-socket@0.0.20(@electric-sql/pglite@0.3.15)':
@@ -6685,8 +6733,6 @@ snapshots:
 
   '@img/sharp-win32-x64@0.35.2':
     optional: true
-
-  '@ioredis/commands@1.10.0': {}
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
@@ -7125,6 +7171,28 @@ snapshots:
   '@quansync/fs@1.0.0':
     dependencies:
       quansync: 1.0.0
+
+  '@redis/bloom@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))':
+    dependencies:
+      '@redis/client': 6.2.1(@opentelemetry/api@1.9.0)
+
+  '@redis/client@6.2.1(@opentelemetry/api@1.9.0)':
+    dependencies:
+      cluster-key-slot: 1.1.2
+    optionalDependencies:
+      '@opentelemetry/api': 1.9.0
+
+  '@redis/json@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))':
+    dependencies:
+      '@redis/client': 6.2.1(@opentelemetry/api@1.9.0)
+
+  '@redis/search@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))':
+    dependencies:
+      '@redis/client': 6.2.1(@opentelemetry/api@1.9.0)
+
+  '@redis/time-series@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))':
+    dependencies:
+      '@redis/client': 6.2.1(@opentelemetry/api@1.9.0)
 
   '@rolldown/binding-android-arm64@1.1.5':
     optional: true
@@ -7674,21 +7742,21 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  alchemy@2.0.0-beta.72(@effect/platform-bun@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108))(@effect/platform-node@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1))(bufferutil@4.1.0)(effect@4.0.0-rc.108)(mongodb@6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9))(pg@8.22.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)(ws@8.21.1(bufferutil@4.1.0)):
+  alchemy@2.0.0-beta.72(@effect/platform-bun@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0)))(bufferutil@4.1.0)(effect@4.0.0-rc.112)(mongodb@6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9))(pg@8.22.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)(ws@8.21.3(bufferutil@4.1.0)):
     dependencies:
-      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.72(@distilled.cloud/cloudflare@1.0.0-rc.4(effect@4.0.0-rc.108))(@effect/platform-bun@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108))(@effect/platform-node@4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1))(effect@4.0.0-rc.108)(rolldown@1.1.5)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))
+      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.72(@distilled.cloud/cloudflare@1.0.0-rc.4(effect@4.0.0-rc.112))(@effect/platform-bun@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0)))(effect@4.0.0-rc.112)(rolldown@1.1.5)(typescript@7.0.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0))
       '@alchemy.run/node-utils': 0.0.5
       '@aws-sdk/credential-providers': 3.1095.0
       '@clack/prompts': 1.7.0
-      '@distilled.cloud/aws': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      '@distilled.cloud/axiom': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      '@distilled.cloud/neon': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      '@distilled.cloud/planetscale': 1.0.0-rc.4(effect@4.0.0-rc.108)
-      '@effect/sql-d1': 4.0.0-rc.108(effect@4.0.0-rc.108)
-      '@effect/sql-sqlite-do': 4.0.0-rc.108(effect@4.0.0-rc.108)
-      '@effect/vitest': 4.0.0-rc.108(effect@4.0.0-rc.108)(vitest@4.1.10)
+      '@distilled.cloud/aws': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      '@distilled.cloud/axiom': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      '@distilled.cloud/core': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      '@distilled.cloud/neon': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      '@distilled.cloud/planetscale': 1.0.0-rc.4(effect@4.0.0-rc.112)
+      '@effect/sql-d1': 4.0.0-rc.108(effect@4.0.0-rc.112)
+      '@effect/sql-sqlite-do': 4.0.0-rc.108(effect@4.0.0-rc.112)
+      '@effect/vitest': 4.0.0-rc.108(effect@4.0.0-rc.112)(vitest@4.1.10)
       '@libsql/client': 0.17.4(bufferutil@4.1.0)
       '@octokit/rest': 22.0.1
       '@octokit/webhooks': 14.2.0
@@ -7699,7 +7767,7 @@ snapshots:
       '@types/aws-lambda': 8.10.162
       aws4fetch: 1.0.20
       capnweb: 0.6.1
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.112
       fast-glob: 3.3.3
       fast-xml-parser: 5.10.1
       ink: 6.8.0(bufferutil@4.1.0)(react@19.2.8)
@@ -7712,12 +7780,12 @@ snapshots:
       undici: 7.29.0
       yaml: 2.9.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)
-      '@effect/platform-node': 4.0.0-rc.108(bufferutil@4.1.0)(effect@4.0.0-rc.108)(ioredis@5.11.1)
+      '@effect/platform-bun': 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)
+      '@effect/platform-node': 4.0.0-rc.112(bufferutil@4.1.0)(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       mongodb: 6.21.0(@aws-sdk/credential-providers@3.1095.0)(socks@2.8.9)
       pg: 8.22.0
       vite: 8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.23.12)(yaml@2.9.0)
-      ws: 8.21.1(bufferutil@4.1.0)
+      ws: 8.21.3(bufferutil@4.1.0)
     transitivePeerDependencies:
       - '@types/react'
       - bare-abort-controller
@@ -7849,7 +7917,7 @@ snapshots:
 
   bun-types@1.3.14:
     dependencies:
-      '@types/node': 24.13.3
+      '@types/node': 26.2.0
 
   bytes@3.1.2: {}
 
@@ -7927,7 +7995,9 @@ snapshots:
 
   cloudflare@7.0.0: {}
 
-  cluster-key-slot@1.1.1: {}
+  cloudflare@7.1.0: {}
+
+  cluster-key-slot@1.1.2: {}
 
   code-excerpt@4.0.0:
     dependencies:
@@ -8027,8 +8097,6 @@ snapshots:
 
   delayed-stream@1.0.0: {}
 
-  denque@2.1.0: {}
-
   depd@2.0.0: {}
 
   dequal@2.0.3: {}
@@ -8077,13 +8145,10 @@ snapshots:
       uuid: 14.0.1
       yaml: 2.9.0
 
-  effect@4.0.0-rc.108:
+  effect@4.0.0-rc.112:
     dependencies:
-      '@standard-schema/spec': 1.1.0
       fast-check: 4.9.0
-      kubernetes-types: 1.30.0
-      msgpackr: 2.0.4
-      uuid: 14.0.1
+      msgpackr: 2.1.0
 
   emoji-regex@10.6.0: {}
 
@@ -8584,18 +8649,6 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-
-  ioredis@5.11.1:
-    dependencies:
-      '@ioredis/commands': 1.10.0
-      cluster-key-slot: 1.1.1
-      debug: 4.4.3
-      denque: 2.1.0
-      redis-errors: 1.2.0
-      redis-parser: 3.0.0
-      standard-as-callback: 2.1.0
-    transitivePeerDependencies:
-      - supports-color
 
   ip-address@10.3.1: {}
 
@@ -9208,6 +9261,10 @@ snapshots:
     optionalDependencies:
       msgpackr-extract: 3.0.4
 
+  msgpackr@2.1.0:
+    optionalDependencies:
+      msgpackr-extract: 3.0.4
+
   multipasta@0.2.8: {}
 
   nanoid@3.3.18: {}
@@ -9591,11 +9648,16 @@ snapshots:
 
   real-require@0.2.0: {}
 
-  redis-errors@1.2.0: {}
-
-  redis-parser@3.0.0:
+  redis@6.2.1(@opentelemetry/api@1.9.0):
     dependencies:
-      redis-errors: 1.2.0
+      '@redis/bloom': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))
+      '@redis/client': 6.2.1(@opentelemetry/api@1.9.0)
+      '@redis/json': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))
+      '@redis/search': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))
+      '@redis/time-series': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))
+    transitivePeerDependencies:
+      - '@node-rs/xxhash'
+      - '@opentelemetry/api'
 
   regexp-to-ast@0.5.0: {}
 
@@ -9933,8 +9995,6 @@ snapshots:
 
   stackback@0.0.2: {}
 
-  standard-as-callback@2.1.0: {}
-
   statuses@2.0.2: {}
 
   std-env@3.10.0: {}
@@ -10171,7 +10231,7 @@ snapshots:
 
   undici@7.29.0: {}
 
-  undici@8.9.0: {}
+  undici@8.10.0: {}
 
   unenv@2.0.0-rc.24:
     dependencies:
@@ -10386,6 +10446,10 @@ snapshots:
       bufferutil: 4.1.0
 
   ws@8.21.1(bufferutil@4.1.0):
+    optionalDependencies:
+      bufferutil: 4.1.0
+
+  ws@8.21.3(bufferutil@4.1.0):
     optionalDependencies:
       bufferutil: 4.1.0
 
