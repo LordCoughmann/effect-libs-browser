@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.2.0...@effect-libs/cloudflare-playwright@v0.2.1) (2026-08-30)
+
+
+### Miscellaneous Chores
+
+* **@effect-libs/cloudflare-playwright:** Synchronize effect-libs-browser versions
+
 ## [0.2.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.1.5...@effect-libs/cloudflare-playwright@v0.2.0) (2026-08-14)
 
 

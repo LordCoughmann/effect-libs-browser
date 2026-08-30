@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.1](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-cdp@v0.2.0...@effect-libs/browser-cdp@v0.2.1) (2026-08-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Consumers must migrate to Effect 4.0.0-rc.112.
+
+### Build System
+
+* **deps:** require Effect 4.0.0-rc.112 ([5c5d76a](https://github.com/LordCoughmann/effect-libs-browser/commit/5c5d76a7e17f77bd3a9847b003d395d6344715cf))
+
 ## [0.2.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-cdp@v0.1.5...@effect-libs/browser-cdp@v0.2.0) (2026-08-14)
 
 
