@@ -4,6 +4,7 @@ import { timeOrigin, setTimeOrigin } from './playwright-core/src/utils/isomorphi
 import { WebSocketTransport, transportZone } from './cloudflare/webSocketTransport.js';
 import { wrapClientApis } from './cloudflare/wrapClientApis.js';
 import { unsupportedOperations } from './cloudflare/unsupportedOperations.js';
+import { encodeGuardrailsHeader, GUARDRAILS_HEADER } from './cloudflare/guardrails.js';
 import { version } from './playwright-cloudflare/package.json.js';
 
 // Resolve cloudflare:workers env lazily so the module can load in
@@ -107,12 +108,16 @@ async function connectDevtools(endpoint, options) {
     url.searchParams.set("persistent", "true");
   if (options.browser)
     url.searchParams.set("browser", options.browser);
+  const guardrails = options.sessionId ? void 0 : options.guardrails;
   const response = await getBrowserBinding(endpoint).fetch(url, {
     headers: {
       "Upgrade": "websocket",
-      "cf-brapi-client": `@cloudflare/playwright@${version}`
+      "cf-brapi-client": `@cloudflare/playwright@${version}`,
+      ...guardrails ? { [GUARDRAILS_HEADER]: encodeGuardrailsHeader(guardrails) } : {}
     }
   });
+  if (!response.webSocket)
+    throw new Error(`Unable to connect to browser: code: ${response.status}: message: ${await response.text()}`);
   const webSocket = response.webSocket;
   webSocket.accept();
   return webSocket;
@@ -198,8 +203,16 @@ async function acquire(endpoint, options) {
     searchParams.set("recording", options.recording.toString());
   if (options?.lab)
     searchParams.set("lab", options.lab.toString());
-  const acquireUrl = `${HTTP_FAKE_HOST}/v1/acquire?${searchParams.toString()}`;
-  const res = await getBrowserBinding(endpoint).fetch(acquireUrl);
+  const acquireUrl = `${HTTP_FAKE_HOST}/v1/devtools/browser?${searchParams.toString()}`;
+  const res = await getBrowserBinding(endpoint).fetch(acquireUrl, {
+    method: "POST",
+    // Guardrails travel in the body here, unlike the websocket upgrades that have to
+    // use a header.
+    ...options?.guardrails ? {
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ guardrails: options.guardrails })
+    } : {}
+  });
   const status = res.status;
   const text = await res.text();
   if (status !== 200) {
