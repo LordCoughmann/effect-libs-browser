@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-/* eslint-disable effect/avoid-any -- Playwright option types don't include signal, requiring casts */
+/* eslint-disable effect/avoid-any -- upstream Playwright's pageFunction/event overloads don't line up with our Effect generics; the remaining casts are load-bearing (verified: removing them breaks the declared return types). */
 
 import type { ConsoleMessage, Page } from "@effect-libs/cloudflare-playwright";
 import type { Scope } from "effect";
@@ -70,13 +70,13 @@ const tryPromise = <T>(
   });
 
 /**
- * Merge options with signal. Casts through any because Playwright option
- * types don't include `signal` — we inject it for Effect cancellation.
+ * Merge options with signal. Playwright's option types don't include
+ * `signal`, so the return is typed as an intersection: the signal is
+ * injected purely for Effect cancellation while the caller keeps the full
+ * upstream option type.
  */
-const withSignal = (options: unknown, signal: AbortSignal): any => ({
-  ...(options as Record<string, unknown> | undefined),
-  signal,
-});
+const withSignal = <T>(options: T, signal: AbortSignal): T & { readonly signal: AbortSignal } =>
+  Object.assign({}, options, { signal });
 
 /**
  * Subscribe to an upstream Playwright `Page` event and expose it as an
@@ -154,9 +154,9 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
     // ── Legacy selectors ──
 
     $: (selector, options) =>
-      tryPromise("$", (signal) => rawPage.$(selector, withSignal(options, signal)) as any),
+      tryPromise("$", (signal) => rawPage.$(selector, withSignal(options, signal))),
 
-    $$: (selector) => tryPromise("$$", () => rawPage.$$(selector) as any),
+    $$: (selector) => tryPromise("$$", () => rawPage.$$(selector)),
 
     $eval: (selector, pageFunction, arg) =>
       Effect.tryPromise({
@@ -304,7 +304,7 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
       tryPromise("addStyleTag", (signal) => rawPage.addStyleTag(withSignal(options, signal))),
 
     addInitScript: (script, arg) =>
-      tryPromise("addInitScript", () => rawPage.addInitScript(script as any, arg as any)),
+      tryPromise("addInitScript", () => rawPage.addInitScript(script, arg)),
 
     // ── Waiting ──
 
@@ -349,7 +349,7 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
     waitForFunction: <R, Arg = void>(
       pageFunction: (...args: [Arg]) => R,
       arg?: Arg,
-      options?: any,
+      options?: Parameters<Page["waitForFunction"]>[2],
     ) =>
       Effect.tryPromise({
         try: () =>
@@ -369,8 +369,7 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
 
     bringToFront: tryPromise("bringToFront", () => rawPage.bringToFront()),
 
-    emulateMedia: (options) =>
-      tryPromise("emulateMedia", () => rawPage.emulateMedia(options as any)),
+    emulateMedia: (options) => tryPromise("emulateMedia", () => rawPage.emulateMedia(options)),
 
     setExtraHTTPHeaders: (headers) =>
       tryPromise("setExtraHTTPHeaders", () => rawPage.setExtraHTTPHeaders(headers)),
@@ -381,11 +380,11 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
       tryPromise("route", () => rawPage.route(url, handler, options)),
 
     routeFromHAR: (har, options) =>
-      tryPromise("routeFromHAR", () => rawPage.routeFromHAR(har as any, options as any)),
+      tryPromise("routeFromHAR", () => rawPage.routeFromHAR(har, options)),
 
     unroute: (url, handler) => tryPromise("unroute", () => rawPage.unroute(url, handler)),
 
-    unrouteAll: (options) => tryPromise("unrouteAll", () => rawPage.unrouteAll(options as any)),
+    unrouteAll: (options) => tryPromise("unrouteAll", () => rawPage.unrouteAll(options)),
 
     routeWebSocket: (url, handler) =>
       tryPromise("routeWebSocket", () => rawPage.routeWebSocket(url, handler)),
@@ -410,21 +409,18 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
 
     // ── Locators ──
 
-    locator: (selector, options) =>
-      makeLocator(rawPage.locator(selector, options as any), makePage),
+    locator: (selector, options) => makeLocator(rawPage.locator(selector, options), makePage),
 
-    getByRole: (role, options) => makeLocator(rawPage.getByRole(role, options as any), makePage),
+    getByRole: (role, options) => makeLocator(rawPage.getByRole(role, options), makePage),
 
-    getByText: (text, options) =>
-      makeLocator(rawPage.getByText(text as any, options as any), makePage),
+    getByText: (text, options) => makeLocator(rawPage.getByText(text, options), makePage),
 
-    getByLabel: (label, options) =>
-      makeLocator(rawPage.getByLabel(label as any, options as any), makePage),
+    getByLabel: (label, options) => makeLocator(rawPage.getByLabel(label, options), makePage),
 
-    getByTestId: (testId) => makeLocator(rawPage.getByTestId(testId as any), makePage),
+    getByTestId: (testId) => makeLocator(rawPage.getByTestId(testId), makePage),
 
     getByPlaceholder: (text, options) =>
-      makeLocator(rawPage.getByPlaceholder(text as any, options as any), makePage),
+      makeLocator(rawPage.getByPlaceholder(text, options), makePage),
 
     // ── Frames ──
 
@@ -439,7 +435,7 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
     // chained action. See the JSDoc on `PlaywrightMethods.frame` for the full
     // comparison.
     frame: (selector) => {
-      const f = rawPage.frame(selector as any);
+      const f = rawPage.frame(selector);
       return f ? makeFrame(f) : null;
     },
 

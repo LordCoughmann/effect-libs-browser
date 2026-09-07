@@ -18,15 +18,16 @@ import {
 } from "effect";
 
 import {
-  BrowserProvider,
   BrowserProviderError,
   SessionId,
   UrlString,
+  type BrowserProvider,
   type BrowserProviderOptions,
   type BrowserProviderService,
   type BrowserProviderSession,
 } from "@effect-libs/browser";
 
+import { makeProviderContext, makeProviderLayer } from "../internal/layer.js";
 import { type CfBrowserRunSdk, Cloudflare } from "./CfBrowserRunSdk.js";
 
 // ── Options ───────────────────────────────────────────────────────────────────
@@ -446,13 +447,7 @@ export class CfBrowserRunProvider extends Context.Service<
   static readonly layer = (
     options: CfBrowserRunProviderOptions,
   ): Layer.Layer<CfBrowserRunProvider | BrowserProvider> =>
-    Layer.effectContext(
-      make(options).pipe(
-        Effect.map((provider) =>
-          Context.make(CfBrowserRunProvider, provider).pipe(Context.add(BrowserProvider, provider)),
-        ),
-      ),
-    );
+    makeProviderLayer(CfBrowserRunProvider, make)(options);
 
   /**
    * Layer factory that reads configuration from Effect's Config system.
@@ -492,9 +487,7 @@ export class CfBrowserRunProvider extends Context.Service<
           : undefined;
 
         const provider = yield* make({ accountId, apiKey, baseURL, options: options.options });
-        return Context.make(CfBrowserRunProvider, provider).pipe(
-          Context.add(BrowserProvider, provider),
-        );
+        return makeProviderContext(CfBrowserRunProvider, provider);
       }),
     );
 }

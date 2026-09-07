@@ -9,14 +9,16 @@ import { Browserbase } from "@browserbasehq/sdk";
 import { Context, DateTime, Effect, Layer, Option, Predicate, Redacted, type Config } from "effect";
 
 import {
-  BrowserProvider,
   BrowserProviderError,
   SessionId,
   UrlString,
+  type BrowserProvider,
   type BrowserProviderOptions,
   type BrowserProviderService,
   type BrowserProviderSessionBase,
 } from "@effect-libs/browser";
+
+import { makeProviderContext, makeProviderLayer } from "../internal/layer.js";
 
 const DEFAULT_CDP_URL = "wss://connect.browserbase.com";
 
@@ -332,13 +334,7 @@ export class BrowserbaseProvider extends Context.Service<
   static readonly layer = (
     options: BrowserbaseProviderOptions,
   ): Layer.Layer<BrowserbaseProvider | BrowserProvider> =>
-    Layer.effectContext(
-      make(options).pipe(
-        Effect.map((provider) =>
-          Context.make(BrowserbaseProvider, provider).pipe(Context.add(BrowserProvider, provider)),
-        ),
-      ),
-    );
+    makeProviderLayer(BrowserbaseProvider, make)(options);
 
   /**
    * Layer factory that reads configuration from Effect's Config system.
@@ -386,9 +382,7 @@ export class BrowserbaseProvider extends Context.Service<
           options: options.options,
         });
 
-        return Context.make(BrowserbaseProvider, provider).pipe(
-          Context.add(BrowserProvider, provider),
-        );
+        return makeProviderContext(BrowserbaseProvider, provider);
       }),
     );
 }

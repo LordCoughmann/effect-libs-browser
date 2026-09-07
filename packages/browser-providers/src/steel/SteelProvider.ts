@@ -9,14 +9,16 @@ import { Context, DateTime, Effect, Layer, Option, Predicate, Redacted, type Con
 import SteelSDK from "steel-sdk";
 
 import {
-  BrowserProvider,
   BrowserProviderError,
   SessionId,
   UrlString,
+  type BrowserProvider,
   type BrowserProviderOptions,
   type BrowserProviderService,
   type BrowserProviderSession,
 } from "@effect-libs/browser";
+
+import { makeProviderContext, makeProviderLayer } from "../internal/layer.js";
 
 const DEFAULT_CDP_URL = "wss://connect.steel.dev";
 
@@ -337,13 +339,7 @@ export class SteelProvider extends Context.Service<SteelProvider, SteelProviderS
   static readonly layer = (
     options: SteelProviderOptions,
   ): Layer.Layer<SteelProvider | BrowserProvider> =>
-    Layer.effectContext(
-      make(options).pipe(
-        Effect.map((provider) =>
-          Context.make(SteelProvider, provider).pipe(Context.add(BrowserProvider, provider)),
-        ),
-      ),
-    );
+    makeProviderLayer(SteelProvider, make)(options);
 
   /**
    * Layer factory that reads configuration from Effect's Config system.
@@ -391,7 +387,7 @@ export class SteelProvider extends Context.Service<SteelProvider, SteelProviderS
           options: options.options,
         });
 
-        return Context.make(SteelProvider, provider).pipe(Context.add(BrowserProvider, provider));
+        return makeProviderContext(SteelProvider, provider);
       }),
     );
 }

@@ -52,13 +52,13 @@ const tryPromise = <T>(
   });
 
 /**
- * Merge options with signal. Casts through any because Playwright option
- * types don't include `signal` — we inject it for Effect cancellation.
+ * Merge options with signal. Playwright's option types don't include
+ * `signal`, so the return is typed as an intersection: the signal is
+ * injected purely for Effect cancellation while the caller keeps the full
+ * upstream option type.
  */
-const withSignal = (options: unknown, signal: AbortSignal): any => ({
-  ...(options as Record<string, unknown> | undefined),
-  signal,
-});
+const withSignal = <T>(options: T, signal: AbortSignal): T & { readonly signal: AbortSignal } =>
+  Object.assign({}, options, { signal });
 
 // ── Frame Locator Helper ──────────────────────────────────────────────────────
 
