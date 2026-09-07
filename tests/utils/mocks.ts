@@ -13,13 +13,15 @@ import type Steel from "steel-sdk";
 import type { CfBrowserRunSdk } from "@effect-libs/browser-providers/cf-browser-run";
 import type { CfBrowserRunBindingSdk } from "@effect-libs/browser-providers/cf-browser-run-binding";
 
-import { Context, DateTime, Effect, Layer, Option, Redacted } from "effect";
+import { DateTime, Effect, Layer, Option, Redacted } from "effect";
 
-import { BrowserProvider, BrowserProviderError, SessionId, UrlString } from "@effect-libs/browser";
+import { BrowserProviderError, SessionId, UrlString } from "@effect-libs/browser";
 import { BrowserbaseProvider } from "@effect-libs/browser-providers/browserbase";
 import { CfBrowserRunProvider } from "@effect-libs/browser-providers/cf-browser-run";
 import { CfBrowserRunBindingProvider } from "@effect-libs/browser-providers/cf-browser-run-binding";
 import { SteelProvider } from "@effect-libs/browser-providers/steel";
+
+import { makeProviderContext } from "../../packages/browser-providers/src/internal/layer.js";
 
 // =============================================================================
 // Steel Provider
@@ -61,11 +63,7 @@ const testSteelProvider = SteelProvider.of({
  * Provides BOTH SteelProvider AND BrowserProvider (dual-key pattern).
  */
 export const SteelProviderLayerTest = Layer.effectContext(
-  Effect.sync(() =>
-    Context.make(SteelProvider, testSteelProvider).pipe(
-      Context.add(BrowserProvider, testSteelProvider),
-    ),
-  ),
+  Effect.sync(() => makeProviderContext(SteelProvider, testSteelProvider)),
 );
 
 // =============================================================================
@@ -108,11 +106,7 @@ const testBrowserbaseProvider = BrowserbaseProvider.of({
  * Provides BOTH BrowserbaseProvider AND BrowserProvider (dual-key pattern).
  */
 export const BrowserbaseProviderLayerTest = Layer.effectContext(
-  Effect.sync(() =>
-    Context.make(BrowserbaseProvider, testBrowserbaseProvider).pipe(
-      Context.add(BrowserProvider, testBrowserbaseProvider),
-    ),
-  ),
+  Effect.sync(() => makeProviderContext(BrowserbaseProvider, testBrowserbaseProvider)),
 );
 
 // =============================================================================
@@ -145,11 +139,7 @@ const testCfBrowserRunProvider = CfBrowserRunProvider.of({
  * Provides BOTH CfBrowserRunProvider AND BrowserProvider (dual-key pattern).
  */
 export const CfBrowserRunProviderLayerTest = Layer.effectContext(
-  Effect.sync(() =>
-    Context.make(CfBrowserRunProvider, testCfBrowserRunProvider).pipe(
-      Context.add(BrowserProvider, testCfBrowserRunProvider),
-    ),
-  ),
+  Effect.sync(() => makeProviderContext(CfBrowserRunProvider, testCfBrowserRunProvider)),
 );
 
 // =============================================================================
