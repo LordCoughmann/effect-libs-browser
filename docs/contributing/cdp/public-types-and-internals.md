@@ -38,7 +38,7 @@ All three are **necessary** for `page.use` to be useful. Hiding any of them woul
 
 ## Why we considered hiding `subscribe` anyway
 
-The JSDoc audit (`JSDOCS_AUDIT.md`) and CDP audit (`CDP_AUDIT.md` item C) flagged `subscribe` as "internal leaking into public." The reasoning was sound: `subscribe` returns a raw `PubSub.Subscription<CdpMessage>`, which is harder to use than the structured `page.onConsole` / `page.waitForRequest` / etc. APIs, and looks like an implementation detail.
+The audit flagged `subscribe` as "internal leaking into public." The reasoning was sound: `subscribe` returns a raw `PubSub.Subscription<CdpMessage>`, which is harder to use than the structured `page.onConsole` / `page.waitForRequest` / etc. APIs, and looks like an implementation detail.
 
 The proposed fix was to split `CdpConnectionService` into:
 
@@ -96,5 +96,3 @@ If a future audit revisits this, the right move is to redesign the escape hatch,
 - [Event-delivery latency](./event-delivery-latency.md) — async delivery semantics of the event stream.
 - [ADR-0002: Single-process architecture](./decisions/0002-single-process-architecture.md) — why the connection object lives on the public type and the type isn't split.
 - [ADR-0005: Tagged-error guard pattern](./decisions/0005-tagged-error-guard-pattern.md) — the v4 idiom for error discrimination (relates to `CdpError` propagation through this escape hatch).
-- `JSDOCS_AUDIT.md` "Out-of-audit-scope follow-ups (CDP)" — the original audit finding.
-- `CDP_AUDIT.md` item C — the deferred item this document resolves.

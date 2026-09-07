@@ -53,7 +53,6 @@
     "fromCdpError",
     "of",
     "isRetryable",
-    // FrameManager.ts - accessed via ctx.frameManager in Frame.ts
     "getFrameMetadata",
     "getAllFrameIds",
     "getChildFrameIds",
@@ -68,6 +67,8 @@
     "unused-catalog-entries": "off"
   },
   "resolve": {
-    "conditions": ["source"]
+    "conditions": [
+      "source"
+    ]
   }
 }
