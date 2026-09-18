@@ -2,7 +2,7 @@
  * Vitest configuration for workerd smoke tests.
  */
 
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineProject, mergeConfig } from "vitest/config";
 
 import sharedConfig, { wsAlias } from "./vitest.shared.config.ts";

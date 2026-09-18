@@ -17,7 +17,7 @@
     "@effect-libs/browser-cdp": "workspace:*"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "catalog:",
+    "@cloudflare/vitest-plugin": "catalog:",
     "@effect/platform-node": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",

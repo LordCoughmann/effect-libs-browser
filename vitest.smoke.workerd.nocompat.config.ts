@@ -9,7 +9,7 @@
  * @see tests/integration/runtime/workerd/cdp/CdpNoCompat.smoke.test.ts - Test entry point
  */
 
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineProject, mergeConfig } from "vitest/config";
 
 import sharedConfig, { wsAlias } from "./vitest.shared.config.ts";

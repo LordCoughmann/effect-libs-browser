@@ -44,7 +44,7 @@ tests/
 │   │   └── stagehand/                       #     Stagehand AI tests
 │   ├── runtime/                             #   Per-runtime entry points
 │   │   ├── node/                            #     Node (setup.ts, smoke.test.ts, cdp/, playwright/, stagehand/, providers/)
-│   │   ├── workerd/                         #     Cloudflare Workers (vitest-pool-workers; full suite)
+│   │   ├── workerd/                         #     Cloudflare Workers (vitest-plugin; full suite)
 │   │   ├── bun/                             #     Bun (smoke + cdp integration)
 │   │   └── deno/                            #     Deno (smoke + cdp integration)
 │   └── fixtures/                            #   HTTP test pages + registry
@@ -67,7 +67,7 @@ tests/
 Each runtime runs a different test framework:
 
 - **Node** — vitest
-- **workerd** — vitest with `@cloudflare/vitest-pool-workers` (miniflare bindings)
+- **workerd** — vitest with `@cloudflare/vitest-plugin` (miniflare bindings)
 - **Bun** — `bun test`
 - **Deno** — `deno test` (with `@std/testing/bdd`)
 
@@ -170,7 +170,7 @@ lsof -ti:3000 | xargs kill -9
 
 ### workerd: `CHROME_WS_URL not set`
 
-`@cloudflare/vitest-pool-workers` reads bindings from `wrangler.test.jsonc`, and workerd's `process.env` does **not** see the orchestrator's exports. Access them through `cloudflare:workers`'s `env`, not `process.env` — see `tests/integration/runtime/workerd/env.ts`.
+`@cloudflare/vitest-plugin` reads bindings from `wrangler.test.jsonc`, and workerd's `process.env` does **not** see the orchestrator's exports. Access them through `cloudflare:workers`'s `env`, not `process.env` — see `tests/integration/runtime/workerd/env.ts`.
 
 ### Bun / Deno: tests run but only smoke + CDP
 

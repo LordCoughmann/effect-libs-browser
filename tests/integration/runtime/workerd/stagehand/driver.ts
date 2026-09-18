@@ -4,7 +4,7 @@
  * WORKAROUND for: https://github.com/cloudflare/workers-sdk/issues/13037
  * Fix in progress: https://github.com/cloudflare/workers-sdk/pull/13062
  *
- * Uses `wrangler dev` (not vitest-pool-workers) because vitest-pool-workers
+ * Uses `wrangler dev` (not vitest-plugin) because vitest-plugin
  * has a module-resolution bug with @smithy/* dual-format packages.
  *
  * Flow:

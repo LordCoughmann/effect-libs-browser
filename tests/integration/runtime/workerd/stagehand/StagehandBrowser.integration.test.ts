@@ -1,7 +1,7 @@
 /**
  * Stagehand integration tests for workerd runtime.
  *
- * WORKAROUND: This file is EXCLUDED from vitest-pool-workers due to upstream bug.
+ * WORKAROUND: This file is EXCLUDED from vitest-plugin due to upstream bug.
  * @see https://github.com/cloudflare/workers-sdk/issues/13037
  * @fix https://github.com/cloudflare/workers-sdk/pull/13062
  *

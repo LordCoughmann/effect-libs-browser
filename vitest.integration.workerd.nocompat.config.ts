@@ -22,7 +22,7 @@
  * @see tests/integration/runtime/workerd/cdp/Cdp.integration.test.ts - Test entry point
  */
 
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineProject, mergeConfig } from "vitest/config";
 
 import sharedConfig, { wsAlias } from "./vitest.shared.config.ts";
@@ -66,7 +66,7 @@ export default mergeConfig(
               // `src/polyfills/ws.ts` via the workerd `alias` config.
               // Stagehand v3 on workerd is exercised via `wrangler dev`
               // (see tests/integration/runtime/workerd/stagehand/driver.ts)
-              // — NOT vitest-pool-workers — because of the @smithy/* dual-
+              // — NOT vitest-plugin — because of the @smithy/* dual-
               // format module resolution bug tracked at
               // cloudflare/workers-sdk#13037. The @smithy/* entries that
               // used to live here were vestigial: they caused Vite SSR's

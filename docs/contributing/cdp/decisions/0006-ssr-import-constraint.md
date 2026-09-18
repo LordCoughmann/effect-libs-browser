@@ -8,7 +8,7 @@
 
 ## Context
 
-The `@effect-libs/browser-cdp` `evaluatePage` / `evaluateHandle` pipeline (see ADR-0004) takes a user-supplied function, calls `.toString()` on it, and ships the resulting source to the browser via `Runtime.callFunctionOn` + `UtilityScript.evaluate`. On the **node** vitest runtime, the function body is bundled and `.toString()` returns a clean native source. On the **workerd** vitest runtime (`@cloudflare/vitest-pool-workers`), the bundler uses Vite's SSR-mode module graph, and any import referenced inside the function body gets re-written to:
+The `@effect-libs/browser-cdp` `evaluatePage` / `evaluateHandle` pipeline (see ADR-0004) takes a user-supplied function, calls `.toString()` on it, and ships the resulting source to the browser via `Runtime.callFunctionOn` + `UtilityScript.evaluate`. On the **node** vitest runtime, the function body is bundled and `.toString()` returns a clean native source. On the **workerd** vitest runtime (`@cloudflare/vitest-plugin`), the bundler uses Vite's SSR-mode module graph, and any import referenced inside the function body gets re-written to:
 
 ```javascript
 __vite_ssr_import_0__.Predicate.isString(passed)

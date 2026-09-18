@@ -69,7 +69,7 @@ flags forward cleanly: `pnpm test:integration --verbose --runtime node` works.
 - `--runtime workerd` integration **does not** include the Stagehand test as a
   side effect. Run Stagehand explicitly: `pnpm test:stagehand --runtime workerd`.
   The Stagehand workerd driver (`tests/integration/runtime/workerd/stagehand/driver.ts`)
-  is a standalone script that uses `wrangler dev` instead of vitest-pool-workers
+  is a standalone script that uses `wrangler dev` instead of vitest-plugin
   due to the latter's dual-format module resolution bug —
   [cloudflare/workers-sdk#13037](https://github.com/cloudflare/workers-sdk/issues/13037).
   See also `pnpm test:stagehand:workerd` for direct invocation.

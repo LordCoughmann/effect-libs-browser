@@ -1,13 +1,13 @@
 /**
- * Wrangler config for vitest-pool-workers (used by vitest.integration.workerd.config.ts).
+ * Wrangler config for vitest-plugin (used by vitest.integration.workerd.config.ts).
  *
  * WHY THIS FILE EXISTS:
- * - vitest-pool-workers requires a wrangler config for compatibility flags, aliases, and bindings
+ * - vitest-plugin requires a wrangler config for compatibility flags, aliases, and bindings
  * - Wrangler requires a "main" entry point, satisfied by a no-op dummy file
  * - The actual tests are run by vitest, not wrangler
  *
  * USAGE:
- * - vitest-pool-workers reads this config for workerd compatibility settings
+ * - vitest-plugin reads this config for workerd compatibility settings
  * - The real tests are in tests/integration/runtime/workerd/cdp/ and playwright/
  * - The "browser" binding enables CfBrowserRunBindingProvider integration tests
  *

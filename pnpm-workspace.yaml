@@ -14,12 +14,12 @@ overrides:
   tsdown: ^0.22.5
   rolldown-plugin-dts: ^0.27.6
 catalog:
-  alchemy: 2.0.0-beta.72
-  effect: "4.0.0-rc.112"
-  "@effect/platform-node": "4.0.0-rc.112"
-  "@effect/platform-bun": "4.0.0-rc.112"
-  "@effect/vitest": "4.0.0-rc.112"
-  "@cloudflare/vitest-pool-workers": "^0.20.2"
+  alchemy: 2.0.0-beta.79
+  effect: "4.0.0-rc.115"
+  "@effect/platform-node": "4.0.0-rc.115"
+  "@effect/platform-bun": "4.0.0-rc.115"
+  "@effect/vitest": "4.0.0-rc.115"
+  "@cloudflare/vitest-plugin": "^1.1.13"
   "@types/node": "^26.1.2"
   typescript: "^7.0.0-dev.20260707.2"
   vitest: "^4.1.10"
@@ -34,20 +34,15 @@ allowBuilds:
   protobufjs: false
   sharp: false
 minimumReleaseAgeExclude:
-  - '@distilled.cloud/aws@0.22.4'
-  - '@distilled.cloud/axiom@0.22.4'
+  - '@cloudflare/vitest-plugin@1.1.13'
   - '@distilled.cloud/cloudflare-rolldown-plugin@0.10.2'
   - '@distilled.cloud/cloudflare-runtime@0.10.2'
   - '@distilled.cloud/cloudflare-vite-plugin@0.10.2'
-  - '@distilled.cloud/cloudflare@0.22.4'
-  - '@distilled.cloud/core@0.22.4'
-  - '@distilled.cloud/neon@0.22.4'
-  - '@distilled.cloud/planetscale@0.22.4'
-  - '@effect/platform-bun@4.0.0-rc.112'
-  - '@effect/platform-node-shared@4.0.0-rc.112'
-  - '@effect/platform-node@4.0.0-rc.112'
-  - '@effect/vitest@4.0.0-rc.112'
-  - effect@4.0.0-rc.112
+  - '@effect/platform-bun@4.0.0-rc.115'
+  - '@effect/platform-node-shared@4.0.0-rc.115'
+  - '@effect/platform-node@4.0.0-rc.115'
+  - '@effect/vitest@4.0.0-rc.115'
+  - effect@4.0.0-rc.115
   - tsdown@0.22.5
   - '@fallow-cli/darwin-arm64@3.4.2'
   - '@fallow-cli/darwin-x64@3.4.2'
@@ -59,11 +54,27 @@ minimumReleaseAgeExclude:
   - '@fallow-cli/win32-x64-msvc@3.4.2'
   - fallow@3.4.2
   - tsx@4.23.1
-  - '@distilled.cloud/aws@0.30.2'
-  - '@distilled.cloud/axiom@0.30.2'
-  - '@distilled.cloud/cloudflare@0.30.2'
-  - '@distilled.cloud/core@0.30.2'
-  - '@distilled.cloud/neon@0.30.2'
-  - '@distilled.cloud/planetscale@0.30.2'
-  - alchemy@2.0.0-beta.72
+  - alchemy@2.0.0-beta.79
   - 'typescript@7.0.0-dev.20260707.2'
+  - '@alchemy.run/cloudflare-runtime@2.0.0-beta.79'
+  - '@alchemy.run/floci@2.0.0-beta.79'
+  - '@alchemy.run/node-utils@2.0.0-beta.79'
+  - '@distilled.cloud/aws@1.0.0-rc.12'
+  - '@distilled.cloud/axiom@1.0.0-rc.12'
+  - '@distilled.cloud/cloudflare@1.0.0-rc.12'
+  - '@distilled.cloud/core@1.0.0-rc.12'
+  - '@distilled.cloud/fly-io@1.0.0-rc.12'
+  - '@distilled.cloud/hetzner@1.0.0-rc.12'
+  - '@distilled.cloud/neon@1.0.0-rc.12'
+  - '@distilled.cloud/planetscale@1.0.0-rc.12'
+  - '@distilled.cloud/prisma@1.0.0-rc.12'
+  - '@distilled.cloud/railway@1.0.0-rc.12'
+  - '@distilled.cloud/stripe@1.0.0-rc.12'
+  - '@cloudflare/workerd-darwin-64@1.20260918.1'
+  - '@cloudflare/workerd-darwin-arm64@1.20260918.1'
+  - '@cloudflare/workerd-linux-64@1.20260918.1'
+  - '@cloudflare/workerd-linux-arm64@1.20260918.1'
+  - '@cloudflare/workerd-windows-64@1.20260918.1'
+  - miniflare@5.20260918.0-alpha
+  - workerd@1.20260918.1
+  - wrangler@4.135.0

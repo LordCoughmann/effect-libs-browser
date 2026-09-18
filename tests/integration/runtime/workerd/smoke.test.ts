@@ -1,7 +1,7 @@
 /**
  * Workerd smoke test — verify modules load in Cloudflare Workers runtime.
  *
- * No external services. Runs via @cloudflare/vitest-pool-workers.
+ * No external services. Runs via @cloudflare/vitest-plugin.
  */
 
 import { make } from "@test/utils/effect-test/Vitest.js";

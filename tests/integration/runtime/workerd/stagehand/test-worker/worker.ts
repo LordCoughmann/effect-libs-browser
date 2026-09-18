@@ -4,8 +4,8 @@
  * WORKAROUND for: https://github.com/cloudflare/workers-sdk/issues/13037
  * Fix in progress: https://github.com/cloudflare/workers-sdk/pull/13062
  *
- * This worker is tested via `wrangler dev` (not vitest-pool-workers) because
- * vitest-pool-workers has a module resolution bug with @smithy/* packages.
+ * This worker is tested via `wrangler dev` (not vitest-plugin) because
+ * vitest-plugin has a module resolution bug with @smithy/* packages.
  *
  * Exposes Stagehand operations via HTTP for integration testing:
  * - POST with { cdpUrl, llm, action: "connect" } - connect to browser
