@@ -20,10 +20,10 @@ catalog:
   "@effect/platform-bun": "4.0.0-rc.115"
   "@effect/vitest": "4.0.0-rc.115"
   "@cloudflare/vitest-plugin": "^1.1.13"
-  "@types/node": "^26.1.2"
+  "@types/node": "^26.6.1"
   typescript: "^7.0.0-dev.20260707.2"
-  vitest: "^4.1.10"
-  wrangler: "^4.119.0"
+  vitest: "^4.1.11"
+  wrangler: "^4.135.0"
 allowBuilds:
   bufferutil: false
   esbuild: true

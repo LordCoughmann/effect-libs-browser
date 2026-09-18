@@ -789,7 +789,10 @@ export const defineEvaluateTests = (api: TestApi, config: TestConfig): void => {
             yield* page.goto(`${httpUrl}/empty`);
             const result = yield* Effect.result(
               page.evaluate(() => {
-                // Use eval to access undeclared variable — ReferenceError at runtime
+                // Use eval to access undeclared variable — ReferenceError at runtime.
+                // Indirect eval is deliberate: the undeclared global is what makes this
+                // a ReferenceError in page context.
+                // oxlint-disable-next-line eslint/no-eval
                 return (0, eval)("not_existing_object.property");
               }),
             );
