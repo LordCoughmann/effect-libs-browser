@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-stagehand@v0.2.1...@effect-libs/browser-stagehand@v0.2.2) (2026-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Consumers must migrate to Effect 4.0.0-rc.115.
+
+### Build System
+
+* **deps:** require Effect 4.0.0-rc.115 ([c044551](https://github.com/LordCoughmann/effect-libs-browser/commit/c044551209b6570f6a720d52107b59e7bfb661ed))
+
 ## [0.2.1](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser-stagehand@v0.2.0...@effect-libs/browser-stagehand@v0.2.1) (2026-08-30)
 
 
