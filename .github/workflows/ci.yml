@@ -24,6 +24,13 @@ jobs:
       - name: Check (format + lint + typecheck)
         run: pnpm check
 
+      - name: CDP protocol codegen freshness
+        # packages/browser-cdp/src/internal/CdpProtocol.ts is checked in and
+        # generated from the pinned devtools-protocol. Regenerate + format, then
+        # fail if the committed file differs. Runs pre-push via `verify` too;
+        # this step is what makes a `--no-verify` push fail in CI.
+        run: pnpm codegen:cdp:protocol:freshness
+
       - name: Code health (fallow)
         # Dead-code is the strict fail-gate. Dupes + complexity are
         # reported (see fallow docs) but not failing — the codebase has
