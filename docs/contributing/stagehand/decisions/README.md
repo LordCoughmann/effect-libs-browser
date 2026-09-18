@@ -13,6 +13,7 @@ Sister directories:
 | #    | Decision                                                                         | One-line                                                                                                                                                                                                                               |
 | ---- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0001 | [Stagehand `agent` primitive not wrapped](./0001-stagehand-agent-not-wrapped.md) | `browser-stagehand` exposes Stagehand's `agent` primitive through the `instance.use` escape hatch, not a first-class service method — a wrapper would be a thin pass-through over a configuration-heavy, `@experimental` upstream API. |
+| 0002 | [Stagehand v4 support undecided](./0002-stagehand-v4-support.md) | `browser-stagehand` stays on upstream v3 while the extension-based v4 runtime, the provider matrix, and the dual-major packaging question are unresolved — evidence and decision triggers recorded. |
 
 ## How to read these
 
