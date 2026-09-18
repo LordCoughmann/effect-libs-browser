@@ -7,7 +7,7 @@ Full upstream Playwright API on Cloudflare Workers and other edge runtimes. Chro
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-playwright effect@4.0.0-rc.112
+pnpm add @effect-libs/browser-playwright effect@4.0.0-rc.115
 ```
 
 The Playwright runtime comes from `@effect-libs/cloudflare-playwright` (our maintained fork of `@cloudflare/playwright@1.3.0`) as a transitive direct dependency — no separate install command needed.

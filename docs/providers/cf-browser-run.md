@@ -10,14 +10,14 @@ Two `BrowserProvider` implementations for [Cloudflare Browser Rendering](https:/
 ### Install
 
 ```bash
-pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.112
+pnpm add @effect-libs/browser-providers cloudflare effect@4.0.0-rc.115
 ```
 
 > **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
 
 ### Configuration
 
-`CfBrowserRunProvider.layerConfig({...})` reads `accountId` from `Config.string("CF_ACCOUNT_ID")` and `apiKey` from `Config.redacted("CF_API_TOKEN")`. Accepts an `options` field for default session options (`keepAlive` is the most common). Per-session overrides go through `provider.createSession({...})`. See the JSDoc on `CfBrowserRunProviderOptions` for the full shape.
+`CfBrowserRunProvider.layerConfig({...})` reads `accountId` from `Config.String("CF_ACCOUNT_ID")` and `apiKey` from `Config.Redacted("CF_API_TOKEN")`. Accepts an `options` field for default session options (`keepAlive` is the most common). Per-session overrides go through `provider.createSession({...})`. See the JSDoc on `CfBrowserRunProviderOptions` for the full shape.
 
 ### SDK access
 
@@ -42,7 +42,7 @@ Direct browser access via Cloudflare Workers binding. No external HTTP calls —
 ### Install
 
 ```bash
-pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.112
+pnpm add @effect-libs/browser-providers @effect-libs/cloudflare-playwright effect@4.0.0-rc.115
 ```
 
 ### Usage

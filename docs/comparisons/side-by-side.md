@@ -70,7 +70,7 @@ Effect.runPromise(
     Effect.provide(
       Layer.merge(
         Playwright.layer,
-        SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") }),
+        SteelProvider.layerConfig({ apiKey: Config.Redacted("STEEL_API_KEY") }),
       ),
     ),
   ),
@@ -225,7 +225,7 @@ Effect.runPromise(
     Effect.provide(
       Layer.merge(
         Playwright.layer,
-        SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") }),
+        SteelProvider.layerConfig({ apiKey: Config.Redacted("STEEL_API_KEY") }),
       ),
     ),
   ),
@@ -332,8 +332,8 @@ Effect.runPromise(
       Layer.merge(
         Playwright.layer,
         CfBrowserRunProvider.layerConfig({
-          accountId: Config.string("CF_ACCOUNT_ID"),
-          apiKey: Config.redacted("CF_API_TOKEN"),
+          accountId: Config.String("CF_ACCOUNT_ID"),
+          apiKey: Config.Redacted("CF_API_TOKEN"),
         }),
       ),
     ),
@@ -726,7 +726,7 @@ Effect.runPromise(
     Effect.provide(
       Layer.merge(
         Playwright.layer,
-        BrowserbaseProvider.layerConfig({ apiKey: Config.redacted("BROWSERBASE_API_KEY") }),
+        BrowserbaseProvider.layerConfig({ apiKey: Config.Redacted("BROWSERBASE_API_KEY") }),
       ),
     ),
   ),
@@ -849,9 +849,9 @@ Effect.runPromise(
       Layer.merge(
         Stagehand.layerConfig({
           model: Config.succeed("openai/gpt-4o"),
-          apiKey: Config.redacted("OPENAI_API_KEY"),
+          apiKey: Config.Redacted("OPENAI_API_KEY"),
         }),
-        BrowserbaseProvider.layerConfig({ apiKey: Config.redacted("BROWSERBASE_API_KEY") }),
+        BrowserbaseProvider.layerConfig({ apiKey: Config.Redacted("BROWSERBASE_API_KEY") }),
       ),
     ),
   ),

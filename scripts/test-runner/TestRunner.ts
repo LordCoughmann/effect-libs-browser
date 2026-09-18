@@ -89,7 +89,7 @@ export interface SubcommandSpec<R extends string = Runtime, O extends object = o
   readonly requiresInfra?: boolean;
   /**
    * Force `process.exit` at end. Used by `integration` to work around
-   * vitest-pool-workers / miniflare cleanup hangs (HTTP server finalizer
+   * vitest-plugin / miniflare cleanup hangs (HTTP server finalizer
    * blocks on `server.close()` waiting for connections).
    * Default: false.
    */
@@ -301,21 +301,21 @@ interface SharedFlags {
 }
 
 const sharedFlagDefs = {
-  verbose: Flag.boolean("verbose").pipe(
+  verbose: Flag.Boolean("verbose").pipe(
     Flag.withDescription("Enable verbose test output"),
     Flag.withDefault(false),
   ),
-  failFast: Flag.boolean("fail-fast").pipe(
+  failFast: Flag.Boolean("fail-fast").pipe(
     Flag.withDescription("Stop on first test failure"),
     Flag.withDefault(false),
   ),
-  testPattern: Flag.string("test").pipe(
+  testPattern: Flag.String("test").pipe(
     Flag.withAlias("t"),
     Flag.withDescription("Run only tests matching pattern"),
     Flag.optional,
   ),
   extraArgs: Argument.variadic(
-    Argument.string("args").pipe(
+    Argument.String("args").pipe(
       Argument.withDescription("Extra args forwarded to the test runner (after --)"),
     ),
   ),
@@ -376,7 +376,7 @@ const smokeSpec: SubcommandSpec<SmokeRuntime, SmokeOpts> = {
 
 const smokeCmd = Command.make("smoke", {
   ...sharedFlagDefs,
-  runtime: Flag.choice("runtime", [...SMOKE_RUNTIMES, "all"] as const).pipe(
+  runtime: Flag.Literals("runtime", [...SMOKE_RUNTIMES, "all"] as const).pipe(
     Flag.withDescription("Runtime to smoke-test"),
     Flag.withDefault("all"),
   ),
@@ -431,11 +431,11 @@ const integrationSpec: SubcommandSpec<IntegrationRuntime, IntegrationOpts> = {
 
 const integrationCmd = Command.make("integration", {
   ...sharedFlagDefs,
-  runtime: Flag.choice("runtime", [...INTEGRATION_RUNTIMES, "all"] as const).pipe(
+  runtime: Flag.Literals("runtime", [...INTEGRATION_RUNTIMES, "all"] as const).pipe(
     Flag.withDescription("Runtime to integration-test"),
     Flag.withDefault("all"),
   ),
-  noSmoke: Flag.boolean("no-smoke").pipe(
+  noSmoke: Flag.Boolean("no-smoke").pipe(
     Flag.withDescription("Skip the smoke gate that runs before each runtime"),
     Flag.withDefault(false),
   ),
@@ -487,11 +487,11 @@ const providersSpec: SubcommandSpec<ProviderRuntime, ProvidersOpts> = {
 
 const providersCmd = Command.make("providers", {
   ...sharedFlagDefs,
-  runtime: Flag.choice("runtime", [...PROVIDER_RUNTIMES, "all"] as const).pipe(
+  runtime: Flag.Literals("runtime", [...PROVIDER_RUNTIMES, "all"] as const).pipe(
     Flag.withDescription("Runtime to run provider tests in"),
     Flag.withDefault("all"),
   ),
-  provider: Flag.choice("provider", [...PROVIDERS, "all"] as const).pipe(
+  provider: Flag.Literals("provider", [...PROVIDERS, "all"] as const).pipe(
     Flag.withDescription("Provider to test (default: all)"),
     Flag.withDefault("all"),
   ),
@@ -531,7 +531,7 @@ const stagehandSpec: SubcommandSpec<StagehandRuntime, StagehandOpts> = {
 
 const stagehandCmd = Command.make("stagehand", {
   ...sharedFlagDefs,
-  runtime: Flag.choice("runtime", [...STAGEHAND_RUNTIMES, "all"] as const).pipe(
+  runtime: Flag.Literals("runtime", [...STAGEHAND_RUNTIMES, "all"] as const).pipe(
     Flag.withDescription("Runtime to run Stagehand tests in"),
     Flag.withDefault("all"),
   ),

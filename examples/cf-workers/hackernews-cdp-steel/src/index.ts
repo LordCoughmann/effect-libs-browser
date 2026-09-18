@@ -86,7 +86,7 @@ const scrapeHackerNews = Effect.gen(function* () {
   return stories;
 }).pipe(
   Effect.provide(
-    Layer.merge(Cdp.layer, SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") })),
+    Layer.merge(Cdp.layer, SteelProvider.layerConfig({ apiKey: Config.Redacted("STEEL_API_KEY") })),
   ),
 );
 

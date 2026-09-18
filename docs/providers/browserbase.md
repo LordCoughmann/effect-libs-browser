@@ -5,7 +5,7 @@ Managed browser sessions with persistent contexts, proxies, and enterprise featu
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.112
+pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.115
 ```
 
 > **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs. No additional dependencies. Browserbase uses the HTTP API.
@@ -14,7 +14,7 @@ pnpm add @effect-libs/browser-providers @browserbasehq/sdk effect@4.0.0-rc.112
 
 `BrowserbaseProvider` ships with two layer constructors:
 
-- `BrowserbaseProvider.layerConfig({...})` — recommended; reads `apiKey` from `Config.redacted("BROWSERBASE_API_KEY")` and `baseURL` from `BROWSERBASE_BASE_URL` (default `https://api.browserbase.com`).
+- `BrowserbaseProvider.layerConfig({...})` — recommended; reads `apiKey` from `Config.Redacted("BROWSERBASE_API_KEY")` and `baseURL` from `BROWSERBASE_BASE_URL` (default `https://api.browserbase.com`).
 - `BrowserbaseProvider.layer({...})` — explicit values; use when you need a literal key or non-env-var values.
 
 Both accept an `options` field for default session options (`projectId`, `browserSettings` with `blockAds` / `advancedStealth`, etc.). Per-session overrides go through `provider.createSession({...})`. See the JSDoc on `BrowserbaseProviderOptions` and `BrowserbaseProvider.layerConfig` for the full shape.

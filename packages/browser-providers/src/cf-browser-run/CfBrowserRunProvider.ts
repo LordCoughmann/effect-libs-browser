@@ -79,13 +79,13 @@ export interface CfBrowserRunProviderConfigOptions {
   /**
    * Cloudflare account ID from Config.
    *
-   * Use `Config.string("CF_ACCOUNT_ID")` to read from environment.
+   * Use `Config.String("CF_ACCOUNT_ID")` to read from environment.
    */
   readonly accountId: Config.Config<string>;
   /**
    * Cloudflare API token from Config.
    *
-   * Use `Config.redacted("CF_API_TOKEN")` to read from environment.
+   * Use `Config.Redacted("CF_API_TOKEN")` to read from environment.
    */
   readonly apiKey: Config.Config<Redacted.Redacted<string>>;
   /**
@@ -463,15 +463,15 @@ export class CfBrowserRunProvider extends Context.Service<
    *
    * // Read credentials from environment
    * CfBrowserRunProvider.layerConfig({
-   *   accountId: Config.string("CF_ACCOUNT_ID"),
-   *   apiKey: Config.redacted("CF_API_TOKEN")
+   *   accountId: Config.String("CF_ACCOUNT_ID"),
+   *   apiKey: Config.Redacted("CF_API_TOKEN")
    * })
    *
    * // With additional config options
    * CfBrowserRunProvider.layerConfig({
-   *   accountId: Config.string("CF_ACCOUNT_ID"),
-   *   apiKey: Config.redacted("CF_API_TOKEN"),
-   *   baseURL: Config.string("CF_BASE_URL").pipe(Config.withDefault("https://api.cloudflare.com")),
+   *   accountId: Config.String("CF_ACCOUNT_ID"),
+   *   apiKey: Config.Redacted("CF_API_TOKEN"),
+   *   baseURL: Config.String("CF_BASE_URL").pipe(Config.withDefault("https://api.cloudflare.com")),
    * })
    * ```
    */

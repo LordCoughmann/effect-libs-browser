@@ -158,15 +158,23 @@ export const makePage = (rawPage: Page): PlaywrightPage => {
 
     $$: (selector) => tryPromise("$$", () => rawPage.$$(selector)),
 
-    $eval: (selector, pageFunction, arg) =>
+    $eval: <R, Arg = void>(
+      selector: string,
+      pageFunction: Parameters<Page["$eval"]>[1],
+      arg?: Arg,
+    ) =>
       Effect.tryPromise({
-        try: () => rawPage.$eval(selector, pageFunction as any, arg as any),
+        try: () => rawPage.$eval(selector, pageFunction as any, arg as any) as Promise<R>,
         catch: wrapError("$eval"),
       }),
 
-    $$eval: (selector, pageFunction, arg) =>
+    $$eval: <R, Arg = void>(
+      selector: string,
+      pageFunction: Parameters<Page["$$eval"]>[1],
+      arg?: Arg,
+    ) =>
       Effect.tryPromise({
-        try: () => rawPage.$$eval(selector, pageFunction as any, arg as any),
+        try: () => rawPage.$$eval(selector, pageFunction as any, arg as any) as Promise<R>,
         catch: wrapError("$$eval"),
       }),
 

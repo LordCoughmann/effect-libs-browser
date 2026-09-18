@@ -121,7 +121,7 @@ export interface BrowserbaseProviderConfigOptions {
   /**
    * Browserbase API key from Config.
    *
-   * Use `Config.redacted("BROWSERBASE_API_KEY")` to read from environment.
+   * Use `Config.Redacted("BROWSERBASE_API_KEY")` to read from environment.
    */
   readonly apiKey: Config.Config<Redacted.Redacted<string>>;
   /**
@@ -342,7 +342,7 @@ export class BrowserbaseProvider extends Context.Service<
    * Use this when you want to load the API key from environment variables
    * via Effect's Config module.
    *
-   * @param options - Config options including apiKey (as Config.redacted)
+   * @param options - Config options including apiKey (as Config.Redacted)
    *
    * @example
    * ```typescript
@@ -350,13 +350,13 @@ export class BrowserbaseProvider extends Context.Service<
    *
    * // Read API key from BROWSERBASE_API_KEY env var
    * BrowserbaseProvider.layerConfig({
-   *   apiKey: Config.redacted("BROWSERBASE_API_KEY")
+   *   apiKey: Config.Redacted("BROWSERBASE_API_KEY")
    * })
    *
    * // With additional config options
    * BrowserbaseProvider.layerConfig({
-   *   apiKey: Config.redacted("BROWSERBASE_API_KEY"),
-   *   baseURL: Config.string("BROWSERBASE_BASE_URL").pipe(Config.withDefault("https://api.browserbase.com")),
+   *   apiKey: Config.Redacted("BROWSERBASE_API_KEY"),
+   *   baseURL: Config.String("BROWSERBASE_BASE_URL").pipe(Config.withDefault("https://api.browserbase.com")),
    * })
    * ```
    */

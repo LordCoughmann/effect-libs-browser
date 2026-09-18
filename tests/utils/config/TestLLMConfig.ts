@@ -24,7 +24,7 @@ const DEFAULT_LLM_MODEL = "mistral/mistral-medium-2508";
  * doesn't need API key). For other local providers, set a dummy API key.
  */
 export const hasValidLLMConfig = Effect.gen(function* () {
-  const apiKey = yield* Config.redacted("LLM_API_KEY").pipe(Config.withDefault(Redacted.make("")));
+  const apiKey = yield* Config.Redacted("LLM_API_KEY").pipe(Config.withDefault(Redacted.make("")));
   return String.isNonEmpty(Redacted.value(apiKey));
 });
 
@@ -37,9 +37,9 @@ export const hasValidLLMConfig = Effect.gen(function* () {
  * Stagehand parses the provider from the model string.
  */
 export const getLLMConfig = Effect.gen(function* () {
-  const model = yield* Config.string("LLM_MODEL").pipe(Config.withDefault(DEFAULT_LLM_MODEL));
-  const apiKey = yield* Config.redacted("LLM_API_KEY");
-  const baseURL = yield* Config.string("LLM_BASE_URL").pipe(Config.option);
+  const model = yield* Config.String("LLM_MODEL").pipe(Config.withDefault(DEFAULT_LLM_MODEL));
+  const apiKey = yield* Config.Redacted("LLM_API_KEY");
+  const baseURL = yield* Config.String("LLM_BASE_URL").pipe(Config.option);
 
   const result: { model: string; apiKey: string; baseURL?: string } = {
     model,

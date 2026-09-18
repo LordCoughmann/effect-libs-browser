@@ -32,7 +32,7 @@ Effect.runPromise(
     Effect.provide(
       Layer.merge(
         Playwright.layer,
-        SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") }),
+        SteelProvider.layerConfig({ apiKey: Config.Redacted("STEEL_API_KEY") }),
       ),
     ),
   ),

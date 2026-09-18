@@ -32,11 +32,11 @@ export interface CdpConfigService {
  */
 const make = Effect.gen(function* () {
   return yield* Config.all({
-    endpoint: Config.string("CDP_ENDPOINT").pipe(Config.withDefault(DEFAULT_STEEL_ENDPOINT)),
-    commandTimeoutMs: Config.number("CDP_COMMAND_TIMEOUT_MS").pipe(Config.withDefault(30_000)),
-    connectTimeoutMs: Config.number("CDP_CONNECT_TIMEOUT_MS").pipe(Config.withDefault(20_000)),
-    eventBufferSize: Config.number("CDP_EVENT_BUFFER_SIZE").pipe(Config.withDefault(256)),
-    debug: Config.boolean("CDP_DEBUG").pipe(Config.withDefault(false)),
+    endpoint: Config.String("CDP_ENDPOINT").pipe(Config.withDefault(DEFAULT_STEEL_ENDPOINT)),
+    commandTimeoutMs: Config.Number("CDP_COMMAND_TIMEOUT_MS").pipe(Config.withDefault(30_000)),
+    connectTimeoutMs: Config.Number("CDP_CONNECT_TIMEOUT_MS").pipe(Config.withDefault(20_000)),
+    eventBufferSize: Config.Number("CDP_EVENT_BUFFER_SIZE").pipe(Config.withDefault(256)),
+    debug: Config.Boolean("CDP_DEBUG").pipe(Config.withDefault(false)),
   });
 }).pipe(Effect.orDie);
 

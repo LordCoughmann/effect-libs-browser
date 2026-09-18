@@ -154,7 +154,7 @@ const extractWithAI = Effect.gen(function* () {
   Effect.provide(
     Stagehand.layerConfig({
       model: Config.succeed("openai/gpt-4o"),
-      apiKey: Config.redacted("OPENAI_API_KEY"),
+      apiKey: Config.Redacted("OPENAI_API_KEY"),
     }),
   ),
 );

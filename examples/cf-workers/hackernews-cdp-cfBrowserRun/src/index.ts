@@ -86,8 +86,8 @@ const scrapeHackerNews = Effect.gen(function* () {
     Layer.merge(
       Cdp.layer,
       CfBrowserRunProvider.layerConfig({
-        accountId: Config.string("CF_ACCOUNT_ID"),
-        apiKey: Config.redacted("CF_API_TOKEN"),
+        accountId: Config.String("CF_ACCOUNT_ID"),
+        apiKey: Config.Redacted("CF_API_TOKEN"),
       }),
     ),
   ),

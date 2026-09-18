@@ -138,7 +138,12 @@ export function toZodSchema<T>(
   return Effect.try({
     try: () => {
       // Step 1: Effect Schema → JSON Schema Document
-      const jsonSchemaDoc = Schema.toJsonSchemaDocument(effectSchema);
+      // `onExcessProperty: "error"` keeps structs strict (`additionalProperties: false`).
+      // Effect rc.115 defaults to `"ignore"` (open objects); Stagehand extract relies on
+      // the previous strict behavior to reject unmodeled fields.
+      const jsonSchemaDoc = Schema.toJsonSchemaDocument(effectSchema, {
+        onExcessProperty: "error",
+      });
 
       // Step 2: Merge definitions into schema (rename "definitions" to "$defs" for draft-2020-12)
       // Schema.Class uses $ref: "#/$defs/ClassName" but toJsonSchemaDocument stores them under "definitions"

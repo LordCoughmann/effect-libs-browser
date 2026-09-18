@@ -133,13 +133,13 @@ export default class HnCdpWorker extends Cloudflare.Worker<HnCdpWorker>()(
     // import.meta.filename resolves to this file's absolute path at runtime
     main: import.meta.filename!,
     env: {
-      CDP_URL: Config.redacted("CDP_URL").pipe(Config.withDefault(Redacted.make(""))),
+      CDP_URL: Config.Redacted("CDP_URL").pipe(Config.withDefault(Redacted.make(""))),
     },
   },
   Effect.gen(function* () {
     // Init: read config once per cold start
     const cdpUrl = Redacted.value(
-      yield* Config.redacted("CDP_URL").pipe(Config.withDefault(Redacted.make(""))),
+      yield* Config.Redacted("CDP_URL").pipe(Config.withDefault(Redacted.make(""))),
     );
 
     return {

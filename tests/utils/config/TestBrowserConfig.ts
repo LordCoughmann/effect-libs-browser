@@ -80,10 +80,10 @@ const isValidBrowserMode = (v: string): v is BrowserMode => v === "local" || v =
  * Useful for module-level config access.
  */
 export const readBrowserConfigSync = Effect.gen(function* () {
-  const httpBaseUrl = yield* Config.string("HTTP_BASE_URL").pipe(
+  const httpBaseUrl = yield* Config.String("HTTP_BASE_URL").pipe(
     Config.withDefault(DEFAULT_HTTP_BASE_URL),
   );
-  const wsUrl = yield* Config.string("CHROME_WS_URL").pipe(
+  const wsUrl = yield* Config.String("CHROME_WS_URL").pipe(
     Config.withDefault(DEFAULT_CHROME_WS_URL),
   );
   return { wsUrl, httpBaseUrl };
@@ -103,7 +103,7 @@ export const getBrowserConfigSync = (): { wsUrl: string; httpBaseUrl: string } =
  */
 const make = Effect.gen(function* () {
   // Read and validate browser mode
-  const mode = yield* Config.string("BROWSER_MODE").pipe(Config.withDefault("local"));
+  const mode = yield* Config.String("BROWSER_MODE").pipe(Config.withDefault("local"));
 
   if (!isValidBrowserMode(mode)) {
     return yield* new TestBrowserConfigError({
@@ -111,7 +111,7 @@ const make = Effect.gen(function* () {
     });
   }
 
-  const httpBaseUrl = yield* Config.string("HTTP_BASE_URL").pipe(
+  const httpBaseUrl = yield* Config.String("HTTP_BASE_URL").pipe(
     Config.withDefault(DEFAULT_HTTP_BASE_URL),
   );
 
@@ -142,7 +142,7 @@ const make = Effect.gen(function* () {
     ),
     Match.when("remote", () =>
       Effect.gen(function* () {
-        const wsUrl = yield* Config.redacted("BROWSER_WS_URL");
+        const wsUrl = yield* Config.Redacted("BROWSER_WS_URL");
         return {
           mode: "remote",
           wsUrl,

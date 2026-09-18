@@ -112,7 +112,7 @@ Effect.runPromise(
     Effect.provide(
       Layer.merge(
         Playwright.layer,
-        SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") }),
+        SteelProvider.layerConfig({ apiKey: Config.Redacted("STEEL_API_KEY") }),
       ),
     ),
   ),
@@ -148,10 +148,10 @@ Pick the provider at the edge (env var, config, tenant) — the automation code 
 ```typescript
 const ProviderLayer = Layer.unwrap(
   Effect.gen(function* () {
-    const region = yield* Config.string("REGION");
+    const region = yield* Config.String("REGION");
     return region === "us"
-      ? SteelProvider.layerConfig({ apiKey: Config.redacted("STEEL_API_KEY") })
-      : BrowserbaseProvider.layerConfig({ apiKey: Config.redacted("BROWSERBASE_API_KEY") });
+      ? SteelProvider.layerConfig({ apiKey: Config.Redacted("STEEL_API_KEY") })
+      : BrowserbaseProvider.layerConfig({ apiKey: Config.Redacted("BROWSERBASE_API_KEY") });
   }),
 );
 

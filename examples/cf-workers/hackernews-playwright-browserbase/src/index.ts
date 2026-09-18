@@ -86,7 +86,7 @@ const scrapeHackerNews = Effect.gen(function* () {
 }).pipe(
   Effect.provide(Playwright.layer),
   Effect.provide(
-    BrowserbaseProvider.layerConfig({ apiKey: Config.redacted("BROWSERBASE_API_KEY") }),
+    BrowserbaseProvider.layerConfig({ apiKey: Config.Redacted("BROWSERBASE_API_KEY") }),
   ),
 );
 

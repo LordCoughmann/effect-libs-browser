@@ -5,7 +5,7 @@ Managed browser sessions with anti-bot bypass, CAPTCHA solving, and persistent c
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.112
+pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.115
 ```
 
 > **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs.
@@ -14,7 +14,7 @@ pnpm add @effect-libs/browser-providers steel-sdk effect@4.0.0-rc.112
 
 `SteelProvider` ships with two layer constructors:
 
-- `SteelProvider.layerConfig({...})` — recommended; reads `apiKey` from `Config.redacted("STEEL_API_KEY")` and `baseURL` from `STEEL_BASE_URL` (default `https://api.steel.dev`).
+- `SteelProvider.layerConfig({...})` — recommended; reads `apiKey` from `Config.Redacted("STEEL_API_KEY")` and `baseURL` from `STEEL_BASE_URL` (default `https://api.steel.dev`).
 - `SteelProvider.layer({...})` — explicit values; use when you need a literal key (e.g. in a one-off script) or non-env-var values.
 
 Both accept an `options` field for default session options (`profileId`, `persistProfile`, `blockAds`, `advancedStealth`, `clientTimeout`). Per-session overrides go through `provider.createSession({...})`. See the JSDoc on `SteelProviderOptions` and `SteelProvider.layerConfig` for the full shape.

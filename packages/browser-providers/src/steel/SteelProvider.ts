@@ -117,7 +117,7 @@ export interface SteelProviderConfigOptions {
   /**
    * Steel API key from Config.
    *
-   * Use `Config.redacted("STEEL_API_KEY")` to read from environment.
+   * Use `Config.Redacted("STEEL_API_KEY")` to read from environment.
    */
   readonly apiKey: Config.Config<Redacted.Redacted<string>>;
   /**
@@ -347,7 +347,7 @@ export class SteelProvider extends Context.Service<SteelProvider, SteelProviderS
    * Use this when you want to load the API key from environment variables
    * via Effect's Config module.
    *
-   * @param options - Config options including apiKey (as Config.redacted)
+   * @param options - Config options including apiKey (as Config.Redacted)
    *
    * @example
    * ```typescript
@@ -355,13 +355,13 @@ export class SteelProvider extends Context.Service<SteelProvider, SteelProviderS
    *
    * // Read API key from STEEL_API_KEY env var
    * SteelProvider.layerConfig({
-   *   apiKey: Config.redacted("STEEL_API_KEY")
+   *   apiKey: Config.Redacted("STEEL_API_KEY")
    * })
    *
    * // With additional config options
    * SteelProvider.layerConfig({
-   *   apiKey: Config.redacted("STEEL_API_KEY"),
-   *   baseURL: Config.string("STEEL_BASE_URL").pipe(Config.withDefault("https://api.steel.dev")),
+   *   apiKey: Config.Redacted("STEEL_API_KEY"),
+   *   baseURL: Config.String("STEEL_BASE_URL").pipe(Config.withDefault("https://api.steel.dev")),
    * })
    * ```
    */
