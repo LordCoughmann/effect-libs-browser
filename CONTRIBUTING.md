@@ -204,7 +204,7 @@ Dependabot runs on a **monthly** cadence (`.github/dependabot.yml`). The rationa
 - This is a **library**, not an app. Most npm bumps (vitest, dotenvx, tsx, lint-staged, fallow, oxlint, oxfmt) are internal dev tooling that downstream consumers never see. Bumping them continuously is pure PR noise.
 - We bundle every monthly update into **one PR per ecosystem** (`groups: { all: { patterns: ["*"] } }`). One review, one merge, one changelog entry.
 - The npm ecosystem is fast — weekly PRs are usually superseded before they're reviewed (a bump lands, a newer version ships the next day, the PR is stale).
-- **Peer deps that affect consumers** (effect, `@effect/*`, the provider SDKs, playwright, wrangler) are still bumped monthly but reviewed more carefully — see the supported version range in the root `package.json` and `pnpm-workspace.yaml` catalog.
+- **Peer deps that affect consumers** (effect, `@effect/*`, the provider SDKs, playwright, wrangler) are still reviewed more carefully — see the supported version range in the root `package.json` and `pnpm-workspace.yaml` catalog. The catalog-managed ones move on the manual sweep below rather than through Dependabot.
 
 **Security alerts are independent of the version-update schedule.** GitHub Dependabot security alerts run continuously on every published advisory and are enabled at the repo level (Settings → Code security and analysis). Those are not throttled by the monthly schedule.
 
@@ -212,7 +212,19 @@ What to do when the monthly Dependabot PR opens:
 
 1. Read the diff. For dev-only deps, default to merge.
 2. For peer-dep bumps that change public API surface (effect majors, provider SDK majors), follow the bumping checklist before merging.
-3. Don't enable auto-merge for Dependabot PRs — the override/ignore list (`playwright` vendoring, future pins) is intentional, and a missed `pnpm-workspace.yaml` adjustment can break the build.
+3. Don't enable auto-merge for Dependabot PRs — the override/ignore list (`playwright` vendoring, `catalog:`-managed pins) is intentional, and a missed `pnpm-workspace.yaml` adjustment can break the build.
+
+### Catalog-managed dependencies are swept by hand
+
+Dependabot cannot maintain pnpm's `catalog:` protocol: it writes the lockfile specifier as a literal version while the manifests declare `catalog:`, so `pnpm install --frozen-lockfile` fails with `ERR_PNPM_OUTDATED_LOCKFILE` before any check runs. Every package declared with `catalog:` in `pnpm-workspace.yaml` (effect, `@effect/*`, alchemy, vitest, wrangler, `@types/node`, typescript, `@cloudflare/vitest-plugin`) is therefore listed in `ignore` in `.github/dependabot.yml` — as is the vendored `playwright` fork — and moves on the same monthly cadence, by hand:
+
+```bash
+git switch -c chore/deps-sweep
+pnpm -r update <package...>   # in-range bumps only
+pnpm check && pnpm verify     # both gates must pass before opening the PR
+```
+
+Caret ranges stop short on `0.x` packages (caret pins the minor), so those need an explicit target: `pnpm update oxfmt@0.68.0`. Upstream majors that change our own contract are separate work, not part of the sweep — `@browserbasehq/stagehand` v4 (extension-based runtime, see the Stagehand decisions docs) and `vitest` 5 while `@cloudflare/vitest-plugin` peers `vitest ^4.1.0`.
 
 Bumping outside the monthly cadence is fine for security fixes and for known-needed peer-dep ranges (e.g., before a release that needs to drop support for an old effect version). Just don't expect to see Dependabot queue it for you.
 

@@ -24,11 +24,26 @@ updates:
     groups:
       all:
         patterns: ["*"]
+    # Catalog-managed versions (pnpm-workspace.yaml `catalog:`) are excluded
+    # below: Dependabot writes the lockfile specifier as a literal version while
+    # the manifests declare `catalog:`, so `pnpm install --frozen-lockfile`
+    # fails with ERR_PNPM_OUTDATED_LOCKFILE before any check runs (see PR #15).
+    # These move on the monthly manual sweep (`pnpm update -r`).
     ignore:
       # Vendored into packages/cloudflare-playwright (fork of
       # @cloudflare/playwright@1.3.0); upgrades require re-vendoring
       # and re-applying the four local patches.
       - dependency-name: "playwright"
+      - dependency-name: "effect"
+      - dependency-name: "@effect/platform-node"
+      - dependency-name: "@effect/platform-bun"
+      - dependency-name: "@effect/vitest"
+      - dependency-name: "alchemy"
+      - dependency-name: "@cloudflare/vitest-plugin"
+      - dependency-name: "@types/node"
+      - dependency-name: "typescript"
+      - dependency-name: "vitest"
+      - dependency-name: "wrangler"
 
   - package-ecosystem: "github-actions"
     directory: "/"
