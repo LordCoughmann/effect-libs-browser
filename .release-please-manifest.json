@@ -1,8 +1,8 @@
 {
-  "packages/browser": "0.2.2",
-  "packages/browser-cdp": "0.2.2",
-  "packages/browser-playwright": "0.2.2",
-  "packages/browser-stagehand": "0.2.2",
-  "packages/browser-providers": "0.2.2",
-  "packages/cloudflare-playwright": "0.2.2"
+  "packages/browser": "0.3.0",
+  "packages/browser-cdp": "0.3.0",
+  "packages/browser-playwright": "0.3.0",
+  "packages/browser-stagehand": "0.3.0",
+  "packages/browser-providers": "0.3.0",
+  "packages/cloudflare-playwright": "0.3.0"
 }

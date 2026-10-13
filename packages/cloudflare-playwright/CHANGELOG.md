@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.2.2...@effect-libs/cloudflare-playwright@v0.3.0) (2026-10-13)
+
+
+### Miscellaneous Chores
+
+* release 0.3.0 ([01dfd97](https://github.com/LordCoughmann/effect-libs-browser/commit/01dfd9714ed2f143503115f17265e90f3d96e0e8))
+
 ## [0.2.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/cloudflare-playwright@v0.2.1...@effect-libs/cloudflare-playwright@v0.2.2) (2026-09-18)
 
 
