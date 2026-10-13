@@ -105,7 +105,7 @@ values.
 ## `page.httpClient`
 
 `page.httpClient` is the Effect-native equivalent of `page.fetch`. It
-returns a `HttpClient.HttpClient` (from `effect/unstable/http`) that
+returns a `HttpClient.HttpClient` (from `effect/http`) that
 uses the browser's `fetch()` internally. This means you can compose it
 with the rest of the Effect HTTP toolkit — `filterStatusOk`,
 `retryTransient`, `schemaBodyJson`, middleware, etc.
@@ -113,7 +113,7 @@ with the rest of the Effect HTTP toolkit — `filterStatusOk`,
 ```typescript
 import { Effect, Schedule } from "effect";
 import { Schema } from "effect";
-import { HttpClient, HttpClientResponse } from "effect/unstable/http";
+import { HttpClient, HttpClientResponse } from "effect/http";
 
 import { Playwright } from "@effect-libs/browser-playwright";
 

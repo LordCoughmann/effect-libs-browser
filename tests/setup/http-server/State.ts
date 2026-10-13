@@ -10,7 +10,7 @@
 
 import { Effect, Match, Option } from "effect";
 import * as Arr from "effect/Array";
-import { HttpServerResponse } from "effect/unstable/http";
+import { HttpServerResponse } from "effect/http";
 
 type ServerResponse = ReturnType<typeof HttpServerResponse.text>;
 

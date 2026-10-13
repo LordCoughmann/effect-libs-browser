@@ -18,8 +18,8 @@ import {
   Order,
   Predicate,
 } from "effect";
-import { HttpClient } from "effect/unstable/http";
-import { ChildProcess } from "effect/unstable/process";
+import { HttpClient } from "effect/http";
+import { ChildProcess } from "effect/process";
 import { spawn } from "node:child_process";
 
 import { ChromeVersionResponse } from "../../packages/browser-cdp/src/internal/CdpSchema.js";

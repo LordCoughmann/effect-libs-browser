@@ -6,7 +6,7 @@
  */
 
 import type { PlatformError } from "effect/PlatformError";
-import type { ChildProcessSpawner } from "effect/unstable/process";
+import type { ChildProcessSpawner } from "effect/process";
 
 import { NodeServices } from "@effect/platform-node";
 import { Array, Console, Effect, FileSystem, Path, Schema, type Scope } from "effect";

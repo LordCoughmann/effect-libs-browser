@@ -11,9 +11,9 @@
 import * as Cloudflare from "alchemy/Cloudflare";
 import { Config, Schema } from "effect";
 import * as Effect from "effect/Effect";
+import { HttpServerRequest } from "effect/http/HttpServerRequest";
+import * as HttpServerResponse from "effect/http/HttpServerResponse";
 import * as Redacted from "effect/Redacted";
-import { HttpServerRequest } from "effect/unstable/http/HttpServerRequest";
-import * as HttpServerResponse from "effect/unstable/http/HttpServerResponse";
 
 import { Playwright } from "@effect-libs/browser-playwright";
 

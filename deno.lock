@@ -85,7 +85,7 @@
         "npm:@mpsuesser/oxlint-plugin-effect@~0.4.3",
         "npm:@types/bun@^1.4.2",
         "npm:@typescript/native-preview@7.0.0-dev.20260707.2",
-        "npm:@vitest/coverage-v8@^4.1.11",
+        "npm:@vitest/coverage-v8@^5.0.4",
         "npm:cloudflare@latest",
         "npm:devtools-protocol@^0.0.1676105",
         "npm:fallow@^3.27.0",

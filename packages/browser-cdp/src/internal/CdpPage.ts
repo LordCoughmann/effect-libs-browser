@@ -5,7 +5,7 @@
 
 import type { Scope } from "effect";
 import type { Input as DurationInput } from "effect/Duration";
-import type { HttpClient } from "effect/unstable/http";
+import type { HttpClient } from "effect/http";
 
 import type { CdpError } from "../CdpError.js";
 import type { CdpContextHandle } from "../CdpTypes.js";

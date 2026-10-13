@@ -21,7 +21,7 @@
  */
 
 import { Effect, Schema, Match, Cause } from "effect";
-import { HttpServerRequest } from "effect/unstable/http";
+import { HttpServerRequest } from "effect/http";
 
 import { Playwright } from "@effect-libs/browser-playwright";
 

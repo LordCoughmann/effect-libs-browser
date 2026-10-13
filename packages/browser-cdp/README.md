@@ -10,10 +10,10 @@ Fastly, Akamai).
 ## Install
 
 ```bash
-pnpm add @effect-libs/browser-cdp effect@4.0.0-rc.115
+pnpm add @effect-libs/browser-cdp effect@4.0.0
 ```
 
-> **Effect v4 RC required.** This package requires the Effect v4 RC API and is incompatible with Effect v3 and prior Effect v4 beta APIs. No additional runtime dependencies required.
+> **Effect v4 required.** This package requires the Effect v4 API and is incompatible with Effect v3 and prior Effect v4 beta APIs. No additional runtime dependencies required.
 
 ## AI / LLM usage
 

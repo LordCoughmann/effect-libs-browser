@@ -224,7 +224,12 @@ pnpm -r update <package...>   # in-range bumps only
 pnpm check && pnpm verify     # both gates must pass before opening the PR
 ```
 
-Caret ranges stop short on `0.x` packages (caret pins the minor), so those need an explicit target: `pnpm update oxfmt@0.68.0`. Upstream majors that change our own contract are separate work, not part of the sweep — `@browserbasehq/stagehand` v4 (extension-based runtime, see the Stagehand decisions docs) and `vitest` 5 while `@cloudflare/vitest-plugin` peers `vitest ^4.1.0`.
+Caret ranges stop short on `0.x` packages (caret pins the minor), so those need an explicit target: `pnpm update oxfmt@0.68.0`. Upstream majors that change our own contract are separate work, not part of the sweep — `@browserbasehq/stagehand` v4 (extension-based runtime, see the Stagehand decisions docs).
+
+Two follow-ups are parked for the next sweep:
+
+- **Remove `fsModuleCache: false` from the four workerd vitest configs.** Vitest 5 enables the filesystem module cache by default; `@cloudflare/vitest-plugin` 1.4.0 cannot read those host-FS cache entries from workerd, so every test file fails before running (`readAll: no such file or directory`). Revert the overrides once [`cloudflare/workers-sdk#16163`](https://github.com/cloudflare/workers-sdk/pull/16163) ships.
+- **`@mpsuesser/oxlint-plugin-effect` is held at 0.4.3.** 0.5.0 ports 16 rules from `dmmulroy/anti-slop` (`no-unknown-parameters`, `no-unsafe-dictionary-type`, `no-runtime-typeof`, `require-safety-comment-for-type-assertion`, …) and takes both presets from 57 to 73 rules — 1410 findings across 139 files. 0.6.0 retains all 73 while aligning with stable `effect@4.0.0`, and needs oxlint 1.85. Upgrading with those 16 rules disabled keeps the current lint policy and still picks up the 0.6.0 fixes; adopting them is its own policy migration.
 
 Bumping outside the monthly cadence is fine for security fixes and for known-needed peer-dep ranges (e.g., before a release that needs to drop support for an old effect version). Just don't expect to see Dependabot queue it for you.
 

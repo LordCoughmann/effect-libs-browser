@@ -37,7 +37,7 @@ import {
   NodeServices,
 } from "@effect/platform-node";
 import { Console, Duration, Effect, Layer, Schema } from "effect";
-import { ChildProcess, type ChildProcessSpawner } from "effect/unstable/process";
+import { ChildProcess, type ChildProcessSpawner } from "effect/process";
 
 const WORKER_PORT = 8788;
 const WORKER_URL = `http://localhost:${WORKER_PORT}`;

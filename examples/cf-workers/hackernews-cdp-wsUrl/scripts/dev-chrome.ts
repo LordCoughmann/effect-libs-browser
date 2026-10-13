@@ -13,8 +13,8 @@
 
 import { NodeServices, NodeRuntime, NodeHttpClient } from "@effect/platform-node";
 import { Effect, Schedule, Console, FileSystem, Stream, Layer, Schema } from "effect";
-import { HttpClient } from "effect/unstable/http";
-import { ChildProcess } from "effect/unstable/process";
+import { HttpClient } from "effect/http";
+import { ChildProcess } from "effect/process";
 
 // Minimal local schema for Chrome's /json/version response.
 // (The full CDP `ChromeVersionResponse` schema is an internal implementation

@@ -12,7 +12,7 @@ import type { PlaywrightError } from "../PlaywrightError.js";
 import type { FetchOptions, FetchResponse } from "./PlaywrightFetch.js";
 
 import { Effect, Predicate } from "effect";
-import { HttpClient, HttpClientError, HttpClientResponse } from "effect/unstable/http";
+import { HttpClient, HttpClientError, HttpClientResponse } from "effect/http";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
