@@ -15,14 +15,14 @@ overrides:
   rolldown-plugin-dts: ^0.27.6
 catalog:
   alchemy: 2.0.0-beta.79
-  effect: "4.0.0-rc.115"
-  "@effect/platform-node": "4.0.0-rc.115"
-  "@effect/platform-bun": "4.0.0-rc.115"
-  "@effect/vitest": "4.0.0-rc.115"
-  "@cloudflare/vitest-plugin": "^1.1.13"
+  effect: "4.0.0"
+  "@effect/platform-node": "4.0.0"
+  "@effect/platform-bun": "4.0.0"
+  "@effect/vitest": "4.0.0"
+  "@cloudflare/vitest-plugin": "^1.4.0"
   "@types/node": "^26.6.1"
   typescript: "^7.0.0-dev.20260707.2"
-  vitest: "^4.1.11"
+  vitest: "^5.0.4"
   wrangler: "^4.135.0"
 allowBuilds:
   bufferutil: false
@@ -38,11 +38,11 @@ minimumReleaseAgeExclude:
   - '@distilled.cloud/cloudflare-rolldown-plugin@0.10.2'
   - '@distilled.cloud/cloudflare-runtime@0.10.2'
   - '@distilled.cloud/cloudflare-vite-plugin@0.10.2'
-  - '@effect/platform-bun@4.0.0-rc.115'
-  - '@effect/platform-node-shared@4.0.0-rc.115'
-  - '@effect/platform-node@4.0.0-rc.115'
-  - '@effect/vitest@4.0.0-rc.115'
-  - effect@4.0.0-rc.115
+  - '@effect/platform-bun@4.0.0'
+  - '@effect/platform-node-shared@4.0.0'
+  - '@effect/platform-node@4.0.0'
+  - '@effect/vitest@4.0.0'
+  - effect@4.0.0
   - tsdown@0.22.5
   - '@fallow-cli/darwin-arm64@3.4.2'
   - '@fallow-cli/darwin-x64@3.4.2'
@@ -78,3 +78,7 @@ minimumReleaseAgeExclude:
   - miniflare@5.20260918.0-alpha
   - workerd@1.20260918.1
   - wrangler@4.135.0
+  - '@vitest/coverage-v8@5.0.4'
+  - '@vitest/mocker@5.0.4'
+  - '@vitest/spy@5.0.4'
+  - vitest@5.0.4

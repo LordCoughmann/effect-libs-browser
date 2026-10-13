@@ -139,7 +139,7 @@ export function toZodSchema<T>(
     try: () => {
       // Step 1: Effect Schema → JSON Schema Document
       // `onExcessProperty: "error"` keeps structs strict (`additionalProperties: false`).
-      // Effect rc.115 defaults to `"ignore"` (open objects); Stagehand extract relies on
+      // Effect 4 defaults to `"ignore"` (open objects); Stagehand extract relies on
       // the previous strict behavior to reject unmodeled fields.
       const jsonSchemaDoc = Schema.toJsonSchemaDocument(effectSchema, {
         onExcessProperty: "error",

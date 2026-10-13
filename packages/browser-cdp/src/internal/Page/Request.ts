@@ -21,7 +21,7 @@ import type { CdpCookie } from "../CdpSchema.js";
 
 import { Effect, Match, Predicate as P } from "effect";
 import * as Arr from "effect/Array";
-import { HttpClient, HttpClientError, HttpClientResponse } from "effect/unstable/http";
+import { HttpClient, HttpClientError, HttpClientResponse } from "effect/http";
 
 import { CookieError } from "../../CdpError.js";
 import { ensureSession } from "./EnsureSession.js";

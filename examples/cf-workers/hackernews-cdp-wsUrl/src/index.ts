@@ -20,7 +20,7 @@
  */
 
 import { Effect, Schema, Match, Cause } from "effect";
-import { HttpServerRequest } from "effect/unstable/http";
+import { HttpServerRequest } from "effect/http";
 
 import { Cdp } from "@effect-libs/browser-cdp";
 

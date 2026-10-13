@@ -10,7 +10,7 @@ import type { PageFetchFn } from "../../../packages/browser-cdp/src/internal/Cdp
 
 import { describe, it, assert } from "@effect/vitest";
 import { Effect, Exit, Option, Cause, Result, Schema } from "effect";
-import { Headers, HttpBody } from "effect/unstable/http";
+import { Headers, HttpBody } from "effect/http";
 
 import { CdpError, FetchError } from "@effect-libs/browser-cdp";
 

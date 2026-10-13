@@ -53,7 +53,7 @@
  */
 
 import type { Scope } from "effect";
-import type { ChildProcessSpawner } from "effect/unstable/process";
+import type { ChildProcessSpawner } from "effect/process";
 
 import { NodeServices } from "@effect/platform-node";
 import { Effect, Console, Schema, FileSystem, Path, Result } from "effect";

@@ -23,8 +23,8 @@
 import "@dotenvx/dotenvx/config";
 import { NodeRuntime, NodeServices } from "@effect/platform-node";
 import { Console, Effect, Equal, Exit, Option, Predicate, Schema, type Scope } from "effect";
-import { Argument, Command, Flag } from "effect/unstable/cli";
-import { ChildProcess, ChildProcessSpawner } from "effect/unstable/process";
+import { Argument, Command, Flag } from "effect/cli";
+import { ChildProcess, ChildProcessSpawner } from "effect/process";
 
 import { Block, render, type Section } from "../shared/CliFormat.js";
 import { type TestFlags } from "./internal/TestRunnerArgs.ts";

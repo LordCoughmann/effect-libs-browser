@@ -6,7 +6,7 @@
  */
 
 import { Context, Effect, Layer, Config, Match, Redacted, Schema } from "effect";
-import { FetchHttpClient, HttpClient, HttpClientResponse } from "effect/unstable/http";
+import { FetchHttpClient, HttpClient, HttpClientResponse } from "effect/http";
 
 import { ChromeVersionResponse } from "../../../packages/browser-cdp/src/internal/CdpSchema.js";
 

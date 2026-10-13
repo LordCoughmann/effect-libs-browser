@@ -48,6 +48,11 @@ export default mergeConfig(
     ],
     test: {
       name: "integration-workerd-nocompat",
+      // Vitest 5 enables `fsModuleCache` by default, caching transformed modules
+      // under `node_modules/.vitest-cache`. The plugin's workerd runner cannot read
+      // those host-FS cache entries, so every test file fails before running with
+      // "readAll: no such file or directory". Remove once cloudflare/workers-sdk#16163 ships.
+      fsModuleCache: false,
       // Reuse the shared CDP entry point — same tests as the main workerd
       // config, different runtime settings. Anything that passes here but
       // fails under nodejs_compat would be a real claim violation.

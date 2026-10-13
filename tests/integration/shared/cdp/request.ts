@@ -42,7 +42,7 @@ import type { CdpPageService } from "@effect-libs/browser-cdp";
 import type { TestApi, TestConfig } from "../../../utils/effect-test/EffectTest.js";
 
 import { Effect, Exit } from "effect";
-import { HttpBody } from "effect/unstable/http";
+import { HttpBody } from "effect/http";
 
 import { getErrorMessage } from "@effect-libs/browser";
 import { Cdp, CdpError, ConnectionError } from "@effect-libs/browser-cdp";

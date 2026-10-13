@@ -10,7 +10,7 @@ import type { CdpError } from "../CdpError.js";
 import type { FetchOptions, FetchResponse } from "./CdpPage.js";
 
 import { Effect, Predicate } from "effect";
-import { HttpClient, HttpClientError, HttpClientResponse } from "effect/unstable/http";
+import { HttpClient, HttpClientError, HttpClientResponse } from "effect/http";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
