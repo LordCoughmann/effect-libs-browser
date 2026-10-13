@@ -92,6 +92,31 @@ export default defineConfig({
     // Additional disables per project preference
     "effect/prefer-namespace-imports": "off",
 
+    /* 16 anti-slop rules added in @mpsuesser/oxlint-plugin-effect@0.5.0.
+     Ported from `dmmulroy/anti-slop` — a generic (non-Effect) ruleset that
+     both presets now enable by default, taking the rule count 57 → 73.
+     Adopting them is a lint-policy decision, not a dependency bump: on this
+     codebase they produce 1410 findings across 139 files, 73% of them
+     `require-safety-comment-for-type-assertion` (1024). Not adopted here —
+     revisit as its own policy migration. The other 57 rules are unchanged and
+     pass clean. */
+    "effect/no-chained-type-assertions": "off",
+    "effect/no-conditional-empty-object-spread": "off",
+    "effect/no-known-value-widening": "off",
+    "effect/no-module-mocking": "off",
+    "effect/no-object-parameters": "off",
+    "effect/no-reflect-apply": "off",
+    "effect/no-reflect-get": "off",
+    "effect/no-runtime-typeof": "off",
+    "effect/no-service-constructor-imports": "off",
+    "effect/no-shape-in-symbol-names": "off",
+    "effect/no-unknown-parameters": "off",
+    "effect/no-unknown-returns": "off",
+    "effect/no-unknown-type-aliases": "off",
+    "effect/no-unsafe-dictionary-type": "off",
+    "effect/no-widen-then-assert": "off",
+    "effect/require-safety-comment-for-type-assertion": "off",
+
     // Removed in @mpsuesser/oxlint-plugin-effect@0.4.x — no longer needed.
     // "effect/prefer-schema-class": "off",
   },
