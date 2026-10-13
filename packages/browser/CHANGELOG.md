@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser@v0.2.2...@effect-libs/browser@v0.3.0) (2026-10-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** consumers must migrate to Effect 4.0.0.
+
+### Miscellaneous Chores
+
+* release 0.3.0 ([01dfd97](https://github.com/LordCoughmann/effect-libs-browser/commit/01dfd9714ed2f143503115f17265e90f3d96e0e8))
+
+
+### Build System
+
+* **deps:** require Effect 4.0.0 and Vitest 5 ([e5108c8](https://github.com/LordCoughmann/effect-libs-browser/commit/e5108c8a581569a4e686cabdd88ce8daba312c4b))
+
 ## [0.2.2](https://github.com/LordCoughmann/effect-libs-browser/compare/@effect-libs/browser@v0.2.1...@effect-libs/browser@v0.2.2) (2026-09-18)
 
 
