@@ -188,8 +188,13 @@ export const runSubcommand = <R extends string, O extends object>(
 
     yield* printSummary(spec.name, results);
 
-    if (spec.forceExit) {
-      const failed = results.some((r) => !r.ok);
+    // Propagate failures for every subcommand — not just the ones that set
+    // `forceExit`. `forceExit` exists only to work around integration's
+    // vitest-plugin/miniflare cleanup hang; before this, `unit`, `smoke`,
+    // `providers` and `stagehand` recorded failures in `results` and then
+    // exited 0, so the gate could never fail a build.
+    const failed = results.some((r) => !r.ok);
+    if (spec.forceExit || failed) {
       return yield* Effect.sync(() => process.exit(failed ? 1 : 0));
     }
   });
