@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@effect-libs/browser": "workspace:*",
-    "zod": "^4.6.5"
+    "zod": "^4.6.7"
   },
   "peerDependencies": {
     "@browserbasehq/stagehand": "^3.0.0",
